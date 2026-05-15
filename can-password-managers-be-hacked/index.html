@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Can Password Managers Be Hacked? A Practical Risk Guide | TassieTech</title>
+  <meta name="description" content="Understand password manager risks, encryption, master passwords, MFA, team vaults, offboarding, and what to do if a vendor reports an incident.">
+  <meta name="theme-color" content="#0b0810">
+  <link rel="canonical" href="https://tassietech.com.au/can-password-managers-be-hacked/">
+  <link rel="preload" as="image" href="../assets/img/blog/can-password-managers-be-hacked.png">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Can Password Managers Be Hacked? A Practical Risk Guide","description":"Understand password manager risks, encryption, master passwords, MFA, team vaults, offboarding, and what to do if a vendor reports an incident.","datePublished":"2025-02-20","dateModified":"2026-05-15","mainEntityOfPage":"https://tassietech.com.au/can-password-managers-be-hacked/","image":["https://tassietech.com.au/assets/img/blog/can-password-managers-be-hacked.png"],"articleSection":"Cybersecurity","author":{"@type":"Organization","name":"TassieTech","url":"https://tassietech.com.au"},"publisher":{"@type":"Organization","name":"TassieTech","logo":{"@type":"ImageObject","url":"https://tassietech.com.au/assets/img/tassietech-logo.jpg"}}}</script>
+  <script>
+    (function(){var t=localStorage.getItem('tt-theme');document.documentElement.dataset.theme=(t==='light'||t==='dark')?t:'dark';})();
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="nav-shell">
+      <a class="brand-link" href="../" aria-label="TassieTech home">
+        <img src="../assets/img/tassietech-logo.jpg" alt="" width="68" height="43">
+        <span>TassieTech</span>
+      </a>
+      <nav class="primary-nav" data-primary-nav aria-label="Primary navigation">
+        <ul>
+          <li><a href="../">Home</a></li>
+<li><a href="../about/">About</a></li>
+<li><a href="../individuals/">Individuals</a></li>
+<li><a href="../services/">Businesses</a></li>
+<li><a href="../areas-we-serve/">Areas</a></li>
+<li><a class="active" href="../blog/">Blog</a></li>
+<li><a href="../contact/">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <a class="button secondary nav-cta" href="tel:0364494214">Call 6449 4214</a>
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle colour mode"></button>
+        <button class="nav-toggle" type="button" data-nav-toggle aria-label="Open navigation" aria-expanded="false"><span></span></button>
+      </div>
+    </div>
+  </header>
+  <main id="main">
+    <section class="hero compact" style="--hero-image:url('/assets/img/blog/can-password-managers-be-hacked.png');--hero-position:center 50%">
+      <div class="hero-grid">
+        <div class="hero-copy reveal in-view">
+          <span class="eyebrow">Cybersecurity</span>
+          <h1>Can Password Managers Be Hacked? A Practical Risk Guide</h1>
+          <p>Password managers can be targeted, but a well-configured vault is usually far safer than reused passwords, spreadsheets, or shared inboxes.</p>
+          <div class="hero-actions">
+            <a class="button primary" href="../contact/">Speak to a specialist</a>
+            <a class="button secondary" href="tel:0364494214">Call 6449 4214</a>
+          </div>
+          <div class="hero-proof" aria-label="TassieTech strengths">
+            <span>North West based</span>
+            <span>Statewide remote support</span>
+            <span>Security-led advice</span>
+          </div>
+        </div>
+        <div class="hero-panel reveal in-view" aria-label="Service signals">
+          <div class="signal-card"><span class="signal-dot"></span><div><strong>North West based</strong><span>Local technicians with remote support available statewide</span></div><b>Local</b></div>
+          <div class="signal-card warning"><span class="signal-dot"></span><div><strong>Security first</strong><span>Practical guidance aligned with ASD and ACSC advice</span></div><b>ASD</b></div>
+          <div class="signal-card"><span class="signal-dot"></span><div><strong>Service Range</strong><span>Devices, networks, security, cloud, websites, and recovery support</span></div><b>Range</b></div>
+        </div>
+      </div>
+    </section>
+    <section class="section article-section">
+  <article class="rich-text article-body reveal">
+    <div class="article-meta">
+      <span class="tag">Cybersecurity</span>
+      <span>20 Feb 2025</span>
+      <span>4 min read</span>
+    </div>
+    <p>It is fair to ask whether password managers can be hacked. They hold the keys to important accounts, so they deserve scrutiny. The better question, though, is not whether any technology can ever fail. It is whether a well-run password manager, used properly, creates less risk than the alternatives: reused passwords, browser-saved passwords on unmanaged devices, spreadsheets, shared inboxes, sticky notes, and old messages containing admin credentials.</p><p>For most people and businesses, a reputable password manager is a major improvement. NIST's guidance on <a href="https://www.nist.gov/cybersecurity/how-do-i-create-good-password" target="_blank" rel="noreferrer noopener">creating good passwords</a> supports the same underlying idea: longer, unique passwords are safer than short or reused ones. A password manager makes unique passwords practical at scale.</p><h2>What a breach of a password manager means</h2><p>Password managers are designed so that the vault data stored by the provider is encrypted. In a strong design, the provider should not be able to read the contents of your vault. That means an attacker who steals encrypted vault data still needs to defeat the encryption and master-password protections before the stored passwords are useful.</p><p>This is why the master password and MFA matter. A weak master password weakens the whole setup. A strong master password, MFA, device trust, and recovery controls make the vault much harder to abuse. 1Password publishes details about its <a href="https://1password.com/security" target="_blank" rel="noreferrer noopener">security model</a>, which is the kind of transparency you should expect from a password manager used for business.</p><h2>The bigger risk is usually human workflow</h2><p>Many password incidents do not begin with someone breaking the vault encryption. They begin with phishing, password reuse, malware, an unlocked device, weak recovery settings, or someone approving an MFA prompt they did not request. A password manager reduces several of those risks, but it does not remove the need for judgement.</p><p>For example, autofill can help reveal fake login pages because the password manager may not recognise the domain. That pause is useful. But if someone manually copies a password into a phishing page, the tool cannot fully save them. Training, browser hygiene, and MFA still matter.</p><h2>Business setup is different from personal setup</h2><p>A personal password vault is mostly about one person remembering fewer passwords. A business password manager also needs shared vaults, role-based access, administrator recovery, offboarding, auditing, and emergency access. Those controls are what make it safer to manage credentials for Microsoft 365 administration, WordPress, Synergy Web Servers, UniFi controllers, Synology NAS devices, Dropbox, banking portals, and Splashtop.</p><p>The wrong setup can create problems. If everyone shares one vault, access is too broad. If nobody owns recovery, a lost master password can become a crisis. If offboarding is ignored, former staff may retain access to shared credentials. The tool is only as strong as the process around it.</p><h2>What to do if a password manager reports an incident</h2><p>Read the vendor's notice carefully, but do not panic or ignore it. Confirm whether vault data, metadata, billing information, or account details were involved. Change the master password if recommended. Review MFA, active devices, shared vault access, and high-value credentials. If there is any sign that a vault was accessed, rotate passwords starting with email, Microsoft 365, banking, cloud storage, domain registrars, hosting, and remote access.</p><p>Use the incident as a chance to clean up. Remove stale vault members, delete old shared passwords, turn on stronger MFA, and document recovery steps. A well-maintained password manager should make that cleanup easier, not harder.</p><h2>The practical conclusion</h2><p>Yes, password managers can be targeted. No, that is not a good argument for going back to reused passwords or informal storage. The safer approach is to use a reputable password manager, protect it with a strong master password and MFA, keep devices clean, and manage team access deliberately.</p>
+  </article>
+</section>
+<section class="section tight">
+  <div class="cta-panel reveal">
+    <div>
+      <h2>Need help setting up 1Password?</h2>
+      <p>We can help individuals and teams move passwords into a safer structure, set MFA, and clean up reused credentials.</p>
+    </div>
+    <div class="button-row">
+      <a class="button primary" href="../contact/">Send a message</a>
+      <a class="button secondary" href="tel:0364494214">Call 6449 4214</a>
+    </div>
+  </div>
+</section>
+  </main>
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="../assets/img/tassietech-logo.jpg" alt="" width="84" height="54" loading="lazy">
+        <div>
+          <h2>TassieTech</h2>
+          <p>Proudly serving Devonport, Latrobe, Port Sorell, Sheffield, Forth, Ulverstone, Deloraine, Burnie, and everywhere in between.</p>
+        </div>
+        <p><strong>03 6449 4214</strong><br><a href="mailto:help@tassietech.com.au">help@tassietech.com.au</a><br>7 Hamilton St, Latrobe</p>
+      </div>
+      <div class="footer-links">
+        <div><h3>Site</h3><ul><li><a href="../about/">About</a></li><li><a href="../services/">Businesses</a></li><li><a href="../individuals/">Individuals</a></li><li><a href="../blog/">Blog</a></li></ul></div>
+        <div><h3>Services</h3><ul><li><a href="../scam-recovery/">Scam Recovery</a></li><li><a href="../community-services/">Community Services</a></li><li><a href="../emergency-response/">Emergency Response</a></li><li><a href="../areas-we-serve/">Areas We Serve</a></li></ul></div>
+        <div><h3>Resources</h3><ul><li><a href="../legal/">Legal</a></li><li><a href="../minimum-hardware-requirements/">Minimum Hardware</a></li><li><a href="../recommended-technology-platform/">Recommended Platform</a></li><li><a href="../careers/">Careers</a></li></ul></div>
+        <div><h3>Contact</h3><ul><li><a href="tel:0364494214">Call 6449 4214</a></li><li><a href="mailto:help@tassietech.com.au">Email help desk</a></li><li><a href="../contact/">Send a message</a></li></ul></div>
+      </div>
+    </div>
+    <div class="footer-bottom">Tassie Tech / Tasmanian Technology Systems - Copyright <span data-year>2026</span></div>
+  </footer>
+  <script src="../assets/js/main.js" defer></script>
+</body>
+</html>
