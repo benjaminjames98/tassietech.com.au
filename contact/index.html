@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Contact TassieTech | Local IT Support Tasmania</title>
   <meta name="description" content="Contact TassieTech for local Tasmanian IT support, business technology help, scam recovery, managed services, and practical advice.">
+  
   <meta name="theme-color" content="#0b0810">
   <link rel="canonical" href="https://tassietech.com.au/contact/">
   <link rel="preload" as="image" href="../assets/img/heroes/contact.jpeg">
@@ -72,11 +73,46 @@
       <div class="contact-method"><div><strong>Office</strong><span>7 Hamilton St, Latrobe<br>By appointment only</span></div></div>
       <div class="contact-method"><div><strong>Hours</strong><span>Monday to Friday, 9am to 5pm<br>Saturday and Sunday closed</span></div></div>
     </div>
-    <form class="form-card reveal" data-contact-form>
+    <form class="form-card reveal" data-contact-form method="post" action="../contact-submit.php" accept-charset="UTF-8">
+      <div class="honeypot-field" aria-hidden="true"><label for="website">Website</label><input id="website" name="website" tabindex="-1" autocomplete="off"></div>
+      <input type="hidden" name="formStartedAt" data-form-started-at>
       <div class="field"><label for="name">Name*</label><input id="name" name="name" required autocomplete="name"></div>
-      <div class="field"><label for="business">Business</label><input id="business" name="business" autocomplete="organization"></div>
       <div class="field"><label for="email">Email*</label><input id="email" name="email" type="email" required autocomplete="email"></div>
-      <div class="field"><label for="message">Message</label><textarea id="message" name="message" placeholder="What can we help with?"></textarea></div>
+      <fieldset class="field option-field">
+        <legend>Is this for an individual or a business?*</legend>
+        <div class="choice-grid">
+          <label class="choice-card"><input type="radio" name="submissionType" value="individual" required><span><strong>Individual</strong><small>Personal device, account, scam, or home technology help.</small></span></label>
+          <label class="choice-card"><input type="radio" name="submissionType" value="business" required><span><strong>Business</strong><small>Support, managed IT, projects, websites, networks, or security.</small></span></label>
+        </div>
+      </fieldset>
+      <div class="conditional-group" data-contact-section="individual" hidden>
+        <div class="field"><label for="individualIssue">Outline of the issue*</label><textarea id="individualIssue" name="individualIssue" placeholder="What is happening, when did it start, and what have you already tried?" data-conditional-required></textarea></div>
+      </div>
+      <div class="conditional-group" data-contact-section="business" hidden>
+        <div class="field"><label for="businessName">Business name*</label><input id="businessName" name="businessName" autocomplete="organization" data-conditional-required></div>
+        <fieldset class="field option-field">
+          <legend>Is this a project or a support request?*</legend>
+          <div class="choice-grid">
+            <label class="choice-card"><input type="radio" name="businessRequestType" value="project" data-conditional-required><span><strong>Project</strong><small>New system, website, migration, upgrade, software, or planned work.</small></span></label>
+            <label class="choice-card"><input type="radio" name="businessRequestType" value="support" data-conditional-required><span><strong>Support request</strong><small>An issue, outage, account problem, device fault, or security concern.</small></span></label>
+          </div>
+        </fieldset>
+      </div>
+      <div class="conditional-group" data-contact-section="business-project" hidden>
+        <div class="field"><label for="budgetRange">Budget range*</label><select id="budgetRange" name="budgetRange" data-conditional-required><option value="">Select a range</option><option>Under ,500</option><option>,500 - ,500</option><option>,500 - ,000</option><option>,000 - ,000</option><option>,000+</option><option>Not sure yet</option></select></div>
+        <div class="field"><label for="projectOverview">Project overview*</label><textarea id="projectOverview" name="projectOverview" placeholder="What are you trying to build, improve, migrate, or fix? Include timing if there is a deadline." data-conditional-required></textarea></div>
+      </div>
+      <div class="conditional-group" data-contact-section="business-support" hidden>
+        <div class="field"><label for="supportIssue">Outline of the issue*</label><textarea id="supportIssue" name="supportIssue" placeholder="What is affected, how many people are impacted, and when did it start?" data-conditional-required></textarea></div>
+        <fieldset class="field option-field urgency-field">
+          <legend>Urgency*</legend>
+          <div class="choice-grid urgency-grid">
+            <label class="choice-card"><input type="radio" name="urgency" value="critical" data-conditional-required><span><strong>Critical</strong><small>Business-wide outage, suspected compromise, data loss risk, or operations stopped.</small></span></label>
+            <label class="choice-card"><input type="radio" name="urgency" value="high" data-conditional-required><span><strong>High</strong><small>Multiple people affected or a key workflow blocked, but the business can still operate.</small></span></label>
+            <label class="choice-card"><input type="radio" name="urgency" value="standard" data-conditional-required><span><strong>Standard</strong><small>Single-user issue, planned change, question, or non-urgent support request.</small></span></label>
+          </div>
+        </fieldset>
+      </div>
       <button class="button primary" type="submit">Send enquiry</button>
       <p data-form-status aria-live="polite"></p>
     </form>
@@ -89,7 +125,7 @@
         <img src="../assets/img/tassietech-logo.jpg" alt="" width="84" height="54" loading="lazy">
         <div>
           <h2>TassieTech</h2>
-          <p>Proudly serving Devonport, Latrobe, Port Sorell, Sheffield, Forth, Ulverstone, Deloraine, Burnie, and everywhere in between.</p>
+          <p>Proudly serving the North West, West Coast, East Coast, Midlands, greater Hobart, Launceston, and connected Tasmanian towns.</p>
         </div>
         <p><strong>03 6449 4214</strong><br><a href="mailto:help@tassietech.com.au">help@tassietech.com.au</a><br>7 Hamilton St, Latrobe</p>
       </div>

@@ -68,19 +68,53 @@
   if (year) year.textContent = String(new Date().getFullYear());
 
   const form = document.querySelector("[data-contact-form]");
-  form?.addEventListener("submit", (event) => {
-    event.preventDefault();
-    const data = new FormData(form);
-    const name = encodeURIComponent(data.get("name") || "");
-    const business = encodeURIComponent(data.get("business") || "");
-    const email = encodeURIComponent(data.get("email") || "");
-    const message = encodeURIComponent(data.get("message") || "");
-    const subject = encodeURIComponent(`Website enquiry from ${data.get("name") || "TassieTech website"}`);
-    const bodyText = `Name: ${name}%0ABusiness: ${business}%0AEmail: ${email}%0A%0A${message}`;
-    window.location.href = `mailto:help@tassietech.com.au?subject=${subject}&body=${bodyText}`;
+  if (form) {
+    const sections = Array.from(form.querySelectorAll("[data-contact-section]"));
     const status = form.querySelector("[data-form-status]");
-    if (status) status.textContent = "Opening your email app with this enquiry.";
-  });
+    const startedAt = form.querySelector("[data-form-started-at]");
+    if (startedAt) startedAt.value = String(Date.now());
+
+    const params = new URLSearchParams(window.location.search);
+    if (status && params.get("status") === "error") {
+      status.textContent = "Something went wrong. Please check the form and try again, or call us if it is urgent.";
+    }
+
+    const updateContactForm = () => {
+      const data = new FormData(form);
+      const submissionType = data.get("submissionType");
+      const businessRequestType = data.get("businessRequestType");
+
+      sections.forEach((section) => {
+        const key = section.dataset.contactSection;
+        const active =
+          key === submissionType ||
+          (submissionType === "business" && key === "business") ||
+          (submissionType === "business" && businessRequestType === "project" && key === "business-project") ||
+          (submissionType === "business" && businessRequestType === "support" && key === "business-support");
+
+        section.hidden = !active;
+        section.querySelectorAll("input, select, textarea").forEach((control) => {
+          control.disabled = !active;
+          if (control.hasAttribute("data-conditional-required")) {
+            control.required = active;
+          }
+        });
+      });
+    };
+
+    updateContactForm();
+    form.addEventListener("change", updateContactForm);
+
+    form.addEventListener("submit", (event) => {
+      updateContactForm();
+      if (!form.reportValidity()) {
+        event.preventDefault();
+        return;
+      }
+
+      if (status) status.textContent = "Sending your enquiry.";
+    });
+  }
 
   const riskCheck = document.querySelector("[data-risk-check]");
   if (riskCheck) {
