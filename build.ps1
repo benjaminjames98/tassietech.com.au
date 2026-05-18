@@ -1697,20 +1697,20 @@ function Render-Layout {
 
 @"
 <!doctype html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>$title</title>
   <meta name="description" content="$description">
   $robotsMeta
-  <meta name="theme-color" content="#0b0810">
+  <meta name="theme-color" content="#faf6fb">
   <link rel="canonical" href="$canonical">
   <link rel="preload" as="image" href="${prefix}$heroImage">
   <link rel="stylesheet" href="${prefix}assets/css/styles.css">
   $structuredData
   <script>
-    (function(){var t=localStorage.getItem('tt-theme');document.documentElement.dataset.theme=(t==='light'||t==='dark')?t:'dark';})();
+    (function(){var t=localStorage.getItem('tt-theme');document.documentElement.dataset.theme=(t==='light'||t==='dark')?t:'light';})();
   </script>
 </head>
 <body>

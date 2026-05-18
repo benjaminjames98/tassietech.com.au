@@ -10,7 +10,7 @@
   if (storedTheme === "light" || storedTheme === "dark") {
     root.dataset.theme = storedTheme;
   } else {
-    root.dataset.theme = "dark";
+    root.dataset.theme = "light";
   }
 
   const updateThemeLabel = () => {
