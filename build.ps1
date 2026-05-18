@@ -156,7 +156,7 @@ function ServiceCards {
     <h2>Technology that works quietly in the background.</h2>
     <p>From day-to-day support through to security, cloud, websites, networks, and custom software, TassieTech keeps local teams moving without the jargon.</p>
   </div>
-  <div class="grid three">
+  <div class="grid four">
     <article class="card lift reveal">
       <span class="icon">$(Get-Icon manage)</span>
       <h3>Managed IT Support</h3>
@@ -165,17 +165,24 @@ function ServiceCards {
       <a class="text-link" href="{{root}}managed-it-support-tasmania/">Explore managed IT support</a>
     </article>
     <article class="card lift reveal">
+      <span class="icon">$(Get-Icon cloud)</span>
+      <h3>Microsoft 365 and Cloud</h3>
+      <p>Accounts, email, Teams, SharePoint, OneDrive, permissions, cloud files, and the everyday tools staff use to get work done.</p>
+      <ul><li>Account governance</li><li>Teams and SharePoint</li><li>Cloud file workflows</li></ul>
+      <a class="text-link" href="{{root}}microsoft-365-support-tasmania/">Explore Microsoft 365 support</a>
+    </article>
+    <article class="card lift reveal">
       <span class="icon">$(Get-Icon secure)</span>
-      <h3>Cyber Security</h3>
-      <p>Commercial-grade protection without unnecessary complexity. We help harden devices, secure accounts, train staff, and respond quickly when risk appears.</p>
-      <ul><li>Endpoint protection</li><li>Security policies</li><li>Backup and recovery planning</li></ul>
+      <h3>Cyber Security and Backups</h3>
+      <p>Commercial-grade protection without unnecessary complexity. We help harden devices, secure accounts, prepare backups, and respond quickly when risk appears.</p>
+      <ul><li>Endpoint protection</li><li>Security policies</li><li>Recovery planning</li></ul>
       <a class="text-link" href="{{root}}cyber-security-tasmania/">Explore cyber security</a>
     </article>
     <article class="card lift reveal">
       <span class="icon">$(Get-Icon grow)</span>
-      <h3>Technology Growth</h3>
-      <p>Use technology to remove friction from operations. We help with websites, cloud platforms, automation, software, and sensible emerging technology advice.</p>
-      <ul><li>Custom software</li><li>Workflow improvement</li><li>Scalable platforms</li></ul>
+      <h3>Websites, Networks and Projects</h3>
+      <p>Use technology to remove friction from operations. We help with websites, UniFi networks, cloud platforms, automation, software, and planned upgrades.</p>
+      <ul><li>WordPress care</li><li>UniFi networks</li><li>Project planning</li></ul>
       <a class="text-link" href="{{root}}wordpress-care-tasmania/">Explore websites and care</a>
     </article>
   </div>
@@ -261,10 +268,10 @@ function CtaPanel {
       <p>$Text</p>
     </div>
     <div class="intent-cta-grid" aria-label="Choose the right next step">
-      <a class="intent-cta" href="{{root}}contact/?intent=project"><strong>Plan an IT project</strong><small>Websites, migrations, networks, cloud, software, and planned upgrades.</small></a>
       <a class="intent-cta" href="{{root}}contact/?intent=business-support"><strong>Get business support</strong><small>Managed IT, Microsoft 365, devices, accounts, networks, and helpdesk support.</small></a>
-      <a class="intent-cta urgent" href="{{root}}contact/?intent=urgent"><strong>Report an urgent issue</strong><small>Outages, suspected compromise, data loss risk, or operations stopped.</small></a>
       <a class="intent-cta" href="{{root}}contact/?intent=personal"><strong>Get personal tech help</strong><small>Home devices, email, passwords, scam recovery, and everyday technology support.</small></a>
+      <a class="intent-cta urgent" href="{{root}}contact/?intent=urgent"><strong>Report an urgent issue</strong><small>Outages, suspected compromise, data loss risk, or operations stopped.</small></a>
+      <a class="intent-cta" href="{{root}}contact/?intent=project"><strong>Plan an IT project</strong><small>Websites, migrations, networks, cloud, software, and planned upgrades.</small></a>
     </div>
     <div class="cta-proof-grid" aria-label="TassieTech proof points">
       <div><strong>Client outcomes</strong><span>Cleaner accounts, fewer repeat issues, safer backups, and systems staff can actually use.</span></div>
@@ -272,6 +279,84 @@ function CtaPanel {
       <div><strong>Before and after</strong><span>We turn scattered devices, passwords, files, and support habits into a practical operating rhythm.</span></div>
       <div><strong>Tasmania covered</strong><span>North West based with remote support across Tasmanian towns and city hubs.</span></div>
     </div>
+  </div>
+</section>
+"@
+}
+
+function HomeTriageSection {
+@"
+<section class="section tight">
+  <div class="section-header center reveal">
+    <span class="section-kicker">Start here</span>
+    <h2>What do you need help with?</h2>
+    <p>Choose the path that best matches what is happening. We will collect the right details and point you to the next practical step.</p>
+  </div>
+  <div class="intent-cta-grid home-triage-grid reveal" aria-label="Choose your TassieTech support path">
+    <a class="intent-cta" href="{{root}}contact/?intent=business-support"><strong>Business IT Support</strong><small>Managed IT, Microsoft 365, devices, accounts, networks, security, and staff support.</small></a>
+    <a class="intent-cta" href="{{root}}contact/?intent=personal"><strong>Personal IT Help</strong><small>Computers, email, internet, scams, devices, passwords, and everyday technology issues.</small></a>
+    <a class="intent-cta urgent" href="{{root}}emergency-response/"><strong>Urgent IT Issue</strong><small>Outages, suspected compromise, business disruption, or time-sensitive technology problems.</small></a>
+    <a class="intent-cta" href="{{root}}contact/?intent=project"><strong>Plan a Project</strong><small>Websites, migrations, cloud systems, backups, networks, security, and system improvements.</small></a>
+  </div>
+</section>
+"@
+}
+
+function HomeTrustSection {
+@"
+<section class="section">
+  <div class="section-header center reveal">
+    <span class="section-kicker">Trust signals</span>
+    <h2>What clients rely on us to make simpler.</h2>
+    <p>Good IT support should make everyday technology easier to trust, easier to explain, and easier to keep moving.</p>
+  </div>
+  <div class="grid three">
+    <article class="card lift reveal">
+      <h3>Fewer repeat IT problems</h3>
+      <p>We look for the cause behind the ticket: unmanaged accounts, weak backups, unclear ownership, unreliable devices, or support habits that keep creating friction.</p>
+    </article>
+    <article class="card lift reveal">
+      <h3>Clearer security decisions</h3>
+      <p>Clients get plain-language priorities for MFA, password management, endpoint protection, backups, and recovery planning, without fear-based selling.</p>
+    </article>
+    <article class="card lift reveal">
+      <h3>Local help that understands the work</h3>
+      <p>Because we support Tasmanian businesses, community organisations, and individuals, the advice stays practical, local, and tied to how people actually use technology.</p>
+    </article>
+  </div>
+</section>
+"@
+}
+
+function HomeRecommendationsSection {
+@"
+<section class="section tight">
+  <div class="section-header center reveal">
+    <span class="section-kicker">Recommendations</span>
+    <h2>Recommended next steps for Tasmanian IT support.</h2>
+    <p>If you are not sure where to start, these are the most practical first moves for reducing risk, improving support, and making technology easier to manage.</p>
+  </div>
+  <div class="grid four">
+    <article class="card lift reveal">
+      <h3>Book an IT health check</h3>
+      <p>Start with a plain-language review of accounts, devices, backups, Microsoft 365, security, and recurring support issues.</p>
+      <a class="text-link" href="{{root}}contact/?intent=business-support">Book a health check</a>
+    </article>
+    <article class="card lift reveal">
+      <h3>Secure accounts and backups</h3>
+      <p>Prioritise MFA, password management, endpoint protection, backup coverage, and restore confidence before something fails.</p>
+      <a class="text-link" href="{{root}}cyber-security-tasmania/">Review security support</a>
+    </article>
+    <article class="card lift reveal">
+      <h3>Clean up Microsoft 365</h3>
+      <p>Bring email, Teams, SharePoint, OneDrive, permissions, onboarding, and offboarding into a cleaner operating rhythm.</p>
+      <a class="text-link" href="{{root}}microsoft-365-support-tasmania/">Review Microsoft 365 support</a>
+    </article>
+    <article class="card lift reveal">
+      <h3>Choose your support model</h3>
+      <p>Decide whether you need focused help for one issue, planned project work, or an ongoing managed IT partnership.</p>
+      <a class="text-link" href="{{root}}services/">Compare business IT services</a>
+    </article>
   </div>
 </section>
 "@
@@ -847,6 +932,11 @@ function Get-HeroActions {
             <a class="button primary" href="tel:0364494214">Call $PhoneShort now</a>
             <a class="button secondary" href="${Prefix}contact/?intent=urgent">Report an urgent issue</a>
 "@
+  } elseif ([string]::IsNullOrWhiteSpace($Page.Path)) {
+@"
+            <a class="button primary" href="${Prefix}contact/">Get IT Help</a>
+            <a class="button secondary" href="tel:0364494214">Call $PhoneShort</a>
+"@
   } elseif ($Page.Active -eq "individuals") {
 @"
             <a class="button primary" href="${Prefix}contact/?intent=personal">Get personal tech help</a>
@@ -1034,10 +1124,11 @@ $HighIntentServices = @(
 )
 
 $homeContent = @"
+$(HomeTriageSection)
 $(ServiceCards)
 $(ClientProofSection)
-$(GoogleMapSection "TassieTech is based in Latrobe, Tasmania." "From our North West base, we support local onsite work where it makes sense and remote IT support across Tasmania.")
 $(WhyTassieTech)
+$(GoogleMapSection "Visit TassieTech's Latrobe base by appointment." "From our North West base, we support local onsite work where it makes sense and remote IT support across Tasmania.")
 <section class="section">
   <div class="section-header center reveal">
     <span class="section-kicker">Fast health check</span>
@@ -1060,14 +1151,16 @@ $(WhyTassieTech)
       <h3>Turn uncertainty into a practical plan.</h3>
       <p>We can review your setup, explain the risks in normal language, and prioritise the fixes that actually matter. No scare tactics, no over-selling, just a clear path forward.</p>
       <div class="button-row">
-        <a class="button primary" href="{{root}}contact/">Book a review</a>
+        <a class="button primary" href="{{root}}contact/?intent=business-support">Book a Tasmanian IT Health Check</a>
         <a class="button secondary" href="{{root}}services/">Explore services</a>
       </div>
     </div>
   </div>
 </section>
+$(HomeRecommendationsSection)
 $(CommunitySection)
-$(CtaPanel "Speak with a Tasmanian IT Expert" "Whether you need managed IT, urgent help, scam recovery, or a smarter way to grow, you can speak directly with a Tasmanian team.")
+$(HomeTrustSection)
+$(CtaPanel "Choose the right TassieTech support path" "Whether you need managed IT, urgent help, personal IT support, or a smarter way to grow, you can speak directly with a Tasmanian team.")
 "@
 
 Add-Page "" "Computer Support and IT Services Tasmania | TassieTech" "Local Tasmanian IT support serving businesses across Tasmania with managed IT, cyber security, Microsoft 365, SharePoint, backups, websites, networks, and practical technology advice." "Friendly. Professional. Reliable." "IT Support in Tasmania" "Local IT experts who make technology simple for Tasmanian businesses, community organisations, and individuals." $homeContent "home" ""
@@ -1660,14 +1753,15 @@ function Render-Layout {
             $heroActions
           </div>
           <div class="hero-proof" aria-label="TassieTech strengths">
+            <span>Tasmanian team</span>
             <span>North West based</span>
-            <span>Statewide remote support</span>
-            <span>Security-led advice</span>
+            <span>Security-first advice</span>
           </div>
         </div>
         <div class="hero-panel hero-intent-panel reveal in-view" aria-label="Choose the right contact path">
           <span class="hero-panel-kicker">Choose what you need</span>
           <a class="hero-intent-card" href="${prefix}contact/?intent=business-support"><div><strong>Get business support</strong><span>Devices, accounts, Microsoft 365, networks, and day-to-day issues.</span></div><b>Support</b></a>
+          <a class="hero-intent-card" href="${prefix}contact/?intent=personal"><div><strong>Get personal tech help</strong><span>Computers, email, internet, scams, passwords, and everyday device issues.</span></div><b>Personal</b></a>
           <a class="hero-intent-card" href="${prefix}contact/?intent=project"><div><strong>Plan an IT project</strong><span>Websites, migrations, backups, cloud, security, and systems improvements.</span></div><b>Project</b></a>
           <a class="hero-intent-card urgent" href="${prefix}contact/?intent=urgent"><div><strong>Report an urgent issue</strong><span>Outages, suspected compromise, data loss risk, or operations stopped.</span></div><b>Urgent</b></a>
         </div>

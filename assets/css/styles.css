@@ -489,9 +489,14 @@ ol {
   position: absolute;
   inset: auto 0 -1px 0;
   z-index: 0;
-  height: 22%;
+  height: 14%;
   pointer-events: none;
   content: "";
+  background: linear-gradient(0deg, color-mix(in srgb, var(--bg) 76%, transparent) 0%, color-mix(in srgb, var(--bg) 28%, transparent) 48%, transparent 100%);
+}
+
+:root[data-theme="dark"] .hero::after {
+  height: 22%;
   background: linear-gradient(0deg, var(--bg) 0%, color-mix(in srgb, var(--bg) 48%, transparent) 48%, transparent 100%);
 }
 
@@ -1495,6 +1500,36 @@ main {
   font-size: 0.78rem;
   font-weight: 620;
   line-height: 1.45;
+}
+
+.home-triage-grid .intent-cta {
+  border-color: var(--line);
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--teal-soft) 70%, transparent), transparent 64%),
+    var(--surface);
+  box-shadow: var(--shadow-soft);
+}
+
+.home-triage-grid .intent-cta:hover {
+  border-color: color-mix(in srgb, var(--teal) 44%, var(--line));
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--teal-soft) 88%, transparent), transparent 64%),
+    var(--surface-strong);
+}
+
+.home-triage-grid .intent-cta.urgent:hover {
+  border-color: color-mix(in srgb, var(--critical) 48%, var(--line));
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--critical) 16%, transparent), transparent 64%),
+    var(--surface-strong);
+}
+
+.home-triage-grid .intent-cta strong {
+  color: var(--text);
+}
+
+.home-triage-grid .intent-cta small {
+  color: var(--muted);
 }
 
 .cta-proof-grid {
