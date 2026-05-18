@@ -162,18 +162,21 @@ function ServiceCards {
       <h3>Managed IT Support</h3>
       <p>Helpdesk, monitoring, Microsoft 365, Google Workspace, procurement, networks, phones, and practical support for the systems your team relies on.</p>
       <ul><li>Local technicians</li><li>Business continuity focus</li><li>Clear advice before spend</li></ul>
+      <a class="text-link" href="{{root}}managed-it-support-tasmania/">Explore managed IT support</a>
     </article>
     <article class="card lift reveal">
       <span class="icon">$(Get-Icon secure)</span>
       <h3>Cyber Security</h3>
       <p>Commercial-grade protection without unnecessary complexity. We help harden devices, secure accounts, train staff, and respond quickly when risk appears.</p>
       <ul><li>Endpoint protection</li><li>Security policies</li><li>Backup and recovery planning</li></ul>
+      <a class="text-link" href="{{root}}cyber-security-tasmania/">Explore cyber security</a>
     </article>
     <article class="card lift reveal">
       <span class="icon">$(Get-Icon grow)</span>
       <h3>Technology Growth</h3>
       <p>Use technology to remove friction from operations. We help with websites, cloud platforms, automation, software, and sensible emerging technology advice.</p>
       <ul><li>Custom software</li><li>Workflow improvement</li><li>Scalable platforms</li></ul>
+      <a class="text-link" href="{{root}}wordpress-care-tasmania/">Explore websites and care</a>
     </article>
   </div>
 </section>
@@ -225,17 +228,141 @@ function CtaPanel {
   param([string]$Title = "Speak directly with a local tech expert.", [string]$Text = "Tell us what is happening and we will help you choose the next practical step.")
 @"
 <section class="section tight">
-  <div class="cta-panel reveal">
-    <div>
+  <div class="cta-panel intent-panel reveal">
+    <div class="cta-copy">
       <h2>$Title</h2>
       <p>$Text</p>
     </div>
-    <div class="button-row">
-      <a class="button primary" href="{{root}}contact/">Send a message</a>
-      <a class="button secondary" href="tel:0364494214">Call $PhoneShort</a>
+    <div class="intent-cta-grid" aria-label="Choose the right next step">
+      <a class="intent-cta" href="{{root}}contact/?intent=project"><strong>Plan an IT project</strong><small>Websites, migrations, networks, cloud, software, and planned upgrades.</small></a>
+      <a class="intent-cta" href="{{root}}contact/?intent=business-support"><strong>Get business support</strong><small>Managed IT, Microsoft 365, devices, accounts, networks, and helpdesk support.</small></a>
+      <a class="intent-cta urgent" href="{{root}}contact/?intent=urgent"><strong>Report an urgent issue</strong><small>Outages, suspected compromise, data loss risk, or operations stopped.</small></a>
+      <a class="intent-cta" href="{{root}}contact/?intent=personal"><strong>Get personal tech help</strong><small>Home devices, email, passwords, scam recovery, and everyday technology support.</small></a>
+    </div>
+    <div class="cta-proof-grid" aria-label="TassieTech proof points">
+      <div><strong>Client outcomes</strong><span>Cleaner accounts, fewer repeat issues, safer backups, and systems staff can actually use.</span></div>
+      <div><strong>Response example</strong><span>Urgent outages are triaged separately from routine requests so the first action is clearer.</span></div>
+      <div><strong>Before and after</strong><span>We turn scattered devices, passwords, files, and support habits into a practical operating rhythm.</span></div>
+      <div><strong>Tasmania covered</strong><span>North West based with remote support across Tasmanian towns and city hubs.</span></div>
     </div>
   </div>
 </section>
+"@
+}
+
+function FaqSection {
+  param([object[]]$Faqs)
+  if (-not $Faqs -or $Faqs.Count -eq 0) { return "" }
+
+  $items = ($Faqs | ForEach-Object {
+    $question = Encode-Html $_.Q
+    $answer = Encode-Html $_.A
+@"
+    <details class="faq-item reveal">
+      <summary>$question</summary>
+      <p>$answer</p>
+    </details>
+"@
+  }) -join "`n"
+
+@"
+<section class="section faq-section">
+  <div class="section-header center reveal">
+    <span class="section-kicker">Questions</span>
+    <h2>Useful answers before we talk.</h2>
+  </div>
+  <div class="faq-list">
+$items
+  </div>
+</section>
+"@
+}
+
+function Register-Faq {
+  param([string]$Path, [object[]]$Faqs)
+  if ($Faqs -and $Faqs.Count -gt 0) {
+    $script:FaqByPath[$Path] = $Faqs
+  }
+}
+
+function Register-ServiceSchema {
+  param(
+    [string]$Path,
+    [string]$Name,
+    [string]$Description,
+    [string]$ServiceType = "Business IT support",
+    [string]$Area = "Tasmania"
+  )
+
+  $script:ServiceSchemaByPath[$Path] = [pscustomobject]@{
+    Name = $Name
+    Description = $Description
+    ServiceType = $ServiceType
+    Area = $Area
+  }
+}
+
+function Get-HighIntentServiceCards {
+@"
+<section class="section">
+  <div class="section-header center reveal">
+    <span class="section-kicker">Focused services</span>
+    <h2>High-intent support for the systems Tasmanian teams search for.</h2>
+    <p>These pages explain the work behind common search terms and give visitors a direct path into the right enquiry.</p>
+  </div>
+  <div class="grid three service-link-grid">
+    <a class="card lift reveal" href="{{root}}managed-it-support-tasmania/"><h3>Managed IT Support</h3><p>Helpdesk, monitoring, device management, procurement, and practical support for daily work.</p></a>
+    <a class="card lift reveal" href="{{root}}microsoft-365-support-tasmania/"><h3>Microsoft 365 Support</h3><p>Microsoft 365, Teams, SharePoint, OneDrive, security, and account governance.</p></a>
+    <a class="card lift reveal" href="{{root}}cyber-security-tasmania/"><h3>Cyber Security</h3><p>MFA, password management, endpoint protection, security reviews, and incident readiness.</p></a>
+    <a class="card lift reveal" href="{{root}}unifi-network-support-tasmania/"><h3>UniFi Network Support</h3><p>Business Wi-Fi, switching, firewall rules, VLANs, visibility, and practical network design.</p></a>
+    <a class="card lift reveal" href="{{root}}wordpress-care-tasmania/"><h3>WordPress Care</h3><p>Website support, updates, hosting, backups, security, performance, and content changes.</p></a>
+    <a class="card lift reveal" href="{{root}}backup-strategy-tasmania/"><h3>Backup Strategy</h3><p>Synology NAS, cloud backup, restore testing, retention, ransomware planning, and continuity.</p></a>
+  </div>
+</section>
+"@
+}
+
+function Build-ServiceLandingContent {
+  param($Service)
+
+  $outcomes = ($Service.Outcomes | ForEach-Object { "<li>$_</li>" }) -join ""
+  $stack = ($Service.Stack | ForEach-Object { "<li>$_</li>" }) -join ""
+  $links = Get-HighIntentServiceCards
+  $faq = FaqSection $Service.Faqs
+
+@"
+<section class="section">
+  <div class="grid two">
+    <div class="rich-text reveal">
+      <span class="section-kicker">$($Service.Kicker)</span>
+      <h2>$($Service.SectionHeading)</h2>
+      <p>$($Service.Lead)</p>
+      <p>$($Service.Supporting)</p>
+    </div>
+    <div class="card reveal">
+      <h3>What good looks like</h3>
+      <ul>$outcomes</ul>
+    </div>
+  </div>
+</section>
+<section class="feature-band alt">
+  <div class="section">
+    <div class="grid two">
+      <div class="reveal">
+        <span class="section-kicker">Stack fit</span>
+        <h2>Built around technology we can support confidently.</h2>
+        <p>$($Service.StackIntro)</p>
+      </div>
+      <div class="card reveal">
+        <h3>Common systems</h3>
+        <ul>$stack</ul>
+      </div>
+    </div>
+  </div>
+</section>
+$links
+$faq
+$(CtaPanel $Service.CtaTitle $Service.CtaText)
 "@
 }
 
@@ -300,37 +427,19 @@ function ClientProofSection {
     <div class="client-proof-copy reveal">
       <span class="section-kicker">Serving businesses across Tasmania</span>
       <h2 id="tasmania-proof-heading">IT support across Tasmania for local teams and larger clients.</h2>
-      <p>From Smithton, Wynyard, Penguin, Burnie, Queenstown, Zeehan, Ulverstone, Devonport, Latrobe, Port Sorell, Sheffield, and Deloraine through to George Town, Perth, Launceston, Campbell Town, St Helens, New Norfolk, Sorell, Kingston, Huonville, Hobart, and statewide remote support, we help organisations keep core systems working: managed IT, Microsoft 365 and SharePoint, secure backups, WordPress and hosting, UniFi networks, remote support, and practical technology projects.</p>
+      <p>We support organisations through a North West base, planned onsite work where it makes sense, and remote support across Tasmania. The aim is simple: reliable help for the systems businesses depend on, without making coverage sound bigger or messier than it needs to be.</p>
       <div class="proof-metrics" aria-label="TassieTech service coverage highlights">
         <div><strong>North West based</strong><span>Onsite support where proximity matters.</span></div>
         <div><strong>Statewide remote</strong><span>Responsive help for Tasmanian teams beyond our local roads.</span></div>
         <div><strong>Business ready</strong><span>Security, continuity, and clear advice built into the work.</span></div>
       </div>
-      <nav class="coverage-links" aria-label="Tasmania IT service area links">
-        <a href="{{root}}it-services-for-devonport/">Devonport</a>
-        <a href="{{root}}it-services-for-latrobe/">Latrobe</a>
-        <a href="{{root}}it-services-for-burnie/">Burnie</a>
-        <a href="{{root}}it-services-for-wynyard/">Wynyard</a>
-        <a href="{{root}}it-services-for-smithton/">Smithton</a>
-        <a href="{{root}}it-services-for-penguin/">Penguin</a>
-        <a href="{{root}}it-services-for-queenstown/">Queenstown</a>
-        <a href="{{root}}it-services-for-zeehan/">Zeehan</a>
-        <a href="{{root}}it-services-for-ulverstone/">Ulverstone</a>
-        <a href="{{root}}it-services-for-deloraine/">Deloraine</a>
-        <a href="{{root}}it-services-for-port-sorell/">Port Sorell</a>
-        <a href="{{root}}it-services-for-sheffield/">Sheffield</a>
-        <a href="{{root}}it-services-for-george-town/">George Town</a>
-        <a href="{{root}}it-services-for-perth/">Perth</a>
-        <a href="{{root}}it-services-for-campbell-town/">Campbell Town</a>
-        <a href="{{root}}it-services-for-launceston/">Launceston</a>
-        <a href="{{root}}it-services-for-st-helens/">St Helens</a>
-        <a href="{{root}}it-services-for-hobart/">Hobart</a>
-        <a href="{{root}}it-services-for-new-norfolk/">New Norfolk</a>
-        <a href="{{root}}it-services-for-sorell/">Sorell</a>
-        <a href="{{root}}it-services-for-kingston/">Kingston</a>
-        <a href="{{root}}it-services-for-huonville/">Huonville</a>
-        <a href="{{root}}areas-we-serve/">All areas</a>
-      </nav>
+      <div class="coverage-model" aria-label="Tasmania service coverage model">
+        <a class="coverage-hub" href="{{root}}it-services-for-devonport/"><strong>North West</strong><span>Local onsite strength around our home region and nearby business communities.</span></a>
+        <a class="coverage-hub" href="{{root}}it-services-for-launceston/"><strong>North and Midlands</strong><span>Launceston-linked support for cloud, security, websites, and business systems.</span></a>
+        <a class="coverage-hub" href="{{root}}it-services-for-hobart/"><strong>South</strong><span>Remote support and project advice for southern Tasmanian organisations.</span></a>
+        <a class="coverage-hub" href="{{root}}it-services-tasmania/"><strong>Statewide remote</strong><span>A broader support path for teams outside our regular onsite routes.</span></a>
+      </div>
+      <a class="text-link" href="{{root}}areas-we-serve/">View every service area</a>
     </div>
     <div class="client-proof-stage reveal" aria-label="Local and larger client proof">
       <div class="client-row-header">
@@ -421,6 +530,70 @@ function Render-BlogCards {
   }) -join "`n")
 }
 
+function Add-RelatedLink {
+  param($Links, [string]$Href, [string]$Title, [string]$Text)
+  if (-not ($Links | Where-Object { $_.Href -eq $Href })) {
+    [void]$Links.Add([pscustomobject]@{ Href = $Href; Title = $Title; Text = $Text })
+  }
+}
+
+function Render-ArticleInternalLinks {
+  param($Post)
+
+  $links = [System.Collections.ArrayList]::new()
+  $haystack = "$($Post.title) $($Post.category) $($Post.excerpt) $($Post.contentText)".ToLowerInvariant()
+
+  if ($haystack -match "microsoft|365|sharepoint|onedrive|teams|outlook|email") {
+    Add-RelatedLink $links "microsoft-365-support-tasmania/" "Microsoft 365 support" "Teams, SharePoint, OneDrive, Outlook, permissions, and secure account management."
+  }
+  if ($haystack -match "security|cyber|ransomware|malware|password|phishing|encryption|threat|breach|mfa|scam") {
+    Add-RelatedLink $links "cyber-security-tasmania/" "Cyber security" "Practical account, device, password, backup, and incident-readiness support."
+  }
+  if ($haystack -match "backup|storage|nas|synology|restore|data loss|recovery") {
+    Add-RelatedLink $links "backup-strategy-tasmania/" "Backup strategy" "Synology NAS, cloud backup, restore testing, retention, and continuity planning."
+  }
+  if ($haystack -match "network|wi-fi|wifi|router|iot|unifi|vlan|internet") {
+    Add-RelatedLink $links "unifi-network-support-tasmania/" "UniFi network support" "Business Wi-Fi, segmentation, switching, visibility, and network troubleshooting."
+  }
+  if ($haystack -match "wordpress|website|hosting|web server|webserver") {
+    Add-RelatedLink $links "wordpress-care-tasmania/" "WordPress care" "Website updates, hosting, backups, security, performance, and form delivery."
+  }
+  if ($haystack -match "device|laptop|desktop|hardware|procurement|productivity|support|office") {
+    Add-RelatedLink $links "managed-it-support-tasmania/" "Managed IT support" "Helpdesk, devices, accounts, monitoring, and practical support for everyday work."
+  }
+  if ($haystack -match "scam|fraud") {
+    Add-RelatedLink $links "scam-recovery/" "Scam recovery" "Calm local help to secure accounts, devices, and personal information after a scam."
+  }
+
+  Add-RelatedLink $links "business-it-support-tasmania/" "Business IT support" "A broader path for Tasmanian teams that need support, projects, and technology planning."
+  Add-RelatedLink $links "recommended-technology-platform/" "Recommended technology platform" "The operating systems, productivity tools, security, cloud, and remote support stack we trust."
+  Add-RelatedLink $links "areas-we-serve/" "Areas we serve" "Service coverage across Tasmanian towns and city hubs."
+
+  $selected = $links
+  $items = ($selected | ForEach-Object {
+@"
+    <a class="article-link-card" href="{{root}}$($_.Href)">
+      <strong>$($_.Title)</strong>
+      <span>$($_.Text)</span>
+    </a>
+"@
+  }) -join "`n"
+
+@"
+<section class="section tight article-links-section">
+  <div class="article-links reveal">
+    <div>
+      <span class="section-kicker">Related support</span>
+      <h2>Where to go next</h2>
+    </div>
+    <div class="article-link-grid">
+$items
+    </div>
+  </div>
+</section>
+"@
+}
+
 function Render-BlogArticle {
   param($Post)
 
@@ -442,6 +615,7 @@ function Render-BlogArticle {
     $content
   </article>
 </section>
+$(Render-ArticleInternalLinks $Post)
 $(CtaPanel $ctaTitle $ctaText)
 "@
 }
@@ -487,7 +661,7 @@ function Get-HomeSchema {
 
   $schema = [ordered]@{
     "@context" = "https://schema.org"
-    "@type" = "ProfessionalService"
+    "@type" = @("LocalBusiness", "ProfessionalService")
     "@id" = "$SiteUrl/#business"
     "name" = "TassieTech"
     "url" = "$SiteUrl/"
@@ -496,6 +670,7 @@ function Get-HomeSchema {
     "description" = "Local Tasmanian IT support serving businesses across Tasmania with managed IT, cyber security, Microsoft 365, SharePoint, backups, websites, networks, and practical technology advice."
     "telephone" = $Phone
     "email" = $Email
+    "priceRange" = '$$'
     "address" = [ordered]@{
       "@type" = "PostalAddress"
       "streetAddress" = "7 Hamilton St"
@@ -503,6 +678,14 @@ function Get-HomeSchema {
       "addressRegion" = "TAS"
       "addressCountry" = "AU"
     }
+    "openingHoursSpecification" = @(
+      [ordered]@{
+        "@type" = "OpeningHoursSpecification"
+        "dayOfWeek" = @("Monday", "Tuesday", "Wednesday", "Thursday", "Friday")
+        "opens" = "09:00"
+        "closes" = "17:00"
+      }
+    )
     "areaServed" = @(
       [ordered]@{ "@type" = "AdministrativeArea"; "name" = "Tasmania" },
       [ordered]@{ "@type" = "City"; "name" = "Devonport" },
@@ -544,6 +727,100 @@ function Get-HomeSchema {
   return "<script type=""application/ld+json"">$json</script>"
 }
 
+function Get-ServiceSchema {
+  param($Page)
+
+  if (-not $ServiceSchemaByPath.ContainsKey($Page.Path)) { return "" }
+  $service = $ServiceSchemaByPath[$Page.Path]
+  $schema = [ordered]@{
+    "@context" = "https://schema.org"
+    "@type" = "Service"
+    "@id" = "$(Get-Canonical $Page.Path)#service"
+    "name" = $service.Name
+    "description" = $service.Description
+    "serviceType" = $service.ServiceType
+    "url" = (Get-Canonical $Page.Path)
+    "provider" = [ordered]@{
+      "@type" = @("LocalBusiness", "ProfessionalService")
+      "@id" = "$SiteUrl/#business"
+      "name" = "TassieTech"
+      "telephone" = $Phone
+      "url" = "$SiteUrl/"
+      "address" = [ordered]@{
+        "@type" = "PostalAddress"
+        "streetAddress" = "7 Hamilton St"
+        "addressLocality" = "Latrobe"
+        "addressRegion" = "TAS"
+        "addressCountry" = "AU"
+      }
+    }
+    "areaServed" = [ordered]@{
+      "@type" = if ($service.Area -eq "Tasmania") { "AdministrativeArea" } else { "City" }
+      "name" = $service.Area
+      "addressRegion" = "TAS"
+      "addressCountry" = "AU"
+    }
+    "offers" = [ordered]@{
+      "@type" = "Offer"
+      "url" = (Get-Canonical $Page.Path)
+      "availability" = "https://schema.org/InStock"
+    }
+  }
+  $json = $schema | ConvertTo-Json -Depth 10 -Compress
+  return "<script type=""application/ld+json"">$json</script>"
+}
+
+function Get-FaqSchema {
+  param($Page)
+
+  if (-not $FaqByPath.ContainsKey($Page.Path)) { return "" }
+  $faqs = $FaqByPath[$Page.Path]
+  if (-not $faqs -or $faqs.Count -eq 0) { return "" }
+
+  $schema = [ordered]@{
+    "@context" = "https://schema.org"
+    "@type" = "FAQPage"
+    "mainEntity" = @($faqs | ForEach-Object {
+      [ordered]@{
+        "@type" = "Question"
+        "name" = $_.Q
+        "acceptedAnswer" = [ordered]@{
+          "@type" = "Answer"
+          "text" = $_.A
+        }
+      }
+    })
+  }
+  $json = $schema | ConvertTo-Json -Depth 10 -Compress
+  return "<script type=""application/ld+json"">$json</script>"
+}
+
+function Get-HeroActions {
+  param($Page, [string]$Prefix)
+
+  if ($Page.Path -eq "emergency" -or $Page.Path -eq "emergency-response") {
+@"
+            <a class="button primary" href="tel:0364494214">Call $PhoneShort now</a>
+            <a class="button secondary" href="${Prefix}contact/?intent=urgent">Report an urgent issue</a>
+"@
+  } elseif ($Page.Active -eq "individuals") {
+@"
+            <a class="button primary" href="${Prefix}contact/?intent=personal">Get personal tech help</a>
+            <a class="button secondary" href="tel:0364494214">Call $PhoneShort</a>
+"@
+  } elseif ($Page.Active -eq "services" -or $Page.Active -eq "areas") {
+@"
+            <a class="button primary" href="${Prefix}contact/?intent=business-support">Get business support</a>
+            <a class="button secondary" href="${Prefix}contact/?intent=project">Plan an IT project</a>
+"@
+  } else {
+@"
+            <a class="button primary" href="${Prefix}contact/?intent=business-support">Get business support</a>
+            <a class="button secondary" href="${Prefix}contact/?intent=urgent">Report an urgent issue</a>
+"@
+  }
+}
+
 $BlogPostsPath = Join-Path $PSScriptRoot "data/blog-posts.json"
 $BlogPosts = if (Test-Path $BlogPostsPath) {
   Get-Content -Path $BlogPostsPath -Raw | ConvertFrom-Json
@@ -552,6 +829,165 @@ $BlogPosts = if (Test-Path $BlogPostsPath) {
 }
 
 $Pages = @()
+$FaqByPath = @{}
+$ServiceSchemaByPath = @{}
+
+$HighIntentServices = @(
+  [pscustomobject]@{
+    Slug = "managed-it-support-tasmania"
+    Title = "Managed IT Support Tasmania | TassieTech"
+    Description = "Managed IT support for Tasmanian businesses, including helpdesk, monitoring, Microsoft 365, devices, networks, security, backups, and practical advice."
+    Kicker = "Managed IT"
+    Heading = "Managed IT Support Tasmania"
+    Intro = "Local business IT support that keeps devices, accounts, cloud systems, networks, and backups moving without making technology harder than it needs to be."
+    SectionHeading = "Support that removes repeat IT friction."
+    Lead = "Managed IT support should do more than wait for something to break. We help Tasmanian teams reduce recurring issues, standardise devices, manage accounts properly, and keep the everyday technology stack stable enough that people can focus on work."
+    Supporting = "That can include helpdesk, monitoring, procurement advice, Microsoft 365 administration, endpoint protection, Splashtop remote access, backup checks, network support, and sensible documentation so your business is not reliant on one person remembering how everything works."
+    StackIntro = "A good managed environment is consistent, documented, secure, and easy to support. We prefer practical systems that fit small and medium Tasmanian businesses rather than fragile one-off setups."
+    Stack = @("Microsoft 365, Teams, SharePoint, OneDrive, and Outlook", "1Password for shared password management", "Splashtop for remote support where appropriate", "Synology NAS and cloud backup planning", "UniFi networking hardware for business Wi-Fi and switching")
+    Outcomes = @("Staff know where to ask for help and what happens next.", "Devices, accounts, and access are easier to onboard and offboard.", "Security, backup, and support are built into daily operations.")
+    CtaTitle = "Ready to make IT support predictable?"
+    CtaText = "Tell us how your team works now and where support is getting messy. We will help map the simplest managed path forward."
+    ServiceType = "Managed IT support"
+    Faqs = @(
+      @{ Q = "Do you only support businesses on managed agreements?"; A = "No. We can help with one-off support, projects, and managed arrangements. Managed support is best when a business wants ongoing helpdesk, monitoring, security, and continuity." },
+      @{ Q = "Can you support remote teams outside the North West?"; A = "Yes. We are North West based, but many support tasks can be handled remotely across Tasmania with onsite work planned where it makes sense." },
+      @{ Q = "Can you work with our existing Microsoft 365 tenant?"; A = "Yes. We can review the current setup, improve account governance, strengthen security, and support Teams, SharePoint, OneDrive, and Outlook." }
+    )
+  },
+  [pscustomobject]@{
+    Slug = "microsoft-365-support-tasmania"
+    Title = "Microsoft 365 Support Tasmania | Teams, SharePoint and OneDrive"
+    Description = "Microsoft 365 support in Tasmania for Teams, SharePoint, OneDrive, Outlook, email security, account management, MFA, permissions, and migrations."
+    Kicker = "Microsoft 365"
+    Heading = "Microsoft 365 Support Tasmania"
+    Intro = "Microsoft 365, Teams, SharePoint, OneDrive, Outlook, and secure identity support for Tasmanian businesses that want collaboration without account chaos."
+    SectionHeading = "Make Microsoft 365 easier to trust."
+    Lead = "Microsoft 365 is powerful, but it becomes messy when accounts, permissions, Teams, SharePoint sites, OneDrive sync, and email security grow without a plan. We help businesses make the environment clearer, safer, and easier for staff to use."
+    Supporting = "Typical work includes account setup, MFA, mailbox and calendar support, SharePoint structure, Teams tidy-up, file migration, permission reviews, backup strategy, phishing risk reduction, and onboarding or offboarding processes."
+    StackIntro = "We work comfortably inside Microsoft's business ecosystem and pair it with the supporting controls that keep the environment maintainable."
+    Stack = @("Microsoft 365 Business and Microsoft Entra identity basics", "Teams, SharePoint, OneDrive, Outlook, and Exchange Online", "MFA, conditional access planning, and secure account recovery", "1Password for shared secrets that should not live in spreadsheets", "Backup and retention planning for business-critical data")
+    Outcomes = @("Files and permissions are easier for staff to understand.", "New starters and leavers are handled more cleanly.", "Email, identity, and collaboration risks are reduced.")
+    CtaTitle = "Need Microsoft 365 cleaned up?"
+    CtaText = "Send us what is frustrating your team: email, files, permissions, Teams, SharePoint, OneDrive, or account security."
+    ServiceType = "Microsoft 365 support"
+    Faqs = @(
+      @{ Q = "Can you help migrate files into SharePoint or OneDrive?"; A = "Yes. We can plan the structure, migrate data, clean up permissions, and help staff understand the new workflow." },
+      @{ Q = "Can you fix messy Teams and SharePoint permissions?"; A = "Yes. We can review existing groups, sites, access levels, external sharing, and ownership so permissions are easier to manage." },
+      @{ Q = "Do we still need backup if files are in Microsoft 365?"; A = "Often, yes. Sync and retention are not the same as a tested backup strategy. We can help choose a sensible backup approach for the risk." }
+    )
+  },
+  [pscustomobject]@{
+    Slug = "cyber-security-tasmania"
+    Title = "Cyber Security Tasmania | Practical Protection for Business"
+    Description = "Cyber security support for Tasmanian businesses, including MFA, password management, endpoint protection, backup readiness, phishing risk, and incident response."
+    Kicker = "Cyber security"
+    Heading = "Cyber Security Tasmania"
+    Intro = "Practical cyber security for Tasmanian businesses: stronger accounts, safer devices, clearer backups, and calm response when something looks wrong."
+    SectionHeading = "Security that fits the way people actually work."
+    Lead = "Cyber security does not need to be theatrical to be effective. The biggest gains often come from strengthening accounts, patching devices, using MFA, managing passwords properly, checking backups, and making sure staff know what to do when something feels wrong."
+    Supporting = "We help with security reviews, endpoint protection, Microsoft 365 security basics, 1Password rollout, phishing and scam guidance, backup and restore planning, incident triage, and practical policies that staff can follow."
+    StackIntro = "The goal is not to sell complexity. It is to make the everyday systems safer and easier to maintain."
+    Stack = @("1Password for unique passwords and shared vaults", "Microsoft 365 security controls and account governance", "Endpoint protection and device patching", "Synology NAS and cloud backup planning", "UniFi segmentation for guest, IoT, and business networks")
+    Outcomes = @("Accounts are harder to compromise.", "Backups are easier to trust during an incident.", "Staff know when to pause, report, and escalate.")
+    CtaTitle = "Want a practical security review?"
+    CtaText = "Tell us what systems your business relies on and we will help identify the highest-value security improvements first."
+    ServiceType = "Cyber security support"
+    Faqs = @(
+      @{ Q = "Do you provide cyber security for small businesses?"; A = "Yes. Most of our security work is practical small-business protection: accounts, devices, backups, Microsoft 365, passwords, staff habits, and response planning." },
+      @{ Q = "Can you help after a suspected compromise?"; A = "Yes. If operations have stopped, data may be at risk, or accounts may be compromised, call first so we can triage faster." },
+      @{ Q = "Do you recommend password managers?"; A = "Yes. 1Password is part of our supported stack because unique passwords and shared vaults are more reliable than reused passwords or spreadsheets." }
+    )
+  },
+  [pscustomobject]@{
+    Slug = "unifi-network-support-tasmania"
+    Title = "UniFi Network Support Tasmania | Business Wi-Fi and Networks"
+    Description = "UniFi network support for Tasmanian businesses, including Wi-Fi, switching, firewall rules, VLANs, guest networks, visibility, and network troubleshooting."
+    Kicker = "UniFi networks"
+    Heading = "UniFi Network Support Tasmania"
+    Intro = "Business Wi-Fi, switching, routing, segmentation, and troubleshooting for Tasmanian teams using or considering UniFi networking hardware."
+    SectionHeading = "Networks should be visible, documented, and boring in the best way."
+    Lead = "A good network lets staff work, guests connect safely, devices stay in the right place, and support issues become easier to diagnose. We help businesses move from consumer-grade uncertainty to a cleaner UniFi network design where appropriate."
+    Supporting = "That can include Wi-Fi coverage, switch planning, firewall rules, VLANs, guest networks, IoT separation, remote visibility, documentation, firmware updates, and troubleshooting slow or unreliable connections."
+    StackIntro = "UniFi is useful when configured properly. The value comes from design, segmentation, naming, updates, and visibility rather than the hardware alone."
+    Stack = @("UniFi gateways, switches, access points, and controllers", "Guest Wi-Fi and segmented staff or device networks", "Firewall rules and practical VLAN planning", "Microsoft 365 and VoIP-aware network design", "Backup connectivity and continuity planning where needed")
+    Outcomes = @("Staff and guests connect to the right network.", "Problem devices are easier to find and isolate.", "The network is documented enough to support confidently.")
+    CtaTitle = "Need your network cleaned up?"
+    CtaText = "Send us the site size, current equipment, and what is unreliable. We will help plan the next practical step."
+    ServiceType = "Business network support"
+    Faqs = @(
+      @{ Q = "Do you only support UniFi networks?"; A = "No. We support a range of business networks, but UniFi is part of our preferred stack when it fits the site and budget." },
+      @{ Q = "Can you separate guest Wi-Fi from business systems?"; A = "Yes. We can design guest networks, staff networks, and device networks so access is cleaner and safer." },
+      @{ Q = "Can you troubleshoot poor Wi-Fi coverage?"; A = "Yes. We can review placement, signal issues, interference, roaming, and whether the network design matches the building." }
+    )
+  },
+  [pscustomobject]@{
+    Slug = "wordpress-care-tasmania"
+    Title = "WordPress Care Tasmania | Website Support, Hosting and Security"
+    Description = "WordPress care for Tasmanian businesses, including updates, hosting, backups, security, performance, content support, and practical website improvements."
+    Kicker = "WordPress care"
+    Heading = "WordPress Care Tasmania"
+    Intro = "WordPress support, hosting, updates, backups, performance, and security care for Tasmanian businesses that need their website to keep working."
+    SectionHeading = "A business website should not be left to decay."
+    Lead = "WordPress can be an excellent business platform when it is maintained. Problems usually appear when updates are ignored, plugins accumulate, backups are untested, hosting is slow, or nobody owns the ongoing care."
+    Supporting = "We help with WordPress updates, hosting, backups, security hardening, performance improvements, content changes, forms, DNS, email deliverability, and practical improvements that support marketing rather than just keeping the site online."
+    StackIntro = "WordPress sits best inside a wider supportable business technology stack: secure accounts, reliable hosting, backups, DNS control, and clear ownership."
+    Stack = @("WordPress core, theme, and plugin maintenance", "Synergy Web Servers and suitable hosting arrangements", "Backup and restore checks", "Form delivery and DNS/email deliverability checks", "Microsoft 365 or Dropbox workflows for business content where appropriate")
+    Outcomes = @("Updates are handled before they become urgent.", "Forms, hosting, backups, and security are easier to trust.", "The site can support marketing instead of quietly becoming a liability.")
+    CtaTitle = "Want your WordPress site cared for properly?"
+    CtaText = "Send us your website address and what you want to improve: reliability, security, speed, forms, content, or hosting."
+    ServiceType = "WordPress website support"
+    Faqs = @(
+      @{ Q = "Can you maintain an existing WordPress site?"; A = "Yes. We can review the current setup, update safely, check backups, improve security, and recommend fixes without rebuilding unnecessarily." },
+      @{ Q = "Can you help if forms are not delivering?"; A = "Yes. We can review the form setup, DNS records, mail delivery, and whether the webserver should send via authenticated SMTP." },
+      @{ Q = "Do you build new WordPress sites?"; A = "Yes. We can support existing sites or plan new WordPress builds where WordPress is the right fit." }
+    )
+  },
+  [pscustomobject]@{
+    Slug = "backup-strategy-tasmania"
+    Title = "Backup Strategy Tasmania | Business Continuity and Recovery"
+    Description = "Backup strategy for Tasmanian businesses, including Synology NAS, cloud backup, retention, restore testing, ransomware planning, and continuity advice."
+    Kicker = "Backups"
+    Heading = "Backup Strategy Tasmania"
+    Intro = "Backup and recovery planning for Tasmanian businesses that need confidence their files, systems, and cloud data can be restored when it matters."
+    SectionHeading = "A backup is only useful if recovery works."
+    Lead = "Many businesses assume sync is backup, or that a drive sitting onsite is enough. A stronger backup strategy separates collaboration from recovery, considers ransomware and accidental deletion, and tests whether important data can actually be restored."
+    Supporting = "We help with backup design, Synology NAS planning, cloud backup, Microsoft 365 data considerations, retention, restore testing, documentation, and practical recovery steps for devices, servers, websites, and business files."
+    StackIntro = "The right backup stack depends on how the business works, where data lives, and how quickly operations need to resume."
+    Stack = @("Synology NAS for suitable local storage and backup workflows", "Cloud backup and offsite retention planning", "Microsoft 365, SharePoint, OneDrive, and Dropbox backup considerations", "WordPress and web hosting backup checks", "Restore testing and recovery documentation")
+    Outcomes = @("Important data has a clear recovery path.", "Backup is separated from normal file sync.", "Restore testing becomes part of the support rhythm.")
+    CtaTitle = "Can your business recover from data loss?"
+    CtaText = "Tell us where your files, systems, and websites live. We will help identify the gaps between sync, backup, and real recovery."
+    ServiceType = "Backup and recovery planning"
+    Faqs = @(
+      @{ Q = "Is Dropbox or OneDrive the same as backup?"; A = "No. Sync can be useful, but it is not always a complete backup strategy. Recovery planning needs retention, restore testing, and protection from accidental or malicious changes." },
+      @{ Q = "Do you support Synology NAS devices?"; A = "Yes. Synology NASs are part of our stack where they fit the business need, especially for local storage, backup workflows, and continuity planning." },
+      @{ Q = "Can you test whether our backups work?"; A = "Yes. Restore testing is one of the most important parts of backup planning because an untested backup is only an assumption." }
+    )
+  },
+  [pscustomobject]@{
+    Slug = "business-it-support-tasmania"
+    Title = "Business IT Support Tasmania | TassieTech"
+    Description = "Business IT support across Tasmania, including managed support, Microsoft 365, cyber security, backups, UniFi networks, WordPress care, and project help."
+    Kicker = "Business support"
+    Heading = "Business IT Support Tasmania"
+    Intro = "Business IT support across Tasmania for teams that need practical help with devices, accounts, cloud systems, security, networks, websites, and continuity."
+    SectionHeading = "One local team for the technology behind the work."
+    Lead = "Small and medium businesses rarely need one isolated IT service. They need support that understands the full picture: staff devices, accounts, files, networks, websites, backups, remote access, and the way customers are served."
+    Supporting = "TassieTech helps Tasmanian teams plan projects, solve support issues, improve security, and make day-to-day systems easier to run. We can work with businesses in our North West base and support teams remotely across Tasmania."
+    StackIntro = "We reinforce a practical, supportable stack rather than chasing novelty for its own sake."
+    Stack = @("Microsoft 365, Teams, SharePoint, and OneDrive", "1Password, Splashtop, Dropbox where suitable, and secure remote workflows", "Synology NAS, cloud backup, and recovery planning", "UniFi networking and business Wi-Fi support", "WordPress, hosting, and Synergy Web Servers where appropriate")
+    Outcomes = @("Support requests have a clear path.", "Projects are planned around business outcomes.", "Security and continuity are considered before something fails.")
+    CtaTitle = "Need business IT support in Tasmania?"
+    CtaText = "Tell us whether this is a support issue or a project. The form will guide you to the right details."
+    ServiceType = "Business IT support"
+    Faqs = @(
+      @{ Q = "Which parts of Tasmania do you support?"; A = "We are North West based and support Tasmanian businesses through remote support and planned onsite work where appropriate." },
+      @{ Q = "Can you help with both support and projects?"; A = "Yes. The contact form separates business support requests from planned projects so we can triage the enquiry properly." },
+      @{ Q = "Do you support businesses that already have some internal IT knowledge?"; A = "Yes. We can supplement internal capability with projects, specialist advice, documentation, or ongoing support." }
+    )
+  }
+)
 
 $homeContent = @"
 $(ServiceCards)
@@ -663,6 +1099,8 @@ $(CommunitySection)
 $(CtaPanel "Ready to speak to a local scam recovery team?" "Get calm, practical guidance from Tasmanian IT experts who respect your privacy.")
 "@
 Add-Page "scam-recovery" "Scam Recovery Tasmania | Local Help From TassieTech" "Local Tasmanian scam recovery support. Practical help to secure accounts, contact banks and authorities, protect personal information, and move forward safely." "Scam recovery" "Tasmanian Scam Recovery Experts" "Local, honest help when a scam has put your money, accounts, or confidence at risk." $scamContent "individuals"
+Register-ServiceSchema "individuals" "General IT Support Tasmania" "Computer repairs, laptop help, email setup, internet and router support, antivirus, malware scans, and friendly local IT support in Tasmania." "General IT support" "Tasmania"
+Register-ServiceSchema "scam-recovery" "Scam Recovery Tasmania" "Local Tasmanian scam recovery support for securing accounts, devices, personal information, and confidence after a scam." "Scam recovery support" "Tasmania"
 
 $servicesContent = @"
 $(ServiceCards)
@@ -680,9 +1118,17 @@ $(ServiceCards)
     </div>
   </div>
 </section>
+$(Get-HighIntentServiceCards)
 $(CtaPanel "Get business IT under control." "Tell us what is slowing your team down. We will help you choose the most practical path.")
 "@
 Add-Page "services" "Business IT Services Tasmania | Managed Support, Security and Growth" "Managed IT support, cyber security, Microsoft and Google management, cloud hosting, websites, networks, VOIP, custom software, and local technology consulting in Tasmania." "Businesses" "Business IT Services in Tasmania" "Managed support, security, consulting, cloud, websites, networks, phones, and software from a Tasmanian team." $servicesContent "services"
+
+foreach ($service in $HighIntentServices) {
+  $serviceContent = Build-ServiceLandingContent $service
+  Add-Page $service.Slug $service.Title $service.Description $service.Kicker $service.Heading $service.Intro $serviceContent "services"
+  Register-Faq $service.Slug $service.Faqs
+  Register-ServiceSchema $service.Slug $service.Heading $service.Description $service.ServiceType "Tasmania"
+}
 
 $communityContent = @"
 <section class="section">
@@ -722,7 +1168,16 @@ $(CtaPanel "Need urgent IT response?" "Call now, or send the fastest summary you
 "@
 Add-Page "emergency-response" "Emergency IT Response Tasmania | TassieTech" "Urgent local IT help for business outages, suspected compromises, email failures, internet problems, device issues, and security incidents in Tasmania." "Emergency response" "Urgent IT help when business stops." "Fast triage, containment, and recovery support from a local Tasmanian technology team." $emergencyContent "services"
 Add-Page "emergency" "Emergency IT Response Tasmania | TassieTech" "Urgent local IT help for business outages, suspected compromises, email failures, internet problems, device issues, and security incidents in Tasmania." "Emergency response" "Urgent IT help when business stops." "Fast triage, containment, and recovery support from a local Tasmanian technology team." $emergencyContent "services"
+Register-ServiceSchema "services" "Business IT Services in Tasmania" "Managed support, security, consulting, cloud, websites, networks, phones, and software from a Tasmanian team." "Business IT services" "Tasmania"
+Register-ServiceSchema "community-services" "IT Support for Community Services Tasmania" "Managed IT, Microsoft 365, secure documents, onboarding, helpdesk, backup, and cyber security support for Tasmanian community services organisations." "Community services IT support" "Tasmania"
+Register-ServiceSchema "emergency-response" "Emergency IT Response Tasmania" "Urgent local IT help for business outages, suspected compromises, email failures, internet problems, device issues, and security incidents in Tasmania." "Emergency IT response" "Tasmania"
+Register-ServiceSchema "emergency" "Emergency IT Response Tasmania" "Urgent local IT help for business outages, suspected compromises, email failures, internet problems, device issues, and security incidents in Tasmania." "Emergency IT response" "Tasmania"
 
+$areaFaqs = @(
+  @{ Q = "Do you provide onsite support everywhere in Tasmania?"; A = "We are North West based. Onsite support is strongest around our local region, while many business support tasks can be handled remotely across Tasmania and onsite work can be planned where it makes sense." },
+  @{ Q = "Can Hobart, Launceston, and East Coast businesses still work with TassieTech?"; A = "Yes. We support businesses through remote tools, Microsoft 365 administration, cloud systems, security work, website support, and planned project delivery across Tasmania." },
+  @{ Q = "Which towns do your service area pages cover?"; A = "The site includes public service-area pages for Burnie, Devonport, Launceston, Hobart, Wynyard, Smithton, Penguin, Queenstown, Zeehan, George Town, Perth, Campbell Town, St Helens, New Norfolk, Sorell, Kingston, Huonville, and other Tasmanian locations." }
+)
 $areasContent = @"
 <section class="section media-split">
   <div class="area-map reveal" aria-label="Map of Tasmania showing TassieTech service areas">
@@ -784,9 +1239,14 @@ $areasContent = @"
   </div>
 </section>
 $(AreasGrid)
+$(FaqSection $areaFaqs)
 "@
 Add-Page "areas-we-serve" "Areas We Serve | IT Services Tasmania | TassieTech" "TassieTech serves Tasmanian businesses through Burnie, Devonport, Launceston, and Hobart hubs, with support for Smithton, Wynyard, Penguin, Queenstown, Zeehan, George Town, Perth, Campbell Town, New Norfolk, Sorell, Kingston, Huonville, and beyond." "Areas we serve" "IT Services Across Tasmania" "Local technology support for Tasmanian businesses, organisations, and individuals." $areasContent "areas"
 Add-Page "it-services-tasmania" "IT Services Tasmania | TassieTech" "Tasmanian IT services for businesses and individuals through Burnie, Devonport, Launceston, and Hobart hubs, with support for Smithton, Wynyard, Penguin, Queenstown, Zeehan, George Town, Perth, Campbell Town, New Norfolk, Sorell, Kingston, Huonville, and beyond." "Tasmania" "IT Services Across Tasmania" "Local technology support for Tasmanian businesses, organisations, and individuals." $areasContent "areas"
+Register-Faq "areas-we-serve" $areaFaqs
+Register-Faq "it-services-tasmania" $areaFaqs
+Register-ServiceSchema "areas-we-serve" "IT Services Across Tasmania" "Local technology support for Tasmanian businesses, organisations, and individuals through Burnie, Devonport, Launceston, Hobart, and connected town hubs." "Tasmanian IT service coverage" "Tasmania"
+Register-ServiceSchema "it-services-tasmania" "IT Services Across Tasmania" "Local technology support for Tasmanian businesses, organisations, and individuals through Burnie, Devonport, Launceston, Hobart, and connected town hubs." "Tasmanian IT services" "Tasmania"
 
 $towns = @(
   @{Slug="it-services-for-burnie"; Name="Burnie"; Note="Burnie's busy business community needs reliable systems, secure accounts, and responsive support."},
@@ -814,25 +1274,43 @@ $towns = @(
 )
 
 foreach ($town in $towns) {
+  $townFaqs = @(
+    @{ Q = "Can TassieTech provide business IT support in $($town.Name)?"; A = "Yes. $($town.Name) businesses can contact TassieTech for remote-first support, project work, and planned onsite help where proximity and scheduling make sense." },
+    @{ Q = "What business systems can you support for $($town.Name) teams?"; A = "We can help with Microsoft 365, SharePoint, devices, accounts, 1Password, UniFi networks, WordPress, backups, Synology NASs, remote support, cyber security, and practical technology projects." },
+    @{ Q = "Should urgent issues be submitted through the form?"; A = "If operations have stopped, data may be at risk, or there is a suspected compromise, call TassieTech first. The form is useful for context, but critical incidents need faster triage." }
+  )
   $townContent = @"
 <section class="section">
   <div class="grid two">
     <div class="rich-text reveal">
       <span class="section-kicker">$($town.Name) IT support</span>
-      <h2>Technology support built around $($town.Name) businesses.</h2>
+      <h2>Business IT support built around $($town.Name) teams.</h2>
       <p>$($town.Note) Our mission is to help local teams simplify operations, improve security, and stay productive.</p>
       <p>From business software and hardware support through to websites, cloud services, custom software, network support, phone systems, and practical technology advice, TassieTech helps local businesses move forward with confidence.</p>
     </div>
     <div class="card reveal">
       <h3>Services in $($town.Name)</h3>
-      <ul><li>Complete business IT support</li><li>Simplified IT consultation</li><li>Custom software development</li><li>Website development and hosting</li><li>Phone, internet, and network support</li><li>Cyber security and backup guidance</li></ul>
+      <ul><li>Complete business IT support</li><li>Microsoft 365 and SharePoint help</li><li>Cyber security and backup guidance</li><li>WordPress development, care, and hosting</li><li>UniFi, phone, internet, and network support</li><li>Custom software and practical technology projects</li></ul>
     </div>
   </div>
 </section>
+<section class="section tight">
+  <div class="service-path-grid reveal" aria-label="Related $($town.Name) business IT services">
+    <a href="{{root}}managed-it-support-tasmania/">Managed IT support</a>
+    <a href="{{root}}microsoft-365-support-tasmania/">Microsoft 365 support</a>
+    <a href="{{root}}cyber-security-tasmania/">Cyber security</a>
+    <a href="{{root}}unifi-network-support-tasmania/">UniFi network support</a>
+    <a href="{{root}}wordpress-care-tasmania/">WordPress care</a>
+    <a href="{{root}}backup-strategy-tasmania/">Backup strategy</a>
+  </div>
+</section>
 $(ServiceCards)
+$(FaqSection $townFaqs)
 $(CtaPanel "We would love to work with your $($town.Name) team." "Contact TassieTech to discover how local technology support can make work easier, safer, and more reliable.")
 "@
-  Add-Page $town.Slug "IT Services for $($town.Name) | TassieTech Tasmania" "Local IT services for $($town.Name) businesses, including managed support, cyber security, Microsoft 365, websites, custom software, phone, internet, and network help." "$($town.Name) IT services" "IT Services For $($town.Name)" "Empower your business with $($town.Name)'s local IT support and development experts." $townContent "areas"
+  Add-Page $town.Slug "Business IT Support $($town.Name) | TassieTech Tasmania" "Local business IT support for $($town.Name), including managed support, cyber security, Microsoft 365, websites, custom software, phone, internet, and network help." "$($town.Name) IT services" "Business IT Support For $($town.Name)" "Empower your business with $($town.Name)'s local IT support and development experts." $townContent "areas"
+  Register-Faq $town.Slug $townFaqs
+  Register-ServiceSchema $town.Slug "Business IT Support for $($town.Name)" "Local business IT support for $($town.Name), including managed support, cyber security, Microsoft 365, websites, custom software, phone, internet, and network help." "Business IT support" $town.Name
 }
 
 $blogCards = Render-BlogCards $BlogPosts
@@ -868,6 +1346,7 @@ $contactContent = @"
     <form class="form-card reveal" data-contact-form method="post" action="{{root}}contact-submit.php" accept-charset="UTF-8">
       <div class="honeypot-field" aria-hidden="true"><label for="website">Website</label><input id="website" name="website" tabindex="-1" autocomplete="off"></div>
       <input type="hidden" name="formStartedAt" data-form-started-at>
+      <input type="hidden" name="intent" data-contact-intent>
       <div class="field"><label for="name">Name*</label><input id="name" name="name" required autocomplete="name"></div>
       <div class="field"><label for="email">Email*</label><input id="email" name="email" type="email" required autocomplete="email"></div>
       <fieldset class="field option-field">
@@ -891,7 +1370,7 @@ $contactContent = @"
         </fieldset>
       </div>
       <div class="conditional-group" data-contact-section="business-project" hidden>
-        <div class="field"><label for="budgetRange">Budget range*</label><select id="budgetRange" name="budgetRange" data-conditional-required><option value="">Select a range</option><option>Under $2,500</option><option>$2,500 - $7,500</option><option>$7,500 - $15,000</option><option>$15,000 - $30,000</option><option>$30,000+</option><option>Not sure yet</option></select></div>
+        <div class="field"><label for="budgetRange">Budget range*</label><select id="budgetRange" name="budgetRange" data-conditional-required><option value="">Select a range</option><option>Under &#36;2,500</option><option>&#36;2,500 - &#36;7,500</option><option>&#36;7,500 - &#36;15,000</option><option>&#36;15,000 - &#36;30,000</option><option>&#36;30,000+</option><option>Not sure yet</option></select></div>
         <div class="field"><label for="projectOverview">Project overview*</label><textarea id="projectOverview" name="projectOverview" placeholder="What are you trying to build, improve, migrate, or fix? Include timing if there is a deadline." data-conditional-required></textarea></div>
       </div>
       <div class="conditional-group" data-contact-section="business-support" hidden>
@@ -908,6 +1387,19 @@ $contactContent = @"
       <button class="button primary" type="submit">Send enquiry</button>
       <p data-form-status aria-live="polite"></p>
     </form>
+  </div>
+</section>
+<section class="section tight">
+  <div class="next-steps-panel reveal">
+    <div>
+      <span class="section-kicker">What happens next</span>
+      <h2>We route your enquiry by urgency and intent.</h2>
+    </div>
+    <div class="next-step-grid">
+      <article><strong>Business support</strong><span>We check impact, affected users, and whether the request is critical, high, or standard before assigning the next action.</span></article>
+      <article><strong>Projects</strong><span>We review scope, budget range, timing, and the systems involved before suggesting a discovery call or practical first step.</span></article>
+      <article><strong>Critical issues</strong><span>If operations have stopped, data may be at risk, or there is a suspected compromise, call $Phone first so we can triage faster.</span></article>
+    </div>
   </div>
 </section>
 "@
@@ -1028,7 +1520,8 @@ function Render-Layout {
   $heroImage = if ([string]::IsNullOrWhiteSpace($Page.HeroImage)) { "assets/img/heroes/home.jpeg" } else { $Page.HeroImage }
   $heroPosition = if ([string]::IsNullOrWhiteSpace($Page.HeroPosition)) { "center 46%" } else { $Page.HeroPosition }
   $robotsMeta = if ($Page.NoIndex) { '<meta name="robots" content="noindex, follow">' } else { "" }
-  $structuredData = (@(Get-ArticleSchema $Page; Get-HomeSchema $Page) | Where-Object { -not [string]::IsNullOrWhiteSpace($_) }) -join "`n  "
+  $structuredData = (@(Get-ArticleSchema $Page; Get-HomeSchema $Page; Get-ServiceSchema $Page; Get-FaqSchema $Page) | Where-Object { -not [string]::IsNullOrWhiteSpace($_) }) -join "`n  "
+  $heroActions = Get-HeroActions $Page $prefix
 
   $navItems = @(
     @{Label="Home"; Href=""; Key="home"},
@@ -1093,8 +1586,7 @@ function Render-Layout {
           <h1>$($Page.Heading)</h1>
           <p>$($Page.Intro)</p>
           <div class="hero-actions">
-            <a class="button primary" href="${prefix}contact/">Speak to a specialist</a>
-            <a class="button secondary" href="tel:0364494214">Call $PhoneShort</a>
+            $heroActions
           </div>
           <div class="hero-proof" aria-label="TassieTech strengths">
             <span>North West based</span>
@@ -1123,7 +1615,7 @@ function Render-Layout {
       </div>
       <div class="footer-links">
         <div><h3>Site</h3><ul><li><a href="${prefix}about/">About</a></li><li><a href="${prefix}services/">Businesses</a></li><li><a href="${prefix}individuals/">Individuals</a></li><li><a href="${prefix}blog/">Blog</a></li></ul></div>
-        <div><h3>Services</h3><ul><li><a href="${prefix}scam-recovery/">Scam Recovery</a></li><li><a href="${prefix}community-services/">Community Services</a></li><li><a href="${prefix}emergency-response/">Emergency Response</a></li><li><a href="${prefix}areas-we-serve/">Areas We Serve</a></li></ul></div>
+        <div><h3>Services</h3><ul><li><a href="${prefix}managed-it-support-tasmania/">Managed IT</a></li><li><a href="${prefix}microsoft-365-support-tasmania/">Microsoft 365</a></li><li><a href="${prefix}cyber-security-tasmania/">Cyber Security</a></li><li><a href="${prefix}areas-we-serve/">Areas We Serve</a></li></ul></div>
         <div><h3>Resources</h3><ul><li><a href="${prefix}legal/">Legal</a></li><li><a href="${prefix}minimum-hardware-requirements/">Minimum Hardware</a></li><li><a href="${prefix}recommended-technology-platform/">Recommended Platform</a></li><li><a href="${prefix}careers/">Careers</a></li></ul></div>
         <div><h3>Contact</h3><ul><li><a href="tel:0364494214">Call $PhoneShort</a></li><li><a href="mailto:$Email">Email help desk</a></li><li><a href="${prefix}contact/">Send a message</a></li></ul></div>
       </div>

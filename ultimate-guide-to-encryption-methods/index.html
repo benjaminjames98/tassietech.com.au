@@ -49,8 +49,8 @@
           <h1>Encryption Explained for Everyday Business Use</h1>
           <p>Encryption protects data in transit, at rest, inside password vaults, and in backups, but it only works well with good key management.</p>
           <div class="hero-actions">
-            <a class="button primary" href="../contact/">Speak to a specialist</a>
-            <a class="button secondary" href="tel:0364494214">Call 6449 4214</a>
+                        <a class="button primary" href="../contact/?intent=business-support">Get business support</a>
+            <a class="button secondary" href="../contact/?intent=urgent">Report an urgent issue</a>
           </div>
           <div class="hero-proof" aria-label="TassieTech strengths">
             <span>North West based</span>
@@ -75,15 +75,69 @@
     <p>Encryption is one of the quiet foundations of modern technology. It protects banking sessions, messaging apps, Wi-Fi, password vaults, laptop drives, cloud storage, backups, and website traffic. When it works well, people barely notice it. When it is missing or misconfigured, ordinary data becomes much easier to steal, read, or misuse.</p><p>NIST maintains extensive <a href="https://csrc.nist.gov/projects/cryptographic-standards-and-guidelines" target="_blank" rel="noreferrer noopener">cryptographic standards and guidelines</a>, but you do not need to be a cryptographer to make better everyday decisions. The practical question is usually: where is the data, who can access it, and is it protected while stored and while moving?</p><h2>Encryption in transit</h2><p>Encryption in transit protects data while it travels between systems. When a website uses HTTPS, your browser and the website create an encrypted connection so people on the network cannot easily read the traffic. The same idea applies to secure email transport, VPNs, app connections, and cloud services.</p><p>For businesses, this means websites should use valid TLS certificates, remote access should avoid insecure protocols, and file transfers should use approved methods rather than plain FTP or unprotected links. WordPress sites and hosted systems on platforms such as Synergy Web Servers should be checked for HTTPS, certificate renewal, and secure admin access.</p><h2>Encryption at rest</h2><p>Encryption at rest protects data stored on a device, drive, server, or cloud platform. On Windows devices, BitLocker and device encryption can help protect laptop data if the device is lost or stolen. Microsoft documents <a href="https://learn.microsoft.com/en-us/windows/security/operating-system-security/data-protection/bitlocker/" target="_blank" rel="noreferrer noopener">BitLocker</a> for business environments, while Windows device encryption may be available on many modern devices.</p><p>Cloud services also use encryption at rest, but that does not remove the need for account security. If an attacker signs in as a valid user, encryption at rest does not stop them from accessing files the account is allowed to open. MFA, permissions, monitoring, and password management still matter.</p><h2>End-to-end encryption</h2><p>End-to-end encryption means the service provider should not be able to read the message or file contents because only the communicating endpoints hold the keys. This can be valuable for private messaging and some secure file workflows. It also creates recovery trade-offs: if the key is lost, the provider may not be able to restore access.</p><p>That trade-off is why recovery planning matters. Strong privacy is useful, but a business still needs a controlled way to recover critical information when staff leave, devices fail, or accounts are locked.</p><h2>Password vault encryption</h2><p>Password managers encrypt vault data so stored passwords are not sitting in plain text. A tool such as 1Password combines encryption with a master password, Secret Key, MFA options, and account recovery controls. The security of the vault depends on both the cryptography and the way the business manages access.</p><p>Store high-value credentials for Microsoft 365, SharePoint, WordPress, Dropbox, Synology NAS devices, UniFi controllers, Synergy Web Servers, and Splashtop in a managed vault. Do not store them in ordinary documents that rely only on file permissions.</p><h2>Backup encryption</h2><p>Backups often contain the most complete copy of a business's data, so they need protection too. Encrypt backup destinations where possible, restrict who can access backup consoles, and store recovery keys safely. A Synology NAS, cloud backup service, or external drive should not become the easiest place for sensitive data to leak.</p><h2>The part people forget: keys</h2><p>Encryption is only as useful as key management. If keys are exposed, the protection weakens. If keys are lost, recovery may fail. Keep recovery keys, emergency kits, and administrative credentials in controlled locations. Review who can access them and update that access when roles change.</p><p>Encryption should feel normal, not exotic. Use it for devices, websites, remote access, password vaults, backups, and sensitive transfers, then pair it with MFA, permissions, patching, and recovery planning. Those surrounding controls are what make encryption useful in the real world.</p>
   </article>
 </section>
-<section class="section tight">
-  <div class="cta-panel reveal">
+<section class="section tight article-links-section">
+  <div class="article-links reveal">
     <div>
+      <span class="section-kicker">Related support</span>
+      <h2>Where to go next</h2>
+    </div>
+    <div class="article-link-grid">
+    <a class="article-link-card" href="../microsoft-365-support-tasmania/">
+      <strong>Microsoft 365 support</strong>
+      <span>Teams, SharePoint, OneDrive, Outlook, permissions, and secure account management.</span>
+    </a>
+    <a class="article-link-card" href="../cyber-security-tasmania/">
+      <strong>Cyber security</strong>
+      <span>Practical account, device, password, backup, and incident-readiness support.</span>
+    </a>
+    <a class="article-link-card" href="../backup-strategy-tasmania/">
+      <strong>Backup strategy</strong>
+      <span>Synology NAS, cloud backup, restore testing, retention, and continuity planning.</span>
+    </a>
+    <a class="article-link-card" href="../unifi-network-support-tasmania/">
+      <strong>UniFi network support</strong>
+      <span>Business Wi-Fi, segmentation, switching, visibility, and network troubleshooting.</span>
+    </a>
+    <a class="article-link-card" href="../wordpress-care-tasmania/">
+      <strong>WordPress care</strong>
+      <span>Website updates, hosting, backups, security, performance, and form delivery.</span>
+    </a>
+    <a class="article-link-card" href="../managed-it-support-tasmania/">
+      <strong>Managed IT support</strong>
+      <span>Helpdesk, devices, accounts, monitoring, and practical support for everyday work.</span>
+    </a>
+    <a class="article-link-card" href="../business-it-support-tasmania/">
+      <strong>Business IT support</strong>
+      <span>A broader path for Tasmanian teams that need support, projects, and technology planning.</span>
+    </a>
+    <a class="article-link-card" href="../recommended-technology-platform/">
+      <strong>Recommended technology platform</strong>
+      <span>The operating systems, productivity tools, security, cloud, and remote support stack we trust.</span>
+    </a>
+    <a class="article-link-card" href="../areas-we-serve/">
+      <strong>Areas we serve</strong>
+      <span>Service coverage across Tasmanian towns and city hubs.</span>
+    </a>
+    </div>
+  </div>
+</section>
+<section class="section tight">
+  <div class="cta-panel intent-panel reveal">
+    <div class="cta-copy">
       <h2>Need to protect sensitive data?</h2>
       <p>We can help review device encryption, file sharing, backups, Microsoft 365 settings, and password management.</p>
     </div>
-    <div class="button-row">
-      <a class="button primary" href="../contact/">Send a message</a>
-      <a class="button secondary" href="tel:0364494214">Call 6449 4214</a>
+    <div class="intent-cta-grid" aria-label="Choose the right next step">
+      <a class="intent-cta" href="../contact/?intent=project"><strong>Plan an IT project</strong><small>Websites, migrations, networks, cloud, software, and planned upgrades.</small></a>
+      <a class="intent-cta" href="../contact/?intent=business-support"><strong>Get business support</strong><small>Managed IT, Microsoft 365, devices, accounts, networks, and helpdesk support.</small></a>
+      <a class="intent-cta urgent" href="../contact/?intent=urgent"><strong>Report an urgent issue</strong><small>Outages, suspected compromise, data loss risk, or operations stopped.</small></a>
+      <a class="intent-cta" href="../contact/?intent=personal"><strong>Get personal tech help</strong><small>Home devices, email, passwords, scam recovery, and everyday technology support.</small></a>
+    </div>
+    <div class="cta-proof-grid" aria-label="TassieTech proof points">
+      <div><strong>Client outcomes</strong><span>Cleaner accounts, fewer repeat issues, safer backups, and systems staff can actually use.</span></div>
+      <div><strong>Response example</strong><span>Urgent outages are triaged separately from routine requests so the first action is clearer.</span></div>
+      <div><strong>Before and after</strong><span>We turn scattered devices, passwords, files, and support habits into a practical operating rhythm.</span></div>
+      <div><strong>Tasmania covered</strong><span>North West based with remote support across Tasmanian towns and city hubs.</span></div>
     </div>
   </div>
 </section>
@@ -100,7 +154,7 @@
       </div>
       <div class="footer-links">
         <div><h3>Site</h3><ul><li><a href="../about/">About</a></li><li><a href="../services/">Businesses</a></li><li><a href="../individuals/">Individuals</a></li><li><a href="../blog/">Blog</a></li></ul></div>
-        <div><h3>Services</h3><ul><li><a href="../scam-recovery/">Scam Recovery</a></li><li><a href="../community-services/">Community Services</a></li><li><a href="../emergency-response/">Emergency Response</a></li><li><a href="../areas-we-serve/">Areas We Serve</a></li></ul></div>
+        <div><h3>Services</h3><ul><li><a href="../managed-it-support-tasmania/">Managed IT</a></li><li><a href="../microsoft-365-support-tasmania/">Microsoft 365</a></li><li><a href="../cyber-security-tasmania/">Cyber Security</a></li><li><a href="../areas-we-serve/">Areas We Serve</a></li></ul></div>
         <div><h3>Resources</h3><ul><li><a href="../legal/">Legal</a></li><li><a href="../minimum-hardware-requirements/">Minimum Hardware</a></li><li><a href="../recommended-technology-platform/">Recommended Platform</a></li><li><a href="../careers/">Careers</a></li></ul></div>
         <div><h3>Contact</h3><ul><li><a href="tel:0364494214">Call 6449 4214</a></li><li><a href="mailto:help@tassietech.com.au">Email help desk</a></li><li><a href="../contact/">Send a message</a></li></ul></div>
       </div>

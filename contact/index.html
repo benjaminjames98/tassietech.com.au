@@ -49,8 +49,8 @@
           <h1>Connect With TassieTech</h1>
           <p>When you reach out, you are more than a ticket number. Speak directly with a local technology team.</p>
           <div class="hero-actions">
-            <a class="button primary" href="../contact/">Speak to a specialist</a>
-            <a class="button secondary" href="tel:0364494214">Call 6449 4214</a>
+                        <a class="button primary" href="../contact/?intent=business-support">Get business support</a>
+            <a class="button secondary" href="../contact/?intent=urgent">Report an urgent issue</a>
           </div>
           <div class="hero-proof" aria-label="TassieTech strengths">
             <span>North West based</span>
@@ -76,6 +76,7 @@
     <form class="form-card reveal" data-contact-form method="post" action="../contact-submit.php" accept-charset="UTF-8">
       <div class="honeypot-field" aria-hidden="true"><label for="website">Website</label><input id="website" name="website" tabindex="-1" autocomplete="off"></div>
       <input type="hidden" name="formStartedAt" data-form-started-at>
+      <input type="hidden" name="intent" data-contact-intent>
       <div class="field"><label for="name">Name*</label><input id="name" name="name" required autocomplete="name"></div>
       <div class="field"><label for="email">Email*</label><input id="email" name="email" type="email" required autocomplete="email"></div>
       <fieldset class="field option-field">
@@ -99,7 +100,7 @@
         </fieldset>
       </div>
       <div class="conditional-group" data-contact-section="business-project" hidden>
-        <div class="field"><label for="budgetRange">Budget range*</label><select id="budgetRange" name="budgetRange" data-conditional-required><option value="">Select a range</option><option>Under ,500</option><option>,500 - ,500</option><option>,500 - ,000</option><option>,000 - ,000</option><option>,000+</option><option>Not sure yet</option></select></div>
+        <div class="field"><label for="budgetRange">Budget range*</label><select id="budgetRange" name="budgetRange" data-conditional-required><option value="">Select a range</option><option>Under &#36;2,500</option><option>&#36;2,500 - &#36;7,500</option><option>&#36;7,500 - &#36;15,000</option><option>&#36;15,000 - &#36;30,000</option><option>&#36;30,000+</option><option>Not sure yet</option></select></div>
         <div class="field"><label for="projectOverview">Project overview*</label><textarea id="projectOverview" name="projectOverview" placeholder="What are you trying to build, improve, migrate, or fix? Include timing if there is a deadline." data-conditional-required></textarea></div>
       </div>
       <div class="conditional-group" data-contact-section="business-support" hidden>
@@ -118,6 +119,19 @@
     </form>
   </div>
 </section>
+<section class="section tight">
+  <div class="next-steps-panel reveal">
+    <div>
+      <span class="section-kicker">What happens next</span>
+      <h2>We route your enquiry by urgency and intent.</h2>
+    </div>
+    <div class="next-step-grid">
+      <article><strong>Business support</strong><span>We check impact, affected users, and whether the request is critical, high, or standard before assigning the next action.</span></article>
+      <article><strong>Projects</strong><span>We review scope, budget range, timing, and the systems involved before suggesting a discovery call or practical first step.</span></article>
+      <article><strong>Critical issues</strong><span>If operations have stopped, data may be at risk, or there is a suspected compromise, call 03 6449 4214 first so we can triage faster.</span></article>
+    </div>
+  </div>
+</section>
   </main>
   <footer class="site-footer">
     <div class="footer-grid">
@@ -131,7 +145,7 @@
       </div>
       <div class="footer-links">
         <div><h3>Site</h3><ul><li><a href="../about/">About</a></li><li><a href="../services/">Businesses</a></li><li><a href="../individuals/">Individuals</a></li><li><a href="../blog/">Blog</a></li></ul></div>
-        <div><h3>Services</h3><ul><li><a href="../scam-recovery/">Scam Recovery</a></li><li><a href="../community-services/">Community Services</a></li><li><a href="../emergency-response/">Emergency Response</a></li><li><a href="../areas-we-serve/">Areas We Serve</a></li></ul></div>
+        <div><h3>Services</h3><ul><li><a href="../managed-it-support-tasmania/">Managed IT</a></li><li><a href="../microsoft-365-support-tasmania/">Microsoft 365</a></li><li><a href="../cyber-security-tasmania/">Cyber Security</a></li><li><a href="../areas-we-serve/">Areas We Serve</a></li></ul></div>
         <div><h3>Resources</h3><ul><li><a href="../legal/">Legal</a></li><li><a href="../minimum-hardware-requirements/">Minimum Hardware</a></li><li><a href="../recommended-technology-platform/">Recommended Platform</a></li><li><a href="../careers/">Careers</a></li></ul></div>
         <div><h3>Contact</h3><ul><li><a href="tel:0364494214">Call 6449 4214</a></li><li><a href="mailto:help@tassietech.com.au">Email help desk</a></li><li><a href="../contact/">Send a message</a></li></ul></div>
       </div>

@@ -10,7 +10,7 @@
   <link rel="canonical" href="https://tassietech.com.au/">
   <link rel="preload" as="image" href="assets/img/heroes/home.jpeg">
   <link rel="stylesheet" href="assets/css/styles.css">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","@id":"https://tassietech.com.au/#business","name":"TassieTech","url":"https://tassietech.com.au/","logo":"https://tassietech.com.au/assets/img/tassietech-logo.jpg","image":"https://tassietech.com.au/assets/img/heroes/home.jpeg","description":"Local Tasmanian IT support serving businesses across Tasmania with managed IT, cyber security, Microsoft 365, SharePoint, backups, websites, networks, and practical technology advice.","telephone":"03 6449 4214","email":"help@tassietech.com.au","address":{"@type":"PostalAddress","streetAddress":"7 Hamilton St","addressLocality":"Latrobe","addressRegion":"TAS","addressCountry":"AU"},"areaServed":[{"@type":"AdministrativeArea","name":"Tasmania"},{"@type":"City","name":"Devonport"},{"@type":"City","name":"Latrobe"},{"@type":"City","name":"Burnie"},{"@type":"City","name":"Wynyard"},{"@type":"City","name":"Smithton"},{"@type":"City","name":"Penguin"},{"@type":"City","name":"Queenstown"},{"@type":"City","name":"Zeehan"},{"@type":"City","name":"Ulverstone"},{"@type":"City","name":"Deloraine"},{"@type":"City","name":"Port Sorell"},{"@type":"City","name":"Sheffield"},{"@type":"City","name":"George Town"},{"@type":"City","name":"Perth"},{"@type":"City","name":"Campbell Town"},{"@type":"City","name":"Launceston"},{"@type":"City","name":"St Helens"},{"@type":"City","name":"Hobart"},{"@type":"City","name":"New Norfolk"},{"@type":"City","name":"Sorell"},{"@type":"City","name":"Kingston"},{"@type":"City","name":"Huonville"}],"hasOfferCatalog":{"@type":"OfferCatalog","name":"Tasmanian business IT services","itemListElement":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"Managed IT Support"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Cyber Security"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Microsoft 365 and SharePoint Support"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Business Networks and UniFi Support"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Websites, Hosting, and WordPress Support"}}]}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":["LocalBusiness","ProfessionalService"],"@id":"https://tassietech.com.au/#business","name":"TassieTech","url":"https://tassietech.com.au/","logo":"https://tassietech.com.au/assets/img/tassietech-logo.jpg","image":"https://tassietech.com.au/assets/img/heroes/home.jpeg","description":"Local Tasmanian IT support serving businesses across Tasmania with managed IT, cyber security, Microsoft 365, SharePoint, backups, websites, networks, and practical technology advice.","telephone":"03 6449 4214","email":"help@tassietech.com.au","priceRange":"$$","address":{"@type":"PostalAddress","streetAddress":"7 Hamilton St","addressLocality":"Latrobe","addressRegion":"TAS","addressCountry":"AU"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"09:00","closes":"17:00"}],"areaServed":[{"@type":"AdministrativeArea","name":"Tasmania"},{"@type":"City","name":"Devonport"},{"@type":"City","name":"Latrobe"},{"@type":"City","name":"Burnie"},{"@type":"City","name":"Wynyard"},{"@type":"City","name":"Smithton"},{"@type":"City","name":"Penguin"},{"@type":"City","name":"Queenstown"},{"@type":"City","name":"Zeehan"},{"@type":"City","name":"Ulverstone"},{"@type":"City","name":"Deloraine"},{"@type":"City","name":"Port Sorell"},{"@type":"City","name":"Sheffield"},{"@type":"City","name":"George Town"},{"@type":"City","name":"Perth"},{"@type":"City","name":"Campbell Town"},{"@type":"City","name":"Launceston"},{"@type":"City","name":"St Helens"},{"@type":"City","name":"Hobart"},{"@type":"City","name":"New Norfolk"},{"@type":"City","name":"Sorell"},{"@type":"City","name":"Kingston"},{"@type":"City","name":"Huonville"}],"hasOfferCatalog":{"@type":"OfferCatalog","name":"Tasmanian business IT services","itemListElement":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"Managed IT Support"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Cyber Security"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Microsoft 365 and SharePoint Support"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Business Networks and UniFi Support"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Websites, Hosting, and WordPress Support"}}]}}</script>
   <script>
     (function(){var t=localStorage.getItem('tt-theme');document.documentElement.dataset.theme=(t==='light'||t==='dark')?t:'dark';})();
   </script>
@@ -49,8 +49,8 @@
           <h1>IT Support in Tasmania</h1>
           <p>Local IT experts who make technology simple for Tasmanian businesses, community organisations, and individuals.</p>
           <div class="hero-actions">
-            <a class="button primary" href="contact/">Speak to a specialist</a>
-            <a class="button secondary" href="tel:0364494214">Call 6449 4214</a>
+                        <a class="button primary" href="contact/?intent=business-support">Get business support</a>
+            <a class="button secondary" href="contact/?intent=urgent">Report an urgent issue</a>
           </div>
           <div class="hero-proof" aria-label="TassieTech strengths">
             <span>North West based</span>
@@ -77,18 +77,21 @@
       <h3>Managed IT Support</h3>
       <p>Helpdesk, monitoring, Microsoft 365, Google Workspace, procurement, networks, phones, and practical support for the systems your team relies on.</p>
       <ul><li>Local technicians</li><li>Business continuity focus</li><li>Clear advice before spend</li></ul>
+      <a class="text-link" href="managed-it-support-tasmania/">Explore managed IT support</a>
     </article>
     <article class="card lift reveal">
       <span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 5 6v6c0 4.4 2.8 7.5 7 9 4.2-1.5 7-4.6 7-9V6l-7-3Z"/><path d="m9 12 2 2 4-5"/></svg></span>
       <h3>Cyber Security</h3>
       <p>Commercial-grade protection without unnecessary complexity. We help harden devices, secure accounts, train staff, and respond quickly when risk appears.</p>
       <ul><li>Endpoint protection</li><li>Security policies</li><li>Backup and recovery planning</li></ul>
+      <a class="text-link" href="cyber-security-tasmania/">Explore cyber security</a>
     </article>
     <article class="card lift reveal">
       <span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 18 10 12l4 4 6-9"/><path d="M14 7h6v6"/></svg></span>
       <h3>Technology Growth</h3>
       <p>Use technology to remove friction from operations. We help with websites, cloud platforms, automation, software, and sensible emerging technology advice.</p>
       <ul><li>Custom software</li><li>Workflow improvement</li><li>Scalable platforms</li></ul>
+      <a class="text-link" href="wordpress-care-tasmania/">Explore websites and care</a>
     </article>
   </div>
 </section>
@@ -97,37 +100,19 @@
     <div class="client-proof-copy reveal">
       <span class="section-kicker">Serving businesses across Tasmania</span>
       <h2 id="tasmania-proof-heading">IT support across Tasmania for local teams and larger clients.</h2>
-      <p>From Smithton, Wynyard, Penguin, Burnie, Queenstown, Zeehan, Ulverstone, Devonport, Latrobe, Port Sorell, Sheffield, and Deloraine through to George Town, Perth, Launceston, Campbell Town, St Helens, New Norfolk, Sorell, Kingston, Huonville, Hobart, and statewide remote support, we help organisations keep core systems working: managed IT, Microsoft 365 and SharePoint, secure backups, WordPress and hosting, UniFi networks, remote support, and practical technology projects.</p>
+      <p>We support organisations through a North West base, planned onsite work where it makes sense, and remote support across Tasmania. The aim is simple: reliable help for the systems businesses depend on, without making coverage sound bigger or messier than it needs to be.</p>
       <div class="proof-metrics" aria-label="TassieTech service coverage highlights">
         <div><strong>North West based</strong><span>Onsite support where proximity matters.</span></div>
         <div><strong>Statewide remote</strong><span>Responsive help for Tasmanian teams beyond our local roads.</span></div>
         <div><strong>Business ready</strong><span>Security, continuity, and clear advice built into the work.</span></div>
       </div>
-      <nav class="coverage-links" aria-label="Tasmania IT service area links">
-        <a href="it-services-for-devonport/">Devonport</a>
-        <a href="it-services-for-latrobe/">Latrobe</a>
-        <a href="it-services-for-burnie/">Burnie</a>
-        <a href="it-services-for-wynyard/">Wynyard</a>
-        <a href="it-services-for-smithton/">Smithton</a>
-        <a href="it-services-for-penguin/">Penguin</a>
-        <a href="it-services-for-queenstown/">Queenstown</a>
-        <a href="it-services-for-zeehan/">Zeehan</a>
-        <a href="it-services-for-ulverstone/">Ulverstone</a>
-        <a href="it-services-for-deloraine/">Deloraine</a>
-        <a href="it-services-for-port-sorell/">Port Sorell</a>
-        <a href="it-services-for-sheffield/">Sheffield</a>
-        <a href="it-services-for-george-town/">George Town</a>
-        <a href="it-services-for-perth/">Perth</a>
-        <a href="it-services-for-campbell-town/">Campbell Town</a>
-        <a href="it-services-for-launceston/">Launceston</a>
-        <a href="it-services-for-st-helens/">St Helens</a>
-        <a href="it-services-for-hobart/">Hobart</a>
-        <a href="it-services-for-new-norfolk/">New Norfolk</a>
-        <a href="it-services-for-sorell/">Sorell</a>
-        <a href="it-services-for-kingston/">Kingston</a>
-        <a href="it-services-for-huonville/">Huonville</a>
-        <a href="areas-we-serve/">All areas</a>
-      </nav>
+      <div class="coverage-model" aria-label="Tasmania service coverage model">
+        <a class="coverage-hub" href="it-services-for-devonport/"><strong>North West</strong><span>Local onsite strength around our home region and nearby business communities.</span></a>
+        <a class="coverage-hub" href="it-services-for-launceston/"><strong>North and Midlands</strong><span>Launceston-linked support for cloud, security, websites, and business systems.</span></a>
+        <a class="coverage-hub" href="it-services-for-hobart/"><strong>South</strong><span>Remote support and project advice for southern Tasmanian organisations.</span></a>
+        <a class="coverage-hub" href="it-services-tasmania/"><strong>Statewide remote</strong><span>A broader support path for teams outside our regular onsite routes.</span></a>
+      </div>
+      <a class="text-link" href="areas-we-serve/">View every service area</a>
     </div>
     <div class="client-proof-stage reveal" aria-label="Local and larger client proof">
       <div class="client-row-header">
@@ -224,14 +209,22 @@
   </div>
 </section>
 <section class="section tight">
-  <div class="cta-panel reveal">
-    <div>
+  <div class="cta-panel intent-panel reveal">
+    <div class="cta-copy">
       <h2>Let's discuss your technology today.</h2>
       <p>Whether you need managed IT, urgent help, scam recovery, or a smarter way to grow, you can speak directly with a Tasmanian team.</p>
     </div>
-    <div class="button-row">
-      <a class="button primary" href="contact/">Send a message</a>
-      <a class="button secondary" href="tel:0364494214">Call 6449 4214</a>
+    <div class="intent-cta-grid" aria-label="Choose the right next step">
+      <a class="intent-cta" href="contact/?intent=project"><strong>Plan an IT project</strong><small>Websites, migrations, networks, cloud, software, and planned upgrades.</small></a>
+      <a class="intent-cta" href="contact/?intent=business-support"><strong>Get business support</strong><small>Managed IT, Microsoft 365, devices, accounts, networks, and helpdesk support.</small></a>
+      <a class="intent-cta urgent" href="contact/?intent=urgent"><strong>Report an urgent issue</strong><small>Outages, suspected compromise, data loss risk, or operations stopped.</small></a>
+      <a class="intent-cta" href="contact/?intent=personal"><strong>Get personal tech help</strong><small>Home devices, email, passwords, scam recovery, and everyday technology support.</small></a>
+    </div>
+    <div class="cta-proof-grid" aria-label="TassieTech proof points">
+      <div><strong>Client outcomes</strong><span>Cleaner accounts, fewer repeat issues, safer backups, and systems staff can actually use.</span></div>
+      <div><strong>Response example</strong><span>Urgent outages are triaged separately from routine requests so the first action is clearer.</span></div>
+      <div><strong>Before and after</strong><span>We turn scattered devices, passwords, files, and support habits into a practical operating rhythm.</span></div>
+      <div><strong>Tasmania covered</strong><span>North West based with remote support across Tasmanian towns and city hubs.</span></div>
     </div>
   </div>
 </section>
@@ -248,7 +241,7 @@
       </div>
       <div class="footer-links">
         <div><h3>Site</h3><ul><li><a href="about/">About</a></li><li><a href="services/">Businesses</a></li><li><a href="individuals/">Individuals</a></li><li><a href="blog/">Blog</a></li></ul></div>
-        <div><h3>Services</h3><ul><li><a href="scam-recovery/">Scam Recovery</a></li><li><a href="community-services/">Community Services</a></li><li><a href="emergency-response/">Emergency Response</a></li><li><a href="areas-we-serve/">Areas We Serve</a></li></ul></div>
+        <div><h3>Services</h3><ul><li><a href="managed-it-support-tasmania/">Managed IT</a></li><li><a href="microsoft-365-support-tasmania/">Microsoft 365</a></li><li><a href="cyber-security-tasmania/">Cyber Security</a></li><li><a href="areas-we-serve/">Areas We Serve</a></li></ul></div>
         <div><h3>Resources</h3><ul><li><a href="legal/">Legal</a></li><li><a href="minimum-hardware-requirements/">Minimum Hardware</a></li><li><a href="recommended-technology-platform/">Recommended Platform</a></li><li><a href="careers/">Careers</a></li></ul></div>
         <div><h3>Contact</h3><ul><li><a href="tel:0364494214">Call 6449 4214</a></li><li><a href="mailto:help@tassietech.com.au">Email help desk</a></li><li><a href="contact/">Send a message</a></li></ul></div>
       </div>

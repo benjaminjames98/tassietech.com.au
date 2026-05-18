@@ -79,6 +79,26 @@
       status.textContent = "Something went wrong. Please check the form and try again, or call us if it is urgent.";
     }
 
+    const intent = params.get("intent");
+    const intentField = form.querySelector("[data-contact-intent]");
+    const selectRadio = (name, value) => {
+      const input = form.querySelector(`input[name="${name}"][value="${value}"]`);
+      if (input) input.checked = true;
+    };
+    const intentConfig = {
+      project: { submissionType: "business", businessRequestType: "project" },
+      "business-support": { submissionType: "business", businessRequestType: "support" },
+      urgent: { submissionType: "business", businessRequestType: "support", urgency: "critical" },
+      personal: { submissionType: "individual" }
+    };
+    if (intentField && Object.prototype.hasOwnProperty.call(intentConfig, intent)) {
+      intentField.value = intent;
+      const config = intentConfig[intent];
+      if (config.submissionType) selectRadio("submissionType", config.submissionType);
+      if (config.businessRequestType) selectRadio("businessRequestType", config.businessRequestType);
+      if (config.urgency) selectRadio("urgency", config.urgency);
+    }
+
     const updateContactForm = () => {
       const data = new FormData(form);
       const submissionType = data.get("submissionType");

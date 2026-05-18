@@ -95,6 +95,15 @@ if (!in_array($submissionType, ['individual', 'business'], true)) {
     fail_submission('Submission type invalid');
 }
 
+$intentLabels = [
+    'project' => 'Plan an IT project',
+    'business-support' => 'Get business support',
+    'urgent' => 'Report an urgent issue',
+    'personal' => 'Get personal tech help',
+];
+$intent = posted('intent');
+$intentLabel = array_key_exists($intent, $intentLabels) ? $intentLabels[$intent] : '';
+
 $lines = [
     'Website enquiry from tassietech.com.au',
     'Submitted: ' . date('c'),
@@ -105,6 +114,9 @@ $lines = [
     'Email: ' . $email,
     'Submission type: ' . ucfirst($submissionType),
 ];
+if ($intentLabel !== '') {
+    $lines[] = 'CTA intent: ' . $intentLabel;
+}
 
 $subject = 'Website individual support request';
 
