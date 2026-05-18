@@ -1371,6 +1371,7 @@ main {
   display: block;
   width: 100%;
   max-width: 170px;
+  min-width: 0;
   height: 44px;
   object-fit: contain;
 }
@@ -1383,13 +1384,15 @@ main {
 .client-logo-grid figcaption,
 .brand-logo-strip figcaption {
   max-width: 100%;
+  min-width: 0;
   color: #21182b;
   font-size: 0.72rem;
   font-weight: 820;
   line-height: 1.2;
-  overflow-wrap: break-word;
+  overflow-wrap: anywhere;
   text-align: center;
   white-space: normal;
+  word-break: break-word;
 }
 
 .brand-experience {
@@ -2640,7 +2643,7 @@ main {
   }
 
   .brand-logo-strip {
-    grid-template-columns: repeat(8, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
   .footer-links {
