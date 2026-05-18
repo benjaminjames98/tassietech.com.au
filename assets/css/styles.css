@@ -215,20 +215,27 @@ ol {
   align-items: center;
   flex: 0 0 auto;
   gap: 0.45rem;
+  min-width: max-content;
   margin-left: auto;
 }
 
 .nav-toggle,
 .theme-toggle {
-  display: inline-grid;
-  place-items: center;
+  display: inline-flex;
+  flex: 0 0 44px;
+  align-items: center;
+  justify-content: center;
   width: 44px;
+  min-width: 44px;
   height: 44px;
+  min-height: 44px;
+  padding: 0;
   border: 1px solid var(--line);
   border-radius: 999px;
   color: var(--text);
   background: var(--surface);
   cursor: pointer;
+  overflow: visible;
   transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
 }
 
@@ -242,17 +249,32 @@ ol {
 .nav-toggle span,
 .nav-toggle::before,
 .nav-toggle::after {
+  position: absolute;
+  left: 50%;
   display: block;
-  width: 18px;
-  height: 2px;
+  width: 16px;
+  height: 1.8px;
   content: "";
   border-radius: 999px;
   background: currentColor;
-  transition: transform 180ms ease, opacity 180ms ease;
+  transform: translate(-50%, -50%);
+  transition: top 180ms ease, transform 180ms ease, opacity 180ms ease;
 }
 
 .nav-toggle {
-  gap: 4px;
+  position: relative;
+}
+
+.nav-toggle::before {
+  top: calc(50% - 5px);
+}
+
+.nav-toggle span {
+  top: 50%;
+}
+
+.nav-toggle::after {
+  top: calc(50% + 5px);
 }
 
 .nav-open .nav-toggle span {
@@ -260,11 +282,13 @@ ol {
 }
 
 .nav-open .nav-toggle::before {
-  transform: translateY(6px) rotate(45deg);
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
 }
 
 .nav-open .nav-toggle::after {
-  transform: translateY(-6px) rotate(-45deg);
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(-45deg);
 }
 
 .theme-toggle svg,
@@ -277,6 +301,12 @@ ol {
   stroke-linecap: round;
   stroke-linejoin: round;
   stroke-width: 2;
+}
+
+.theme-toggle svg {
+  width: 16px;
+  height: 16px;
+  stroke-width: 1.8;
 }
 
 .primary-nav {
@@ -327,12 +357,106 @@ ol {
   background: color-mix(in srgb, var(--surface-strong) 68%, var(--teal-soft));
 }
 
-.nav-actions .button.nav-cta {
-  display: none;
+.mobile-call-item,
+.mobile-funnel-title,
+.mobile-funnel-item {
+  display: block;
+}
+
+.primary-nav a.mobile-call-link {
+  justify-content: center;
   color: var(--on-teal);
   border-color: color-mix(in srgb, var(--teal) 72%, #ffffff 28%);
   background: linear-gradient(135deg, color-mix(in srgb, var(--teal) 82%, #ffffff 18%), var(--teal-strong));
   box-shadow: 0 12px 24px var(--teal-glow);
+}
+
+.primary-nav a.mobile-funnel-main {
+  justify-content: center;
+  color: var(--on-teal);
+  border-color: color-mix(in srgb, var(--teal) 74%, #ffffff 26%);
+  background: linear-gradient(135deg, color-mix(in srgb, var(--teal) 82%, #ffffff 18%) 0%, var(--teal) 54%, var(--teal-strong) 100%);
+  box-shadow: 0 12px 24px var(--teal-glow);
+}
+
+.primary-nav .mobile-funnel-item a {
+  min-height: 40px;
+  padding: 0.64rem 1rem;
+  color: var(--text);
+  border-color: var(--line);
+  background: color-mix(in srgb, var(--surface) 82%, var(--surface-strong));
+  font-size: 0.9rem;
+}
+
+.nav-actions .button.nav-phone,
+.help-menu {
+  display: none;
+}
+
+.help-menu {
+  position: relative;
+}
+
+.nav-help-trigger {
+  min-height: 44px;
+  padding: 0.72rem 1rem;
+  cursor: pointer;
+  list-style: none;
+}
+
+.nav-help-trigger::-webkit-details-marker {
+  display: none;
+}
+
+.help-menu-panel {
+  position: absolute;
+  top: calc(100% + 0.72rem);
+  right: 0;
+  z-index: 20;
+  display: grid;
+  width: min(360px, calc(100vw - 2rem));
+  padding: 0.5rem;
+  gap: 0.25rem;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background:
+    linear-gradient(135deg, var(--brand-soft), transparent 42%),
+    var(--surface-strong);
+  box-shadow: var(--shadow);
+}
+
+.help-menu-panel a {
+  display: grid;
+  gap: 0.2rem;
+  padding: 0.85rem;
+  border: 1px solid transparent;
+  border-radius: 16px;
+  color: var(--text);
+}
+
+.help-menu-panel a:hover,
+.help-menu-panel a:focus-visible {
+  border-color: color-mix(in srgb, var(--brand) 24%, var(--teal) 18%);
+  background: color-mix(in srgb, var(--surface-strong) 72%, var(--teal-soft));
+}
+
+.help-menu-panel a.urgent strong {
+  color: var(--critical);
+}
+
+.help-menu-panel span {
+  color: var(--muted);
+  font-size: 0.86rem;
+  line-height: 1.45;
+}
+
+.nav-actions .button.nav-phone {
+  min-height: 44px;
+  padding: 0.7rem 0.92rem;
+  color: var(--text);
+  border-color: color-mix(in srgb, var(--teal) 28%, var(--line));
+  background: color-mix(in srgb, var(--surface-strong) 80%, var(--teal-soft));
+  box-shadow: none;
 }
 
 .hero {
@@ -486,8 +610,7 @@ ol {
   box-shadow: 0 16px 36px rgba(24, 19, 31, 0.16);
 }
 
-.button.primary:hover,
-.nav-actions .button.nav-cta:hover {
+.button.primary:hover {
   border-color: color-mix(in srgb, var(--teal) 82%, #ffffff 18%);
   background: linear-gradient(135deg, color-mix(in srgb, var(--teal) 88%, #ffffff 12%) 0%, var(--teal) 42%, var(--teal-strong) 100%);
   box-shadow: 0 18px 42px var(--teal-glow);
@@ -812,6 +935,11 @@ main {
   color: var(--teal);
 }
 
+.card h2 {
+  font-size: 1.35rem;
+  line-height: 1.18;
+}
+
 .card .icon {
   display: inline-grid;
   place-items: center;
@@ -825,6 +953,7 @@ main {
 }
 
 .card h3 + p,
+.card h2 + p,
 .card h4 + p {
   margin-top: 0.55rem;
 }
@@ -1469,6 +1598,14 @@ main {
   align-content: start;
 }
 
+.service-audience-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+  margin-top: 1.2rem;
+}
+
 .service-path-grid {
   display: flex;
   flex-wrap: wrap;
@@ -1848,6 +1985,31 @@ main {
     linear-gradient(135deg, var(--teal-soft), var(--surface-strong)),
     repeating-linear-gradient(0deg, transparent 0 27px, color-mix(in srgb, var(--text) 5%, transparent) 27px 28px);
   box-shadow: var(--shadow-soft);
+}
+
+.map-embed-grid {
+  display: grid;
+  width: min(100% - 2rem, var(--container));
+  margin: 0 auto;
+  gap: 1.25rem;
+  align-items: center;
+}
+
+.map-embed-panel {
+  min-height: 360px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-panel);
+  background: var(--surface);
+  box-shadow: var(--shadow-soft);
+}
+
+.map-embed-panel iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 360px;
+  border: 0;
 }
 
 .tasmania-svg {
@@ -2289,9 +2451,14 @@ main {
     font-size: 3.15rem;
   }
 
+  .card h2 {
+    font-size: 1.35rem;
+  }
+
   .grid.two,
   .service-prices,
   .contact-grid,
+  .map-embed-grid,
   .media-split {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -2347,6 +2514,12 @@ main {
 }
 
 @media (min-width: 1040px) {
+  .mobile-call-item,
+  .mobile-funnel-title,
+  .mobile-funnel-item {
+    display: none;
+  }
+
   .nav-toggle {
     display: none;
   }
@@ -2374,8 +2547,12 @@ main {
     font-size: 0.88rem;
   }
 
-  .nav-actions .button.nav-cta {
+  .nav-actions .button.nav-phone {
     display: inline-flex;
+  }
+
+  .help-menu {
+    display: inline-block;
   }
 
   .hero h1 {
@@ -2392,6 +2569,10 @@ main {
 
   .section h2 {
     font-size: 3.85rem;
+  }
+
+  .card h2 {
+    font-size: 1.35rem;
   }
 
   .grid.three {
@@ -2427,6 +2608,10 @@ main {
     grid-template-columns: repeat(8, minmax(0, 1fr));
   }
 
+  .footer-links {
+    grid-template-columns: repeat(6, minmax(100px, 1fr));
+  }
+
   .card,
   .price-card,
   .form-card {
@@ -2434,11 +2619,26 @@ main {
   }
 }
 
-@media (max-width: 699px) {
+@media (max-width: 1039px) {
   .nav-shell {
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto;
-    position: relative;
+    align-items: center;
+  }
+
+  .brand-link {
+    min-width: 0;
+  }
+
+  .nav-actions {
+    justify-self: end;
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 699px) {
+  .nav-shell {
+    grid-template-columns: minmax(0, 1fr) auto;
   }
 
   .brand-link {
@@ -2453,12 +2653,9 @@ main {
   }
 
   .nav-actions {
-    position: absolute;
-    right: 0;
-    top: 50%;
-    z-index: 2;
+    position: static;
     margin-left: 0;
-    transform: translateY(-50%);
+    transform: none;
   }
 
   .theme-toggle {
@@ -2466,10 +2663,11 @@ main {
   }
 
   .nav-toggle {
-    display: inline-grid;
+    display: inline-flex;
     color: var(--on-teal);
     border-color: color-mix(in srgb, var(--teal) 72%, #ffffff 28%);
     background: var(--teal);
+    box-shadow: 0 10px 22px var(--teal-glow);
   }
 
   .hero-panel {
@@ -2551,6 +2749,10 @@ main {
     max-width: 100%;
     font-size: 2.06rem;
     overflow-wrap: break-word;
+  }
+
+  .card h2 {
+    font-size: 1.35rem;
   }
 }
 

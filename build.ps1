@@ -179,6 +179,10 @@ function ServiceCards {
       <a class="text-link" href="{{root}}wordpress-care-tasmania/">Explore websites and care</a>
     </article>
   </div>
+  <div class="service-audience-links reveal" aria-label="Choose a general support path">
+    <a class="button secondary" href="{{root}}services/">Business IT services</a>
+    <a class="button secondary" href="{{root}}individuals/">IT help for individuals</a>
+  </div>
 </section>
 "@
 }
@@ -192,7 +196,7 @@ function WhyTassieTech {
     </div>
     <div class="reveal">
       <span class="section-kicker">Why local matters</span>
-      <h2>Not mainland support with a Tasmanian phone number.</h2>
+      <h2>Local Tasmanian IT support. Not mainlanders with a local number.</h2>
       <p>We live and work here. Our clients are neighbours, local employers, community services, trades, retailers, clinics, schools, and growing Tasmanian businesses that need technology to be simpler.</p>
       <div class="stat-row">
         <div class="stat"><strong>98%+</strong><span>IT issue solve rate across business and individual support.</span></div>
@@ -200,6 +204,29 @@ function WhyTassieTech {
         <div class="stat"><strong>24/7</strong><span>Managed service monitoring options for business systems.</span></div>
         <div class="stat"><strong>No fuss</strong><span>Plain-language advice, not confusing tech theatre.</span></div>
       </div>
+    </div>
+  </div>
+</section>
+"@
+}
+
+function GoogleMapSection {
+  param(
+    [string]$Title = "Visit TassieTech by appointment.",
+    [string]$Text = "Our Latrobe base supports clients across North West Tasmania and remote support across the state."
+  )
+@"
+<section class="section">
+  <div class="map-embed-grid">
+    <div class="reveal">
+      <span class="section-kicker">Local base</span>
+      <h2>$Title</h2>
+      <p>$Text</p>
+      <p>Office visits are by appointment only, so please call ahead before dropping in.</p>
+      <div class="button-row"><a class="button primary" href="tel:0364494214">Call $PhoneShort</a><a class="button secondary" href="{{root}}contact/">Contact TassieTech</a></div>
+    </div>
+    <div class="map-embed-panel reveal">
+      <iframe title="Map showing TassieTech in Latrobe, Tasmania" src="https://www.google.com/maps?q=7%20Hamilton%20St%2C%20Latrobe%20TAS%207306&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
   </div>
 </section>
@@ -300,6 +327,23 @@ function Register-ServiceSchema {
     ServiceType = $ServiceType
     Area = $Area
   }
+}
+
+function Get-IndividualServiceCards {
+@"
+<section class="section">
+  <div class="section-header center reveal">
+    <span class="section-kicker">Individual support</span>
+    <h2>Relevant IT help for personal technology issues.</h2>
+    <p>Start with the path that best fits what is happening. We will keep the advice practical and explain the next step clearly.</p>
+  </div>
+  <div class="grid three service-link-grid">
+    <a class="card lift reveal" href="{{root}}individuals/"><h3>General IT Support</h3><p>Computer, laptop, email, Wi-Fi, router, software, account, and everyday technology help.</p></a>
+    <a class="card lift reveal" href="{{root}}scam-recovery/"><h3>Scam Recovery</h3><p>Practical help to secure accounts, devices, personal information, and confidence after a scam.</p></a>
+    <a class="card lift reveal" href="{{root}}contact/?intent=personal"><h3>Speak to a Local IT Expert</h3><p>Tell us what is happening and we will help you choose the safest next step.</p></a>
+  </div>
+</section>
+"@
 }
 
 function Get-HighIntentServiceCards {
@@ -992,11 +1036,12 @@ $HighIntentServices = @(
 $homeContent = @"
 $(ServiceCards)
 $(ClientProofSection)
+$(GoogleMapSection "TassieTech is based in Latrobe, Tasmania." "From our North West base, we support local onsite work where it makes sense and remote IT support across Tasmania.")
 $(WhyTassieTech)
 <section class="section">
   <div class="section-header center reveal">
     <span class="section-kicker">Fast health check</span>
-    <h2>How exposed is your technology right now?</h2>
+    <h2>How exposed is your Tasmanian business IT right now?</h2>
     <p>Tick what applies. This is not a formal audit, but it shows where a local review may save time, risk, and money.</p>
   </div>
   <div class="grid two">
@@ -1022,7 +1067,7 @@ $(WhyTassieTech)
   </div>
 </section>
 $(CommunitySection)
-$(CtaPanel "Let's discuss your technology today." "Whether you need managed IT, urgent help, scam recovery, or a smarter way to grow, you can speak directly with a Tasmanian team.")
+$(CtaPanel "Speak with a Tasmanian IT Expert" "Whether you need managed IT, urgent help, scam recovery, or a smarter way to grow, you can speak directly with a Tasmanian team.")
 "@
 
 Add-Page "" "Computer Support and IT Services Tasmania | TassieTech" "Local Tasmanian IT support serving businesses across Tasmania with managed IT, cyber security, Microsoft 365, SharePoint, backups, websites, networks, and practical technology advice." "Friendly. Professional. Reliable." "IT Support in Tasmania" "Local IT experts who make technology simple for Tasmanian businesses, community organisations, and individuals." $homeContent "home" ""
@@ -1069,14 +1114,15 @@ $individualContent = @"
 <section class="feature-band alt">
   <div class="section">
     <div class="grid two">
-      <div class="reveal"><span class="section-kicker">No fix, no fee</span><h2>Honest local help for individuals.</h2><p>We aim to solve problems quickly and respectfully. You will understand what is happening, what it costs, and what choices you have.</p></div>
+      <div class="reveal"><span class="section-kicker">No fix, no fee</span><h2>Honest local IT help for individuals.</h2><p>We aim to solve problems quickly and respectfully. You will understand what is happening, what it costs, and what choices you have.</p></div>
       <div class="card reveal"><h3>Why people choose TassieTech</h3><ul><li>98%+ solve rate across IT fields.</li><li>Friendly technicians who explain things clearly.</li><li>Local team, not a mainland call centre.</li><li>Business-grade experience applied to everyday tech problems.</li></ul></div>
     </div>
   </div>
 </section>
-$(CtaPanel "Need an IT issue fixed?" "Call TassieTech today or send a quick message and we will point you in the right direction.")
+$(Get-IndividualServiceCards)
+$(CtaPanel "Speak to a Local IT Expert" "Call TassieTech today or send a quick message and we will point you in the right direction.")
 "@
-Add-Page "individuals" "General IT Support Tasmania | TassieTech Individuals" "Computer repairs, laptop help, email setup, internet and router support, antivirus, malware scans, and friendly local IT support in Tasmania." "For individuals" "Have an IT issue and need someone to fix it?" "Call TassieTech for friendly, local support with computers, laptops, email, internet, security, and everyday technology problems." $individualContent "individuals"
+Add-Page "individuals" "General IT Support Tasmania | TassieTech Individuals" "Computer repairs, laptop help, email setup, internet and router support, antivirus, malware scans, and friendly local IT support in Tasmania." "For individuals" "Looking for IT &amp; Tech Experts in Tasmania?" "Call TassieTech for friendly, local support with computers, laptops, email, internet, security, and everyday technology problems." $individualContent "individuals"
 
 $scamContent = @"
 <section class="section">
@@ -1108,20 +1154,25 @@ $(ServiceCards)
   <div class="section">
     <div class="section-header reveal">
       <span class="section-kicker">Business services</span>
-      <h2>Everything a local business needs from IT.</h2>
-      <p>Choose focused help or a managed partnership. We can support your team, your cloud systems, your websites, your phones, your network, and your security posture.</p>
+      <h2>Everything a Tasmanian business needs from IT.</h2>
+      <p>Whether you need one-off help or an ongoing managed IT partner, TassieTech supports the systems your team relies on: devices, accounts, cloud tools, websites, phones, networks, backups, and security.</p>
     </div>
-    <div class="grid three">
-      <article class="price-card reveal"><strong>Support</strong><span>Responsive helpdesk and troubleshooting for everyday business technology.</span></article>
-      <article class="price-card featured reveal"><strong>Managed</strong><span>Monitoring, maintenance, security, advice, and recurring support for business continuity.</span></article>
-      <article class="price-card reveal"><strong>Project</strong><span>Cloud migrations, network upgrades, websites, custom software, procurement, and automation.</span></article>
+    <div class="service-path-grid reveal" aria-label="Business IT service paths">
+      <a href="{{root}}business-it-support-tasmania/">Business IT support</a>
+      <a href="{{root}}managed-it-support-tasmania/">Managed IT support</a>
+      <a href="{{root}}microsoft-365-support-tasmania/">Microsoft 365 support</a>
+      <a href="{{root}}cyber-security-tasmania/">Cyber security</a>
+      <a href="{{root}}unifi-network-support-tasmania/">UniFi networks</a>
+      <a href="{{root}}wordpress-care-tasmania/">WordPress care</a>
+      <a href="{{root}}backup-strategy-tasmania/">Backup strategy</a>
+      <a href="{{root}}emergency-response/">Emergency response</a>
     </div>
   </div>
 </section>
 $(Get-HighIntentServiceCards)
-$(CtaPanel "Get business IT under control." "Tell us what is slowing your team down. We will help you choose the most practical path.")
+$(CtaPanel "Get Tasmanian business IT under control." "Tell us what is slowing your team down. We will help you choose the most practical path.")
 "@
-Add-Page "services" "Business IT Services Tasmania | Managed Support, Security and Growth" "Managed IT support, cyber security, Microsoft and Google management, cloud hosting, websites, networks, VOIP, custom software, and local technology consulting in Tasmania." "Businesses" "Business IT Services in Tasmania" "Managed support, security, consulting, cloud, websites, networks, phones, and software from a Tasmanian team." $servicesContent "services"
+Add-Page "services" "Business IT Services Tasmania | Managed Support, Security and Growth" "Managed IT support, cyber security, Microsoft and Google management, cloud hosting, websites, networks, VOIP, custom software, and local technology consulting in Tasmania." "Businesses" "Computer &amp; IT Services For Businesses In Tassie" "Managed support, security, consulting, cloud, websites, networks, phones, and software from a Tasmanian team." $servicesContent "services"
 
 foreach ($service in $HighIntentServices) {
   $serviceContent = Build-ServiceLandingContent $service
@@ -1148,7 +1199,7 @@ $(StepsSection "Stress-free IT support in 3 steps." "Reach out for a quick chat 
 $(WhyTassieTech)
 $(CtaPanel "Ready to simplify community services IT?" "Speak to a local team member or email community.services@tassietech.com.au.")
 "@
-Add-Page "community-services" "IT Support for Community Services Tasmania | TassieTech" "Hassle-free IT support for Tasmanian community services organisations, including Microsoft 365, secure documents, onboarding, helpdesk, backup, and cyber security." "Community services" "Hassle-Free IT for Community Services Businesses" "Let TassieTech handle your IT so you can focus on the people and communities you serve." $communityContent "services"
+Add-Page "community-services" "IT Support for Community Services Tasmania | TassieTech" "Hassle-free IT support for Tasmanian community services organisations, including Microsoft 365, secure documents, onboarding, helpdesk, backup, and cyber security." "Community services" "Hassle-Free IT for Community Services Organisations" "Let TassieTech handle your IT so you can focus on the people and communities you serve." $communityContent ""
 
 $emergencyContent = @"
 <section class="section">
@@ -1167,7 +1218,7 @@ $emergencyContent = @"
 $(CtaPanel "Need urgent IT response?" "Call now, or send the fastest summary you can. We will help you prioritise the next action.")
 "@
 Add-Page "emergency-response" "Emergency IT Response Tasmania | TassieTech" "Urgent local IT help for business outages, suspected compromises, email failures, internet problems, device issues, and security incidents in Tasmania." "Emergency response" "Urgent IT help when business stops." "Fast triage, containment, and recovery support from a local Tasmanian technology team." $emergencyContent "services"
-Add-Page "emergency" "Emergency IT Response Tasmania | TassieTech" "Urgent local IT help for business outages, suspected compromises, email failures, internet problems, device issues, and security incidents in Tasmania." "Emergency response" "Urgent IT help when business stops." "Fast triage, containment, and recovery support from a local Tasmanian technology team." $emergencyContent "services"
+Add-Page "emergency" "Emergency IT Response Tasmania | TassieTech" "Urgent local IT help for business outages, suspected compromises, email failures, internet problems, device issues, and security incidents in Tasmania." "Emergency response" "Urgent IT help when business stops." "Fast triage, containment, and recovery support from a local Tasmanian technology team." $emergencyContent "services" "compact" "" "" $true
 Register-ServiceSchema "services" "Business IT Services in Tasmania" "Managed support, security, consulting, cloud, websites, networks, phones, and software from a Tasmanian team." "Business IT services" "Tasmania"
 Register-ServiceSchema "community-services" "IT Support for Community Services Tasmania" "Managed IT, Microsoft 365, secure documents, onboarding, helpdesk, backup, and cyber security support for Tasmanian community services organisations." "Community services IT support" "Tasmania"
 Register-ServiceSchema "emergency-response" "Emergency IT Response Tasmania" "Urgent local IT help for business outages, suspected compromises, email failures, internet problems, device issues, and security incidents in Tasmania." "Emergency IT response" "Tasmania"
@@ -1233,11 +1284,12 @@ $areasContent = @"
   </div>
   <div class="reveal">
     <span class="section-kicker">Local coverage</span>
-    <h2>North West onsite support with statewide remote reach.</h2>
-    <p>We map each public service-area node to its nearest city hub: Burnie, Devonport, Launceston, or Hobart. The city backbone links Burnie to Devonport to Launceston to Hobart, with town nodes connected into the nearest hub for clear statewide coverage.</p>
+    <h2>Onsite and Remote IT Support for Tasmanians</h2>
+    <p>From our Latrobe base, TassieTech supports Tasmanian businesses and individuals with remote IT help across the state and planned onsite visits where practical. If you are in Burnie, Devonport, Launceston, Hobart, or a regional town nearby, we can help you work out the best support option.</p>
     <div class="button-row"><a class="button primary" href="{{root}}contact/">Ask about your area</a></div>
   </div>
 </section>
+$(GoogleMapSection "TassieTech's Tasmanian service base." "Our Latrobe location anchors local North West onsite support and statewide remote IT support for Tasmanian businesses and individuals.")
 $(AreasGrid)
 $(FaqSection $areaFaqs)
 "@
@@ -1289,26 +1341,28 @@ foreach ($town in $towns) {
       <p>From business software and hardware support through to websites, cloud services, custom software, network support, phone systems, and practical technology advice, TassieTech helps local businesses move forward with confidence.</p>
     </div>
     <div class="card reveal">
-      <h3>Services in $($town.Name)</h3>
+      <h2>Services in $($town.Name)</h2>
       <ul><li>Complete business IT support</li><li>Microsoft 365 and SharePoint help</li><li>Cyber security and backup guidance</li><li>WordPress development, care, and hosting</li><li>UniFi, phone, internet, and network support</li><li>Custom software and practical technology projects</li></ul>
     </div>
   </div>
 </section>
 <section class="section tight">
-  <div class="service-path-grid reveal" aria-label="Related $($town.Name) business IT services">
+  <div class="service-path-grid reveal" aria-label="Related $($town.Name) IT services">
     <a href="{{root}}managed-it-support-tasmania/">Managed IT support</a>
     <a href="{{root}}microsoft-365-support-tasmania/">Microsoft 365 support</a>
     <a href="{{root}}cyber-security-tasmania/">Cyber security</a>
     <a href="{{root}}unifi-network-support-tasmania/">UniFi network support</a>
     <a href="{{root}}wordpress-care-tasmania/">WordPress care</a>
     <a href="{{root}}backup-strategy-tasmania/">Backup strategy</a>
+    <a href="{{root}}individuals/">Individual IT help</a>
+    <a href="{{root}}scam-recovery/">Scam recovery</a>
   </div>
 </section>
 $(ServiceCards)
 $(FaqSection $townFaqs)
 $(CtaPanel "We would love to work with your $($town.Name) team." "Contact TassieTech to discover how local technology support can make work easier, safer, and more reliable.")
 "@
-  Add-Page $town.Slug "Business IT Support $($town.Name) | TassieTech Tasmania" "Local business IT support for $($town.Name), including managed support, cyber security, Microsoft 365, websites, custom software, phone, internet, and network help." "$($town.Name) IT services" "Business IT Support For $($town.Name)" "Empower your business with $($town.Name)'s local IT support and development experts." $townContent "areas"
+  Add-Page $town.Slug "Business IT Support $($town.Name) | TassieTech Tasmania" "Local business IT support for $($town.Name), including managed support, cyber security, Microsoft 365, websites, custom software, phone, internet, and network help." "$($town.Name) IT services" "Business IT Support For $($town.Name)" "$($town.Name)'s Local IT Support and Development Experts for Businesses and Individuals" $townContent "areas"
   Register-Faq $town.Slug $townFaqs
   Register-ServiceSchema $town.Slug "Business IT Support for $($town.Name)" "Local business IT support for $($town.Name), including managed support, cyber security, Microsoft 365, websites, custom software, phone, internet, and network help." "Business IT support" $town.Name
 }
@@ -1504,7 +1558,7 @@ $termsContent = @"
 "@
 Add-Page "general-terms-and-conditions" "General Terms and Conditions | TassieTech" "General terms and conditions location for TassieTech managed service agreements and client resources." "Client resources" "General Terms and Conditions" "Managed service agreement information for TassieTech clients." $termsContent "legal"
 
-Add-Page "about-page" "About TassieTech | Local IT Experts Tasmania" "Meet TassieTech, a Tasmanian technology partner combining local care with professional IT, cyber security, software, web, and network expertise." "About TassieTech" "Discover TassieTech" "Where local heart meets global technology expertise." $aboutContent "about"
+Add-Page "about-page" "About TassieTech | Local IT Experts Tasmania" "Meet TassieTech, a Tasmanian technology partner combining local care with professional IT, cyber security, software, web, and network expertise." "About TassieTech" "Discover TassieTech" "Where local heart meets global technology expertise." $aboutContent "about" "compact" "" "" $true
 
 function Render-Layout {
   param($Page)
@@ -1524,14 +1578,21 @@ function Render-Layout {
   $heroActions = Get-HeroActions $Page $prefix
 
   $navItems = @(
-    @{Label="Home"; Href=""; Key="home"},
-    @{Label="About"; Href="about/"; Key="about"},
-    @{Label="Individuals"; Href="individuals/"; Key="individuals"},
     @{Label="Businesses"; Href="services/"; Key="services"},
+    @{Label="Individuals"; Href="individuals/"; Key="individuals"},
     @{Label="Areas"; Href="areas-we-serve/"; Key="areas"},
-    @{Label="Blog"; Href="blog/"; Key="blog"},
-    @{Label="Contact"; Href="contact/"; Key="contact"}
+    @{Label="About"; Href="about/"; Key="about"},
+    @{Label="Blog"; Href="blog/"; Key="blog"}
   )
+
+  $mobileFunnelHtml = @"
+<li class="mobile-call-item"><a class="mobile-call-link" href="tel:0364494214">Call $PhoneShort</a></li>
+<li class="mobile-funnel-title"><a class="mobile-funnel-main" href="${prefix}contact/">Get IT Help</a></li>
+<li class="mobile-funnel-item"><a href="${prefix}contact/?intent=business-support">Business IT Support</a></li>
+<li class="mobile-funnel-item"><a href="${prefix}contact/?intent=personal">Personal IT Help</a></li>
+<li class="mobile-funnel-item"><a href="${prefix}emergency-response/">Urgent IT Issue</a></li>
+<li class="mobile-funnel-item"><a href="${prefix}contact/?intent=project">Plan a Project</a></li>
+"@
 
   $navHtml = ($navItems | ForEach-Object {
     $href = "$prefix$($_.Href)"
@@ -1539,6 +1600,7 @@ function Render-Layout {
     $class = if ($_.Key -eq $active) { ' class="active"' } else { "" }
     "<li><a$class href=""$href"">$($_.Label)</a></li>"
   }) -join "`n"
+  $navHtml = "$mobileFunnelHtml`n$navHtml"
 
 @"
 <!doctype html>
@@ -1572,7 +1634,16 @@ function Render-Layout {
         </ul>
       </nav>
       <div class="nav-actions">
-        <a class="button secondary nav-cta" href="tel:0364494214">Call $PhoneShort</a>
+        <a class="button secondary nav-phone" href="tel:0364494214">03 6449 4214</a>
+        <details class="help-menu" data-help-menu>
+          <summary class="button primary nav-help-trigger">Get IT Help</summary>
+          <div class="help-menu-panel" aria-label="Choose a support path">
+            <a href="${prefix}contact/?intent=business-support"><strong>Business IT Support</strong><span>Managed IT, Microsoft 365, networks, security, devices, and staff support.</span></a>
+            <a href="${prefix}contact/?intent=personal"><strong>Personal IT Help</strong><span>Computers, email, internet, scams, devices, and account issues.</span></a>
+            <a class="urgent" href="${prefix}emergency-response/"><strong>Urgent IT Issue</strong><span>Outages, suspected compromise, disruption, or time-sensitive problems.</span></a>
+            <a href="${prefix}contact/?intent=project"><strong>Plan a Project</strong><span>Websites, migrations, cloud, backup, security, and system improvements.</span></a>
+          </div>
+        </details>
         <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle colour mode"></button>
         <button class="nav-toggle" type="button" data-nav-toggle aria-label="Open navigation" aria-expanded="false"><span></span></button>
       </div>
@@ -1615,10 +1686,12 @@ function Render-Layout {
         <p><strong>$Phone</strong><br><a href="mailto:$Email">$Email</a><br>$Address</p>
       </div>
       <div class="footer-links">
-        <div><h3>Site</h3><ul><li><a href="${prefix}about/">About</a></li><li><a href="${prefix}services/">Businesses</a></li><li><a href="${prefix}individuals/">Individuals</a></li><li><a href="${prefix}blog/">Blog</a></li></ul></div>
-        <div><h3>Services</h3><ul><li><a href="${prefix}managed-it-support-tasmania/">Managed IT</a></li><li><a href="${prefix}microsoft-365-support-tasmania/">Microsoft 365</a></li><li><a href="${prefix}cyber-security-tasmania/">Cyber Security</a></li><li><a href="${prefix}areas-we-serve/">Areas We Serve</a></li></ul></div>
-        <div><h3>Resources</h3><ul><li><a href="${prefix}legal/">Legal</a></li><li><a href="${prefix}minimum-hardware-requirements/">Minimum Hardware</a></li><li><a href="${prefix}recommended-technology-platform/">Recommended Platform</a></li><li><a href="${prefix}careers/">Careers</a></li></ul></div>
-        <div><h3>Contact</h3><ul><li><a href="tel:0364494214">Call $PhoneShort</a></li><li><a href="mailto:$Email">Email help desk</a></li><li><a href="${prefix}contact/">Send a message</a></li></ul></div>
+        <div><h3>Site</h3><ul><li><a href="${prefix}about/">About</a></li><li><a href="${prefix}services/">Businesses</a></li><li><a href="${prefix}individuals/">Individuals</a></li><li><a href="${prefix}community-services/">Community Services</a></li><li><a href="${prefix}areas-we-serve/">Areas</a></li><li><a href="${prefix}blog/">Blog</a></li><li><a href="${prefix}contact/">Contact</a></li><li><a href="${prefix}legal/">Legal</a></li><li><a href="${prefix}careers/">Careers</a></li></ul></div>
+        <div><h3>Business IT</h3><ul><li><a href="${prefix}business-it-support-tasmania/">Business IT Support</a></li><li><a href="${prefix}managed-it-support-tasmania/">Managed IT</a></li><li><a href="${prefix}microsoft-365-support-tasmania/">Microsoft 365</a></li><li><a href="${prefix}cyber-security-tasmania/">Cyber Security</a></li><li><a href="${prefix}backup-strategy-tasmania/">Backup Strategy</a></li><li><a href="${prefix}unifi-network-support-tasmania/">UniFi Networks</a></li></ul></div>
+        <div><h3>Web and Projects</h3><ul><li><a href="${prefix}wordpress-care-tasmania/">WordPress Care</a></li><li><a href="${prefix}emergency-response/">Emergency Response</a></li><li><a href="${prefix}contact/?intent=project">Plan a Project</a></li></ul></div>
+        <div><h3>Areas</h3><ul><li><a href="${prefix}areas-we-serve/">Areas We Serve</a></li><li><a href="${prefix}it-services-tasmania/">Tasmania IT Services</a></li><li><a href="${prefix}it-services-for-devonport/">Devonport</a></li><li><a href="${prefix}it-services-for-burnie/">Burnie</a></li><li><a href="${prefix}it-services-for-launceston/">Launceston</a></li><li><a href="${prefix}it-services-for-hobart/">Hobart</a></li></ul></div>
+        <div><h3>Resources</h3><ul><li><a href="${prefix}legal/">Legal</a></li><li><a href="${prefix}general-terms-and-conditions/">Terms and Conditions</a></li><li><a href="${prefix}guaranteed-response-times/">Response Times</a></li><li><a href="${prefix}minimum-hardware-requirements/">Hardware Requirements</a></li><li><a href="${prefix}recommended-technology-platform/">Recommended Platform</a></li></ul></div>
+        <div><h3>Contact</h3><ul><li><a href="tel:0364494214">Call $PhoneShort</a></li><li><a href="mailto:$Email">Email help desk</a></li><li><a href="${prefix}contact/">Send a message</a></li><li><a href="${prefix}scam-recovery/">Scam Recovery</a></li></ul></div>
       </div>
     </div>
     <div class="footer-bottom">Tassie Tech / Tasmanian Technology Systems - Copyright <span data-year>2026</span></div>
@@ -1647,7 +1720,7 @@ New-Item -ItemType Directory -Force -Path "posts" | Out-Null
   <link rel="canonical" href="$SiteUrl/blog/">
   <title>TassieTech Blog</title>
 </head>
-<body><p>Redirecting to <a href="../blog/">TassieTech Blog</a>.</p></body>
+<body><h1>TassieTech Blog</h1><p>Redirecting to <a href="../blog/">TassieTech Blog</a>.</p></body>
 </html>
 "@ | Set-Content -Path (Join-Path "posts" "index.html") -Encoding UTF8
 
@@ -1671,7 +1744,7 @@ Sitemap: $SiteUrl/sitemap.xml
 <!doctype html>
 <html lang="en">
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta http-equiv="refresh" content="0; url=./"><title>Page not found | TassieTech</title></head>
-<body><p>Page not found. <a href="./">Go to TassieTech home</a>.</p></body>
+<body><h1>Page not found</h1><p>Page not found. <a href="./">Go to TassieTech home</a>.</p></body>
 </html>
 "@ | Set-Content -Path "404.html" -Encoding UTF8
 

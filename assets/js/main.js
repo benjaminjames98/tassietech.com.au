@@ -4,6 +4,7 @@
   const themeToggle = document.querySelector("[data-theme-toggle]");
   const navToggle = document.querySelector("[data-nav-toggle]");
   const nav = document.querySelector("[data-primary-nav]");
+  const helpMenu = document.querySelector("[data-help-menu]");
   const storedTheme = localStorage.getItem("tt-theme");
 
   if (storedTheme === "light" || storedTheme === "dark") {
@@ -41,10 +42,20 @@
     navToggle?.setAttribute("aria-expanded", "false");
   });
 
+  helpMenu?.addEventListener("click", (event) => {
+    if (event.target.closest("a")) helpMenu.removeAttribute("open");
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!helpMenu || helpMenu.contains(event.target)) return;
+    helpMenu.removeAttribute("open");
+  });
+
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape") {
       body.classList.remove("nav-open");
       navToggle?.setAttribute("aria-expanded", "false");
+      helpMenu?.removeAttribute("open");
     }
   });
 
