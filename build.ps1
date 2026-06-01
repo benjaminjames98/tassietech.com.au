@@ -154,35 +154,31 @@ function ServiceCards {
   <div class="section-header center reveal">
     <span class="section-kicker">Manage. Secure. Grow.</span>
     <h2>Technology that works quietly in the background.</h2>
-    <p>From day-to-day support through to security, cloud, websites, networks, and custom software, TassieTech keeps local teams moving without the jargon.</p>
+    <p>Practical support for the systems Tasmanian teams rely on every day.</p>
   </div>
   <div class="grid four">
     <article class="card lift reveal">
       <span class="icon">$(Get-Icon manage)</span>
       <h3>Managed IT Support</h3>
-      <p>Helpdesk, monitoring, Microsoft 365, Google Workspace, procurement, networks, phones, and practical support for the systems your team relies on.</p>
-      <ul><li>Local technicians</li><li>Business continuity focus</li><li>Clear advice before spend</li></ul>
+      <p>Helpdesk, devices, accounts, procurement, networks, and everyday business support.</p>
       <a class="text-link" href="{{root}}managed-it-support-tasmania/">Explore managed IT support</a>
     </article>
     <article class="card lift reveal">
       <span class="icon">$(Get-Icon cloud)</span>
       <h3>Microsoft 365 and Cloud</h3>
-      <p>Accounts, email, Teams, SharePoint, OneDrive, permissions, cloud files, and the everyday tools staff use to get work done.</p>
-      <ul><li>Account governance</li><li>Teams and SharePoint</li><li>Cloud file workflows</li></ul>
+      <p>Email, Teams, SharePoint, OneDrive, permissions, and cleaner cloud workflows.</p>
       <a class="text-link" href="{{root}}microsoft-365-support-tasmania/">Explore Microsoft 365 support</a>
     </article>
     <article class="card lift reveal">
       <span class="icon">$(Get-Icon secure)</span>
       <h3>Cyber Security and Backups</h3>
-      <p>Commercial-grade protection without unnecessary complexity. We help harden devices, secure accounts, prepare backups, and respond quickly when risk appears.</p>
-      <ul><li>Endpoint protection</li><li>Security policies</li><li>Recovery planning</li></ul>
+      <p>Stronger accounts, safer devices, backup confidence, and calm incident response.</p>
       <a class="text-link" href="{{root}}cyber-security-tasmania/">Explore cyber security</a>
     </article>
     <article class="card lift reveal">
       <span class="icon">$(Get-Icon grow)</span>
       <h3>Websites, Networks and Projects</h3>
-      <p>Use technology to remove friction from operations. We help with websites, UniFi networks, cloud platforms, automation, software, and planned upgrades.</p>
-      <ul><li>WordPress care</li><li>UniFi networks</li><li>Project planning</li></ul>
+      <p>WordPress care, UniFi networks, migrations, cloud projects, and planned upgrades.</p>
       <a class="text-link" href="{{root}}wordpress-care-tasmania/">Explore websites and care</a>
     </article>
   </div>
@@ -204,12 +200,12 @@ function WhyTassieTech {
     <div class="reveal">
       <span class="section-kicker">Why local matters</span>
       <h2>Local Tasmanian IT support. Not mainlanders with a local number.</h2>
-      <p>We live and work here. Our clients are neighbours, local employers, community services, trades, retailers, clinics, schools, and growing Tasmanian businesses that need technology to be simpler.</p>
+      <p>We live and work here. Clients get plain-language advice from a Tasmanian team that understands local businesses, community services, and households.</p>
       <div class="stat-row">
-        <div class="stat"><strong>98%+</strong><span>IT issue solve rate across business and individual support.</span></div>
-        <div class="stat"><strong>100%</strong><span>Tasmanian team, based in the North West.</span></div>
-        <div class="stat"><strong>24/7</strong><span>Managed service monitoring options for business systems.</span></div>
-        <div class="stat"><strong>No fuss</strong><span>Plain-language advice, not confusing tech theatre.</span></div>
+        <div class="stat"><strong>98%+</strong><span>Issue solve rate.</span></div>
+        <div class="stat"><strong>100%</strong><span>Tasmanian team.</span></div>
+        <div class="stat"><strong>24/7</strong><span>Monitoring options.</span></div>
+        <div class="stat"><strong>No fuss</strong><span>Clear advice.</span></div>
       </div>
     </div>
   </div>
@@ -229,7 +225,13 @@ function GoogleMapSection {
       <span class="section-kicker">Local base</span>
       <h2>$Title</h2>
       <p>$Text</p>
-      <p>Office visits are by appointment only, so please call ahead before dropping in.</p>
+      <ul class="coverage-bullet-list">
+        <li>Based in Latrobe.</li>
+        <li>Supporting North West Tasmania.</li>
+        <li>Remote support across Tasmania.</li>
+        <li>Onsite visits where practical.</li>
+        <li>Office visits by appointment.</li>
+      </ul>
       <div class="button-row"><a class="button primary" href="tel:0364494214">Call $PhoneShort</a><a class="button secondary" href="{{root}}contact/">Contact TassieTech</a></div>
     </div>
     <div class="map-embed-panel reveal">
@@ -240,13 +242,95 @@ function GoogleMapSection {
 "@
 }
 
+function IntakeForm {
+  param(
+    [string]$Class = "",
+    [string]$Intro = "Start with the path that best matches what is happening.",
+    [string]$Heading = "Speak with a Tasmanian IT Expert"
+  )
+@"
+<form class="form-card intake-form $Class reveal" data-contact-form data-step-form data-current-step="1" method="post" action="{{root}}contact-submit.php" accept-charset="UTF-8">
+  <div class="honeypot-field" aria-hidden="true"><label>Website</label><input name="website" tabindex="-1" autocomplete="off"></div>
+  <input type="hidden" name="formStartedAt" data-form-started-at>
+  <input type="hidden" name="intent" data-contact-intent>
+  <input type="hidden" name="submissionType" data-submission-type>
+  <input type="hidden" name="businessRequestType" data-business-request-type>
+  <div class="form-intro">
+    <span class="section-kicker">Get IT help</span>
+    <h2>$Heading</h2>
+    <p>$Intro</p>
+  </div>
+  <div class="form-progress" aria-label="Form progress">
+    <span data-step-indicator="1">Need</span>
+    <span data-step-indicator="2">Details</span>
+    <span data-step-indicator="3">Issue</span>
+    <span data-step-indicator="4">Send</span>
+  </div>
+  <section class="form-step" data-form-step="1" aria-labelledby="intake-step-1">
+    <h3 id="intake-step-1">What do you need?</h3>
+    <fieldset class="field option-field">
+      <legend class="sr-only">Choose what you need help with</legend>
+      <div class="choice-grid path-choice-grid">
+        <label class="choice-card path-choice-card"><input type="radio" name="intentChoice" value="business-support" required><span><strong>Business support</strong></span></label>
+        <label class="choice-card path-choice-card"><input type="radio" name="intentChoice" value="personal" required><span><strong>Personal tech help</strong></span></label>
+        <label class="choice-card path-choice-card urgent"><input type="radio" name="intentChoice" value="urgent" required><span><strong>Urgent issue</strong></span></label>
+        <label class="choice-card path-choice-card"><input type="radio" name="intentChoice" value="project" required><span><strong>Plan a project</strong></span></label>
+      </div>
+    </fieldset>
+    <div class="form-step-actions"><button class="button primary" type="button" data-step-next>Next</button></div>
+  </section>
+  <section class="form-step" data-form-step="2" aria-labelledby="intake-step-2" hidden>
+    <h3 id="intake-step-2">Your details</h3>
+    <div class="field"><label for="name">Name*</label><input id="name" name="name" required autocomplete="name"></div>
+    <div class="field"><label for="email">Email*</label><input id="email" name="email" type="email" required autocomplete="email"></div>
+    <div class="conditional-group" data-contact-section="business" hidden>
+      <div class="field"><label for="businessName">Business name*</label><input id="businessName" name="businessName" autocomplete="organization" data-conditional-required></div>
+    </div>
+    <div class="form-step-actions"><button class="button secondary" type="button" data-step-prev>Back</button><button class="button primary" type="button" data-step-next>Next</button></div>
+  </section>
+  <section class="form-step" data-form-step="3" aria-labelledby="intake-step-3" hidden>
+    <h3 id="intake-step-3">Tell us what is happening</h3>
+    <div class="conditional-group" data-contact-section="individual" hidden>
+      <div class="field"><label for="individualIssue">Outline of the issue*</label><textarea id="individualIssue" name="individualIssue" placeholder="What is happening, when did it start, and what have you already tried?" data-conditional-required></textarea></div>
+    </div>
+    <div class="conditional-group" data-contact-section="business-project" hidden>
+      <div class="field"><label for="budgetRange">Budget range*</label><select id="budgetRange" name="budgetRange" data-conditional-required><option value="">Select a range</option><option>Under &#36;2,500</option><option>&#36;2,500 - &#36;7,500</option><option>&#36;7,500 - &#36;15,000</option><option>&#36;15,000 - &#36;30,000</option><option>&#36;30,000+</option><option>Not sure yet</option></select></div>
+      <div class="field"><label for="projectOverview">Project overview*</label><textarea id="projectOverview" name="projectOverview" placeholder="What are you trying to build, improve, migrate, or fix? Include timing if there is a deadline." data-conditional-required></textarea></div>
+    </div>
+    <div class="conditional-group" data-contact-section="business-support" hidden>
+      <div class="field"><label for="supportIssue">Outline of the issue*</label><textarea id="supportIssue" name="supportIssue" placeholder="What is affected, how many people are impacted, and when did it start?" data-conditional-required></textarea></div>
+      <fieldset class="field option-field urgency-field">
+        <legend>Urgency*</legend>
+        <div class="choice-grid urgency-grid">
+          <label class="choice-card"><input type="radio" name="urgency" value="critical" data-conditional-required><span><strong>Critical</strong><small>Operations stopped, suspected compromise, or data loss risk.</small></span></label>
+          <label class="choice-card"><input type="radio" name="urgency" value="high" data-conditional-required><span><strong>High</strong><small>Multiple people affected or a key workflow blocked.</small></span></label>
+          <label class="choice-card"><input type="radio" name="urgency" value="standard" data-conditional-required><span><strong>Standard</strong><small>Single-user issue, planned change, or non-urgent request.</small></span></label>
+        </div>
+      </fieldset>
+    </div>
+    <div class="form-step-actions"><button class="button secondary" type="button" data-step-prev>Back</button><button class="button primary" type="button" data-step-next>Next</button></div>
+  </section>
+  <section class="form-step" data-form-step="4" aria-labelledby="intake-step-4" hidden>
+    <h3 id="intake-step-4">Send enquiry</h3>
+    <div class="review-panel">
+      <strong data-review-path>Choose a support path</strong>
+      <span data-review-copy>We will route your enquiry to the right next step.</span>
+    </div>
+    <p class="form-note">If operations have stopped or data may be at risk, call <a href="tel:0364494214">$PhoneShort</a> as well as sending the form.</p>
+    <div class="form-step-actions"><button class="button secondary" type="button" data-step-prev>Back</button><button class="button primary" type="submit">Send enquiry</button></div>
+  </section>
+  <p data-form-status aria-live="polite"></p>
+</form>
+"@
+}
+
 function CommunitySection {
 @"
 <section class="section">
   <div class="section-header center reveal">
     <span class="section-kicker">Community</span>
     <h2>Active in the business community we support.</h2>
-    <p>TassieTech supports local business groups and follows recognised professional and security guidance so clients get friendly service backed by proper standards.</p>
+    <p>Local relationships, professional standards, and practical security guidance shape the work.</p>
   </div>
   <div class="logo-cloud reveal">
     <article class="logo-pill"><strong>KaLIBA</strong><span>A Kentish and Latrobe business network that keeps us connected with local operators, events, and regional priorities.</span></article>
@@ -268,16 +352,10 @@ function CtaPanel {
       <p>$Text</p>
     </div>
     <div class="intent-cta-grid" aria-label="Choose the right next step">
-      <a class="intent-cta" href="{{root}}contact/?intent=business-support"><strong>Get business support</strong><small>Managed IT, Microsoft 365, devices, accounts, networks, and helpdesk support.</small></a>
-      <a class="intent-cta" href="{{root}}contact/?intent=personal"><strong>Get personal tech help</strong><small>Home devices, email, passwords, scam recovery, and everyday technology support.</small></a>
-      <a class="intent-cta urgent" href="{{root}}contact/?intent=urgent"><strong>Report an urgent issue</strong><small>Outages, suspected compromise, data loss risk, or operations stopped.</small></a>
-      <a class="intent-cta" href="{{root}}contact/?intent=project"><strong>Plan an IT project</strong><small>Websites, migrations, networks, cloud, software, and planned upgrades.</small></a>
-    </div>
-    <div class="cta-proof-grid" aria-label="TassieTech proof points">
-      <div><strong>Client outcomes</strong><span>Cleaner accounts, fewer repeat issues, safer backups, and systems staff can actually use.</span></div>
-      <div><strong>Response example</strong><span>Urgent outages are triaged separately from routine requests so the first action is clearer.</span></div>
-      <div><strong>Before and after</strong><span>We turn scattered devices, passwords, files, and support habits into a practical operating rhythm.</span></div>
-      <div><strong>Tasmania covered</strong><span>North West based with remote support across Tasmanian towns and city hubs.</span></div>
+      <a class="intent-cta" href="{{root}}contact/?intent=business-support"><strong>Business support</strong></a>
+      <a class="intent-cta" href="{{root}}contact/?intent=personal"><strong>Personal tech help</strong></a>
+      <a class="intent-cta urgent" href="{{root}}contact/?intent=urgent"><strong>Urgent issue</strong></a>
+      <a class="intent-cta" href="{{root}}contact/?intent=project"><strong>Plan a project</strong></a>
     </div>
   </div>
 </section>
@@ -419,13 +497,13 @@ function Get-IndividualServiceCards {
 <section class="section">
   <div class="section-header center reveal">
     <span class="section-kicker">Individual support</span>
-    <h2>Relevant IT help for personal technology issues.</h2>
-    <p>Start with the path that best fits what is happening. We will keep the advice practical and explain the next step clearly.</p>
+    <h2>Choose the personal IT help you need.</h2>
+    <p>Clear support for home devices, accounts, scams, internet issues, and everyday technology problems.</p>
   </div>
   <div class="grid three service-link-grid">
-    <a class="card lift reveal" href="{{root}}individuals/"><h3>General IT Support</h3><p>Computer, laptop, email, Wi-Fi, router, software, account, and everyday technology help.</p></a>
-    <a class="card lift reveal" href="{{root}}scam-recovery/"><h3>Scam Recovery</h3><p>Practical help to secure accounts, devices, personal information, and confidence after a scam.</p></a>
-    <a class="card lift reveal" href="{{root}}contact/?intent=personal"><h3>Speak to a Local IT Expert</h3><p>Tell us what is happening and we will help you choose the safest next step.</p></a>
+    <a class="card lift reveal" href="{{root}}individuals/"><h3>General IT Support</h3><p>Computers, laptops, email, Wi-Fi, routers, software, and accounts.</p></a>
+    <a class="card lift reveal" href="{{root}}scam-recovery/"><h3>Scam Recovery</h3><p>Secure accounts, devices, personal information, and confidence after a scam.</p></a>
+    <a class="card lift reveal" href="{{root}}contact/?intent=personal"><h3>Speak to a Local IT Expert</h3><p>Send the issue and we will point you to the safest next step.</p></a>
   </div>
 </section>
 "@
@@ -436,8 +514,8 @@ function Get-HighIntentServiceCards {
 <section class="section">
   <div class="section-header center reveal">
     <span class="section-kicker">Focused services</span>
-    <h2>High-intent support for the systems Tasmanian teams search for.</h2>
-    <p>These pages explain the work behind common search terms and give visitors a direct path into the right enquiry.</p>
+    <h2>Focused support for common business IT needs.</h2>
+    <p>Choose the service page that matches the system or risk you want to improve.</p>
   </div>
   <div class="grid three service-link-grid">
     <a class="card lift reveal" href="{{root}}managed-it-support-tasmania/"><h3>Managed IT Support</h3><p>Helpdesk, monitoring, device management, procurement, and practical support for daily work.</p></a>
@@ -518,32 +596,32 @@ function AreasGrid {
   <div class="section-header center reveal">
     <span class="section-kicker">Areas we serve</span>
     <h2>Local IT support across Tasmania's North West and beyond.</h2>
-    <p>We support Tasmanian teams through city hubs in Burnie, Devonport, Launceston, and Hobart, with town coverage from Smithton, Wynyard, Penguin, Queenstown, Zeehan, Ulverstone, Latrobe, Port Sorell, Sheffield, Deloraine, George Town, Perth, Campbell Town, St Helens, New Norfolk, Sorell, Kingston, Huonville, and nearby communities.</p>
+    <p>Choose a town page or ask us about support in your area.</p>
   </div>
-  <div class="grid four">
-    <a class="card lift reveal" href="{{root}}it-services-for-burnie/"><h3>Burnie</h3><p>Reliable technology support for busy local businesses.</p></a>
-    <a class="card lift reveal" href="{{root}}it-services-for-wynyard/"><h3>Wynyard</h3><p>North West support for coastal businesses, offices, and community teams.</p></a>
-    <a class="card lift reveal" href="{{root}}it-services-for-smithton/"><h3>Smithton</h3><p>Practical remote-first support with onsite options for Circular Head teams.</p></a>
-    <a class="card lift reveal" href="{{root}}it-services-for-penguin/"><h3>Penguin</h3><p>North West support for local businesses between Burnie and Devonport.</p></a>
-    <a class="card lift reveal" href="{{root}}it-services-for-queenstown/"><h3>Queenstown</h3><p>West Coast support for remote teams that need reliable systems.</p></a>
-    <a class="card lift reveal" href="{{root}}it-services-for-zeehan/"><h3>Zeehan</h3><p>Remote-first support for West Coast teams with practical systems and security help.</p></a>
-    <a class="card lift reveal" href="{{root}}it-services-for-devonport/"><h3>Devonport</h3><p>Business IT support, Microsoft 365, security, websites, and networks.</p></a>
-    <a class="card lift reveal" href="{{root}}it-services-for-latrobe/"><h3>Latrobe</h3><p>Friendly local support close to TassieTech's home base.</p></a>
-    <a class="card lift reveal" href="{{root}}it-services-for-ulverstone/"><h3>Ulverstone</h3><p>Managed support, cyber security, and practical technology projects.</p></a>
-    <a class="card lift reveal" href="{{root}}it-services-for-port-sorell/"><h3>Port Sorell</h3><p>Local support for growing coastal businesses and organisations.</p></a>
-    <a class="card lift reveal" href="{{root}}it-services-for-sheffield/"><h3>Sheffield</h3><p>Dependable technology help for small business and community teams.</p></a>
-    <a class="card lift reveal" href="{{root}}it-services-for-launceston/"><h3>Launceston</h3><p>Statewide remote support for business systems, security, and cloud work.</p></a>
-    <a class="card lift reveal" href="{{root}}it-services-for-deloraine/"><h3>Deloraine</h3><p>Clear IT advice and responsive support for regional teams.</p></a>
-    <a class="card lift reveal" href="{{root}}it-services-for-george-town/"><h3>George Town</h3><p>Remote support for Tamar Valley teams connected through Launceston.</p></a>
-    <a class="card lift reveal" href="{{root}}it-services-for-perth/"><h3>Perth</h3><p>Launceston-linked support for business systems, security, and cloud.</p></a>
-    <a class="card lift reveal" href="{{root}}it-services-for-campbell-town/"><h3>Campbell Town</h3><p>Midlands support for teams between Launceston and Hobart.</p></a>
-    <a class="card lift reveal" href="{{root}}it-services-for-st-helens/"><h3>St Helens</h3><p>East Coast remote support for business continuity, cloud tools, and security.</p></a>
-    <a class="card lift reveal" href="{{root}}it-services-for-hobart/"><h3>Hobart</h3><p>Remote support and project advice for southern Tasmanian organisations.</p></a>
-    <a class="card lift reveal" href="{{root}}it-services-for-new-norfolk/"><h3>New Norfolk</h3><p>Southern support for businesses working around the Derwent Valley.</p></a>
-    <a class="card lift reveal" href="{{root}}it-services-for-sorell/"><h3>Sorell</h3><p>Remote support for south-east Tasmanian teams near Hobart.</p></a>
-    <a class="card lift reveal" href="{{root}}it-services-for-kingston/"><h3>Kingston</h3><p>Hobart-linked support for growing southern Tasmanian businesses.</p></a>
-    <a class="card lift reveal" href="{{root}}it-services-for-huonville/"><h3>Huonville</h3><p>Remote support for Huon Valley organisations and local teams.</p></a>
-    <a class="card lift reveal" href="{{root}}it-services-tasmania/"><h3>All Tasmania</h3><p>Remote and onsite options for broader Tasmanian needs.</p></a>
+  <div class="service-path-grid area-link-grid reveal" aria-label="Tasmanian IT service area links">
+    <a href="{{root}}it-services-for-burnie/">Burnie</a>
+    <a href="{{root}}it-services-for-wynyard/">Wynyard</a>
+    <a href="{{root}}it-services-for-smithton/">Smithton</a>
+    <a href="{{root}}it-services-for-penguin/">Penguin</a>
+    <a href="{{root}}it-services-for-queenstown/">Queenstown</a>
+    <a href="{{root}}it-services-for-zeehan/">Zeehan</a>
+    <a href="{{root}}it-services-for-devonport/">Devonport</a>
+    <a href="{{root}}it-services-for-latrobe/">Latrobe</a>
+    <a href="{{root}}it-services-for-ulverstone/">Ulverstone</a>
+    <a href="{{root}}it-services-for-port-sorell/">Port Sorell</a>
+    <a href="{{root}}it-services-for-sheffield/">Sheffield</a>
+    <a href="{{root}}it-services-for-launceston/">Launceston</a>
+    <a href="{{root}}it-services-for-deloraine/">Deloraine</a>
+    <a href="{{root}}it-services-for-george-town/">George Town</a>
+    <a href="{{root}}it-services-for-perth/">Perth</a>
+    <a href="{{root}}it-services-for-campbell-town/">Campbell Town</a>
+    <a href="{{root}}it-services-for-st-helens/">St Helens</a>
+    <a href="{{root}}it-services-for-hobart/">Hobart</a>
+    <a href="{{root}}it-services-for-new-norfolk/">New Norfolk</a>
+    <a href="{{root}}it-services-for-sorell/">Sorell</a>
+    <a href="{{root}}it-services-for-kingston/">Kingston</a>
+    <a href="{{root}}it-services-for-huonville/">Huonville</a>
+    <a href="{{root}}it-services-tasmania/">All Tasmania</a>
   </div>
 </section>
 "@
@@ -552,55 +630,41 @@ function AreasGrid {
 function ClientProofSection {
 @"
 <section class="client-proof" id="tasmania-businesses" aria-labelledby="tasmania-proof-heading">
-  <div class="section client-proof-grid">
-    <div class="client-proof-copy reveal">
-      <span class="section-kicker">Serving businesses across Tasmania</span>
-      <h2 id="tasmania-proof-heading">IT support across Tasmania for local teams and larger clients.</h2>
-      <p>We support organisations through a North West base, planned onsite work where it makes sense, and remote support across Tasmania. The aim is simple: reliable help for the systems businesses depend on, without making coverage sound bigger or messier than it needs to be.</p>
-      <div class="proof-metrics" aria-label="TassieTech service coverage highlights">
-        <div><strong>North West based</strong><span>Onsite support where proximity matters.</span></div>
-        <div><strong>Statewide remote</strong><span>Responsive help for Tasmanian teams beyond our local roads.</span></div>
-        <div><strong>Business ready</strong><span>Security, continuity, and clear advice built into the work.</span></div>
-      </div>
-      <div class="coverage-model" aria-label="Tasmania service coverage model">
-        <a class="coverage-hub" href="{{root}}it-services-for-devonport/"><strong>North West</strong><span>Local onsite strength around our home region and nearby business communities.</span></a>
-        <a class="coverage-hub" href="{{root}}it-services-for-launceston/"><strong>North and Midlands</strong><span>Launceston-linked support for cloud, security, websites, and business systems.</span></a>
-        <a class="coverage-hub" href="{{root}}it-services-for-hobart/"><strong>South</strong><span>Remote support and project advice for southern Tasmanian organisations.</span></a>
-        <a class="coverage-hub" href="{{root}}it-services-tasmania/"><strong>Statewide remote</strong><span>A broader support path for teams outside our regular onsite routes.</span></a>
-      </div>
-      <a class="text-link" href="{{root}}areas-we-serve/">View every service area</a>
+  <div class="section">
+    <div class="section-header center reveal">
+      <span class="section-kicker">Client proof</span>
+      <h2 id="tasmania-proof-heading">Trusted by Tasmanian organisations and larger teams.</h2>
+      <p>Local clients, community organisations, retailers, and larger support environments rely on TassieTech for practical technology help.</p>
     </div>
     <div class="client-proof-stage reveal" aria-label="Local and larger client proof">
-      <div class="client-row-header">
-        <span>Some of our local clients</span>
-        <a href="{{root}}areas-we-serve/">View service range</a>
+      <div class="client-logo-grid local-clients" aria-label="Some local TassieTech clients">
+        <figure><img src="{{root}}assets/img/clients/bridgepro-engineering.png" alt="BridgePro Engineering website preview" loading="lazy" decoding="async"></figure>
+        <figure><img src="{{root}}assets/img/clients/anvers-tasmania.png" alt="Anvers Tasmania website preview" loading="lazy" decoding="async"></figure>
+        <figure><img src="{{root}}assets/img/clients/choice-support-plus.png" alt="Choice Support Plus website preview" loading="lazy" decoding="async"></figure>
+        <figure><img src="{{root}}assets/img/clients/resolve-physio.png" alt="Resolve Physio website preview" loading="lazy" decoding="async"></figure>
+        <figure><img src="{{root}}assets/img/clients/billing-cranes.png" alt="Billing Cranes website preview" loading="lazy" decoding="async"></figure>
+        <figure><img src="{{root}}assets/img/clients/lighthouse.png" alt="Lighthouse website preview" loading="lazy" decoding="async"></figure>
+        <figure><img src="{{root}}assets/img/clients/blank-designs.png" alt="bl_nk designs website preview" loading="lazy" decoding="async"></figure>
+        <figure><img src="{{root}}assets/img/clients/integrate-workforce.png" alt="Integrate Workforce website preview" loading="lazy" decoding="async"></figure>
+        <figure><img src="{{root}}assets/img/clients/nova-design-print.png" alt="Nova Design and Print website preview" loading="lazy" decoding="async"></figure>
+        <figure><img src="{{root}}assets/img/clients/jag-digitising.png" alt="JAG Digitising website preview" loading="lazy" decoding="async"></figure>
+        <figure><img src="{{root}}assets/img/clients/lemonthyme-wilderness-retreat.png" alt="Lemonthyme Wilderness Retreat website preview" loading="lazy" decoding="async"></figure>
+        <figure><img src="{{root}}assets/img/clients/rhuby-delights.png" alt="Rhuby Delights website preview" loading="lazy" decoding="async"></figure>
+        <figure class="client-name-card"><span>Elite Disability Care</span></figure>
       </div>
-      <div class="client-logo-grid local-clients">
-        <figure><img src="{{root}}assets/img/clients/bridgepro-engineering.png" alt="BridgePro Engineering website preview" loading="lazy" decoding="async"><figcaption>BridgePro Engineering</figcaption></figure>
-        <figure><img src="{{root}}assets/img/clients/anvers-tasmania.png" alt="Anvers Tasmania website preview" loading="lazy" decoding="async"><figcaption>Anvers Tasmania</figcaption></figure>
-        <figure><img src="{{root}}assets/img/clients/choice-support-plus.png" alt="Choice Support Plus website preview" loading="lazy" decoding="async"><figcaption>Choice Support Plus</figcaption></figure>
-        <figure><img src="{{root}}assets/img/clients/resolve-physio.png" alt="Resolve Physio website preview" loading="lazy" decoding="async"><figcaption>Resolve Physio</figcaption></figure>
-        <figure><img src="{{root}}assets/img/clients/billing-cranes.png" alt="Billing Cranes website preview" loading="lazy" decoding="async"><figcaption>Billing Cranes</figcaption></figure>
-        <figure><img src="{{root}}assets/img/clients/lighthouse.png" alt="Lighthouse website preview" loading="lazy" decoding="async"><figcaption>Lighthouse</figcaption></figure>
-        <figure><img src="{{root}}assets/img/clients/blank-designs.png" alt="bl_nk designs website preview" loading="lazy" decoding="async"><figcaption>bl_nk designs</figcaption></figure>
-        <figure><img src="{{root}}assets/img/clients/integrate-workforce.png" alt="Integrate Workforce website preview" loading="lazy" decoding="async"><figcaption>Integrate Workforce</figcaption></figure>
-        <figure><img src="{{root}}assets/img/clients/nova-design-print.png" alt="Nova Design and Print website preview" loading="lazy" decoding="async"><figcaption>Nova Design and Print</figcaption></figure>
-        <figure><img src="{{root}}assets/img/clients/jag-digitising.png" alt="JAG Digitising website preview" loading="lazy" decoding="async"><figcaption>JAG Digitising</figcaption></figure>
-        <figure><img src="{{root}}assets/img/clients/lemonthyme-wilderness-retreat.png" alt="Lemonthyme Wilderness Retreat website preview" loading="lazy" decoding="async"><figcaption>Lemonthyme Wilderness Retreat</figcaption></figure>
-        <figure><img src="{{root}}assets/img/clients/rhuby-delights.png" alt="Rhuby Delights website preview" loading="lazy" decoding="async"><figcaption>Rhuby Delights</figcaption></figure>
+      <div class="brand-logo-strip" aria-label="Some larger clients TassieTech services">
+        <figure><img src="{{root}}assets/img/clients/coles.png" alt="Coles logo" loading="lazy" decoding="async"></figure>
+        <figure><img src="{{root}}assets/img/clients/woolworths.png" alt="Woolworths logo" loading="lazy" decoding="async"></figure>
+        <figure><img src="{{root}}assets/img/clients/bws.png" alt="BWS logo" loading="lazy" decoding="async"></figure>
+        <figure><img src="{{root}}assets/img/clients/europcar.png" alt="Europcar logo" loading="lazy" decoding="async"></figure>
+        <figure><img src="{{root}}assets/img/clients/harvey-norman.png" alt="Harvey Norman logo" loading="lazy" decoding="async"></figure>
+        <figure><img src="{{root}}assets/img/clients/kmart.png" alt="Kmart logo" loading="lazy" decoding="async"></figure>
+        <figure><img src="{{root}}assets/img/clients/liquorland.png" alt="Liquorland logo" loading="lazy" decoding="async"></figure>
+        <figure><img src="{{root}}assets/img/clients/cba.png" alt="Commonwealth Bank logo" loading="lazy" decoding="async"></figure>
       </div>
-      <div class="brand-experience">
-        <span>Some of the larger clients we service</span>
-        <div class="brand-logo-strip">
-          <figure><img src="{{root}}assets/img/clients/coles.png" alt="Coles logo" loading="lazy" decoding="async"><figcaption>Coles</figcaption></figure>
-          <figure><img src="{{root}}assets/img/clients/woolworths.png" alt="Woolworths logo" loading="lazy" decoding="async"><figcaption>Woolworths</figcaption></figure>
-          <figure><img src="{{root}}assets/img/clients/bws.png" alt="BWS logo" loading="lazy" decoding="async"><figcaption>BWS</figcaption></figure>
-          <figure><img src="{{root}}assets/img/clients/europcar.png" alt="Europcar logo" loading="lazy" decoding="async"><figcaption>Europcar</figcaption></figure>
-          <figure><img src="{{root}}assets/img/clients/harvey-norman.png" alt="Harvey Norman logo" loading="lazy" decoding="async"><figcaption>Harvey Norman</figcaption></figure>
-          <figure><img src="{{root}}assets/img/clients/kmart.png" alt="Kmart logo" loading="lazy" decoding="async"><figcaption>Kmart</figcaption></figure>
-          <figure><img src="{{root}}assets/img/clients/liquorland.png" alt="Liquorland logo" loading="lazy" decoding="async"><figcaption>Liquorland</figcaption></figure>
-          <figure><img src="{{root}}assets/img/clients/cba.png" alt="Commonwealth Bank logo" loading="lazy" decoding="async"><figcaption>CBA</figcaption></figure>
-        </div>
+      <div class="client-proof-actions">
+        <a class="button secondary" href="{{root}}areas-we-serve/">View service areas</a>
+        <a class="button primary" href="{{root}}contact/?intent=business-support">Get business support</a>
       </div>
     </div>
   </div>
@@ -1124,43 +1188,12 @@ $HighIntentServices = @(
 )
 
 $homeContent = @"
-$(HomeTriageSection)
 $(ServiceCards)
 $(ClientProofSection)
-$(WhyTassieTech)
 $(GoogleMapSection "Visit TassieTech's Latrobe base by appointment." "From our North West base, we support local onsite work where it makes sense and remote IT support across Tasmania.")
-<section class="section">
-  <div class="section-header center reveal">
-    <span class="section-kicker">Fast health check</span>
-    <h2>How exposed is your Tasmanian business IT right now?</h2>
-    <p>Tick what applies. This is not a formal audit, but it shows where a local review may save time, risk, and money.</p>
-  </div>
-  <div class="grid two">
-    <div class="card reveal" data-risk-check>
-      <div class="risk-check">
-        <label class="risk-option"><input type="checkbox" value="25"><span>We do not have reliable, tested backups for important data.</span></label>
-        <label class="risk-option"><input type="checkbox" value="20"><span>Staff ask the same IT questions or work around recurring issues.</span></label>
-        <label class="risk-option"><input type="checkbox" value="20"><span>Microsoft 365, email, or accounts are not managed centrally.</span></label>
-        <label class="risk-option"><input type="checkbox" value="20"><span>We are unsure whether every device is patched and protected.</span></label>
-        <label class="risk-option"><input type="checkbox" value="15"><span>We rely on one person who knows how everything is set up.</span></label>
-        <div class="risk-result"><strong data-risk-score>0%</strong><p data-risk-message></p></div>
-      </div>
-    </div>
-    <div class="card reveal">
-      <span class="icon">$(Get-Icon secure)</span>
-      <h3>Turn uncertainty into a practical plan.</h3>
-      <p>We can review your setup, explain the risks in normal language, and prioritise the fixes that actually matter. No scare tactics, no over-selling, just a clear path forward.</p>
-      <div class="button-row">
-        <a class="button primary" href="{{root}}contact/?intent=business-support">Book a Tasmanian IT Health Check</a>
-        <a class="button secondary" href="{{root}}services/">Explore services</a>
-      </div>
-    </div>
-  </div>
-</section>
-$(HomeRecommendationsSection)
+$(WhyTassieTech)
 $(CommunitySection)
-$(HomeTrustSection)
-$(CtaPanel "Choose the right TassieTech support path" "Whether you need managed IT, urgent help, personal IT support, or a smarter way to grow, you can speak directly with a Tasmanian team.")
+$(CtaPanel "Speak with a Tasmanian IT Expert" "Choose the right support path or call the Latrobe-based team.")
 "@
 
 Add-Page "" "Computer Support and IT Services Tasmania | TassieTech" "Local Tasmanian IT support serving businesses across Tasmania with managed IT, cyber security, Microsoft 365, SharePoint, backups, websites, networks, and practical technology advice." "Friendly. Professional. Reliable." "IT Support in Tasmania" "Local IT experts who make technology simple for Tasmanian businesses, community organisations, and individuals." $homeContent "home" ""
@@ -1195,27 +1228,27 @@ $individualContent = @"
 <section class="section">
   <div class="section-header center reveal">
     <span class="section-kicker">General IT support</span>
-    <h2>Computer, email, internet, and security help without the run-around.</h2>
-    <p>If your device, email, Wi-Fi, router, antivirus, or software is causing stress, talk to a local technician who can explain the fix clearly.</p>
+    <h2>Computer, email, internet, and security help.</h2>
+    <p>Talk to a local technician who can explain the fix clearly.</p>
   </div>
   <div class="grid three">
-    <article class="card lift reveal"><span class="icon">$(Get-Icon help)</span><h3>Computers and laptops</h3><p>Slow devices, setup, repairs, data transfer, troubleshooting, and practical advice before you spend money.</p></article>
-    <article class="card lift reveal"><span class="icon">$(Get-Icon cloud)</span><h3>Email and accounts</h3><p>Email setup, password issues, Microsoft, Google, phone sync, and account security guidance.</p></article>
-    <article class="card lift reveal"><span class="icon">$(Get-Icon secure)</span><h3>Internet and security</h3><p>Router setup, Wi-Fi issues, malware scans, antivirus, scam checks, and safer everyday technology use.</p></article>
+    <article class="card lift reveal"><span class="icon">$(Get-Icon help)</span><h3>Computers and laptops</h3><p>Slow devices, setup, repairs, data transfer, and troubleshooting.</p></article>
+    <article class="card lift reveal"><span class="icon">$(Get-Icon cloud)</span><h3>Email and accounts</h3><p>Email setup, password issues, phone sync, and account security.</p></article>
+    <article class="card lift reveal"><span class="icon">$(Get-Icon secure)</span><h3>Internet and security</h3><p>Router setup, Wi-Fi issues, malware checks, scams, and safer use.</p></article>
   </div>
 </section>
 <section class="feature-band alt">
   <div class="section">
     <div class="grid two">
-      <div class="reveal"><span class="section-kicker">No fix, no fee</span><h2>Honest local IT help for individuals.</h2><p>We aim to solve problems quickly and respectfully. You will understand what is happening, what it costs, and what choices you have.</p></div>
-      <div class="card reveal"><h3>Why people choose TassieTech</h3><ul><li>98%+ solve rate across IT fields.</li><li>Friendly technicians who explain things clearly.</li><li>Local team, not a mainland call centre.</li><li>Business-grade experience applied to everyday tech problems.</li></ul></div>
+      <div class="reveal"><span class="section-kicker">No fix, no fee</span><h2>Honest local IT help for individuals.</h2><p>Clear options, respectful support, and practical advice before you spend money.</p><div class="button-row"><a class="button primary" href="{{root}}contact/?intent=personal">Speak to a Local IT Expert</a></div></div>
+      <div class="card reveal"><h3>Why people choose TassieTech</h3><ul><li>98%+ solve rate across IT fields.</li><li>Friendly local technicians.</li><li>Plain-language advice.</li><li>Business-grade experience for everyday problems.</li></ul></div>
     </div>
   </div>
 </section>
 $(Get-IndividualServiceCards)
 $(CtaPanel "Speak to a Local IT Expert" "Call TassieTech today or send a quick message and we will point you in the right direction.")
 "@
-Add-Page "individuals" "General IT Support Tasmania | TassieTech Individuals" "Computer repairs, laptop help, email setup, internet and router support, antivirus, malware scans, and friendly local IT support in Tasmania." "For individuals" "Looking for IT &amp; Tech Experts in Tasmania?" "Call TassieTech for friendly, local support with computers, laptops, email, internet, security, and everyday technology problems." $individualContent "individuals"
+Add-Page "individuals" "General IT Support Tasmania | TassieTech Individuals" "Computer repairs, laptop help, email setup, internet and router support, antivirus, malware scans, and friendly local IT support in Tasmania." "For individuals" "Honest local IT help for individuals." "Call TassieTech for friendly, local support with computers, laptops, email, internet, security, and everyday technology problems." $individualContent "individuals"
 
 $scamContent = @"
 <section class="section">
@@ -1242,13 +1275,12 @@ Register-ServiceSchema "individuals" "General IT Support Tasmania" "Computer rep
 Register-ServiceSchema "scam-recovery" "Scam Recovery Tasmania" "Local Tasmanian scam recovery support for securing accounts, devices, personal information, and confidence after a scam." "Scam recovery support" "Tasmania"
 
 $servicesContent = @"
-$(ServiceCards)
 <section class="feature-band">
   <div class="section">
-    <div class="section-header reveal">
+    <div class="section-header center reveal">
       <span class="section-kicker">Business services</span>
-      <h2>Everything a Tasmanian business needs from IT.</h2>
-      <p>Whether you need one-off help or an ongoing managed IT partner, TassieTech supports the systems your team relies on: devices, accounts, cloud tools, websites, phones, networks, backups, and security.</p>
+      <h2>Choose your business IT path.</h2>
+      <p>Start with the support area that best matches the job.</p>
     </div>
     <div class="service-path-grid reveal" aria-label="Business IT service paths">
       <a href="{{root}}business-it-support-tasmania/">Business IT support</a>
@@ -1259,6 +1291,20 @@ $(ServiceCards)
       <a href="{{root}}wordpress-care-tasmania/">WordPress care</a>
       <a href="{{root}}backup-strategy-tasmania/">Backup strategy</a>
       <a href="{{root}}emergency-response/">Emergency response</a>
+    </div>
+  </div>
+</section>
+$(ServiceCards)
+<section class="section tight">
+  <div class="grid two">
+    <div class="rich-text reveal">
+      <span class="section-kicker">Support model</span>
+      <h2>Get Tasmanian business IT under control.</h2>
+      <p>Choose focused help or a managed partnership. We can support your team, cloud systems, websites, phones, network, and security posture.</p>
+    </div>
+    <div class="card reveal">
+      <h3>Best first steps</h3>
+      <ul><li>Book a business IT health check.</li><li>Review Microsoft 365 and account security.</li><li>Confirm backups can actually restore.</li><li>Prioritise recurring support issues.</li></ul>
     </div>
   </div>
 </section>
@@ -1378,8 +1424,14 @@ $areasContent = @"
   <div class="reveal">
     <span class="section-kicker">Local coverage</span>
     <h2>Onsite and Remote IT Support for Tasmanians</h2>
-    <p>From our Latrobe base, TassieTech supports Tasmanian businesses and individuals with remote IT help across the state and planned onsite visits where practical. If you are in Burnie, Devonport, Launceston, Hobart, or a regional town nearby, we can help you work out the best support option.</p>
-    <div class="button-row"><a class="button primary" href="{{root}}contact/">Ask about your area</a></div>
+    <ul class="coverage-bullet-list">
+      <li>Latrobe and North West based.</li>
+      <li>Remote IT support across Tasmania.</li>
+      <li>Planned onsite visits where practical.</li>
+      <li>Support for businesses and individuals.</li>
+      <li>Service pages for key Tasmanian towns.</li>
+    </ul>
+    <div class="button-row"><a class="button primary" href="{{root}}contact/">Ask about your area</a><a class="button secondary" href="{{root}}contact/?intent=business-support">Get business support</a></div>
   </div>
 </section>
 $(GoogleMapSection "TassieTech's Tasmanian service base." "Our Latrobe location anchors local North West onsite support and statewide remote IT support for Tasmanian businesses and individuals.")
@@ -1431,7 +1483,6 @@ foreach ($town in $towns) {
       <span class="section-kicker">$($town.Name) IT support</span>
       <h2>Business IT support built around $($town.Name) teams.</h2>
       <p>$($town.Note) Our mission is to help local teams simplify operations, improve security, and stay productive.</p>
-      <p>From business software and hardware support through to websites, cloud services, custom software, network support, phone systems, and practical technology advice, TassieTech helps local businesses move forward with confidence.</p>
     </div>
     <div class="card reveal">
       <h2>Services in $($town.Name)</h2>
@@ -1451,7 +1502,6 @@ foreach ($town in $towns) {
     <a href="{{root}}scam-recovery/">Scam recovery</a>
   </div>
 </section>
-$(ServiceCards)
 $(FaqSection $townFaqs)
 $(CtaPanel "We would love to work with your $($town.Name) team." "Contact TassieTech to discover how local technology support can make work easier, safer, and more reliable.")
 "@
@@ -1490,50 +1540,7 @@ $contactContent = @"
       <div class="contact-method"><div><strong>Office</strong><span>$Address<br>By appointment only</span></div></div>
       <div class="contact-method"><div><strong>Hours</strong><span>Monday to Friday, 9am to 5pm<br>Saturday and Sunday closed</span></div></div>
     </div>
-    <form class="form-card reveal" data-contact-form method="post" action="{{root}}contact-submit.php" accept-charset="UTF-8">
-      <div class="honeypot-field" aria-hidden="true"><label for="website">Website</label><input id="website" name="website" tabindex="-1" autocomplete="off"></div>
-      <input type="hidden" name="formStartedAt" data-form-started-at>
-      <input type="hidden" name="intent" data-contact-intent>
-      <div class="field"><label for="name">Name*</label><input id="name" name="name" required autocomplete="name"></div>
-      <div class="field"><label for="email">Email*</label><input id="email" name="email" type="email" required autocomplete="email"></div>
-      <fieldset class="field option-field">
-        <legend>Is this for an individual or a business?*</legend>
-        <div class="choice-grid">
-          <label class="choice-card"><input type="radio" name="submissionType" value="individual" required><span><strong>Individual</strong><small>Personal device, account, scam, or home technology help.</small></span></label>
-          <label class="choice-card"><input type="radio" name="submissionType" value="business" required><span><strong>Business</strong><small>Support, managed IT, projects, websites, networks, or security.</small></span></label>
-        </div>
-      </fieldset>
-      <div class="conditional-group" data-contact-section="individual" hidden>
-        <div class="field"><label for="individualIssue">Outline of the issue*</label><textarea id="individualIssue" name="individualIssue" placeholder="What is happening, when did it start, and what have you already tried?" data-conditional-required></textarea></div>
-      </div>
-      <div class="conditional-group" data-contact-section="business" hidden>
-        <div class="field"><label for="businessName">Business name*</label><input id="businessName" name="businessName" autocomplete="organization" data-conditional-required></div>
-        <fieldset class="field option-field">
-          <legend>Is this a project or a support request?*</legend>
-          <div class="choice-grid">
-            <label class="choice-card"><input type="radio" name="businessRequestType" value="project" data-conditional-required><span><strong>Project</strong><small>New system, website, migration, upgrade, software, or planned work.</small></span></label>
-            <label class="choice-card"><input type="radio" name="businessRequestType" value="support" data-conditional-required><span><strong>Support request</strong><small>An issue, outage, account problem, device fault, or security concern.</small></span></label>
-          </div>
-        </fieldset>
-      </div>
-      <div class="conditional-group" data-contact-section="business-project" hidden>
-        <div class="field"><label for="budgetRange">Budget range*</label><select id="budgetRange" name="budgetRange" data-conditional-required><option value="">Select a range</option><option>Under &#36;2,500</option><option>&#36;2,500 - &#36;7,500</option><option>&#36;7,500 - &#36;15,000</option><option>&#36;15,000 - &#36;30,000</option><option>&#36;30,000+</option><option>Not sure yet</option></select></div>
-        <div class="field"><label for="projectOverview">Project overview*</label><textarea id="projectOverview" name="projectOverview" placeholder="What are you trying to build, improve, migrate, or fix? Include timing if there is a deadline." data-conditional-required></textarea></div>
-      </div>
-      <div class="conditional-group" data-contact-section="business-support" hidden>
-        <div class="field"><label for="supportIssue">Outline of the issue*</label><textarea id="supportIssue" name="supportIssue" placeholder="What is affected, how many people are impacted, and when did it start?" data-conditional-required></textarea></div>
-        <fieldset class="field option-field urgency-field">
-          <legend>Urgency*</legend>
-          <div class="choice-grid urgency-grid">
-            <label class="choice-card"><input type="radio" name="urgency" value="critical" data-conditional-required><span><strong>Critical</strong><small>Business-wide outage, suspected compromise, data loss risk, or operations stopped.</small></span></label>
-            <label class="choice-card"><input type="radio" name="urgency" value="high" data-conditional-required><span><strong>High</strong><small>Multiple people affected or a key workflow blocked, but the business can still operate.</small></span></label>
-            <label class="choice-card"><input type="radio" name="urgency" value="standard" data-conditional-required><span><strong>Standard</strong><small>Single-user issue, planned change, question, or non-urgent support request.</small></span></label>
-          </div>
-        </fieldset>
-      </div>
-      <button class="button primary" type="submit">Send enquiry</button>
-      <p data-form-status aria-live="polite"></p>
-    </form>
+    $(IntakeForm "" "Tell us what you need and the form will collect the right details.")
   </div>
 </section>
 <section class="section tight">
@@ -1543,9 +1550,9 @@ $contactContent = @"
       <h2>We route your enquiry by urgency and intent.</h2>
     </div>
     <div class="next-step-grid">
-      <article><strong>Business support</strong><span>We check impact, affected users, and whether the request is critical, high, or standard before assigning the next action.</span></article>
-      <article><strong>Projects</strong><span>We review scope, budget range, timing, and the systems involved before suggesting a discovery call or practical first step.</span></article>
-      <article><strong>Critical issues</strong><span>If operations have stopped, data may be at risk, or there is a suspected compromise, call $Phone first so we can triage faster.</span></article>
+      <article><strong>Business support</strong><span>We check impact, users affected, and urgency.</span></article>
+      <article><strong>Projects</strong><span>We review scope, timing, systems, and budget range.</span></article>
+      <article><strong>Critical issues</strong><span>If operations have stopped, call $Phone first.</span></article>
     </div>
   </div>
 </section>
@@ -1669,6 +1676,7 @@ function Render-Layout {
   $robotsMeta = if ($Page.NoIndex) { '<meta name="robots" content="noindex, follow">' } else { "" }
   $structuredData = (@(Get-ArticleSchema $Page; Get-HomeSchema $Page; Get-ServiceSchema $Page; Get-FaqSchema $Page) | Where-Object { -not [string]::IsNullOrWhiteSpace($_) }) -join "`n  "
   $heroActions = Get-HeroActions $Page $prefix
+  $heroPanel = (IntakeForm "hero-intake-panel" "" "What do you need help with?").Replace("{{root}}", $prefix)
 
   $navItems = @(
     @{Label="Businesses"; Href="services/"; Key="services"},
@@ -1753,18 +1761,12 @@ function Render-Layout {
             $heroActions
           </div>
           <div class="hero-proof" aria-label="TassieTech strengths">
-            <span>Tasmanian team</span>
             <span>North West based</span>
-            <span>Security-first advice</span>
+            <span>Statewide remote support</span>
+            <span>Security-led advice</span>
           </div>
         </div>
-        <div class="hero-panel hero-intent-panel reveal in-view" aria-label="Choose the right contact path">
-          <span class="hero-panel-kicker">Choose what you need</span>
-          <a class="hero-intent-card" href="${prefix}contact/?intent=business-support"><div><strong>Get business support</strong><span>Devices, accounts, Microsoft 365, networks, and day-to-day issues.</span></div><b>Support</b></a>
-          <a class="hero-intent-card" href="${prefix}contact/?intent=personal"><div><strong>Get personal tech help</strong><span>Computers, email, internet, scams, passwords, and everyday device issues.</span></div><b>Personal</b></a>
-          <a class="hero-intent-card" href="${prefix}contact/?intent=project"><div><strong>Plan an IT project</strong><span>Websites, migrations, backups, cloud, security, and systems improvements.</span></div><b>Project</b></a>
-          <a class="hero-intent-card urgent" href="${prefix}contact/?intent=urgent"><div><strong>Report an urgent issue</strong><span>Outages, suspected compromise, data loss risk, or operations stopped.</span></div><b>Urgent</b></a>
-        </div>
+        $heroPanel
       </div>
     </section>
     $content

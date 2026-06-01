@@ -78,42 +78,80 @@
   const year = document.querySelector("[data-year]");
   if (year) year.textContent = String(new Date().getFullYear());
 
-  const form = document.querySelector("[data-contact-form]");
-  if (form) {
+  document.querySelectorAll("[data-contact-form]").forEach((form) => {
     const sections = Array.from(form.querySelectorAll("[data-contact-section]"));
+    const steps = Array.from(form.querySelectorAll("[data-form-step]"));
+    const indicators = Array.from(form.querySelectorAll("[data-step-indicator]"));
     const status = form.querySelector("[data-form-status]");
     const startedAt = form.querySelector("[data-form-started-at]");
-    if (startedAt) startedAt.value = String(Date.now());
-
+    const intentField = form.querySelector("[data-contact-intent]");
+    const submissionTypeField = form.querySelector("[data-submission-type]");
+    const businessRequestTypeField = form.querySelector("[data-business-request-type]");
+    const reviewPath = form.querySelector("[data-review-path]");
+    const reviewCopy = form.querySelector("[data-review-copy]");
     const params = new URLSearchParams(window.location.search);
+    let currentStep = 0;
+
+    if (startedAt) startedAt.value = String(Date.now());
     if (status && params.get("status") === "error") {
       status.textContent = "Something went wrong. Please check the form and try again, or call us if it is urgent.";
     }
 
-    const intent = params.get("intent");
-    const intentField = form.querySelector("[data-contact-intent]");
+    const intentConfig = {
+      project: {
+        submissionType: "business",
+        businessRequestType: "project",
+        label: "Plan a project",
+        copy: "We will review scope, timing, systems, and budget range."
+      },
+      "business-support": {
+        submissionType: "business",
+        businessRequestType: "support",
+        label: "Business support",
+        copy: "We will check impact, affected users, and urgency."
+      },
+      urgent: {
+        submissionType: "business",
+        businessRequestType: "support",
+        urgency: "critical",
+        label: "Urgent issue",
+        copy: "We will treat this as time-sensitive. Call as well if operations have stopped."
+      },
+      personal: {
+        submissionType: "individual",
+        label: "Personal tech help",
+        copy: "We will review the issue and point you to the safest next step."
+      }
+    };
+
     const selectRadio = (name, value) => {
       const input = form.querySelector(`input[name="${name}"][value="${value}"]`);
       if (input) input.checked = true;
+      return input;
     };
-    const intentConfig = {
-      project: { submissionType: "business", businessRequestType: "project" },
-      "business-support": { submissionType: "business", businessRequestType: "support" },
-      urgent: { submissionType: "business", businessRequestType: "support", urgency: "critical" },
-      personal: { submissionType: "individual" }
+
+    const getChosenIntent = () => {
+      const selected = form.querySelector('input[name="intentChoice"]:checked');
+      return selected?.value || intentField?.value || "";
     };
-    if (intentField && Object.prototype.hasOwnProperty.call(intentConfig, intent)) {
-      intentField.value = intent;
+
+    const updateReview = (intent) => {
       const config = intentConfig[intent];
-      if (config.submissionType) selectRadio("submissionType", config.submissionType);
-      if (config.businessRequestType) selectRadio("businessRequestType", config.businessRequestType);
-      if (config.urgency) selectRadio("urgency", config.urgency);
-    }
+      if (reviewPath) reviewPath.textContent = config?.label || "Choose a support path";
+      if (reviewCopy) reviewCopy.textContent = config?.copy || "We will route your enquiry to the right next step.";
+    };
 
     const updateContactForm = () => {
-      const data = new FormData(form);
-      const submissionType = data.get("submissionType");
-      const businessRequestType = data.get("businessRequestType");
+      const intent = getChosenIntent();
+      const config = intentConfig[intent] || {};
+      const submissionType = config.submissionType || "";
+      const businessRequestType = config.businessRequestType || "";
+
+      if (intentField) intentField.value = intent;
+      if (submissionTypeField) submissionTypeField.value = submissionType;
+      if (businessRequestTypeField) businessRequestTypeField.value = businessRequestType;
+      if (config.urgency) selectRadio("urgency", config.urgency);
+      updateReview(intent);
 
       sections.forEach((section) => {
         const key = section.dataset.contactSection;
@@ -133,19 +171,76 @@
       });
     };
 
+    const showStep = (index) => {
+      if (!steps.length) return;
+      currentStep = Math.max(0, Math.min(index, steps.length - 1));
+      steps.forEach((step, stepIndex) => {
+        step.hidden = stepIndex !== currentStep;
+      });
+      indicators.forEach((indicator, indicatorIndex) => {
+        indicator.classList.toggle("is-active", indicatorIndex === currentStep);
+        indicator.classList.toggle("is-complete", indicatorIndex < currentStep);
+      });
+      form.dataset.currentStep = String(currentStep + 1);
+    };
+
+    const validateStep = (step) => {
+      const controls = Array.from(step.querySelectorAll("input, select, textarea"))
+        .filter((control) => !control.disabled && control.type !== "hidden");
+      const invalid = controls.find((control) => !control.checkValidity());
+      if (invalid) {
+        invalid.reportValidity();
+        return false;
+      }
+      return true;
+    };
+
+    const invalidControl = () => Array.from(form.querySelectorAll("input, select, textarea"))
+      .find((control) => !control.disabled && control.willValidate && !control.checkValidity());
+
+    const requestedIntent = params.get("intent");
+    if (Object.prototype.hasOwnProperty.call(intentConfig, requestedIntent)) {
+      selectRadio("intentChoice", requestedIntent);
+      if (intentField) intentField.value = requestedIntent;
+    }
+
     updateContactForm();
-    form.addEventListener("change", updateContactForm);
+    showStep(Object.prototype.hasOwnProperty.call(intentConfig, requestedIntent) ? 1 : 0);
+
+    form.addEventListener("change", (event) => {
+      updateContactForm();
+      if (event.target?.name === "intentChoice" && steps.length && currentStep === 0) {
+        window.setTimeout(() => showStep(1), 120);
+      }
+    });
+
+    form.querySelectorAll("[data-step-next]").forEach((button) => {
+      button.addEventListener("click", () => {
+        updateContactForm();
+        if (!steps[currentStep] || !validateStep(steps[currentStep])) return;
+        showStep(currentStep + 1);
+      });
+    });
+
+    form.querySelectorAll("[data-step-prev]").forEach((button) => {
+      button.addEventListener("click", () => showStep(currentStep - 1));
+    });
 
     form.addEventListener("submit", (event) => {
       updateContactForm();
-      if (!form.reportValidity()) {
+      const invalid = invalidControl();
+      if (invalid) {
         event.preventDefault();
+        const step = invalid.closest("[data-form-step]");
+        const stepIndex = steps.indexOf(step);
+        if (stepIndex >= 0) showStep(stepIndex);
+        window.setTimeout(() => invalid.reportValidity(), 40);
         return;
       }
 
       if (status) status.textContent = "Sending your enquiry.";
     });
-  }
+  });
 
   const riskCheck = document.querySelector("[data-risk-check]");
   if (riskCheck) {

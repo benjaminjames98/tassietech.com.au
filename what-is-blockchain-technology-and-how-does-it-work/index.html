@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en" data-theme="light">
 <head>
   <meta charset="utf-8">
@@ -66,18 +66,83 @@
             <a class="button secondary" href="../contact/?intent=urgent">Report an urgent issue</a>
           </div>
           <div class="hero-proof" aria-label="TassieTech strengths">
-            <span>Tasmanian team</span>
             <span>North West based</span>
-            <span>Security-first advice</span>
+            <span>Statewide remote support</span>
+            <span>Security-led advice</span>
           </div>
         </div>
-        <div class="hero-panel hero-intent-panel reveal in-view" aria-label="Choose the right contact path">
-          <span class="hero-panel-kicker">Choose what you need</span>
-          <a class="hero-intent-card" href="../contact/?intent=business-support"><div><strong>Get business support</strong><span>Devices, accounts, Microsoft 365, networks, and day-to-day issues.</span></div><b>Support</b></a>
-          <a class="hero-intent-card" href="../contact/?intent=personal"><div><strong>Get personal tech help</strong><span>Computers, email, internet, scams, passwords, and everyday device issues.</span></div><b>Personal</b></a>
-          <a class="hero-intent-card" href="../contact/?intent=project"><div><strong>Plan an IT project</strong><span>Websites, migrations, backups, cloud, security, and systems improvements.</span></div><b>Project</b></a>
-          <a class="hero-intent-card urgent" href="../contact/?intent=urgent"><div><strong>Report an urgent issue</strong><span>Outages, suspected compromise, data loss risk, or operations stopped.</span></div><b>Urgent</b></a>
+        <form class="form-card intake-form hero-intake-panel reveal" data-contact-form data-step-form data-current-step="1" method="post" action="../contact-submit.php" accept-charset="UTF-8">
+  <div class="honeypot-field" aria-hidden="true"><label>Website</label><input name="website" tabindex="-1" autocomplete="off"></div>
+  <input type="hidden" name="formStartedAt" data-form-started-at>
+  <input type="hidden" name="intent" data-contact-intent>
+  <input type="hidden" name="submissionType" data-submission-type>
+  <input type="hidden" name="businessRequestType" data-business-request-type>
+  <div class="form-intro">
+    <span class="section-kicker">Get IT help</span>
+    <h2>What do you need help with?</h2>
+    <p></p>
+  </div>
+  <div class="form-progress" aria-label="Form progress">
+    <span data-step-indicator="1">Need</span>
+    <span data-step-indicator="2">Details</span>
+    <span data-step-indicator="3">Issue</span>
+    <span data-step-indicator="4">Send</span>
+  </div>
+  <section class="form-step" data-form-step="1" aria-labelledby="intake-step-1">
+    <h3 id="intake-step-1">What do you need?</h3>
+    <fieldset class="field option-field">
+      <legend class="sr-only">Choose what you need help with</legend>
+      <div class="choice-grid path-choice-grid">
+        <label class="choice-card path-choice-card"><input type="radio" name="intentChoice" value="business-support" required><span><strong>Business support</strong></span></label>
+        <label class="choice-card path-choice-card"><input type="radio" name="intentChoice" value="personal" required><span><strong>Personal tech help</strong></span></label>
+        <label class="choice-card path-choice-card urgent"><input type="radio" name="intentChoice" value="urgent" required><span><strong>Urgent issue</strong></span></label>
+        <label class="choice-card path-choice-card"><input type="radio" name="intentChoice" value="project" required><span><strong>Plan a project</strong></span></label>
+      </div>
+    </fieldset>
+    <div class="form-step-actions"><button class="button primary" type="button" data-step-next>Next</button></div>
+  </section>
+  <section class="form-step" data-form-step="2" aria-labelledby="intake-step-2" hidden>
+    <h3 id="intake-step-2">Your details</h3>
+    <div class="field"><label for="name">Name*</label><input id="name" name="name" required autocomplete="name"></div>
+    <div class="field"><label for="email">Email*</label><input id="email" name="email" type="email" required autocomplete="email"></div>
+    <div class="conditional-group" data-contact-section="business" hidden>
+      <div class="field"><label for="businessName">Business name*</label><input id="businessName" name="businessName" autocomplete="organization" data-conditional-required></div>
+    </div>
+    <div class="form-step-actions"><button class="button secondary" type="button" data-step-prev>Back</button><button class="button primary" type="button" data-step-next>Next</button></div>
+  </section>
+  <section class="form-step" data-form-step="3" aria-labelledby="intake-step-3" hidden>
+    <h3 id="intake-step-3">Tell us what is happening</h3>
+    <div class="conditional-group" data-contact-section="individual" hidden>
+      <div class="field"><label for="individualIssue">Outline of the issue*</label><textarea id="individualIssue" name="individualIssue" placeholder="What is happening, when did it start, and what have you already tried?" data-conditional-required></textarea></div>
+    </div>
+    <div class="conditional-group" data-contact-section="business-project" hidden>
+      <div class="field"><label for="budgetRange">Budget range*</label><select id="budgetRange" name="budgetRange" data-conditional-required><option value="">Select a range</option><option>Under &#36;2,500</option><option>&#36;2,500 - &#36;7,500</option><option>&#36;7,500 - &#36;15,000</option><option>&#36;15,000 - &#36;30,000</option><option>&#36;30,000+</option><option>Not sure yet</option></select></div>
+      <div class="field"><label for="projectOverview">Project overview*</label><textarea id="projectOverview" name="projectOverview" placeholder="What are you trying to build, improve, migrate, or fix? Include timing if there is a deadline." data-conditional-required></textarea></div>
+    </div>
+    <div class="conditional-group" data-contact-section="business-support" hidden>
+      <div class="field"><label for="supportIssue">Outline of the issue*</label><textarea id="supportIssue" name="supportIssue" placeholder="What is affected, how many people are impacted, and when did it start?" data-conditional-required></textarea></div>
+      <fieldset class="field option-field urgency-field">
+        <legend>Urgency*</legend>
+        <div class="choice-grid urgency-grid">
+          <label class="choice-card"><input type="radio" name="urgency" value="critical" data-conditional-required><span><strong>Critical</strong><small>Operations stopped, suspected compromise, or data loss risk.</small></span></label>
+          <label class="choice-card"><input type="radio" name="urgency" value="high" data-conditional-required><span><strong>High</strong><small>Multiple people affected or a key workflow blocked.</small></span></label>
+          <label class="choice-card"><input type="radio" name="urgency" value="standard" data-conditional-required><span><strong>Standard</strong><small>Single-user issue, planned change, or non-urgent request.</small></span></label>
         </div>
+      </fieldset>
+    </div>
+    <div class="form-step-actions"><button class="button secondary" type="button" data-step-prev>Back</button><button class="button primary" type="button" data-step-next>Next</button></div>
+  </section>
+  <section class="form-step" data-form-step="4" aria-labelledby="intake-step-4" hidden>
+    <h3 id="intake-step-4">Send enquiry</h3>
+    <div class="review-panel">
+      <strong data-review-path>Choose a support path</strong>
+      <span data-review-copy>We will route your enquiry to the right next step.</span>
+    </div>
+    <p class="form-note">If operations have stopped or data may be at risk, call <a href="tel:0364494214">6449 4214</a> as well as sending the form.</p>
+    <div class="form-step-actions"><button class="button secondary" type="button" data-step-prev>Back</button><button class="button primary" type="submit">Send enquiry</button></div>
+  </section>
+  <p data-form-status aria-live="polite"></p>
+</form>
       </div>
     </section>
     <section class="section article-section">
@@ -143,16 +208,10 @@
       <p>We can help separate useful technology from noise and prioritise systems that make your business safer and easier to run.</p>
     </div>
     <div class="intent-cta-grid" aria-label="Choose the right next step">
-      <a class="intent-cta" href="../contact/?intent=business-support"><strong>Get business support</strong><small>Managed IT, Microsoft 365, devices, accounts, networks, and helpdesk support.</small></a>
-      <a class="intent-cta" href="../contact/?intent=personal"><strong>Get personal tech help</strong><small>Home devices, email, passwords, scam recovery, and everyday technology support.</small></a>
-      <a class="intent-cta urgent" href="../contact/?intent=urgent"><strong>Report an urgent issue</strong><small>Outages, suspected compromise, data loss risk, or operations stopped.</small></a>
-      <a class="intent-cta" href="../contact/?intent=project"><strong>Plan an IT project</strong><small>Websites, migrations, networks, cloud, software, and planned upgrades.</small></a>
-    </div>
-    <div class="cta-proof-grid" aria-label="TassieTech proof points">
-      <div><strong>Client outcomes</strong><span>Cleaner accounts, fewer repeat issues, safer backups, and systems staff can actually use.</span></div>
-      <div><strong>Response example</strong><span>Urgent outages are triaged separately from routine requests so the first action is clearer.</span></div>
-      <div><strong>Before and after</strong><span>We turn scattered devices, passwords, files, and support habits into a practical operating rhythm.</span></div>
-      <div><strong>Tasmania covered</strong><span>North West based with remote support across Tasmanian towns and city hubs.</span></div>
+      <a class="intent-cta" href="../contact/?intent=business-support"><strong>Business support</strong></a>
+      <a class="intent-cta" href="../contact/?intent=personal"><strong>Personal tech help</strong></a>
+      <a class="intent-cta urgent" href="../contact/?intent=urgent"><strong>Urgent issue</strong></a>
+      <a class="intent-cta" href="../contact/?intent=project"><strong>Plan a project</strong></a>
     </div>
   </div>
 </section>

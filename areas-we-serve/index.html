@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en" data-theme="light">
 <head>
   <meta charset="utf-8">
@@ -67,18 +67,83 @@
             <a class="button secondary" href="../contact/?intent=project">Plan an IT project</a>
           </div>
           <div class="hero-proof" aria-label="TassieTech strengths">
-            <span>Tasmanian team</span>
             <span>North West based</span>
-            <span>Security-first advice</span>
+            <span>Statewide remote support</span>
+            <span>Security-led advice</span>
           </div>
         </div>
-        <div class="hero-panel hero-intent-panel reveal in-view" aria-label="Choose the right contact path">
-          <span class="hero-panel-kicker">Choose what you need</span>
-          <a class="hero-intent-card" href="../contact/?intent=business-support"><div><strong>Get business support</strong><span>Devices, accounts, Microsoft 365, networks, and day-to-day issues.</span></div><b>Support</b></a>
-          <a class="hero-intent-card" href="../contact/?intent=personal"><div><strong>Get personal tech help</strong><span>Computers, email, internet, scams, passwords, and everyday device issues.</span></div><b>Personal</b></a>
-          <a class="hero-intent-card" href="../contact/?intent=project"><div><strong>Plan an IT project</strong><span>Websites, migrations, backups, cloud, security, and systems improvements.</span></div><b>Project</b></a>
-          <a class="hero-intent-card urgent" href="../contact/?intent=urgent"><div><strong>Report an urgent issue</strong><span>Outages, suspected compromise, data loss risk, or operations stopped.</span></div><b>Urgent</b></a>
+        <form class="form-card intake-form hero-intake-panel reveal" data-contact-form data-step-form data-current-step="1" method="post" action="../contact-submit.php" accept-charset="UTF-8">
+  <div class="honeypot-field" aria-hidden="true"><label>Website</label><input name="website" tabindex="-1" autocomplete="off"></div>
+  <input type="hidden" name="formStartedAt" data-form-started-at>
+  <input type="hidden" name="intent" data-contact-intent>
+  <input type="hidden" name="submissionType" data-submission-type>
+  <input type="hidden" name="businessRequestType" data-business-request-type>
+  <div class="form-intro">
+    <span class="section-kicker">Get IT help</span>
+    <h2>What do you need help with?</h2>
+    <p></p>
+  </div>
+  <div class="form-progress" aria-label="Form progress">
+    <span data-step-indicator="1">Need</span>
+    <span data-step-indicator="2">Details</span>
+    <span data-step-indicator="3">Issue</span>
+    <span data-step-indicator="4">Send</span>
+  </div>
+  <section class="form-step" data-form-step="1" aria-labelledby="intake-step-1">
+    <h3 id="intake-step-1">What do you need?</h3>
+    <fieldset class="field option-field">
+      <legend class="sr-only">Choose what you need help with</legend>
+      <div class="choice-grid path-choice-grid">
+        <label class="choice-card path-choice-card"><input type="radio" name="intentChoice" value="business-support" required><span><strong>Business support</strong></span></label>
+        <label class="choice-card path-choice-card"><input type="radio" name="intentChoice" value="personal" required><span><strong>Personal tech help</strong></span></label>
+        <label class="choice-card path-choice-card urgent"><input type="radio" name="intentChoice" value="urgent" required><span><strong>Urgent issue</strong></span></label>
+        <label class="choice-card path-choice-card"><input type="radio" name="intentChoice" value="project" required><span><strong>Plan a project</strong></span></label>
+      </div>
+    </fieldset>
+    <div class="form-step-actions"><button class="button primary" type="button" data-step-next>Next</button></div>
+  </section>
+  <section class="form-step" data-form-step="2" aria-labelledby="intake-step-2" hidden>
+    <h3 id="intake-step-2">Your details</h3>
+    <div class="field"><label for="name">Name*</label><input id="name" name="name" required autocomplete="name"></div>
+    <div class="field"><label for="email">Email*</label><input id="email" name="email" type="email" required autocomplete="email"></div>
+    <div class="conditional-group" data-contact-section="business" hidden>
+      <div class="field"><label for="businessName">Business name*</label><input id="businessName" name="businessName" autocomplete="organization" data-conditional-required></div>
+    </div>
+    <div class="form-step-actions"><button class="button secondary" type="button" data-step-prev>Back</button><button class="button primary" type="button" data-step-next>Next</button></div>
+  </section>
+  <section class="form-step" data-form-step="3" aria-labelledby="intake-step-3" hidden>
+    <h3 id="intake-step-3">Tell us what is happening</h3>
+    <div class="conditional-group" data-contact-section="individual" hidden>
+      <div class="field"><label for="individualIssue">Outline of the issue*</label><textarea id="individualIssue" name="individualIssue" placeholder="What is happening, when did it start, and what have you already tried?" data-conditional-required></textarea></div>
+    </div>
+    <div class="conditional-group" data-contact-section="business-project" hidden>
+      <div class="field"><label for="budgetRange">Budget range*</label><select id="budgetRange" name="budgetRange" data-conditional-required><option value="">Select a range</option><option>Under &#36;2,500</option><option>&#36;2,500 - &#36;7,500</option><option>&#36;7,500 - &#36;15,000</option><option>&#36;15,000 - &#36;30,000</option><option>&#36;30,000+</option><option>Not sure yet</option></select></div>
+      <div class="field"><label for="projectOverview">Project overview*</label><textarea id="projectOverview" name="projectOverview" placeholder="What are you trying to build, improve, migrate, or fix? Include timing if there is a deadline." data-conditional-required></textarea></div>
+    </div>
+    <div class="conditional-group" data-contact-section="business-support" hidden>
+      <div class="field"><label for="supportIssue">Outline of the issue*</label><textarea id="supportIssue" name="supportIssue" placeholder="What is affected, how many people are impacted, and when did it start?" data-conditional-required></textarea></div>
+      <fieldset class="field option-field urgency-field">
+        <legend>Urgency*</legend>
+        <div class="choice-grid urgency-grid">
+          <label class="choice-card"><input type="radio" name="urgency" value="critical" data-conditional-required><span><strong>Critical</strong><small>Operations stopped, suspected compromise, or data loss risk.</small></span></label>
+          <label class="choice-card"><input type="radio" name="urgency" value="high" data-conditional-required><span><strong>High</strong><small>Multiple people affected or a key workflow blocked.</small></span></label>
+          <label class="choice-card"><input type="radio" name="urgency" value="standard" data-conditional-required><span><strong>Standard</strong><small>Single-user issue, planned change, or non-urgent request.</small></span></label>
         </div>
+      </fieldset>
+    </div>
+    <div class="form-step-actions"><button class="button secondary" type="button" data-step-prev>Back</button><button class="button primary" type="button" data-step-next>Next</button></div>
+  </section>
+  <section class="form-step" data-form-step="4" aria-labelledby="intake-step-4" hidden>
+    <h3 id="intake-step-4">Send enquiry</h3>
+    <div class="review-panel">
+      <strong data-review-path>Choose a support path</strong>
+      <span data-review-copy>We will route your enquiry to the right next step.</span>
+    </div>
+    <p class="form-note">If operations have stopped or data may be at risk, call <a href="tel:0364494214">6449 4214</a> as well as sending the form.</p>
+    <div class="form-step-actions"><button class="button secondary" type="button" data-step-prev>Back</button><button class="button primary" type="submit">Send enquiry</button></div>
+  </section>
+  <p data-form-status aria-live="polite"></p>
+</form>
       </div>
     </section>
     <section class="section media-split">
@@ -136,8 +201,14 @@
   <div class="reveal">
     <span class="section-kicker">Local coverage</span>
     <h2>Onsite and Remote IT Support for Tasmanians</h2>
-    <p>From our Latrobe base, TassieTech supports Tasmanian businesses and individuals with remote IT help across the state and planned onsite visits where practical. If you are in Burnie, Devonport, Launceston, Hobart, or a regional town nearby, we can help you work out the best support option.</p>
-    <div class="button-row"><a class="button primary" href="../contact/">Ask about your area</a></div>
+    <ul class="coverage-bullet-list">
+      <li>Latrobe and North West based.</li>
+      <li>Remote IT support across Tasmania.</li>
+      <li>Planned onsite visits where practical.</li>
+      <li>Support for businesses and individuals.</li>
+      <li>Service pages for key Tasmanian towns.</li>
+    </ul>
+    <div class="button-row"><a class="button primary" href="../contact/">Ask about your area</a><a class="button secondary" href="../contact/?intent=business-support">Get business support</a></div>
   </div>
 </section>
 <section class="section">
@@ -146,7 +217,13 @@
       <span class="section-kicker">Local base</span>
       <h2>TassieTech's Tasmanian service base.</h2>
       <p>Our Latrobe location anchors local North West onsite support and statewide remote IT support for Tasmanian businesses and individuals.</p>
-      <p>Office visits are by appointment only, so please call ahead before dropping in.</p>
+      <ul class="coverage-bullet-list">
+        <li>Based in Latrobe.</li>
+        <li>Supporting North West Tasmania.</li>
+        <li>Remote support across Tasmania.</li>
+        <li>Onsite visits where practical.</li>
+        <li>Office visits by appointment.</li>
+      </ul>
       <div class="button-row"><a class="button primary" href="tel:0364494214">Call 6449 4214</a><a class="button secondary" href="../contact/">Contact TassieTech</a></div>
     </div>
     <div class="map-embed-panel reveal">
@@ -158,32 +235,32 @@
   <div class="section-header center reveal">
     <span class="section-kicker">Areas we serve</span>
     <h2>Local IT support across Tasmania's North West and beyond.</h2>
-    <p>We support Tasmanian teams through city hubs in Burnie, Devonport, Launceston, and Hobart, with town coverage from Smithton, Wynyard, Penguin, Queenstown, Zeehan, Ulverstone, Latrobe, Port Sorell, Sheffield, Deloraine, George Town, Perth, Campbell Town, St Helens, New Norfolk, Sorell, Kingston, Huonville, and nearby communities.</p>
+    <p>Choose a town page or ask us about support in your area.</p>
   </div>
-  <div class="grid four">
-    <a class="card lift reveal" href="../it-services-for-burnie/"><h3>Burnie</h3><p>Reliable technology support for busy local businesses.</p></a>
-    <a class="card lift reveal" href="../it-services-for-wynyard/"><h3>Wynyard</h3><p>North West support for coastal businesses, offices, and community teams.</p></a>
-    <a class="card lift reveal" href="../it-services-for-smithton/"><h3>Smithton</h3><p>Practical remote-first support with onsite options for Circular Head teams.</p></a>
-    <a class="card lift reveal" href="../it-services-for-penguin/"><h3>Penguin</h3><p>North West support for local businesses between Burnie and Devonport.</p></a>
-    <a class="card lift reveal" href="../it-services-for-queenstown/"><h3>Queenstown</h3><p>West Coast support for remote teams that need reliable systems.</p></a>
-    <a class="card lift reveal" href="../it-services-for-zeehan/"><h3>Zeehan</h3><p>Remote-first support for West Coast teams with practical systems and security help.</p></a>
-    <a class="card lift reveal" href="../it-services-for-devonport/"><h3>Devonport</h3><p>Business IT support, Microsoft 365, security, websites, and networks.</p></a>
-    <a class="card lift reveal" href="../it-services-for-latrobe/"><h3>Latrobe</h3><p>Friendly local support close to TassieTech's home base.</p></a>
-    <a class="card lift reveal" href="../it-services-for-ulverstone/"><h3>Ulverstone</h3><p>Managed support, cyber security, and practical technology projects.</p></a>
-    <a class="card lift reveal" href="../it-services-for-port-sorell/"><h3>Port Sorell</h3><p>Local support for growing coastal businesses and organisations.</p></a>
-    <a class="card lift reveal" href="../it-services-for-sheffield/"><h3>Sheffield</h3><p>Dependable technology help for small business and community teams.</p></a>
-    <a class="card lift reveal" href="../it-services-for-launceston/"><h3>Launceston</h3><p>Statewide remote support for business systems, security, and cloud work.</p></a>
-    <a class="card lift reveal" href="../it-services-for-deloraine/"><h3>Deloraine</h3><p>Clear IT advice and responsive support for regional teams.</p></a>
-    <a class="card lift reveal" href="../it-services-for-george-town/"><h3>George Town</h3><p>Remote support for Tamar Valley teams connected through Launceston.</p></a>
-    <a class="card lift reveal" href="../it-services-for-perth/"><h3>Perth</h3><p>Launceston-linked support for business systems, security, and cloud.</p></a>
-    <a class="card lift reveal" href="../it-services-for-campbell-town/"><h3>Campbell Town</h3><p>Midlands support for teams between Launceston and Hobart.</p></a>
-    <a class="card lift reveal" href="../it-services-for-st-helens/"><h3>St Helens</h3><p>East Coast remote support for business continuity, cloud tools, and security.</p></a>
-    <a class="card lift reveal" href="../it-services-for-hobart/"><h3>Hobart</h3><p>Remote support and project advice for southern Tasmanian organisations.</p></a>
-    <a class="card lift reveal" href="../it-services-for-new-norfolk/"><h3>New Norfolk</h3><p>Southern support for businesses working around the Derwent Valley.</p></a>
-    <a class="card lift reveal" href="../it-services-for-sorell/"><h3>Sorell</h3><p>Remote support for south-east Tasmanian teams near Hobart.</p></a>
-    <a class="card lift reveal" href="../it-services-for-kingston/"><h3>Kingston</h3><p>Hobart-linked support for growing southern Tasmanian businesses.</p></a>
-    <a class="card lift reveal" href="../it-services-for-huonville/"><h3>Huonville</h3><p>Remote support for Huon Valley organisations and local teams.</p></a>
-    <a class="card lift reveal" href="../it-services-tasmania/"><h3>All Tasmania</h3><p>Remote and onsite options for broader Tasmanian needs.</p></a>
+  <div class="service-path-grid area-link-grid reveal" aria-label="Tasmanian IT service area links">
+    <a href="../it-services-for-burnie/">Burnie</a>
+    <a href="../it-services-for-wynyard/">Wynyard</a>
+    <a href="../it-services-for-smithton/">Smithton</a>
+    <a href="../it-services-for-penguin/">Penguin</a>
+    <a href="../it-services-for-queenstown/">Queenstown</a>
+    <a href="../it-services-for-zeehan/">Zeehan</a>
+    <a href="../it-services-for-devonport/">Devonport</a>
+    <a href="../it-services-for-latrobe/">Latrobe</a>
+    <a href="../it-services-for-ulverstone/">Ulverstone</a>
+    <a href="../it-services-for-port-sorell/">Port Sorell</a>
+    <a href="../it-services-for-sheffield/">Sheffield</a>
+    <a href="../it-services-for-launceston/">Launceston</a>
+    <a href="../it-services-for-deloraine/">Deloraine</a>
+    <a href="../it-services-for-george-town/">George Town</a>
+    <a href="../it-services-for-perth/">Perth</a>
+    <a href="../it-services-for-campbell-town/">Campbell Town</a>
+    <a href="../it-services-for-st-helens/">St Helens</a>
+    <a href="../it-services-for-hobart/">Hobart</a>
+    <a href="../it-services-for-new-norfolk/">New Norfolk</a>
+    <a href="../it-services-for-sorell/">Sorell</a>
+    <a href="../it-services-for-kingston/">Kingston</a>
+    <a href="../it-services-for-huonville/">Huonville</a>
+    <a href="../it-services-tasmania/">All Tasmania</a>
   </div>
 </section>
 <section class="section faq-section">

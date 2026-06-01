@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en" data-theme="light">
 <head>
   <meta charset="utf-8">
@@ -67,18 +67,83 @@
             <a class="button secondary" href="../contact/?intent=project">Plan an IT project</a>
           </div>
           <div class="hero-proof" aria-label="TassieTech strengths">
-            <span>Tasmanian team</span>
             <span>North West based</span>
-            <span>Security-first advice</span>
+            <span>Statewide remote support</span>
+            <span>Security-led advice</span>
           </div>
         </div>
-        <div class="hero-panel hero-intent-panel reveal in-view" aria-label="Choose the right contact path">
-          <span class="hero-panel-kicker">Choose what you need</span>
-          <a class="hero-intent-card" href="../contact/?intent=business-support"><div><strong>Get business support</strong><span>Devices, accounts, Microsoft 365, networks, and day-to-day issues.</span></div><b>Support</b></a>
-          <a class="hero-intent-card" href="../contact/?intent=personal"><div><strong>Get personal tech help</strong><span>Computers, email, internet, scams, passwords, and everyday device issues.</span></div><b>Personal</b></a>
-          <a class="hero-intent-card" href="../contact/?intent=project"><div><strong>Plan an IT project</strong><span>Websites, migrations, backups, cloud, security, and systems improvements.</span></div><b>Project</b></a>
-          <a class="hero-intent-card urgent" href="../contact/?intent=urgent"><div><strong>Report an urgent issue</strong><span>Outages, suspected compromise, data loss risk, or operations stopped.</span></div><b>Urgent</b></a>
+        <form class="form-card intake-form hero-intake-panel reveal" data-contact-form data-step-form data-current-step="1" method="post" action="../contact-submit.php" accept-charset="UTF-8">
+  <div class="honeypot-field" aria-hidden="true"><label>Website</label><input name="website" tabindex="-1" autocomplete="off"></div>
+  <input type="hidden" name="formStartedAt" data-form-started-at>
+  <input type="hidden" name="intent" data-contact-intent>
+  <input type="hidden" name="submissionType" data-submission-type>
+  <input type="hidden" name="businessRequestType" data-business-request-type>
+  <div class="form-intro">
+    <span class="section-kicker">Get IT help</span>
+    <h2>What do you need help with?</h2>
+    <p></p>
+  </div>
+  <div class="form-progress" aria-label="Form progress">
+    <span data-step-indicator="1">Need</span>
+    <span data-step-indicator="2">Details</span>
+    <span data-step-indicator="3">Issue</span>
+    <span data-step-indicator="4">Send</span>
+  </div>
+  <section class="form-step" data-form-step="1" aria-labelledby="intake-step-1">
+    <h3 id="intake-step-1">What do you need?</h3>
+    <fieldset class="field option-field">
+      <legend class="sr-only">Choose what you need help with</legend>
+      <div class="choice-grid path-choice-grid">
+        <label class="choice-card path-choice-card"><input type="radio" name="intentChoice" value="business-support" required><span><strong>Business support</strong></span></label>
+        <label class="choice-card path-choice-card"><input type="radio" name="intentChoice" value="personal" required><span><strong>Personal tech help</strong></span></label>
+        <label class="choice-card path-choice-card urgent"><input type="radio" name="intentChoice" value="urgent" required><span><strong>Urgent issue</strong></span></label>
+        <label class="choice-card path-choice-card"><input type="radio" name="intentChoice" value="project" required><span><strong>Plan a project</strong></span></label>
+      </div>
+    </fieldset>
+    <div class="form-step-actions"><button class="button primary" type="button" data-step-next>Next</button></div>
+  </section>
+  <section class="form-step" data-form-step="2" aria-labelledby="intake-step-2" hidden>
+    <h3 id="intake-step-2">Your details</h3>
+    <div class="field"><label for="name">Name*</label><input id="name" name="name" required autocomplete="name"></div>
+    <div class="field"><label for="email">Email*</label><input id="email" name="email" type="email" required autocomplete="email"></div>
+    <div class="conditional-group" data-contact-section="business" hidden>
+      <div class="field"><label for="businessName">Business name*</label><input id="businessName" name="businessName" autocomplete="organization" data-conditional-required></div>
+    </div>
+    <div class="form-step-actions"><button class="button secondary" type="button" data-step-prev>Back</button><button class="button primary" type="button" data-step-next>Next</button></div>
+  </section>
+  <section class="form-step" data-form-step="3" aria-labelledby="intake-step-3" hidden>
+    <h3 id="intake-step-3">Tell us what is happening</h3>
+    <div class="conditional-group" data-contact-section="individual" hidden>
+      <div class="field"><label for="individualIssue">Outline of the issue*</label><textarea id="individualIssue" name="individualIssue" placeholder="What is happening, when did it start, and what have you already tried?" data-conditional-required></textarea></div>
+    </div>
+    <div class="conditional-group" data-contact-section="business-project" hidden>
+      <div class="field"><label for="budgetRange">Budget range*</label><select id="budgetRange" name="budgetRange" data-conditional-required><option value="">Select a range</option><option>Under &#36;2,500</option><option>&#36;2,500 - &#36;7,500</option><option>&#36;7,500 - &#36;15,000</option><option>&#36;15,000 - &#36;30,000</option><option>&#36;30,000+</option><option>Not sure yet</option></select></div>
+      <div class="field"><label for="projectOverview">Project overview*</label><textarea id="projectOverview" name="projectOverview" placeholder="What are you trying to build, improve, migrate, or fix? Include timing if there is a deadline." data-conditional-required></textarea></div>
+    </div>
+    <div class="conditional-group" data-contact-section="business-support" hidden>
+      <div class="field"><label for="supportIssue">Outline of the issue*</label><textarea id="supportIssue" name="supportIssue" placeholder="What is affected, how many people are impacted, and when did it start?" data-conditional-required></textarea></div>
+      <fieldset class="field option-field urgency-field">
+        <legend>Urgency*</legend>
+        <div class="choice-grid urgency-grid">
+          <label class="choice-card"><input type="radio" name="urgency" value="critical" data-conditional-required><span><strong>Critical</strong><small>Operations stopped, suspected compromise, or data loss risk.</small></span></label>
+          <label class="choice-card"><input type="radio" name="urgency" value="high" data-conditional-required><span><strong>High</strong><small>Multiple people affected or a key workflow blocked.</small></span></label>
+          <label class="choice-card"><input type="radio" name="urgency" value="standard" data-conditional-required><span><strong>Standard</strong><small>Single-user issue, planned change, or non-urgent request.</small></span></label>
         </div>
+      </fieldset>
+    </div>
+    <div class="form-step-actions"><button class="button secondary" type="button" data-step-prev>Back</button><button class="button primary" type="button" data-step-next>Next</button></div>
+  </section>
+  <section class="form-step" data-form-step="4" aria-labelledby="intake-step-4" hidden>
+    <h3 id="intake-step-4">Send enquiry</h3>
+    <div class="review-panel">
+      <strong data-review-path>Choose a support path</strong>
+      <span data-review-copy>We will route your enquiry to the right next step.</span>
+    </div>
+    <p class="form-note">If operations have stopped or data may be at risk, call <a href="tel:0364494214">6449 4214</a> as well as sending the form.</p>
+    <div class="form-step-actions"><button class="button secondary" type="button" data-step-prev>Back</button><button class="button primary" type="submit">Send enquiry</button></div>
+  </section>
+  <p data-form-status aria-live="polite"></p>
+</form>
       </div>
     </section>
     <section class="section">
@@ -87,7 +152,6 @@
       <span class="section-kicker">Zeehan IT support</span>
       <h2>Business IT support built around Zeehan teams.</h2>
       <p>Zeehan and West Coast teams can access remote-first technology support for business systems, websites, cloud tools, security, and continuity. Our mission is to help local teams simplify operations, improve security, and stay productive.</p>
-      <p>From business software and hardware support through to websites, cloud services, custom software, network support, phone systems, and practical technology advice, TassieTech helps local businesses move forward with confidence.</p>
     </div>
     <div class="card reveal">
       <h2>Services in Zeehan</h2>
@@ -105,47 +169,6 @@
     <a href="../backup-strategy-tasmania/">Backup strategy</a>
     <a href="../individuals/">Individual IT help</a>
     <a href="../scam-recovery/">Scam recovery</a>
-  </div>
-</section>
-<section class="section">
-  <div class="section-header center reveal">
-    <span class="section-kicker">Manage. Secure. Grow.</span>
-    <h2>Technology that works quietly in the background.</h2>
-    <p>From day-to-day support through to security, cloud, websites, networks, and custom software, TassieTech keeps local teams moving without the jargon.</p>
-  </div>
-  <div class="grid four">
-    <article class="card lift reveal">
-      <span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/><path d="M18 15v6M15 18h6"/></svg></span>
-      <h3>Managed IT Support</h3>
-      <p>Helpdesk, monitoring, Microsoft 365, Google Workspace, procurement, networks, phones, and practical support for the systems your team relies on.</p>
-      <ul><li>Local technicians</li><li>Business continuity focus</li><li>Clear advice before spend</li></ul>
-      <a class="text-link" href="../managed-it-support-tasmania/">Explore managed IT support</a>
-    </article>
-    <article class="card lift reveal">
-      <span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 18h10a4 4 0 0 0 0-8 6 6 0 0 0-11.5 2A3.5 3.5 0 0 0 7 18Z"/></svg></span>
-      <h3>Microsoft 365 and Cloud</h3>
-      <p>Accounts, email, Teams, SharePoint, OneDrive, permissions, cloud files, and the everyday tools staff use to get work done.</p>
-      <ul><li>Account governance</li><li>Teams and SharePoint</li><li>Cloud file workflows</li></ul>
-      <a class="text-link" href="../microsoft-365-support-tasmania/">Explore Microsoft 365 support</a>
-    </article>
-    <article class="card lift reveal">
-      <span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 5 6v6c0 4.4 2.8 7.5 7 9 4.2-1.5 7-4.6 7-9V6l-7-3Z"/><path d="m9 12 2 2 4-5"/></svg></span>
-      <h3>Cyber Security and Backups</h3>
-      <p>Commercial-grade protection without unnecessary complexity. We help harden devices, secure accounts, prepare backups, and respond quickly when risk appears.</p>
-      <ul><li>Endpoint protection</li><li>Security policies</li><li>Recovery planning</li></ul>
-      <a class="text-link" href="../cyber-security-tasmania/">Explore cyber security</a>
-    </article>
-    <article class="card lift reveal">
-      <span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 18 10 12l4 4 6-9"/><path d="M14 7h6v6"/></svg></span>
-      <h3>Websites, Networks and Projects</h3>
-      <p>Use technology to remove friction from operations. We help with websites, UniFi networks, cloud platforms, automation, software, and planned upgrades.</p>
-      <ul><li>WordPress care</li><li>UniFi networks</li><li>Project planning</li></ul>
-      <a class="text-link" href="../wordpress-care-tasmania/">Explore websites and care</a>
-    </article>
-  </div>
-  <div class="service-audience-links reveal" aria-label="Choose a general support path">
-    <a class="button secondary" href="../services/">Business IT services</a>
-    <a class="button secondary" href="../individuals/">IT help for individuals</a>
   </div>
 </section>
 <section class="section faq-section">
@@ -175,16 +198,10 @@
       <p>Contact TassieTech to discover how local technology support can make work easier, safer, and more reliable.</p>
     </div>
     <div class="intent-cta-grid" aria-label="Choose the right next step">
-      <a class="intent-cta" href="../contact/?intent=business-support"><strong>Get business support</strong><small>Managed IT, Microsoft 365, devices, accounts, networks, and helpdesk support.</small></a>
-      <a class="intent-cta" href="../contact/?intent=personal"><strong>Get personal tech help</strong><small>Home devices, email, passwords, scam recovery, and everyday technology support.</small></a>
-      <a class="intent-cta urgent" href="../contact/?intent=urgent"><strong>Report an urgent issue</strong><small>Outages, suspected compromise, data loss risk, or operations stopped.</small></a>
-      <a class="intent-cta" href="../contact/?intent=project"><strong>Plan an IT project</strong><small>Websites, migrations, networks, cloud, software, and planned upgrades.</small></a>
-    </div>
-    <div class="cta-proof-grid" aria-label="TassieTech proof points">
-      <div><strong>Client outcomes</strong><span>Cleaner accounts, fewer repeat issues, safer backups, and systems staff can actually use.</span></div>
-      <div><strong>Response example</strong><span>Urgent outages are triaged separately from routine requests so the first action is clearer.</span></div>
-      <div><strong>Before and after</strong><span>We turn scattered devices, passwords, files, and support habits into a practical operating rhythm.</span></div>
-      <div><strong>Tasmania covered</strong><span>North West based with remote support across Tasmanian towns and city hubs.</span></div>
+      <a class="intent-cta" href="../contact/?intent=business-support"><strong>Business support</strong></a>
+      <a class="intent-cta" href="../contact/?intent=personal"><strong>Personal tech help</strong></a>
+      <a class="intent-cta urgent" href="../contact/?intent=urgent"><strong>Urgent issue</strong></a>
+      <a class="intent-cta" href="../contact/?intent=project"><strong>Plan a project</strong></a>
     </div>
   </div>
 </section>
