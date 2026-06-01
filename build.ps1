@@ -1714,6 +1714,10 @@ function Render-Layout {
   $robotsMeta
   <meta name="theme-color" content="#faf6fb">
   <link rel="canonical" href="$canonical">
+  <link rel="icon" type="image/png" sizes="32x32" href="${prefix}assets/img/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="${prefix}assets/img/favicon-192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="${prefix}assets/img/favicon.png">
+  <link rel="apple-touch-icon" sizes="192x192" href="${prefix}assets/img/apple-touch-icon.png">
   <link rel="preload" as="image" href="${prefix}$heroImage">
   <link rel="stylesheet" href="${prefix}assets/css/styles.css">
   $structuredData
@@ -1814,6 +1818,10 @@ New-Item -ItemType Directory -Force -Path "posts" | Out-Null
   <meta name="robots" content="noindex, follow">
   <meta http-equiv="refresh" content="0; url=../blog/">
   <link rel="canonical" href="$SiteUrl/blog/">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/img/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="../assets/img/favicon-192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="../assets/img/favicon.png">
+  <link rel="apple-touch-icon" sizes="192x192" href="../assets/img/apple-touch-icon.png">
   <title>TassieTech Blog</title>
 </head>
 <body><h1>TassieTech Blog</h1><p>Redirecting to <a href="../blog/">TassieTech Blog</a>.</p></body>
@@ -1839,7 +1847,7 @@ Sitemap: $SiteUrl/sitemap.xml
 @"
 <!doctype html>
 <html lang="en">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta http-equiv="refresh" content="0; url=./"><title>Page not found | TassieTech</title></head>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta http-equiv="refresh" content="0; url=./"><link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png"><link rel="icon" type="image/png" sizes="192x192" href="assets/img/favicon-192.png"><link rel="icon" type="image/png" sizes="512x512" href="assets/img/favicon.png"><link rel="apple-touch-icon" sizes="192x192" href="assets/img/apple-touch-icon.png"><title>Page not found | TassieTech</title></head>
 <body><h1>Page not found</h1><p>Page not found. <a href="./">Go to TassieTech home</a>.</p></body>
 </html>
 "@ | Set-Content -Path "404.html" -Encoding UTF8
