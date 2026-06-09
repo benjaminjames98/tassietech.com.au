@@ -51,6 +51,20 @@ function Get-Canonical {
   return "$SiteUrl/$($Path.Trim('/'))/"
 }
 
+function Get-CanonicalPath {
+  param([string]$Path)
+  switch ($Path.Trim("/")) {
+    "about-page" { return "about" }
+    "emergency" { return "emergency-response" }
+    default { return $Path }
+  }
+}
+
+function Get-PageCanonical {
+  param($Page)
+  return Get-Canonical (Get-CanonicalPath $Page.Path)
+}
+
 function Get-HeroImage {
   param([string]$Path)
   switch ($Path.Trim("/")) {
@@ -59,10 +73,10 @@ function Get-HeroImage {
     "about-page" { return "assets/img/heroes/aurora-cradle.jpg" }
     "individuals" { return "assets/img/heroes/aurora-cradle.jpg" }
     "scam-recovery" { return "assets/img/heroes/scam-recovery.jpg" }
-    "services" { return "assets/img/heroes/office-services.webp" }
+    "services" { return "assets/img/heroes/office-services-1440.jpg" }
     "community-services" { return "assets/img/heroes/community-services.jpg" }
-    "emergency" { return "assets/img/heroes/office-services.webp" }
-    "emergency-response" { return "assets/img/heroes/office-services.webp" }
+    "emergency" { return "assets/img/heroes/office-services-1440.jpg" }
+    "emergency-response" { return "assets/img/heroes/office-services-1440.jpg" }
     "contact" { return "assets/img/heroes/contact.jpeg" }
     "careers" { return "assets/img/heroes/careers.jpg" }
     "areas-we-serve" { return "assets/img/heroes/burnie.webp" }
@@ -860,7 +874,7 @@ function Get-HomeSchema {
     "url" = "$SiteUrl/"
     "logo" = "$SiteUrl/assets/img/tassietech-logo.jpg"
     "image" = "$SiteUrl/assets/img/heroes/home.jpeg"
-    "description" = "Local Tasmanian IT support serving businesses across Tasmania with managed IT, cyber security, Microsoft 365, SharePoint, backups, websites, networks, and practical technology advice."
+    "description" = "Local Tasmanian IT support for managed IT, cyber security, Microsoft 365, backups, websites, networks, and practical technology advice."
     "telephone" = $Phone
     "email" = $Email
     "priceRange" = '$$'
@@ -928,11 +942,11 @@ function Get-ServiceSchema {
   $schema = [ordered]@{
     "@context" = "https://schema.org"
     "@type" = "Service"
-    "@id" = "$(Get-Canonical $Page.Path)#service"
+    "@id" = "$(Get-PageCanonical $Page)#service"
     "name" = $service.Name
     "description" = $service.Description
     "serviceType" = $service.ServiceType
-    "url" = (Get-Canonical $Page.Path)
+    "url" = (Get-PageCanonical $Page)
     "provider" = [ordered]@{
       "@type" = @("LocalBusiness", "ProfessionalService")
       "@id" = "$SiteUrl/#business"
@@ -955,7 +969,7 @@ function Get-ServiceSchema {
     }
     "offers" = [ordered]@{
       "@type" = "Offer"
-      "url" = (Get-Canonical $Page.Path)
+      "url" = (Get-PageCanonical $Page)
       "availability" = "https://schema.org/InStock"
     }
   }
@@ -985,6 +999,45 @@ function Get-FaqSchema {
     })
   }
   $json = $schema | ConvertTo-Json -Depth 10 -Compress
+  return "<script type=""application/ld+json"">$json</script>"
+}
+
+function Get-PageTypeSchema {
+  param($Page)
+
+  if ($Page.NoIndex) { return "" }
+  if ([string]::IsNullOrWhiteSpace($Page.Path)) { return "" }
+  if ($BlogPosts | Where-Object { $_.slug -eq $Page.Path } | Select-Object -First 1) { return "" }
+  if ($ServiceSchemaByPath.ContainsKey($Page.Path)) { return "" }
+
+  $pageType = switch ($Page.Path.Trim("/")) {
+    "about" { "AboutPage" }
+    "contact" { "ContactPage" }
+    "blog" { "CollectionPage" }
+    default { "WebPage" }
+  }
+
+  $schema = [ordered]@{
+    "@context" = "https://schema.org"
+    "@type" = $pageType
+    "@id" = "$(Get-PageCanonical $Page)#webpage"
+    "url" = (Get-PageCanonical $Page)
+    "name" = $Page.Title
+    "description" = $Page.Description
+    "isPartOf" = [ordered]@{
+      "@type" = "WebSite"
+      "@id" = "$SiteUrl/#website"
+      "name" = "TassieTech"
+      "url" = "$SiteUrl/"
+    }
+    "publisher" = [ordered]@{
+      "@type" = "Organization"
+      "@id" = "$SiteUrl/#business"
+      "name" = "TassieTech"
+    }
+  }
+
+  $json = $schema | ConvertTo-Json -Depth 8 -Compress
   return "<script type=""application/ld+json"">$json</script>"
 }
 
@@ -1055,7 +1108,7 @@ $HighIntentServices = @(
   },
   [pscustomobject]@{
     Slug = "microsoft-365-support-tasmania"
-    Title = "Microsoft 365 Support Tasmania | Teams, SharePoint and OneDrive"
+    Title = "Microsoft 365 Support Tasmania | TassieTech"
     Description = "Microsoft 365 support in Tasmania for Teams, SharePoint, OneDrive, Outlook, email security, account management, MFA, permissions, and migrations."
     Kicker = "Microsoft 365"
     Heading = "Microsoft 365 Support Tasmania"
@@ -1078,7 +1131,7 @@ $HighIntentServices = @(
   [pscustomobject]@{
     Slug = "cyber-security-tasmania"
     Title = "Cyber Security Tasmania | Practical Protection for Business"
-    Description = "Cyber security support for Tasmanian businesses, including MFA, password management, endpoint protection, backup readiness, phishing risk, and incident response."
+    Description = "Cyber security support for Tasmanian businesses, including MFA, password management, endpoint protection, backup readiness, phishing risk, and response."
     Kicker = "Cyber security"
     Heading = "Cyber Security Tasmania"
     Intro = "Practical cyber security for Tasmanian businesses: stronger accounts, safer devices, clearer backups, and calm response when something looks wrong."
@@ -1121,7 +1174,7 @@ $HighIntentServices = @(
   },
   [pscustomobject]@{
     Slug = "wordpress-care-tasmania"
-    Title = "WordPress Care Tasmania | Website Support, Hosting and Security"
+    Title = "WordPress Care Tasmania | TassieTech"
     Description = "WordPress care for Tasmanian businesses, including updates, hosting, backups, security, performance, content support, and practical website improvements."
     Kicker = "WordPress care"
     Heading = "WordPress Care Tasmania"
@@ -1196,7 +1249,7 @@ $(CommunitySection)
 $(CtaPanel "Speak with a Tasmanian IT Expert" "Choose the right support path or call the Latrobe-based team.")
 "@
 
-Add-Page "" "Computer Support and IT Services Tasmania | TassieTech" "Local Tasmanian IT support serving businesses across Tasmania with managed IT, cyber security, Microsoft 365, SharePoint, backups, websites, networks, and practical technology advice." "Friendly. Professional. Reliable." "IT Support in Tasmania" "Local IT experts who make technology simple for Tasmanian businesses, community organisations, and individuals." $homeContent "home" ""
+Add-Page "" "Computer Support and IT Services Tasmania | TassieTech" "Local Tasmanian IT support for managed IT, cyber security, Microsoft 365, backups, websites, networks, and practical technology advice." "Friendly. Professional. Reliable." "IT Support in Tasmania" "Local IT experts who make technology simple for Tasmanian businesses, community organisations, and individuals." $homeContent "home" ""
 
 $aboutContent = @"
 <section class="section">
@@ -1311,7 +1364,7 @@ $(ServiceCards)
 $(Get-HighIntentServiceCards)
 $(CtaPanel "Get Tasmanian business IT under control." "Tell us what is slowing your team down. We will help you choose the most practical path.")
 "@
-Add-Page "services" "Business IT Services Tasmania | Managed Support, Security and Growth" "Managed IT support, cyber security, Microsoft and Google management, cloud hosting, websites, networks, VOIP, custom software, and local technology consulting in Tasmania." "Businesses" "Computer &amp; IT Services For Businesses In Tassie" "Managed support, security, consulting, cloud, websites, networks, phones, and software from a Tasmanian team." $servicesContent "services"
+Add-Page "services" "Business IT Services Tasmania | TassieTech" "Managed IT, cyber security, cloud, websites, networks, VOIP, custom software, and practical consulting for Tasmanian businesses." "Businesses" "Computer &amp; IT Services For Businesses In Tassie" "Managed support, security, consulting, cloud, websites, networks, phones, and software from a Tasmanian team." $servicesContent "services"
 
 foreach ($service in $HighIntentServices) {
   $serviceContent = Build-ServiceLandingContent $service
@@ -1338,7 +1391,7 @@ $(StepsSection "Stress-free IT support in 3 steps." "Reach out for a quick chat 
 $(WhyTassieTech)
 $(CtaPanel "Ready to simplify community services IT?" "Speak to a local team member or email community.services@tassietech.com.au.")
 "@
-Add-Page "community-services" "IT Support for Community Services Tasmania | TassieTech" "Hassle-free IT support for Tasmanian community services organisations, including Microsoft 365, secure documents, onboarding, helpdesk, backup, and cyber security." "Community services" "Hassle-Free IT for Community Services Organisations" "Let TassieTech handle your IT so you can focus on the people and communities you serve." $communityContent ""
+Add-Page "community-services" "IT Support for Community Services Tasmania | TassieTech" "IT support for Tasmanian community service organisations, including Microsoft 365, secure documents, onboarding, helpdesk, backups, and cyber security." "Community services" "Hassle-Free IT for Community Services Organisations" "Let TassieTech handle your IT so you can focus on the people and communities you serve." $communityContent ""
 
 $emergencyContent = @"
 <section class="section">
@@ -1429,7 +1482,6 @@ $areasContent = @"
       <li>Remote IT support across Tasmania.</li>
       <li>Planned onsite visits where practical.</li>
       <li>Support for businesses and individuals.</li>
-      <li>Service pages for key Tasmanian towns.</li>
     </ul>
     <div class="button-row"><a class="button primary" href="{{root}}contact/">Ask about your area</a><a class="button secondary" href="{{root}}contact/?intent=business-support">Get business support</a></div>
   </div>
@@ -1438,12 +1490,12 @@ $(GoogleMapSection "TassieTech's Tasmanian service base." "Our Latrobe location 
 $(AreasGrid)
 $(FaqSection $areaFaqs)
 "@
-Add-Page "areas-we-serve" "Areas We Serve | IT Services Tasmania | TassieTech" "TassieTech serves Tasmanian businesses through Burnie, Devonport, Launceston, and Hobart hubs, with support for Smithton, Wynyard, Penguin, Queenstown, Zeehan, George Town, Perth, Campbell Town, New Norfolk, Sorell, Kingston, Huonville, and beyond." "Areas we serve" "IT Services Across Tasmania" "Local technology support for Tasmanian businesses, organisations, and individuals." $areasContent "areas"
-Add-Page "it-services-tasmania" "IT Services Tasmania | TassieTech" "Tasmanian IT services for businesses and individuals through Burnie, Devonport, Launceston, and Hobart hubs, with support for Smithton, Wynyard, Penguin, Queenstown, Zeehan, George Town, Perth, Campbell Town, New Norfolk, Sorell, Kingston, Huonville, and beyond." "Tasmania" "IT Services Across Tasmania" "Local technology support for Tasmanian businesses, organisations, and individuals." $areasContent "areas"
+Add-Page "areas-we-serve" "Areas We Serve | TassieTech Tasmania" "Find TassieTech service areas across Tasmania, including North West towns, Launceston, Hobart, the West Coast, East Coast, Midlands, and Huon Valley." "Areas we serve" "Areas We Serve" "Find local and remote technology support coverage across Tasmanian towns and city hubs." $areasContent "areas"
+Add-Page "it-services-tasmania" "IT Services Tasmania | TassieTech" "Tasmanian IT services for businesses and individuals, with North West support and remote help across Burnie, Devonport, Launceston, Hobart, and regional towns." "Tasmania" "IT Services Across Tasmania" "Local technology support for Tasmanian businesses, organisations, and individuals." $areasContent "areas"
 Register-Faq "areas-we-serve" $areaFaqs
 Register-Faq "it-services-tasmania" $areaFaqs
-Register-ServiceSchema "areas-we-serve" "IT Services Across Tasmania" "Local technology support for Tasmanian businesses, organisations, and individuals through Burnie, Devonport, Launceston, Hobart, and connected town hubs." "Tasmanian IT service coverage" "Tasmania"
-Register-ServiceSchema "it-services-tasmania" "IT Services Across Tasmania" "Local technology support for Tasmanian businesses, organisations, and individuals through Burnie, Devonport, Launceston, Hobart, and connected town hubs." "Tasmanian IT services" "Tasmania"
+Register-ServiceSchema "areas-we-serve" "TassieTech Service Areas" "Find TassieTech service areas across Tasmania, including North West towns, Launceston, Hobart, the West Coast, East Coast, Midlands, and Huon Valley." "Tasmanian IT service coverage" "Tasmania"
+Register-ServiceSchema "it-services-tasmania" "IT Services Across Tasmania" "Tasmanian IT services for businesses and individuals, with North West support and remote help across Burnie, Devonport, Launceston, Hobart, and regional towns." "Tasmanian IT services" "Tasmania"
 
 $towns = @(
   @{Slug="it-services-for-burnie"; Name="Burnie"; Note="Burnie's busy business community needs reliable systems, secure accounts, and responsive support."},
@@ -1505,9 +1557,9 @@ foreach ($town in $towns) {
 $(FaqSection $townFaqs)
 $(CtaPanel "We would love to work with your $($town.Name) team." "Contact TassieTech to discover how local technology support can make work easier, safer, and more reliable.")
 "@
-  Add-Page $town.Slug "Business IT Support $($town.Name) | TassieTech Tasmania" "Local business IT support for $($town.Name), including managed support, cyber security, Microsoft 365, websites, custom software, phone, internet, and network help." "$($town.Name) IT services" "Business IT Support For $($town.Name)" "$($town.Name)'s Local IT Support and Development Experts for Businesses and Individuals" $townContent "areas"
+  Add-Page $town.Slug "Business IT Support $($town.Name) | TassieTech Tasmania" "Local business IT support for $($town.Name), including managed support, cyber security, Microsoft 365, websites, software, phones, internet, and networks." "$($town.Name) IT services" "Business IT Support For $($town.Name)" "$($town.Name)'s Local IT Support and Development Experts for Businesses and Individuals" $townContent "areas"
   Register-Faq $town.Slug $townFaqs
-  Register-ServiceSchema $town.Slug "Business IT Support for $($town.Name)" "Local business IT support for $($town.Name), including managed support, cyber security, Microsoft 365, websites, custom software, phone, internet, and network help." "Business IT support" $town.Name
+  Register-ServiceSchema $town.Slug "Business IT Support for $($town.Name)" "Local business IT support for $($town.Name), including managed support, cyber security, Microsoft 365, websites, software, phones, internet, and networks." "Business IT support" $town.Name
 }
 
 $blogCards = Render-BlogCards $BlogPosts
@@ -1528,7 +1580,9 @@ Add-Page "blog" "TassieTech Blog | Practical IT Advice Tasmania" "Practical IT a
 
 foreach ($post in $BlogPosts) {
   $articleContent = Render-BlogArticle $post
-  Add-Page $post.slug "$($post.title) | TassieTech" $post.description $post.category $post.title $post.excerpt $articleContent "blog" "compact" $post.image "center 50%"
+  $postPageTitle = "$($post.title) | TassieTech"
+  if ($postPageTitle.Length -gt 60) { $postPageTitle = $post.title }
+  Add-Page $post.slug $postPageTitle $post.description $post.category $post.title $post.excerpt $articleContent "blog" "compact" $post.image "center 50%"
 }
 
 $contactContent = @"
@@ -1571,7 +1625,7 @@ $thankYouContent = @"
   </div>
 </section>
 "@
-Add-Page "thank-you" "Thank You | TassieTech" "Thank you for contacting TassieTech." "Thank you" "Thanks for contacting TassieTech." "We have received your enquiry." $thankYouContent "contact" "compact" "" "" $true
+Add-Page "thank-you" "Thank You for Contacting TassieTech" "Thank you for contacting TassieTech. If the issue is urgent, call the Latrobe-based team so we can triage it faster." "Thank you" "Thanks for contacting TassieTech." "We have received your enquiry." $thankYouContent "contact" "compact" "" "" $true
 
 $careersContent = @"
 <section class="section">
@@ -1632,7 +1686,7 @@ $platformContent = @"
   </div>
 </section>
 "@
-Add-Page "recommended-technology-platform" "Recommended Technology Platform | TassieTech" "Recommended technology platform for TassieTech managed service clients, including operating systems, productivity tools, browsers, security, cloud, and remote access tools." "Client resources" "Recommended Technology Platform" "A practical baseline of tools TassieTech trusts and supports." $platformContent "legal"
+Add-Page "recommended-technology-platform" "Recommended Technology Platform | TassieTech" "Recommended technology platform for TassieTech clients, covering operating systems, productivity tools, browsers, security, cloud, and remote access." "Client resources" "Recommended Technology Platform" "A practical baseline of tools TassieTech trusts and supports." $platformContent "legal"
 
 $responseContent = @"
 <section class="section">
@@ -1656,7 +1710,7 @@ $termsContent = @"
   </div>
 </section>
 "@
-Add-Page "general-terms-and-conditions" "General Terms and Conditions | TassieTech" "General terms and conditions location for TassieTech managed service agreements and client resources." "Client resources" "General Terms and Conditions" "Managed service agreement information for TassieTech clients." $termsContent "legal"
+Add-Page "general-terms-and-conditions" "General Terms and Conditions | TassieTech" "General terms and conditions for TassieTech managed service agreements, including agreement scope, client responsibilities, updates, and support documents." "Client resources" "General Terms and Conditions" "Managed service agreement information for TassieTech clients." $termsContent "legal"
 
 Add-Page "about-page" "About TassieTech | Local IT Experts Tasmania" "Meet TassieTech, a Tasmanian technology partner combining local care with professional IT, cyber security, software, web, and network expertise." "About TassieTech" "Discover TassieTech" "Where local heart meets global technology expertise." $aboutContent "about" "compact" "" "" $true
 
@@ -1665,7 +1719,7 @@ function Render-Layout {
 
   $prefix = Get-Prefix $Page.Path
   $content = $Page.Content.Replace("{{root}}", $prefix)
-  $canonical = Get-Canonical $Page.Path
+  $canonical = Get-PageCanonical $Page
   $brandHref = if ($prefix -eq "") { "./" } else { $prefix }
   $title = [System.Net.WebUtility]::HtmlEncode($Page.Title)
   $description = [System.Net.WebUtility]::HtmlEncode($Page.Description)
@@ -1674,7 +1728,11 @@ function Render-Layout {
   $heroImage = if ([string]::IsNullOrWhiteSpace($Page.HeroImage)) { "assets/img/heroes/home.jpeg" } else { $Page.HeroImage }
   $heroPosition = if ([string]::IsNullOrWhiteSpace($Page.HeroPosition)) { "center 46%" } else { $Page.HeroPosition }
   $robotsMeta = if ($Page.NoIndex) { '<meta name="robots" content="noindex, follow">' } else { "" }
-  $structuredData = (@(Get-ArticleSchema $Page; Get-HomeSchema $Page; Get-ServiceSchema $Page; Get-FaqSchema $Page) | Where-Object { -not [string]::IsNullOrWhiteSpace($_) }) -join "`n  "
+  $structuredData = if ($Page.NoIndex) {
+    ""
+  } else {
+    (@(Get-ArticleSchema $Page; Get-HomeSchema $Page; Get-ServiceSchema $Page; Get-FaqSchema $Page; Get-PageTypeSchema $Page) | Where-Object { -not [string]::IsNullOrWhiteSpace($_) }) -join "`n  "
+  }
   $heroActions = Get-HeroActions $Page $prefix
   $heroPanel = (IntakeForm "hero-intake-panel" "" "What do you need help with?").Replace("{{root}}", $prefix)
 
@@ -1815,6 +1873,7 @@ New-Item -ItemType Directory -Force -Path "posts" | Out-Null
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Redirect page for the TassieTech blog archive. The current blog is available at /blog/.">
   <meta name="robots" content="noindex, follow">
   <meta http-equiv="refresh" content="0; url=../blog/">
   <link rel="canonical" href="$SiteUrl/blog/">
@@ -1822,14 +1881,14 @@ New-Item -ItemType Directory -Force -Path "posts" | Out-Null
   <link rel="icon" type="image/png" sizes="192x192" href="../assets/img/favicon-192.png">
   <link rel="icon" type="image/png" sizes="512x512" href="../assets/img/favicon.png">
   <link rel="apple-touch-icon" sizes="192x192" href="../assets/img/apple-touch-icon.png">
-  <title>TassieTech Blog</title>
+  <title>TassieTech Blog Redirect</title>
 </head>
-<body><h1>TassieTech Blog</h1><p>Redirecting to <a href="../blog/">TassieTech Blog</a>.</p></body>
+<body><h1>TassieTech Blog moved</h1><p>Redirecting to <a href="../blog/">TassieTech Blog</a>.</p></body>
 </html>
 "@ | Set-Content -Path (Join-Path "posts" "index.html") -Encoding UTF8
 
 $sitemapUrls = $Pages | Where-Object { -not $_.NoIndex } | ForEach-Object {
-  "  <url><loc>$(Get-Canonical $_.Path)</loc></url>"
+  "  <url><loc>$(Get-PageCanonical $_)</loc></url>"
 }
 @"
 <?xml version="1.0" encoding="UTF-8"?>
