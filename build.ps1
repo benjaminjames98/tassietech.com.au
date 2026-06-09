@@ -649,8 +649,8 @@ function ClientProofSection {
         <figure><img src="{{root}}assets/img/clients/nova-design-print.png" alt="Nova Design and Print website preview" loading="lazy" decoding="async"></figure>
         <figure><img src="{{root}}assets/img/clients/jag-digitising.png" alt="JAG Digitising website preview" loading="lazy" decoding="async"></figure>
         <figure><img src="{{root}}assets/img/clients/lemonthyme-wilderness-retreat.png" alt="Lemonthyme Wilderness Retreat website preview" loading="lazy" decoding="async"></figure>
-        <figure><img src="{{root}}assets/img/clients/rhuby-delights.png" alt="Rhuby Delights website preview" loading="lazy" decoding="async"></figure>
-        <figure class="client-name-card"><span>Elite Disability Care</span></figure>
+        <figure><img src="{{root}}assets/img/clients/rhuby-delights.png" alt="Rhuby Delights logo" loading="lazy" decoding="async"></figure>
+        <figure><img src="{{root}}assets/img/clients/elite-disability-care.png" alt="Elite Disability Care logo" loading="lazy" decoding="async"></figure>
       </div>
       <div class="brand-logo-strip" aria-label="Some larger clients TassieTech services">
         <figure><img src="{{root}}assets/img/clients/coles.png" alt="Coles logo" loading="lazy" decoding="async"></figure>

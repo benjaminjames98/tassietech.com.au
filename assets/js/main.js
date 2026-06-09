@@ -13,13 +13,23 @@
     root.dataset.theme = "light";
   }
 
+  const themeIcons = `
+    <span class="theme-icon theme-icon-sun" aria-hidden="true">
+      <svg viewBox="0 0 24 24"><path d="M12 3v2M12 19v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M3 12h2M19 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/><circle cx="12" cy="12" r="4"/></svg>
+    </span>
+    <span class="theme-icon theme-icon-moon" aria-hidden="true">
+      <svg viewBox="0 0 24 24"><path d="M20 14.4A7.4 7.4 0 0 1 9.6 4 8 8 0 1 0 20 14.4Z"/></svg>
+    </span>`;
+
+  if (themeToggle) {
+    themeToggle.innerHTML = themeIcons;
+  }
+
   const updateThemeLabel = () => {
     if (!themeToggle) return;
     const dark = root.dataset.theme === "dark";
     themeToggle.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
-    themeToggle.innerHTML = dark
-      ? '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v2M12 19v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M3 12h2M19 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/><circle cx="12" cy="12" r="4"/></svg>'
-      : '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.4A7.4 7.4 0 0 1 9.6 4 8 8 0 1 0 20 14.4Z"/></svg>';
+    themeToggle.classList.toggle("is-dark", dark);
   };
 
   updateThemeLabel();

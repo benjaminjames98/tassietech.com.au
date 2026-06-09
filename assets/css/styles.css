@@ -26,7 +26,8 @@
   --success: #168b68;
   --shadow: 0 24px 70px rgba(24, 19, 31, 0.16);
   --shadow-soft: 0 14px 36px rgba(24, 19, 31, 0.1);
-  --radius-panel: 12px;
+  --image-outline: rgba(0, 0, 0, 0.1);
+  --radius-panel: 16px;
   --radius-card: 8px;
   --radius-sm: 6px;
   --container: 1180px;
@@ -61,6 +62,7 @@
   --success: #63d6aa;
   --shadow: 0 24px 70px rgba(0, 0, 0, 0.38);
   --shadow-soft: 0 14px 36px rgba(0, 0, 0, 0.25);
+  --image-outline: rgba(255, 255, 255, 0.1);
 }
 
 * {
@@ -70,6 +72,8 @@
 html {
   min-width: 320px;
   scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 body {
@@ -81,7 +85,6 @@ body {
     linear-gradient(180deg, var(--bg) 0%, #f6f0f8 48%, #fbf8fc 100%);
   color: var(--text);
   font-family: var(--font);
-  text-rendering: optimizeLegibility;
 }
 
 :root[data-theme="dark"] body {
@@ -113,6 +116,11 @@ svg {
   max-width: 100%;
 }
 
+img {
+  outline: 1px solid var(--image-outline);
+  outline-offset: -1px;
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -137,9 +145,20 @@ h4 {
   margin: 0;
 }
 
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
 p {
   color: var(--muted);
   line-height: 1.72;
+  text-wrap: pretty;
+}
+
+li {
+  text-wrap: pretty;
 }
 
 ul,
@@ -236,7 +255,7 @@ ol {
   background: var(--surface);
   cursor: pointer;
   overflow: visible;
-  transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+  transition: transform 180ms ease, scale 160ms ease, border-color 180ms ease, background 180ms ease;
 }
 
 .nav-toggle:hover,
@@ -244,6 +263,11 @@ ol {
   transform: translateY(-1px);
   border-color: var(--line-strong);
   background: var(--surface-strong);
+}
+
+.nav-toggle:active,
+.theme-toggle:active {
+  scale: 0.96;
 }
 
 .nav-toggle span,
@@ -309,6 +333,31 @@ ol {
   stroke-width: 1.8;
 }
 
+.theme-toggle {
+  position: relative;
+}
+
+.theme-toggle .theme-icon {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  opacity: 0;
+  filter: blur(4px);
+  scale: 0.25;
+  transition:
+    opacity 180ms cubic-bezier(0.2, 0, 0, 1),
+    scale 180ms cubic-bezier(0.2, 0, 0, 1),
+    filter 180ms cubic-bezier(0.2, 0, 0, 1);
+}
+
+.theme-toggle:not(.is-dark) .theme-icon-moon,
+.theme-toggle.is-dark .theme-icon-sun {
+  opacity: 1;
+  filter: blur(0);
+  scale: 1;
+}
+
 .primary-nav {
   position: fixed;
   inset: 72px 0 auto 0;
@@ -346,7 +395,11 @@ ol {
   font-size: 0.94rem;
   font-weight: 760;
   letter-spacing: 0;
-  transition: color 180ms ease, background 180ms ease, border-color 180ms ease;
+  transition: color 180ms ease, background 180ms ease, border-color 180ms ease, scale 160ms ease;
+}
+
+.primary-nav a:active {
+  scale: 0.96;
 }
 
 .primary-nav a:hover,
@@ -586,7 +639,12 @@ ol {
   font-weight: 840;
   line-height: 1;
   letter-spacing: 0;
-  transition: transform 180ms ease, border-color 180ms ease, background 180ms ease, box-shadow 180ms ease;
+  transition:
+    transform 180ms ease,
+    scale 160ms ease,
+    border-color 180ms ease,
+    background 180ms ease,
+    box-shadow 180ms ease;
 }
 
 .button.primary {
@@ -613,6 +671,10 @@ ol {
 .button:hover {
   transform: translateY(-2px);
   box-shadow: 0 16px 36px rgba(24, 19, 31, 0.16);
+}
+
+.button:active {
+  scale: 0.96;
 }
 
 .button.primary:hover {
@@ -663,7 +725,7 @@ ol {
   max-width: 440px;
   padding: 0.85rem;
   border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: var(--radius-panel);
+  border-radius: calc(var(--radius-card) + 0.85rem);
   background:
     linear-gradient(135deg, rgba(13, 16, 20, 0.72), rgba(75, 17, 107, 0.24)),
     rgba(13, 16, 20, 0.66);
@@ -704,13 +766,17 @@ ol {
   border-radius: var(--radius-card);
   background: rgba(255, 255, 255, 0.08);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
-  transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+  transition: transform 180ms ease, scale 160ms ease, border-color 180ms ease, background 180ms ease;
 }
 
 .hero-intent-card:hover {
   transform: translateY(-2px);
   border-color: color-mix(in srgb, var(--teal) 48%, rgba(255, 255, 255, 0.2));
   background: rgba(91, 209, 201, 0.14);
+}
+
+.hero-intent-card:active {
+  scale: 0.96;
 }
 
 .hero-intent-card.urgent:hover {
@@ -739,7 +805,7 @@ ol {
   align-items: center;
   justify-content: center;
   min-width: 74px;
-  min-height: 34px;
+  min-height: 40px;
   padding: 0 0.62rem;
   border: 1px solid color-mix(in srgb, var(--teal) 54%, rgba(255, 255, 255, 0.18));
   border-radius: 999px;
@@ -768,12 +834,16 @@ ol {
   border-radius: var(--radius-card);
   color: #ffffff;
   background: rgba(255, 255, 255, 0.09);
-  transition: border-color 180ms ease, background 180ms ease;
+  transition: border-color 180ms ease, background 180ms ease, scale 160ms ease;
 }
 
 .signal-card:hover {
   border-color: color-mix(in srgb, var(--teal) 34%, rgba(255, 255, 255, 0.18));
   background: rgba(255, 255, 255, 0.12);
+}
+
+.signal-card:active {
+  scale: 0.96;
 }
 
 .signal-dot {
@@ -927,7 +997,7 @@ main {
 }
 
 .card.lift {
-  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+  transition: transform 180ms ease, scale 160ms ease, border-color 180ms ease, box-shadow 180ms ease;
 }
 
 .card.lift:hover {
@@ -938,6 +1008,10 @@ main {
 
 .card.lift:hover h3 {
   color: var(--teal);
+}
+
+.card.lift:active {
+  scale: 0.96;
 }
 
 .card h2 {
@@ -1089,6 +1163,7 @@ main {
   display: block;
   color: var(--teal);
   font-size: 1.7rem;
+  font-variant-numeric: tabular-nums;
   letter-spacing: 0;
 }
 
@@ -1222,6 +1297,7 @@ main {
   display: block;
   color: var(--teal);
   font-size: 0.98rem;
+  font-variant-numeric: tabular-nums;
 }
 
 .proof-metrics span {
@@ -1249,7 +1325,7 @@ main {
     linear-gradient(135deg, color-mix(in srgb, var(--teal-soft) 64%, transparent), transparent 64%),
     var(--surface);
   box-shadow: var(--shadow-soft);
-  transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+  transition: transform 180ms ease, scale 160ms ease, border-color 180ms ease, background 180ms ease;
 }
 
 .coverage-hub:hover {
@@ -1258,6 +1334,10 @@ main {
   background:
     linear-gradient(135deg, color-mix(in srgb, var(--teal-soft) 78%, var(--brand-soft) 22%), transparent 68%),
     var(--surface-strong);
+}
+
+.coverage-hub:active {
+  scale: 0.96;
 }
 
 .coverage-hub strong {
@@ -1291,7 +1371,7 @@ main {
   font-size: 0.83rem;
   font-weight: 820;
   text-decoration: none;
-  transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+  transition: transform 180ms ease, scale 160ms ease, border-color 180ms ease, background 180ms ease;
 }
 
 .coverage-links a:hover,
@@ -1299,6 +1379,11 @@ main {
   transform: translateY(-1px);
   border-color: var(--teal);
   background: var(--teal-soft);
+}
+
+.coverage-links a:active,
+.client-row-header a:active {
+  scale: 0.96;
 }
 
 .client-proof-stage {
@@ -1356,7 +1441,7 @@ main {
     linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.82)),
     #ffffff;
   box-shadow: 0 16px 32px rgba(0, 0, 0, 0.18);
-  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+  transition: transform 180ms ease, scale 160ms ease, border-color 180ms ease, box-shadow 180ms ease;
 }
 
 .client-logo-grid figure:hover,
@@ -1364,6 +1449,11 @@ main {
   transform: translateY(-2px);
   border-color: color-mix(in srgb, var(--teal) 54%, var(--brand) 12%);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.22);
+}
+
+.client-logo-grid figure:active,
+.brand-logo-strip figure:active {
+  scale: 0.96;
 }
 
 .client-logo-grid img,
@@ -1426,6 +1516,7 @@ main {
   content: counter(steps, decimal-leading-zero);
   color: color-mix(in srgb, var(--teal) 48%, var(--brand) 16%);
   font-size: 2.3rem;
+  font-variant-numeric: tabular-nums;
   font-weight: 900;
   line-height: 1;
 }
@@ -1478,13 +1569,17 @@ main {
   border-radius: var(--radius-card);
   background: rgba(255, 255, 255, 0.09);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
-  transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+  transition: transform 180ms ease, scale 160ms ease, border-color 180ms ease, background 180ms ease;
 }
 
 .intent-cta:hover {
   transform: translateY(-2px);
   border-color: rgba(91, 209, 201, 0.72);
   background: rgba(91, 209, 201, 0.14);
+}
+
+.intent-cta:active {
+  scale: 0.96;
 }
 
 .intent-cta.urgent:hover {
@@ -1887,7 +1982,7 @@ main {
   border-radius: var(--radius-card);
   background: color-mix(in srgb, var(--surface-strong) 72%, transparent);
   cursor: pointer;
-  transition: border-color 180ms ease, background 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+  transition: border-color 180ms ease, background 180ms ease, box-shadow 180ms ease, transform 180ms ease, scale 160ms ease;
 }
 
 .choice-card:hover,
@@ -1898,6 +1993,10 @@ main {
 
 .choice-card:has(input:checked) {
   box-shadow: 0 0 0 3px color-mix(in srgb, var(--teal-soft) 72%, transparent);
+}
+
+.choice-card:active {
+  scale: 0.96;
 }
 
 .choice-card input[type="radio"] {
@@ -1938,7 +2037,7 @@ main {
   border-radius: var(--radius-card);
   color: var(--text);
   background: var(--surface-strong);
-  transition: border-color 180ms ease, box-shadow 180ms ease;
+  transition: border-color 180ms ease, box-shadow 180ms ease, background 180ms ease;
 }
 
 .field textarea {
@@ -2305,13 +2404,17 @@ main {
   border-radius: var(--radius-card);
   cursor: pointer;
   background: color-mix(in srgb, var(--surface) 88%, transparent);
-  transition: border-color 180ms ease, background 180ms ease, transform 180ms ease;
+  transition: border-color 180ms ease, background 180ms ease, transform 180ms ease, scale 160ms ease;
 }
 
 .risk-option:hover {
   transform: translateY(-1px);
   border-color: var(--line-strong);
   background: var(--surface-strong);
+}
+
+.risk-option:active {
+  scale: 0.96;
 }
 
 .risk-option input {
@@ -2345,7 +2448,13 @@ main {
 
 .risk-result strong {
   font-size: 2rem;
+  font-variant-numeric: tabular-nums;
   letter-spacing: 0;
+}
+
+[data-risk-score],
+[data-year] {
+  font-variant-numeric: tabular-nums;
 }
 
 .site-footer {
@@ -2569,7 +2678,7 @@ main {
   align-self: center;
   color: #ffffff;
   border-color: rgba(255, 255, 255, 0.14);
-  border-radius: var(--radius-panel);
+  border-radius: calc(var(--radius-card) + 0.85rem);
   background:
     linear-gradient(135deg, rgba(6, 33, 31, 0.9), rgba(75, 17, 107, 0.9)),
     url("../img/hero-1200.jpg") center / cover;
@@ -2790,43 +2899,46 @@ main {
 .client-proof-stage {
   position: relative;
   z-index: 1;
-  gap: 1.1rem;
+  gap: 1.35rem;
 }
 
 .client-logo-grid,
 .brand-logo-strip {
-  gap: 0.75rem;
+  gap: 1.05rem;
 }
 
 .client-logo-grid figure,
 .brand-logo-strip figure {
-  min-height: 96px;
-  padding: 0;
+  min-height: 90px;
+  padding: 0.62rem;
   border: 0;
-  background: transparent;
-  box-shadow: none;
+  border-radius: var(--radius-card);
+  background: #ffffff;
+  box-shadow: 0 8px 18px rgba(24, 19, 31, 0.07);
 }
 
 .client-logo-grid figure:hover,
 .brand-logo-strip figure:hover {
-  transform: translateY(-2px);
+  transform: translateY(-1px);
   border-color: transparent;
-  box-shadow: none;
+  box-shadow: 0 12px 24px rgba(24, 19, 31, 0.1);
 }
 
 .client-logo-grid img,
 .brand-logo-strip img {
-  height: 76px;
+  width: auto;
   max-width: 100%;
+  height: auto;
+  max-height: 58px;
   border-radius: var(--radius-card);
-  background: #ffffff;
+  background: transparent;
   object-fit: contain;
-  padding: 0.65rem;
-  box-shadow: 0 12px 28px rgba(24, 19, 31, 0.1);
+  padding: 0;
+  box-shadow: none;
 }
 
 .brand-logo-strip img {
-  height: 58px;
+  max-height: 42px;
 }
 
 .client-name-card {
