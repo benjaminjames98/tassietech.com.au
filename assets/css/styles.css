@@ -1744,6 +1744,103 @@ main {
   color: var(--teal);
 }
 
+.card h3 a {
+  color: inherit;
+}
+
+.testimonial {
+  display: grid;
+  gap: 0.8rem;
+  align-content: center;
+  margin: 0;
+}
+
+.testimonial-stars {
+  color: var(--accent);
+  letter-spacing: 0.12em;
+}
+
+.testimonial blockquote {
+  margin: 0;
+}
+
+.testimonial blockquote p {
+  color: var(--text);
+  font-size: 1.08rem;
+  line-height: 1.6;
+  text-wrap: pretty;
+}
+
+.testimonial figcaption {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.compare-table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-panel);
+  background: var(--surface-strong);
+  box-shadow: var(--shadow-soft);
+}
+
+.compare-table {
+  width: 100%;
+  min-width: 560px;
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+}
+
+.compare-table th,
+.compare-table td {
+  padding: 0.7rem 0.9rem;
+  border-bottom: 1px solid var(--line);
+  text-align: center;
+  font-size: 0.92rem;
+}
+
+.compare-table th[scope="row"] {
+  text-align: left;
+  font-weight: 500;
+}
+
+.compare-table thead th {
+  background: var(--surface-muted);
+  color: var(--brand);
+  font-weight: 650;
+}
+
+.compare-table thead th:first-child {
+  text-align: left;
+}
+
+.compare-table .compare-group th {
+  background: var(--bg-soft);
+  color: var(--muted);
+  font-size: 0.76rem;
+  font-weight: 650;
+  letter-spacing: 0.08em;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.compare-table tbody tr:last-child th,
+.compare-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.compare-yes {
+  color: var(--success);
+  font-weight: 700;
+}
+
+.compare-note {
+  margin-top: 1rem;
+  color: var(--muted);
+  text-align: center;
+  text-wrap: pretty;
+}
+
 .faq-section {
   padding-top: 3.5rem;
 }

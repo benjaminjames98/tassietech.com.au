@@ -1299,6 +1299,23 @@ $individualContent = @"
   </div>
 </section>
 $(Get-IndividualServiceCards)
+<section class="section tight">
+  <div class="section-header center reveal">
+    <span class="section-kicker">Common problems</span>
+    <h2>Find help for your device or issue.</h2>
+  </div>
+  <div class="service-path-grid reveal" aria-label="Personal IT help by device or issue">
+    <a href="{{root}}computers/">Computer repairs</a>
+    <a href="{{root}}laptops/">Laptop repairs</a>
+    <a href="{{root}}pc/">PC repairs and upgrades</a>
+    <a href="{{root}}windows/">Windows support</a>
+    <a href="{{root}}mac/">Mac support</a>
+    <a href="{{root}}virus-and-malware/">Virus and malware removal</a>
+    <a href="{{root}}antivirus/">Antivirus setup</a>
+    <a href="{{root}}email/">Email help</a>
+    <a href="{{root}}internet-or-router-problems/">Internet and routers</a>
+  </div>
+</section>
 $(CtaPanel "Speak to a Local IT Expert" "Call TassieTech today or send a quick message and we will point you in the right direction.")
 "@
 Add-Page "individuals" "General IT Support Tasmania | TassieTech Individuals" "Computer repairs, laptop help, email setup, internet and router support, antivirus, malware scans, and friendly local IT support in Tasmania." "For individuals" "Honest local IT help for individuals." "Call TassieTech for friendly, local support with computers, laptops, email, internet, security, and everyday technology problems." $individualContent "individuals"
@@ -1343,6 +1360,8 @@ $servicesContent = @"
       <a href="{{root}}unifi-network-support-tasmania/">UniFi networks</a>
       <a href="{{root}}wordpress-care-tasmania/">WordPress care</a>
       <a href="{{root}}backup-strategy-tasmania/">Backup strategy</a>
+      <a href="{{root}}care-packages/">IT care packages</a>
+      <a href="{{root}}scale-your-business/">Scale your business</a>
       <a href="{{root}}emergency-response/">Emergency response</a>
     </div>
   </div>
@@ -1415,6 +1434,642 @@ Register-ServiceSchema "services" "Business IT Services in Tasmania" "Managed su
 Register-ServiceSchema "community-services" "IT Support for Community Services Tasmania" "Managed IT, Microsoft 365, secure documents, onboarding, helpdesk, backup, and cyber security support for Tasmanian community services organisations." "Community services IT support" "Tasmania"
 Register-ServiceSchema "emergency-response" "Emergency IT Response Tasmania" "Urgent local IT help for business outages, suspected compromises, email failures, internet problems, device issues, and security incidents in Tasmania." "Emergency IT response" "Tasmania"
 Register-ServiceSchema "emergency" "Emergency IT Response Tasmania" "Urgent local IT help for business outages, suspected compromises, email failures, internet problems, device issues, and security incidents in Tasmania." "Emergency IT response" "Tasmania"
+
+# Pages carried over from the old WordPress site (now at old.tassietech.com.au) so their URLs keep working.
+$IndividualHelpLinks = @(
+  @{ Path = "computers"; Label = "Computer repairs" },
+  @{ Path = "laptops"; Label = "Laptop repairs" },
+  @{ Path = "pc"; Label = "PC repairs and upgrades" },
+  @{ Path = "windows"; Label = "Windows support" },
+  @{ Path = "mac"; Label = "Mac support" },
+  @{ Path = "virus-and-malware"; Label = "Virus and malware removal" },
+  @{ Path = "antivirus"; Label = "Antivirus setup" },
+  @{ Path = "email"; Label = "Email help" },
+  @{ Path = "internet-or-router-problems"; Label = "Internet and routers" },
+  @{ Path = "scam-recovery"; Label = "Scam recovery" }
+)
+
+$BusinessHelpLinks = @(
+  @{ Path = "best-managed-it-services-tasmania"; Label = "Managed IT services" },
+  @{ Path = "care-packages"; Label = "IT care packages" },
+  @{ Path = "business-security"; Label = "Business security" },
+  @{ Path = "scale-your-business"; Label = "Scale your business" },
+  @{ Path = "microsoft-365-support-tasmania"; Label = "Microsoft 365 support" },
+  @{ Path = "backup-strategy-tasmania"; Label = "Backup strategy" },
+  @{ Path = "unifi-network-support-tasmania"; Label = "UniFi networks" },
+  @{ Path = "emergency-response"; Label = "Emergency response" }
+)
+
+function TestimonialCard {
+  param([string]$Quote, [string]$Name)
+  if ([string]::IsNullOrWhiteSpace($Quote)) { return "" }
+@"
+<figure class="card testimonial reveal">
+  <span class="testimonial-stars" role="img" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+  <blockquote><p>&ldquo;$Quote&rdquo;</p></blockquote>
+  <figcaption>$Name</figcaption>
+</figure>
+"@
+}
+
+function SingleCtaPanel {
+  param([string]$Title, [string]$Text, [string]$Intent, [string]$Button)
+@"
+<section class="section tight">
+  <div class="cta-panel reveal">
+    <div class="cta-copy">
+      <h2>$Title</h2>
+      <p>$Text</p>
+    </div>
+    <div class="button-row"><a class="button primary" href="{{root}}contact/?intent=$Intent">$Button</a><a class="button secondary" href="tel:0364494214">Call $PhoneShort</a></div>
+  </div>
+</section>
+"@
+}
+
+function Build-SupportPageContent {
+  param($P, [object[]]$RelatedLinks)
+
+  $problems = ($P.Problems | ForEach-Object { "    <article class=""card lift reveal""><h3>$($_.T)</h3><p>$($_.D)</p></article>" }) -join "`n"
+  $why = ($P.Why | ForEach-Object { "<li>$_</li>" }) -join ""
+  $related = ($RelatedLinks | Where-Object { $_.Path -ne $P.Slug } | ForEach-Object { "    <a href=""{{root}}$($_.Path)/"">$($_.Label)</a>" }) -join "`n"
+  $testimonial = TestimonialCard $P.Quote $P.QuoteName
+  $whyBlock = if ($testimonial) {
+@"
+    <div class="grid two">
+      <div class="rich-text reveal"><span class="section-kicker">Why TassieTech</span><h2>$($P.WhyHeading)</h2><p>$($P.WhyText)</p><ul>$why</ul></div>
+$testimonial
+    </div>
+"@
+  } else {
+@"
+    <div class="grid two">
+      <div class="rich-text reveal"><span class="section-kicker">Why TassieTech</span><h2>$($P.WhyHeading)</h2><p>$($P.WhyText)</p></div>
+      <div class="card reveal"><h3>What you can expect</h3><ul>$why</ul></div>
+    </div>
+"@
+  }
+
+@"
+<section class="section">
+  <div class="section-header center reveal">
+    <span class="section-kicker">$($P.ProblemsKicker)</span>
+    <h2>$($P.ProblemsHeading)</h2>
+    <p>$($P.ProblemsIntro)</p>
+  </div>
+  <div class="grid three">
+$problems
+  </div>
+</section>
+$(StepsSection $P.StepsTitle $P.Steps[0] $P.Steps[1] $P.Steps[2])
+<section class="feature-band alt">
+  <div class="section">
+$whyBlock
+  </div>
+</section>
+<section class="section tight">
+  <div class="section-header center reveal">
+    <span class="section-kicker">Related help</span>
+    <h2>$($P.RelatedHeading)</h2>
+  </div>
+  <div class="service-path-grid reveal" aria-label="Related TassieTech services">
+$related
+  </div>
+</section>
+$(FaqSection $P.Faqs)
+$(SingleCtaPanel $P.CtaTitle $P.CtaText $P.Intent $P.CtaButton)
+"@
+}
+
+$IndividualWhy = @(
+  "More than 98% of the IT problems we take on get solved.",
+  "Local Tasmanian technicians, not a mainland call centre.",
+  "You talk to the person doing the work, with no sales team in between.",
+  "Plain-English explanations, and questions are always welcome."
+)
+
+$SupportPages = @(
+  @{
+    Slug = "computers"; Active = "individuals"; Intent = "personal"
+    Title = "Computer Repairs and Support in Tasmania | TassieTech"
+    Description = "Local computer repairs and IT support across Tasmania from Latrobe-based techs. Slow, broken, or virus-ridden computer? We fix it fast."
+    Kicker = "Computer repairs"; Heading = "Computer Problems? Get Expert Help in Tasmania"
+    Intro = "Quick computer repairs and support from local technicians, for the family desktop through to the work laptop."
+    ProblemsKicker = "Whatever you use"; ProblemsHeading = "We repair and support every kind of computer."
+    ProblemsIntro = "Choose the page that matches your computer, or tell us what is happening and we will work it out."
+    Problems = @(
+      @{ T = "<a href=""{{root}}laptops/"">Laptop repairs</a>"; D = "Batteries that will not hold a charge, cracked screens, overheating, and broken keyboards or hinges." },
+      @{ T = "<a href=""{{root}}pc/"">PC repairs and upgrades</a>"; D = "Desktops that will not turn on, noisy or overheating towers, and SSD or RAM upgrades for older PCs." },
+      @{ T = "<a href=""{{root}}windows/"">Windows support</a>"; D = "Windows 11 upgrades, failed updates, blue screens, and slow, crashing computers." },
+      @{ T = "<a href=""{{root}}mac/"">Mac support</a>"; D = "MacBook, iMac, and Mac mini help, from macOS updates and iCloud to full storage and slow performance." },
+      @{ T = "<a href=""{{root}}virus-and-malware/"">Viruses and malware</a>"; D = "Strange pop-ups, programs you did not install, and computers that suddenly slow to a crawl." },
+      @{ T = "<a href=""{{root}}email/"">Email and accounts</a>"; D = "Email that will not send or sync, password problems, and accounts set up across your devices." }
+    )
+    StepsTitle = "How we fix your computer."
+    Steps = @("Call or email us and explain the issue you are having with your computer.", "We diagnose the issue and explain how we plan to solve it and how long it will take.", "We fix the issue quickly so you can get back to using your computer problem-free.")
+    WhyHeading = "Experienced computer repair experts."
+    WhyText = "Whether your desktop is running slow, will not start up, or has a hardware fault, our techs have seen it all. We do individual and business IT support every day, and that breadth of experience benefits you whatever the problem."
+    Why = $IndividualWhy
+    Quote = "Tassie Tech have been servicing our computers now for several years, their service and advice has been well received around. They are local and provide a quality product."; QuoteName = "Graham"
+    RelatedHeading = "More personal IT help."
+    Faqs = @(
+      @{ Q = "What does TassieTech help with?"; A = "We handle a wide range of computer issues, including slow systems, startup problems, hardware faults, software issues, and general troubleshooting for home and business users." },
+      @{ Q = "Do you work with individuals as well as businesses?"; A = "Yes. Whether it is a personal laptop issue or ongoing business IT support, we apply the same level of expertise and care." },
+      @{ Q = "Do you work on laptops, Macs, and Windows PCs?"; A = "Yes. We support every kind of computer. Our laptop repairs, PC repairs, Windows support, and Mac support pages have the details." },
+      @{ Q = "Will I understand what you are doing to my computer?"; A = "Yes. We focus on clear, simple explanations so you understand the issue and the solution without technical jargon." },
+      @{ Q = "How fast can you fix my issue?"; A = "It depends on the problem, but we always focus on fast turnaround and getting you back up and running as quickly as possible." }
+    )
+    CtaTitle = "Solve your computer problem today."; CtaText = "Tell us what your computer is doing and we will point you to the quickest fix."; CtaButton = "Fix my computer"
+  },
+  @{
+    Slug = "windows"; Active = "individuals"; Intent = "personal"
+    Title = "Windows Support and Windows 11 Upgrades in Tasmania | TassieTech"
+    Description = "Windows 11 upgrades, failed updates, blue screens, and slow PCs fixed by local Tasmanian techs in Latrobe."
+    Kicker = "Windows support"; Heading = "Windows Giving You Grief? Get Expert Help in Tasmania"
+    Intro = "Upgrades, updates, and fixes for Windows 10 and Windows 11 from local technicians across Tasmania."
+    ProblemsKicker = "Windows problems we fix"; ProblemsHeading = "Get Windows running smoothly again."
+    ProblemsIntro = "Part of our <a href=""{{root}}computers/"">computer repairs</a> service, on desktops and laptops. For hardware faults, see <a href=""{{root}}pc/"">PC repairs</a> or <a href=""{{root}}laptops/"">laptop repairs</a>."
+    Problems = @(
+      @{ T = "Windows 11 upgrades"; D = "Microsoft has ended support for Windows 10. We check your computer against the <a href=""{{root}}minimum-hardware-requirements/"">minimum hardware requirements</a>, back up your files, and upgrade you to Windows 11." },
+      @{ T = "Updates that will not install"; D = "Updates stuck, failing, or looping on restart. We get Windows up to date so you keep getting security fixes." },
+      @{ T = "Blue screens and crashes"; D = "Blue screen errors, freezing, and random restarts are often drivers, failed updates, or software conflicts. We find the cause and fix it." },
+      @{ T = "Slow start-up and performance"; D = "Too many start-up programs, bloatware, and full drives slow Windows down. We clean it up so it runs smoothly again." },
+      @{ T = "Reset and reinstall"; D = "When Windows is beyond repair, we reinstall it cleanly and put your files and programs back. Suspect a virus? See <a href=""{{root}}virus-and-malware/"">virus and malware removal</a>." },
+      @{ T = "Microsoft account, OneDrive, and Office"; D = "Sign-in problems, OneDrive sync issues, and Microsoft 365 setup, including Outlook and <a href=""{{root}}email/"">email</a>." }
+    )
+    StepsTitle = "How we sort it out."
+    Steps = @("Call or email us and let us know what Windows is doing on your computer.", "We track down what is behind the problem and explain how we will fix it and how long it should take.", "We sort it out so Windows runs smoothly, stays updated, and stops getting in your way.")
+    WhyHeading = "Experienced Windows technicians."
+    WhyText = "Windows issues are a big part of our day. Stuck updates, blue screens, and sluggish start-ups are familiar territory, for home users and business IT support clients alike."
+    Why = $IndividualWhy
+    Quote = "Ben and the Tassie Tech crew were our go to for our computing needs in our local business. We were so pleased with the level of attention to detail, and the pricing was very competitive."; QuoteName = "Gordon"
+    RelatedHeading = "More personal IT help."
+    Faqs = @(
+      @{ Q = "Is Windows 10 still supported?"; A = "No. Microsoft ended support for Windows 10 in October 2025, so it no longer gets regular security updates. We recommend upgrading to Windows 11, or replacing the computer if it cannot run it." },
+      @{ Q = "Can my computer run Windows 11?"; A = "Check our minimum hardware requirements page, or let us check it for you." },
+      @{ Q = "Will I lose my files if I upgrade to Windows 11?"; A = "No. We back up your files before upgrading and check everything is where it should be afterwards." },
+      @{ Q = "Why do my Windows updates keep failing?"; A = "Common causes are a full drive, corrupted update files, or a driver conflict. We diagnose the cause and get updates installing again." },
+      @{ Q = "What does a blue screen error mean?"; A = "It means Windows hit a problem it could not recover from, often a driver, update, or hardware fault. If it keeps happening, get it checked." },
+      @{ Q = "Can you reinstall Windows for me?"; A = "Yes. We reinstall Windows cleanly, then restore your files, programs, and settings." }
+    )
+    CtaTitle = "Take the frustration out of Windows."; CtaText = "Tell us what Windows is doing and we will get it sorted."; CtaButton = "Fix my Windows problem"
+  },
+  @{
+    Slug = "pc"; Active = "individuals"; Intent = "personal"
+    Title = "PC Repairs and Upgrades in Tasmania | TassieTech"
+    Description = "Desktop PC repairs and upgrades across Tasmania. PCs that will not start, overheating towers, SSD and RAM upgrades, and buying advice."
+    Kicker = "PC repairs"; Heading = "PC Will Not Behave? Expert Repairs in Tasmania"
+    Intro = "Desktop computer repairs and upgrades from local technicians across Tasmania."
+    ProblemsKicker = "PC problems we fix"; ProblemsHeading = "Desktop towers and all-in-ones from every major brand."
+    ProblemsIntro = "Part of our <a href=""{{root}}computers/"">computer repairs</a> service. Laptop trouble? See <a href=""{{root}}laptops/"">laptop repairs</a>."
+    Problems = @(
+      @{ T = "PCs that will not turn on"; D = "No power, no display, beeping, or a fan that spins with nothing on screen. We track down the faulty part, whether it is the power supply, memory, or motherboard." },
+      @{ T = "Speed-up upgrades"; D = "Swapping an old hard drive for an SSD and adding memory is often the cheapest way to make a slow desktop feel new again." },
+      @{ T = "Overheating and noisy towers"; D = "Dust-clogged fans and heatsinks cause loud fans, random shutdowns, and crashes. A clean-out and service fixes most of them." },
+      @{ T = "Failing hard drives"; D = "Clicking noises, files that will not open, or a desktop stuck on start-up can mean a drive is failing. We back up what we can and replace the drive." },
+      @{ T = "New desktop advice and setup"; D = "Not sure whether to repair or replace? We give honest advice, help you choose a new PC, and set it up with your files moved across." },
+      @{ T = "Software and update issues"; D = "When the hardware is fine but Windows is not, our <a href=""{{root}}windows/"">Windows support</a> team takes over." }
+    )
+    StepsTitle = "How we get it fixed."
+    Steps = @("Call or email us and describe what your PC is doing, or not doing.", "We test your desktop to pinpoint the faulty part, then talk you through the fix and the cost before we start.", "We repair or upgrade your PC and hand it back running the way it should.")
+    WhyHeading = "Years of hands-on experience."
+    WhyText = "Dead power supplies, failing drives, overheating towers, and constant crashes: we see desktop problems every day across home and business IT support, so there is very little we have not come across."
+    Why = $IndividualWhy
+    Quote = "Tassie Tech computers provide exceptional service in all areas. They have provided me with service, setup and support since I established my business and they continue to be my go to for support and advice."; QuoteName = "Eric"
+    RelatedHeading = "More personal IT help."
+    Faqs = @(
+      @{ Q = "My PC will not turn on. Can you fix it?"; A = "Usually, yes. Most of the time it is a single faulty part, like the power supply, and we quote before replacing anything." },
+      @{ Q = "Is it worth upgrading my old PC?"; A = "Often. An SSD and more memory can make a big difference for much less than a new computer. We will tell you honestly if it is not worth it." },
+      @{ Q = "Why is my desktop so loud?"; A = "Dust build-up makes the fans work harder. A professional clean usually makes it quieter and cooler and helps it last longer." },
+      @{ Q = "Can you get my files off a PC that will not start?"; A = "In many cases we can recover files from the drive of a computer that will not boot, and move them to your repaired or new PC." },
+      @{ Q = "Can you help me choose a new PC?"; A = "Yes. We recommend a desktop that suits how you use it, then set it up and transfer your files." },
+      @{ Q = "Do you fix all-in-one PCs?"; A = "Yes, along with standard desktop towers from all the major brands." }
+    )
+    CtaTitle = "Get your computer running again."; CtaText = "Describe what your PC is doing and we will work out the fix."; CtaButton = "Fix my PC"
+  },
+  @{
+    Slug = "mac"; Active = "individuals"; Intent = "personal"
+    Title = "Mac and MacBook Support in Tasmania | TassieTech"
+    Description = "Local Mac support across Tasmania for MacBook, iMac, and Mac mini: macOS updates, iCloud, full storage, slow Macs, and moving from a PC."
+    Kicker = "Mac support"; Heading = "Mac Not Working Right? Expert Help in Tasmania"
+    Intro = "Help for MacBook Air, MacBook Pro, iMac, and Mac mini from local technicians across Tasmania."
+    ProblemsKicker = "Mac problems we fix"; ProblemsHeading = "Fast, up to date, and working the way it should."
+    ProblemsIntro = "Part of our <a href=""{{root}}computers/"">computer repairs</a> service."
+    Problems = @(
+      @{ T = "Slow performance"; D = "Spinning wheels, slow start-ups, and apps that take forever to open. We find what is slowing your Mac down and fix it." },
+      @{ T = "macOS updates"; D = "Updates that will not install, or a Mac stuck on an old version. We check what your Mac can run and update it safely." },
+      @{ T = "Storage full"; D = "Startup disk almost full? We clear out what you do not need and set up storage that works for you." },
+      @{ T = "Apple ID and iCloud"; D = "iCloud setup, syncing photos and files between your Mac and iPhone, and Mail, Contacts, and Calendar setup." },
+      @{ T = "Moving from a PC to a Mac"; D = "New to Mac? We move your files, photos, and email across from your old Windows PC and show you around." },
+      @{ T = "Backups, pop-ups, and scams"; D = "Time Machine backups, plus help with suspicious pop-ups, adware, and scams. If you have been caught out, see <a href=""{{root}}scam-recovery/"">scam recovery</a>." }
+    )
+    StepsTitle = "From first call to fixed."
+    Steps = @("Give us a call or send an email explaining what is going on with your Mac.", "We look into the issue, explain what we have found, and let you know how long the fix will take.", "We fix the problem so your Mac is fast, up to date, and working the way it should.")
+    WhyHeading = "Experienced, friendly technicians."
+    WhyText = "Slow MacBooks, full storage, update problems, and iCloud headaches are everyday jobs for our techs. Battery, screen, or keyboard trouble? We diagnose it and talk you through your repair options."
+    Why = $IndividualWhy
+    Quote = "I can not recommend Ben and the team highly enough."; QuoteName = "Brian"
+    RelatedHeading = "More personal IT help."
+    Faqs = @(
+      @{ Q = "Which Macs do you work on?"; A = "MacBook Air, MacBook Pro, iMac, and Mac mini." },
+      @{ Q = "My Mac says the startup disk is full. Can you help?"; A = "Yes. We work out what is taking up the space, safely clear what you do not need, and set up iCloud or external storage if it helps." },
+      @{ Q = "Can you help me move from a Windows PC to a Mac?"; A = "Yes. We transfer your files, photos, and email and help you get comfortable with your new Mac." },
+      @{ Q = "Can Macs get viruses?"; A = "It is less common than on Windows, but Macs can pick up adware, scam pop-ups, and malware. We can check and clean your Mac." },
+      @{ Q = "Can my Mac run the latest macOS?"; A = "We check your model and let you know which version it can safely run." },
+      @{ Q = "Can you set up Time Machine backups?"; A = "Yes. We set up automatic backups so your files are protected if anything goes wrong." }
+    )
+    CtaTitle = "Get expert Mac help today."; CtaText = "Tell us what your Mac is doing and we will get it sorted."; CtaButton = "Fix my Mac"
+  },
+  @{
+    Slug = "laptops"; Active = "individuals"; Intent = "personal"
+    Title = "Laptop Repairs in Tasmania | TassieTech"
+    Description = "Local laptop repairs across Tasmania: batteries, screens, overheating, keyboards, and spills. All major brands. Latrobe-based techs."
+    Kicker = "Laptop repairs"; Heading = "Laptop Issues? Local Experts in Tasmania Can Help"
+    Intro = "Fast, reliable laptop repairs from local technicians across Tasmania."
+    ProblemsKicker = "Laptop problems we fix"; ProblemsHeading = "HP, Dell, Lenovo, Acer, ASUS, Surface, and more."
+    ProblemsIntro = "Part of our <a href=""{{root}}computers/"">computer repairs</a> service. Got a MacBook? See <a href=""{{root}}mac/"">Mac support</a>."
+    Problems = @(
+      @{ T = "Battery and charging problems"; D = "Batteries that drain fast, will not charge, or swell, plus loose or damaged charging ports and faulty chargers." },
+      @{ T = "Cracked or faulty screens"; D = "Cracked, flickering, dim, or blank screens. We source the right replacement screen for your model and quote before we start." },
+      @{ T = "Overheating and noisy fans"; D = "Laptops that run hot, shut down by themselves, or sound like a jet engine. A clean-out and service usually brings them back to normal." },
+      @{ T = "Keyboards, trackpads, and hinges"; D = "Sticky or missing keys, trackpads that will not respond, and hinges that are loose or broken." },
+      @{ T = "Spills and drops"; D = "Coffee on the keyboard or a fall off the desk? Turn the laptop off, do not charge it, and get in touch as soon as you can." },
+      @{ T = "Slow or ageing laptops"; D = "A faster SSD and more memory can make an older laptop feel new again. For software problems, see <a href=""{{root}}windows/"">Windows support</a>." }
+    )
+    StepsTitle = "How we get you sorted."
+    Steps = @("Call or email us and tell us what is going on with your laptop.", "We work out what is causing the problem, then explain the fix, the cost, and how long it will take.", "Your laptop comes back working properly, so you can get on with work, study, or streaming.")
+    WhyHeading = "Experienced repair technicians."
+    WhyText = "We have seen just about every laptop fault there is, from flat batteries and overheating to cracked screens and broken hinges. Because we handle home and business IT support every day, you get the benefit of that experience whatever has gone wrong."
+    Why = $IndividualWhy
+    Quote = "Ben and Jason have been such an asset to have on the external team of our business. They get the job done at a fair price and have the knowledge to provide the right advice. Can't recommend enough!"; QuoteName = "Mark"
+    RelatedHeading = "More personal IT help."
+    Faqs = @(
+      @{ Q = "Can you replace my laptop battery?"; A = "For most models, yes. We confirm the right part and cost with you before any work starts." },
+      @{ Q = "Can you fix a cracked laptop screen?"; A = "In most cases. We check your exact model, source a matching screen, and give you a quote first." },
+      @{ Q = "Why is my laptop overheating?"; A = "Usually dust build-up inside or dried-out thermal paste. A clean and service normally fixes it and helps your laptop last longer." },
+      @{ Q = "I spilled something on my laptop. What should I do?"; A = "Turn it off straight away, unplug it, and do not try to switch it back on. Then call us on 03 6449 4214. The sooner we see it, the better the chance of saving it." },
+      @{ Q = "Is my old laptop worth repairing?"; A = "We will tell you honestly. If a repair costs more than the laptop is worth, we will say so and help you choose a replacement." },
+      @{ Q = "How long do repairs take?"; A = "It depends on the problem and parts, but we focus on fast turnaround and keep you updated the whole way." }
+    )
+    CtaTitle = "Book your laptop repair today."; CtaText = "Tell us what is wrong and we will confirm the fix and the cost before we start."; CtaButton = "Fix my laptop"
+  },
+  @{
+    Slug = "virus-and-malware"; Active = "individuals"; Intent = "personal"
+    Title = "Virus and Malware Removal in Tasmania | TassieTech"
+    Description = "Computer acting strange? Local techs find and remove viruses, malware, and ransomware from PCs and Macs across Tasmania."
+    Kicker = "Virus and malware removal"; Heading = "Virus or Malware? Get a Security Scan in Tasmania"
+    Intro = "Professional virus removal and malware protection to keep Tasmanian computers safe and secure."
+    ProblemsKicker = "Signs of trouble"; ProblemsHeading = "We know where threats hide and how to remove them."
+    ProblemsIntro = "From simple adware to serious ransomware, on Windows PCs and Macs."
+    Problems = @(
+      @{ T = "Strange pop-ups"; D = "Pop-ups, fake warnings, and browser pages you did not ask for are a common sign of adware or malware." },
+      @{ T = "Programs you did not install"; D = "New toolbars, apps, or browser extensions that appeared on their own. We find them and remove them completely." },
+      @{ T = "Sudden slow performance"; D = "A computer that suddenly slows to a crawl can be running something it should not. We scan, clean, and check it properly." },
+      @{ T = "Ransomware and locked files"; D = "Files that will not open or a ransom message on screen. Stop using the computer and call us straight away." },
+      @{ T = "Protection afterwards"; D = "Once it is clean, we make sure the right <a href=""{{root}}antivirus/"">antivirus</a> is installed and set up properly." },
+      @{ T = "Scams and stolen details"; D = "If someone has had access to your computer or accounts, our <a href=""{{root}}scam-recovery/"">scam recovery</a> help secures them." }
+    )
+    StepsTitle = "How we clean your computer."
+    Steps = @("Let us know what issues you are experiencing with your device.", "We detect, remove, and resolve malware or virus infections.", "Your system is cleaned and protected for safer everyday use.")
+    WhyHeading = "Experienced virus and malware removal experts."
+    WhyText = "We work across individual and <a href=""{{root}}business-security/"">business security</a> environments every day. We treat your devices and your data with respect, and we explain what we found, how we cleaned it, and how to stay safe going forward."
+    Why = $IndividualWhy
+    Quote = "Being a business, I was so pleased that they were willing to help me the same day I realised I had been hacked. They came that day and took the computer away and next morning bought it back all fixed and have had no problems since."; QuoteName = "Vicki"
+    RelatedHeading = "More personal IT help."
+    Faqs = @(
+      @{ Q = "How do I know if my computer has a virus?"; A = "Common signs are strange pop-ups, programs you did not install, browser pages changing on their own, and a computer that suddenly runs slowly. If something feels wrong, get it scanned." },
+      @{ Q = "Can you remove ransomware?"; A = "We can remove the infection and work out what can be recovered. Turn the computer off, do not pay the ransom, and call us as soon as you can." },
+      @{ Q = "Do you remove viruses from Macs too?"; A = "Yes. Macs can pick up adware, scam pop-ups, and malware, and we can check and clean them." },
+      @{ Q = "How do I stop it happening again?"; A = "We make sure your computer is updated and has the right antivirus set up properly, and we explain what to look out for." }
+    )
+    CtaTitle = "Scan and remove viruses today."; CtaText = "Tell us what your computer is doing and we will check it properly."; CtaButton = "Scan for viruses"
+  },
+  @{
+    Slug = "email"; Active = "individuals"; Intent = "personal"
+    Title = "Email Setup and Support in Tasmania | TassieTech"
+    Description = "Email not sending, syncing, or set up properly? We fix email for homes and businesses across Tasmania."
+    Kicker = "Email help"; Heading = "Email Not Working? Get IT Help in Tasmania"
+    Intro = "Reliable email setup, troubleshooting, and support for individuals and businesses in Tasmania."
+    ProblemsKicker = "Email problems we fix"; ProblemsHeading = "Email that works on every device, whatever the provider."
+    ProblemsIntro = "Tell us what is going wrong or what you need set up."
+    Problems = @(
+      @{ T = "Emails that will not send"; D = "Messages stuck in the outbox, bounce-backs, and errors when you press send." },
+      @{ T = "Syncing across devices"; D = "Email, contacts, and calendars that do not match between your computer, phone, and tablet." },
+      @{ T = "Login and password issues"; D = "Locked out of your email, forgotten passwords, and accounts that keep asking you to sign in." },
+      @{ T = "New email setup"; D = "A new address, a new device, or a move to a new provider, set up properly from the start." },
+      @{ T = "Outlook and Microsoft 365"; D = "Outlook problems, OneDrive, and Microsoft account sign-in. See also <a href=""{{root}}windows/"">Windows support</a>." },
+      @{ T = "Business email"; D = "For business email systems and Microsoft 365, see <a href=""{{root}}microsoft-365-support-tasmania/"">Microsoft 365 support</a>." }
+    )
+    StepsTitle = "How email support works."
+    Steps = @("Tell us what is going wrong with your email or what you need help setting up or accessing.", "We diagnose and resolve setup problems, syncing errors, login issues, or missing email functionality.", "Your email is fixed and working properly so you can communicate without ongoing issues.")
+    WhyHeading = "Experienced email support experts."
+    WhyText = "Whether you need a new email set up, your accounts synced across devices, or you are stuck with emails that just will not send, our techs deal with email issues every day. We make sure you understand how your email is set up and how to use it with confidence."
+    Why = $IndividualWhy
+    Quote = "Absolute pleasure to work with, very friendly, fast, reliable and well priced. Highly recommend if you need any sort of computer, phone or IT help!"; QuoteName = "Kianie"
+    RelatedHeading = "More personal IT help."
+    Faqs = @(
+      @{ Q = "Which email providers do you support?"; A = "We help with the common providers people use at home and at work, including Outlook and Microsoft 365, Gmail, and internet provider email accounts." },
+      @{ Q = "Why are my emails not showing on my phone?"; A = "It is usually how the account is set up on the phone. We check the settings and get your email syncing the same way on every device." },
+      @{ Q = "Can you move my email to a new provider?"; A = "Yes. We set up the new account and help move your existing email, contacts, and calendars across." },
+      @{ Q = "Do you help businesses with email?"; A = "Yes. Business email and Microsoft 365 are covered by our business IT support and Microsoft 365 support services." }
+    )
+    CtaTitle = "Get email support today."; CtaText = "Tell us what your email is doing and we will get it working properly."; CtaButton = "Get email help"
+  },
+  @{
+    Slug = "antivirus"; Active = "individuals"; Intent = "personal"
+    Title = "Antivirus Setup and Protection in Tasmania | TassieTech"
+    Description = "Get the right antivirus for your devices, installed and set up properly by local technicians across Tasmania."
+    Kicker = "Antivirus"; Heading = "Need Antivirus? Get the Right Protection in Tasmania"
+    Intro = "The right antivirus protection, installed and set up properly to keep your devices secure."
+    ProblemsKicker = "What we do"; ProblemsHeading = "Honest antivirus advice without commissions or upselling."
+    ProblemsIntro = "There are dozens of antivirus products on the market, and not all of them are equal."
+    Problems = @(
+      @{ T = "Choose the right product"; D = "We know which products work best for different situations, whether you need basic protection or something more robust." },
+      @{ T = "Install and configure"; D = "We install and set up antivirus to suit your system and how you use it, so it protects you without getting in the way." },
+      @{ T = "Check it is working"; D = "Already have antivirus? We check it is running, up to date, and actually protecting you." },
+      @{ T = "Remove what is already there"; D = "If something has already got in, our <a href=""{{root}}virus-and-malware/"">virus and malware removal</a> service cleans it up first." },
+      @{ T = "Every device"; D = "Windows PCs, Macs, and laptops for the whole household." },
+      @{ T = "Business protection"; D = "Enterprise-grade protection for teams is covered by our <a href=""{{root}}business-security/"">business security</a> service." }
+    )
+    StepsTitle = "How antivirus setup works."
+    Steps = @("Let us know which device you want protected and what concerns you have.", "We install and configure antivirus software suited to your system and how you use it.", "Your device stays protected from threats so you can use it with confidence.")
+    WhyHeading = "Experienced security experts."
+    WhyText = "Cyber threats do not just target businesses: individuals are increasingly targeted too. We work across individual and enterprise-grade business security, and we make sure you understand what your antivirus does and what to look out for."
+    Why = $IndividualWhy
+    Quote = "We would not hesitate to use this service in the future!"; QuoteName = "Shirley"
+    RelatedHeading = "More personal IT help."
+    Faqs = @(
+      @{ Q = "Do I need to pay for antivirus?"; A = "It depends on your device and how you use it. We give honest advice on what protection you actually need, without commissions or upselling." },
+      @{ Q = "Can I have more than one antivirus installed?"; A = "It is best not to. Two antivirus products can conflict and slow your computer down. We help you choose one and set it up properly." },
+      @{ Q = "Do Macs need antivirus?"; A = "Macs are targeted less often, but they can still pick up adware, scam pop-ups, and malware. We can advise on the right protection for your Mac." },
+      @{ Q = "My antivirus says something is wrong. What should I do?"; A = "Do not ignore it. Call us and we can check whether it is a real threat and clean it up if needed." }
+    )
+    CtaTitle = "Protect your device today."; CtaText = "Tell us which devices you want protected and we will recommend the right setup."; CtaButton = "Protect my device"
+  },
+  @{
+    Slug = "internet-or-router-problems"; Active = "individuals"; Intent = "personal"
+    Title = "Internet and Router Help in Tasmania | TassieTech"
+    Description = "Dropouts, slow speeds, or a new router to set up? Local techs fix home and business internet across Tasmania."
+    Kicker = "Internet and routers"; Heading = "Internet or Router Problems? Get Help in Tasmania"
+    Intro = "Fast internet troubleshooting and router setup for stable, reliable home and business connections."
+    ProblemsKicker = "Internet problems we fix"; ProblemsHeading = "A stable connection, working properly before we leave."
+    ProblemsIntro = "We understand the connectivity challenges Tasmanians face, including NBN variability across different areas."
+    Problems = @(
+      @{ T = "Wi-Fi dropouts"; D = "Wi-Fi that keeps dropping out, or rooms in the house where it never reaches." },
+      @{ T = "Slow speeds"; D = "Internet that is slower than it should be. We check whether it is the router, the settings, or the connection." },
+      @{ T = "Devices that will not connect"; D = "Printers, TVs, phones, or laptops that refuse to join the network." },
+      @{ T = "New router setup"; D = "A new router or modem set up properly, with secure Wi-Fi and your devices reconnected." },
+      @{ T = "NBN connection problems"; D = "Connection faults and dropouts. We find the cause and help you deal with your provider if it is on their end." },
+      @{ T = "Business networks"; D = "For business Wi-Fi, switching, and firewalls, see <a href=""{{root}}unifi-network-support-tasmania/"">UniFi network support</a>." }
+    )
+    StepsTitle = "How internet support works."
+    Steps = @("Explain your internet issues, including dropouts, slow speeds, or connection problems.", "We check your router, settings, and connection to find exactly what is causing the issue.", "We fix the issue and restore a stable connection so your internet runs smoothly again.")
+    WhyHeading = "Experienced internet and network experts."
+    WhyText = "Our techs have extensive experience with every kind of connectivity issue, across home and business network setups. Networking can be confusing, so we make it simple and check your setup works properly before we leave."
+    Why = $IndividualWhy
+    Quote = "Came out and went beyond to help fix our problem. Highly recommend."; QuoteName = "Deborah"
+    RelatedHeading = "More personal IT help."
+    Faqs = @(
+      @{ Q = "Why does my Wi-Fi keep dropping out?"; A = "Common causes are router placement, interference, an ageing router, or a fault on the connection. We check each one and fix the cause." },
+      @{ Q = "Is slow internet my router or my provider?"; A = "It can be either. We test your router, settings, and connection so you know where the problem is before you call your provider." },
+      @{ Q = "Can you set up my new router?"; A = "Yes. We set it up securely, get your devices reconnected, and check everything works before we leave." },
+      @{ Q = "Do you help with business networks?"; A = "Yes. Business Wi-Fi and networks are covered by our UniFi network support service." }
+    )
+    CtaTitle = "Get your internet working again."; CtaText = "Tell us what your connection is doing and we will find the cause."; CtaButton = "Fix my internet"
+  },
+  @{
+    Slug = "best-managed-it-services-tasmania"; Active = "services"; Intent = "business-support"
+    Title = "Best Managed IT Services Tasmania | TassieTech"
+    Description = "Managed IT services for Tasmanian businesses: helpdesk, 24/7 monitoring, networks, and Microsoft 365 and Google management from a local Latrobe team."
+    Kicker = "Managed IT services"; Heading = "The Best Managed IT Services in Tasmania"
+    Intro = "Ongoing IT support for businesses that need reliable, proactive technology management."
+    ProblemsKicker = "What is included"; ProblemsHeading = "Enterprise-level IT management for Tasmanian businesses."
+    ProblemsIntro = "Tailored support, not a one-size-fits-all package from the mainland. Compare our <a href=""{{root}}care-packages/"">care packages</a>."
+    Problems = @(
+      @{ T = "Dedicated helpdesk"; D = "Fast support for your team from technicians who already know your setup." },
+      @{ T = "Proactive monitoring"; D = "24/7 monitoring options so problems are caught early, before they slow your team down." },
+      @{ T = "Network maintenance"; D = "Full network setup and maintenance, from business Wi-Fi to firewalls." },
+      @{ T = "Microsoft and Google management"; D = "Accounts, email, file sharing, and security settings across <a href=""{{root}}microsoft-365-support-tasmania/"">Microsoft 365</a> and Google Workspace." },
+      @{ T = "Cloud hosting"; D = "Hosting and cloud services planned around how your business actually works." },
+      @{ T = "Phones and VoIP"; D = "Business phone and VoIP systems supported by the same team as the rest of your IT." }
+    )
+    StepsTitle = "How managed IT support works."
+    Steps = @("We discuss your business, current systems, and the type of ongoing IT support you need.", "We monitor, maintain, and support your technology to keep everything running efficiently.", "You get fast support and stable systems that help your business run smoothly.")
+    WhyHeading = "Your IT partner, not just a vendor."
+    WhyText = "We take the time to understand your business goals and align your IT strategy with them. Think of us as your IT department, without the overhead of hiring in-house. When you need someone on-site, we can be there."
+    Why = @("Local experts with enterprise knowledge.", "Based in Latrobe, supporting businesses across Tasmania.", "Plain-language recommendations focused on real outcomes.", "You always know what is happening with your IT and why.")
+    Quote = "The support that Tassie Tech has given over the last 8 years has just been outstanding. As a small business their help has been tremendous and I highly recommend to anyone who is thinking of using them for their own ventures."; QuoteName = "Christine"
+    RelatedHeading = "More business IT services."
+    Faqs = @(
+      @{ Q = "What is managed IT support?"; A = "Managed IT support means we look after your business technology on an ongoing basis. Instead of calling someone only when something breaks, we monitor, maintain, and support your systems so problems are caught early and your team stays productive." },
+      @{ Q = "How is managed IT different from break-fix IT support?"; A = "With break-fix support you call a technician after something goes wrong and pay per job. Managed IT is proactive: we keep your systems maintained and monitored to prevent problems and reduce downtime." },
+      @{ Q = "Is managed IT support worth it for a small business?"; A = "For most small businesses, yes. You get the benefits of an IT department without the cost of hiring in-house staff, along with more stable systems and someone who already knows your setup when you need help." },
+      @{ Q = "How much does managed IT support cost?"; A = "It depends on the size of your team, your devices, and the systems you use. We talk through your needs first, then give you a tailored quote." },
+      @{ Q = "Can you work with our existing systems?"; A = "Yes. We start by reviewing your current systems and how your business uses them, then recommend changes only where they will make a real difference." },
+      @{ Q = "Do you offer on-site support for businesses?"; A = "Yes. When you need someone on-site, we can be there. We are based in Latrobe and support businesses across Tasmania." }
+    )
+    CtaTitle = "Get reliable IT support today."; CtaText = "Tell us about your team and systems and we will recommend the right level of support."; CtaButton = "Get business support"
+  },
+  @{
+    Slug = "business-security"; Active = "services"; Intent = "business-support"
+    Title = "Business Cyber Security in Tasmania | TassieTech"
+    Description = "Protect your business from ransomware, viruses, and data breaches with commercial-grade security from local Tasmanian experts."
+    Kicker = "Business security"; Heading = "Business Online Security Services in Tasmania"
+    Intro = "Cyber security and protection services for local Tasmanian businesses."
+    ProblemsKicker = "Commercial-grade protection"; ProblemsHeading = "Enterprise-calibre tools, tailored and priced for Tasmanian businesses."
+    ProblemsIntro = "We protect workstations, laptops, mobiles, servers, and networks. See also <a href=""{{root}}cyber-security-tasmania/"">cyber security</a>."
+    Problems = @(
+      @{ T = "Antivirus and antimalware"; D = "Enterprise-grade endpoint protection deployed and managed across your devices." },
+      @{ T = "Security policies"; D = "Cyber security policies written for how your business actually works." },
+      @{ T = "Staff training"; D = "Security awareness training so your team can spot scams and phishing before they cause harm." },
+      @{ T = "System hardening"; D = "Systems hardened against targeted intrusions, ransomware, and malicious insiders." },
+      @{ T = "Ongoing monitoring"; D = "Proactive monitoring and regular hardening to reduce your attack surface before threats reach your door." },
+      @{ T = "Backups and recovery"; D = "A <a href=""{{root}}backup-strategy-tasmania/"">backup strategy</a> that means you can recover if something does get through." }
+    )
+    StepsTitle = "How business security services work."
+    Steps = @("We assess your business setup and identify potential security risks or weaknesses.", "We put security systems and safeguards in place, tailored to your business environment.", "You get ongoing protection to reduce risk and keep your systems secure.")
+    WhyHeading = "ASD partner, Tasmanian based."
+    WhyText = "TassieTech is an Australian Signals Directorate business partner, following ASD guidelines to manage secure networks and quickly combat threats. We make cyber security approachable, not intimidating, so you can make informed decisions about protecting your business and your customers' data."
+    Why = @("Proactive, not reactive.", "Plain-language security advice.", "Based right here in Tasmania.", "Security support for individuals too, so our techs understand threats at every level.")
+    Quote = "They consistently ensure that our IT systems run smoothly and efficiently, and their proactive approach to streamlining and improving our technology has made a significant difference."; QuoteName = "Adam"
+    RelatedHeading = "More business IT services."
+    Faqs = @(
+      @{ Q = "Where should a small business start with cyber security?"; A = "Start with the basics that stop most attacks: MFA on every account, a password manager, managed antivirus, updates, and backups you have tested. We help you prioritise." },
+      @{ Q = "Do you train staff?"; A = "Yes. Security awareness training helps your team recognise phishing, scams, and risky behaviour." },
+      @{ Q = "What does being an ASD partner mean?"; A = "We are part of the Australian Signals Directorate cyber security partnership program and follow ASD guidance when securing networks and responding to threats." },
+      @{ Q = "What should we do if we think we have been hacked?"; A = "Call us straight away on 03 6449 4214. Our emergency response page explains the first steps." }
+    )
+    CtaTitle = "Secure your business IT today."; CtaText = "Tell us about your setup and we will help you prioritise the biggest risks first."; CtaButton = "Secure my business"
+  },
+  @{
+    Slug = "scale-your-business"; Active = "services"; Intent = "project"
+    Title = "IT to Scale Your Business in Tasmania | TassieTech"
+    Description = "Strategic IT planning that helps Tasmanian businesses streamline their systems and grow, with on-the-ground local consultants."
+    Kicker = "Scale your business"; Heading = "IT Services to Scale Your Business in Tasmania"
+    Intro = "Strategic IT support designed to help Tasmanian businesses streamline systems and scale efficiently."
+    ProblemsKicker = "Strategic planning"; ProblemsHeading = "Technology that grows with your business."
+    ProblemsIntro = "Tech moves fast, and keeping up is not easy. We are based in Tasmania and here for the long term, not fly-in consultants."
+    Problems = @(
+      @{ T = "IT planning and roadmaps"; D = "A phased technology roadmap that matches where your business is heading." },
+      @{ T = "Workflow overhauls"; D = "We look at how work actually gets done and remove the manual steps that slow your team down." },
+      @{ T = "Custom software"; D = "Custom applications built when off-the-shelf tools do not fit the way you work." },
+      @{ T = "Automation and integration"; D = "Automate manual processes and connect the tools you already use, so your team can focus on the work that matters." },
+      @{ T = "Emerging technology advice"; D = "Practical advice on new tools, without the hype, so you know what is worth adopting." },
+      @{ T = "Scalable systems"; D = "Systems designed so growth does not create bottlenecks. See also <a href=""{{root}}microsoft-365-support-tasmania/"">Microsoft 365 support</a>." }
+    )
+    StepsTitle = "How business scaling IT works."
+    Steps = @("We discuss your business goals, challenges, and current technology setup in detail.", "We design and put in place IT systems that support efficiency, growth, and scalability.", "Your technology supports expansion without slowing you down or creating bottlenecks.")
+    WhyHeading = "Strategic planners with local knowledge."
+    WhyText = "Every business is different. We take the time to understand your challenges and goals, then build solutions that actually fit. We skip the jargon and focus on outcomes, so you understand what we recommend, why it matters, and how it affects your bottom line."
+    Why = @("Custom solutions for businesses across Tasmania.", "Real growth, with no middle-man.", "Clear communication and real results.", "Broad hands-on experience across business and personal IT.")
+    Quote = "The team was professional, knowledgeable, and incredibly responsive throughout the entire process. They took the time to understand our business needs and delivered reliable IT solutions that made a real difference to our operations."; QuoteName = "Andrew"
+    RelatedHeading = "More business IT services."
+    Faqs = @(
+      @{ Q = "When should a business plan its IT for growth?"; A = "Before the growth arrives. It is cheaper and less disruptive to plan systems, accounts, and processes ahead of new staff, sites, or services than to fix them afterwards." },
+      @{ Q = "Do you build custom software?"; A = "Yes. When off-the-shelf tools do not fit, we can build custom applications and integrations around how your business works." },
+      @{ Q = "Can you work with our existing systems?"; A = "Yes. We start with what you have and recommend changes only where they make a real difference." },
+      @{ Q = "How do we start?"; A = "Send us a project enquiry with your goals and any deadlines. We will talk through your current setup and suggest a practical first step." }
+    )
+    CtaTitle = "We will help scale your IT systems."; CtaText = "Tell us where your business is heading and what is slowing it down."; CtaButton = "Plan a project"
+  }
+)
+
+foreach ($supportPage in $SupportPages) {
+  $links = if ($supportPage.Active -eq "individuals") { $IndividualHelpLinks } else { $BusinessHelpLinks }
+  $supportContent = Build-SupportPageContent $supportPage $links
+  $heroImage = if ($supportPage.Active -eq "individuals") { "assets/img/heroes/aurora-cradle.jpg" } else { "assets/img/heroes/office-services-1440.jpg" }
+  $heroPosition = if ($supportPage.Active -eq "individuals") { "53% 51%" } else { "50% 0%" }
+  Add-Page $supportPage.Slug $supportPage.Title $supportPage.Description $supportPage.Kicker $supportPage.Heading $supportPage.Intro $supportContent $supportPage.Active "compact" $heroImage $heroPosition
+  Register-Faq $supportPage.Slug $supportPage.Faqs
+  $schemaType = if ($supportPage.Active -eq "individuals") { "General IT support" } else { "Business IT support" }
+  Register-ServiceSchema $supportPage.Slug $supportPage.Heading $supportPage.Description $schemaType "Tasmania"
+}
+
+# Care packages: Good, Better, Best. Y = included; any other value is shown as written.
+$CarePackageRows = @(
+  "#Support",
+  "Guaranteed response times|Y|Y|Y",
+  "Managed antivirus|Y|Y|Y",
+  "Dedicated support agent's mobile|Y|Y|Y",
+  "Unlimited remote support|Y|Y|Y",
+  "Unlimited onsite support|TTS Care rates|Y|Y",
+  "Unlimited after-hours support|TTS Care rates|TTS Care rates|Y",
+  "#Security",
+  "Password manager|Extra|Y|Y",
+  "MFA security audit|Y|Y|Y",
+  "Managed Microsoft 365 macro settings|Y|Y|Y",
+  "User application hardening|Y|Y|Y",
+  "Administrator access audit|Y|Y|Y",
+  "Managed application patches|Y|Y|Y",
+  "Managed Windows updates|Y|Y|Y",
+  "Managed application control|Y|Y|Y",
+  "Regular vulnerability scanning|Extra|Extra|Y",
+  "SSO setup and management|N/A|N/A|Y",
+  "#Management",
+  "IT documentation|Y|Y|Y",
+  "Procurement assistance|Y|Y|Y",
+  "Monthly executive report|Extra|Y|Y",
+  "Cyber emergency response plan|Extra|Y|Y",
+  "Hardware upgrade plan|Extra|Y|Y",
+  "Real-time system monitoring|Extra|Extra|Y",
+  "Technology business review|Bi-annual|Quarterly|Monthly",
+  "Asset management report|Extra|Annually|Bi-annually",
+  "#Training",
+  "Security awareness training|Y|Y|Y",
+  "End user training|TTS Care rates|Y|Y",
+  "#Services",
+  "Microsoft 365 licence|Standard|Standard|Premium",
+  "Microsoft 365 backup|Y|Y|Y",
+  "Local workstation backup|Extra|Y|Y",
+  "Backup restoration test|Bi-annually|Quarterly|Monthly",
+  "Dropbox Business licence|Extra|Extra|Business Plus"
+)
+
+$carePackageBody = ($CarePackageRows | ForEach-Object {
+  if ($_.StartsWith("#")) {
+    "        <tr class=""compare-group""><th colspan=""4"" scope=""colgroup"">$($_.Substring(1))</th></tr>"
+  } else {
+    $cells = $_ -split "\|"
+    $values = ($cells[1..3] | ForEach-Object {
+      if ($_ -eq "Y") { "<td><span class=""compare-yes"" role=""img"" aria-label=""Included"">&#10003;</span></td>" } else { "<td>$(Encode-Html $_)</td>" }
+    }) -join ""
+    "        <tr><th scope=""row"">$(Encode-Html $cells[0])</th>$values</tr>"
+  }
+}) -join "`n"
+
+$carePackagesContent = @"
+<section class="section">
+  <div class="grid two">
+    <div class="rich-text reveal">
+      <span class="section-kicker">Managed service plans</span>
+      <h2>Support for every part of your business.</h2>
+      <p>Our care packages bundle support, security, management, training, and backup into three levels: Good, Better, and Best. Every plan includes guaranteed response times, managed antivirus, unlimited remote support, and a dedicated support agent you can call directly.</p>
+      <p>Not sure which level fits? We will review your team, devices, and risks first, then recommend the plan that makes sense.</p>
+    </div>
+    <div class="card reveal">
+      <h3>Reading the table</h3>
+      <ul><li>&#10003; means the item is included in the plan.</li><li>TTS Care rates means the work is available and charged at our care rates.</li><li>Extra means it can be added to the plan.</li><li>Response times are set out in our <a href="{{root}}guaranteed-response-times/">response time guide</a>.</li></ul>
+    </div>
+  </div>
+</section>
+<section class="section tight">
+  <div class="section-header center reveal">
+    <span class="section-kicker">Compare plans</span>
+    <h2>Good, Better, and Best.</h2>
+  </div>
+  <div class="compare-table-wrap reveal">
+    <table class="compare-table">
+      <caption class="sr-only">TassieTech care packages compared</caption>
+      <thead>
+        <tr><th scope="col">Plan</th><th scope="col">Good</th><th scope="col">Better</th><th scope="col">Best</th></tr>
+      </thead>
+      <tbody>
+$carePackageBody
+      </tbody>
+    </table>
+  </div>
+  <p class="compare-note reveal">Managed service agreements are covered by our <a href="{{root}}general-terms-and-conditions/">general terms</a>, <a href="{{root}}minimum-hardware-requirements/">minimum hardware requirements</a>, and <a href="{{root}}recommended-technology-platform/">recommended technology platform</a>.</p>
+</section>
+$(SingleCtaPanel "Find the right care package." "Tell us about your team and we will recommend the plan that fits." "business-support" "Ask about care packages")
+"@
+Add-Page "care-packages" "IT Care Packages for Businesses | TassieTech" "Compare TassieTech's Good, Better, and Best IT care packages: support, security, backups, Microsoft 365, and monitoring for Tasmanian businesses." "Care packages" "TassieTech Care Packages" "Support, security, management, training, and backup for every part of your business." $carePackagesContent "services" "compact" "assets/img/heroes/office-services-1440.jpg" "50% 0%"
+Register-ServiceSchema "care-packages" "TassieTech Care Packages" "Good, Better, and Best managed IT care packages for Tasmanian businesses." "Managed IT support" "Tasmania"
+
+$devonportBusinessContent = @"
+<section class="section">
+  <div class="grid two">
+    <div class="rich-text reveal">
+      <span class="section-kicker">Devonport businesses</span>
+      <h2>IT support from right next door in Latrobe.</h2>
+      <p>We understand the needs of Devonport's business community. Our aim is to help your business thrive with IT that simplifies your operations, improves security, and boosts productivity.</p>
+      <p>Join the many Devonport businesses that trust TassieTech for their IT support and development. For our full Devonport service area, see <a href="{{root}}it-services-for-devonport/">IT services for Devonport</a>.</p>
+    </div>
+    <div class="card reveal">
+      <h3>Why Devonport businesses choose us</h3>
+      <ul><li>Based in Latrobe, minutes from Devonport.</li><li>Onsite visits where they make sense.</li><li>Involved with the Devonport Chamber of Commerce and Industry.</li><li>Plain-language advice from a local team.</li></ul>
+    </div>
+  </div>
+</section>
+<section class="section">
+  <div class="section-header center reveal">
+    <span class="section-kicker">Our services in Devonport</span>
+    <h2>Everything your business runs on, supported locally.</h2>
+    <p>From support for a broad range of business software and hardware to bespoke software built for your needs.</p>
+  </div>
+  <div class="grid three service-link-grid">
+    <a class="card lift reveal" href="{{root}}business-it-support-tasmania/"><h3>Complete business IT support</h3><p>Seamless operations with expert help for devices, accounts, and everyday issues.</p></a>
+    <a class="card lift reveal" href="{{root}}cyber-security-tasmania/"><h3>Simplified IT consultations</h3><p>Digital security and tools explained in plain language for your business.</p></a>
+    <a class="card lift reveal" href="{{root}}scale-your-business/"><h3>Custom software development</h3><p>Tailor-made tools for efficient workflows.</p></a>
+    <a class="card lift reveal" href="{{root}}wordpress-care-tasmania/"><h3>Website development and hosting</h3><p>Websites built, hosted, and looked after locally.</p></a>
+    <a class="card lift reveal" href="{{root}}scale-your-business/"><h3>Emerging technologies advisory</h3><p>Practical, future-ready advice on what is worth adopting.</p></a>
+    <a class="card lift reveal" href="{{root}}unifi-network-support-tasmania/"><h3>Phone and internet network support</h3><p>Reliable connectivity for your office and team.</p></a>
+  </div>
+</section>
+$(GoogleMapSection "Visit TassieTech in Latrobe, next door to Devonport." "Our Latrobe base is minutes from Devonport, so onsite help is close when you need it.")
+$(SingleCtaPanel "We work with Devonport businesses." "Tell us what your business needs and we will help you choose the next practical step." "business-support" "Get business support")
+"@
+Add-Page "expert-it-services-for-devonport-businesses" "Expert IT Services for Devonport Businesses | TassieTech" "IT support and development for Devonport businesses from a local team based right next door in Latrobe." "Devonport" "Expert IT Services for Devonport Businesses" "Devonport's local IT support and development experts, based right next door in Latrobe." $devonportBusinessContent "areas" "compact" "assets/img/heroes/devonport.jpg" "48% 49%"
+Register-ServiceSchema "expert-it-services-for-devonport-businesses" "Expert IT Services for Devonport Businesses" "IT support and development for Devonport businesses from a local team based in Latrobe." "Business IT support" "Devonport"
 
 $areaFaqs = @(
   @{ Q = "Do you provide onsite support everywhere in Tasmania?"; A = "We are North West based. Onsite support is strongest around our local region, while many business support tasks can be handled remotely across Tasmania and onsite work can be planned where it makes sense." },
