@@ -255,6 +255,8 @@ function IntakeForm {
     [string]$Heading = "Speak with a Tasmanian IT Expert",
     [string]$IssueLabel = "Outline of the issue*"
   )
+  # The hero form keeps the plain IDs; any second form on the page gets a suffix so IDs stay unique.
+  $u = if ($Class -eq "hero-intake-panel") { "" } else { "-contact" }
 @"
 <form class="form-card intake-form $Class reveal" data-contact-form data-step-form data-current-step="1" method="post" action="{{root}}contact-submit.php" accept-charset="UTF-8">
   <div class="honeypot-field" aria-hidden="true"><label>Website</label><input name="website" tabindex="-1" autocomplete="off"></div>
@@ -273,8 +275,8 @@ function IntakeForm {
     <span data-step-indicator="3">Issue</span>
     <span data-step-indicator="4">Send</span>
   </div>
-  <section class="form-step" data-form-step="1" aria-labelledby="intake-step-1">
-    <h3 id="intake-step-1">What do you need?</h3>
+  <section class="form-step" data-form-step="1" aria-labelledby="intake-step-1$u">
+    <h3 id="intake-step-1$u">What do you need?</h3>
     <fieldset class="field option-field">
       <legend class="sr-only">Choose what you need help with</legend>
       <div class="choice-grid path-choice-grid">
@@ -286,26 +288,26 @@ function IntakeForm {
     </fieldset>
     <div class="form-step-actions"><button class="button primary" type="button" data-step-next>Next</button></div>
   </section>
-  <section class="form-step" data-form-step="2" aria-labelledby="intake-step-2" hidden>
-    <h3 id="intake-step-2">Your details</h3>
-    <div class="field"><label for="name">Name*</label><input id="name" name="name" required autocomplete="name"></div>
-    <div class="field"><label for="email">Email*</label><input id="email" name="email" type="email" required autocomplete="email"></div>
+  <section class="form-step" data-form-step="2" aria-labelledby="intake-step-2$u" hidden>
+    <h3 id="intake-step-2$u">Your details</h3>
+    <div class="field"><label for="name$u">Name*</label><input id="name$u" name="name" required autocomplete="name"></div>
+    <div class="field"><label for="email$u">Email*</label><input id="email$u" name="email" type="email" required autocomplete="email"></div>
     <div class="conditional-group" data-contact-section="business" hidden>
-      <div class="field"><label for="businessName">Business name*</label><input id="businessName" name="businessName" autocomplete="organization" data-conditional-required></div>
+      <div class="field"><label for="businessName$u">Business name*</label><input id="businessName$u" name="businessName" autocomplete="organization" data-conditional-required></div>
     </div>
     <div class="form-step-actions"><button class="button secondary" type="button" data-step-prev>Back</button><button class="button primary" type="button" data-step-next>Next</button></div>
   </section>
-  <section class="form-step" data-form-step="3" aria-labelledby="intake-step-3" hidden>
-    <h3 id="intake-step-3">Tell us what is happening</h3>
+  <section class="form-step" data-form-step="3" aria-labelledby="intake-step-3$u" hidden>
+    <h3 id="intake-step-3$u">Tell us what is happening</h3>
     <div class="conditional-group" data-contact-section="individual" hidden>
-      <div class="field"><label for="individualIssue">$IssueLabel</label><textarea id="individualIssue" name="individualIssue" placeholder="What is happening, when did it start, and what have you already tried?" data-conditional-required></textarea></div>
+      <div class="field"><label for="individualIssue$u">$IssueLabel</label><textarea id="individualIssue$u" name="individualIssue" placeholder="What is happening, when did it start, and what have you already tried?" data-conditional-required></textarea></div>
     </div>
     <div class="conditional-group" data-contact-section="business-project" hidden>
-      <div class="field"><label for="budgetRange">Budget range*</label><select id="budgetRange" name="budgetRange" data-conditional-required><option value="">Select a range</option><option>Under &#36;2,500</option><option>&#36;2,500 - &#36;7,500</option><option>&#36;7,500 - &#36;15,000</option><option>&#36;15,000 - &#36;30,000</option><option>&#36;30,000+</option><option>Not sure yet</option></select></div>
-      <div class="field"><label for="projectOverview">Project overview*</label><textarea id="projectOverview" name="projectOverview" placeholder="What are you trying to build, improve, migrate, or fix? Include timing if there is a deadline." data-conditional-required></textarea></div>
+      <div class="field"><label for="budgetRange$u">Budget range*</label><select id="budgetRange$u" name="budgetRange" data-conditional-required><option value="">Select a range</option><option>Under &#36;2,500</option><option>&#36;2,500 - &#36;7,500</option><option>&#36;7,500 - &#36;15,000</option><option>&#36;15,000 - &#36;30,000</option><option>&#36;30,000+</option><option>Not sure yet</option></select></div>
+      <div class="field"><label for="projectOverview$u">Project overview*</label><textarea id="projectOverview$u" name="projectOverview" placeholder="What are you trying to build, improve, migrate, or fix? Include timing if there is a deadline." data-conditional-required></textarea></div>
     </div>
     <div class="conditional-group" data-contact-section="business-support" hidden>
-      <div class="field"><label for="supportIssue">$IssueLabel</label><textarea id="supportIssue" name="supportIssue" placeholder="What is affected, how many people are impacted, and when did it start?" data-conditional-required></textarea></div>
+      <div class="field"><label for="supportIssue$u">$IssueLabel</label><textarea id="supportIssue$u" name="supportIssue" placeholder="What is affected, how many people are impacted, and when did it start?" data-conditional-required></textarea></div>
       <fieldset class="field option-field urgency-field">
         <legend>Urgency*</legend>
         <div class="choice-grid urgency-grid">
@@ -317,8 +319,8 @@ function IntakeForm {
     </div>
     <div class="form-step-actions"><button class="button secondary" type="button" data-step-prev>Back</button><button class="button primary" type="button" data-step-next>Next</button></div>
   </section>
-  <section class="form-step" data-form-step="4" aria-labelledby="intake-step-4" hidden>
-    <h3 id="intake-step-4">Send enquiry</h3>
+  <section class="form-step" data-form-step="4" aria-labelledby="intake-step-4$u" hidden>
+    <h3 id="intake-step-4$u">Send enquiry</h3>
     <div class="review-panel">
       <strong data-review-path>Choose a support path</strong>
       <span data-review-copy>We will route your enquiry to the right next step.</span>
