@@ -3419,3 +3419,6 @@ body.home .hero + .section::before {
 .page-contact main > .section:nth-of-type(2) .rich-text p { font-size: clamp(1.05rem, 1.4vw, 1.2rem); line-height: 1.7; margin-top: 0; }
 .page-contact .next-steps-panel h2 { font-size: clamp(1.6rem, 2.6vw, 2.1rem); line-height: 1.12; }
 .page-contact main > .section.tight:last-of-type { padding-top: 0; }
+
+/* Keep phone numbers on one line */
+a[href^="tel:"] { white-space: nowrap; }
