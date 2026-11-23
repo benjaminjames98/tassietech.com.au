@@ -1,0 +1,1273 @@
+[
+  {
+    "slug": "computers",
+    "audience": "personal",
+    "seoTitle": "Computer Repairs & Support in Tasmania | Tassie Tech",
+    "seoDesc": "Local computer repairs and IT support across Tasmania from Latrobe-based techs. Slow, broken or virus-ridden computer? We fix it fast. Call 03 6449 4214.",
+    "heading": "Computer Problems? Get Expert Help in Tasmania",
+    "intro": "Expert local technicians providing quick computer repairs and support in Tasmania",
+    "button": "Fix My Computer!",
+    "stepsTitle": "How We Fix Your Computer",
+    "steps": [
+      {
+        "t": "Talk To Our Team",
+        "d": "Give us a quick call or email to explain the issue you&rsquo;re having with your computer."
+      },
+      {
+        "t": "We Get It Sorted",
+        "d": "We diagnose the issue and explain how we plan to solve it and how long it&rsquo;ll take."
+      },
+      {
+        "t": "You&rsquo;re Good To Go",
+        "d": "We fix the issue quickly so you can get back to using your computer problem-free."
+      }
+    ],
+    "sections": [
+      {
+        "title": "Whatever You Use, We Can Fix It",
+        "intro": "From the family desktop to a work laptop, our local techs repair and support every kind of computer.",
+        "why": false,
+        "closing": "",
+        "items": [
+          {
+            "t": "<a href=\"{{root}}laptops/\">Laptop Repairs</a>",
+            "p": [
+              "Batteries that won&rsquo;t hold a charge, cracked screens, overheating and broken keyboards or hinges."
+            ]
+          },
+          {
+            "t": "<a href=\"{{root}}pc/\">PC Repairs &amp; Upgrades</a>",
+            "p": [
+              "Desktops that won&rsquo;t turn on, noisy or overheating towers, and SSD or RAM upgrades for older PCs."
+            ]
+          },
+          {
+            "t": "<a href=\"{{root}}windows/\">Windows Support</a>",
+            "p": [
+              "Windows 11 upgrades, failed updates, blue screens and slow, crashing computers."
+            ]
+          },
+          {
+            "t": "<a href=\"{{root}}mac/\">Mac Support</a>",
+            "p": [
+              "MacBook, iMac and Mac mini help, from macOS updates and iCloud to full storage and slow performance."
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Why Choose Tassie Tech?",
+        "intro": "",
+        "why": true,
+        "closing": "We try hard to be the best IT company we can be. Give us a try; you won&rsquo;t regret it!",
+        "items": [
+          {
+            "t": "Experienced Computer Repair Experts",
+            "p": [
+              "Tassie Tech has a &gt;98% solve rate across all IT fields. Whether your desktop is running slow, won&rsquo;t start up, or has a hardware fault, our techs have seen it all. We work across both individual and <a href=\"{{root}}services/\">business IT support</a> jobs every day, giving us a wide breadth of knowledge that benefits you &ndash; no matter what the problem is."
+            ]
+          },
+          {
+            "t": "Tasmanian Local Computer Experts",
+            "p": [
+              "We are part of the local community, and we care about our customers. We do our best to be friendly, prompt, and to get your computer fixed fast. We serve individuals right across Tasmania &ndash; from Burnie to Devonport, Latrobe, Ulverstone, and beyond. <a href=\"{{root}}it-services-tasmania/\">See all the areas we serve</a>."
+            ]
+          },
+          {
+            "t": "Speak With Tech Experts &mdash; Not Sales People",
+            "p": [
+              "Most IT companies servicing the NW Coast are based on the mainland, and pay 3rd party techs to do jobs locally. We work directly with locals, removing the distant sales team and saving you money on every computer repair."
+            ]
+          },
+          {
+            "t": "We Simplify Tech for You",
+            "p": [
+              "We genuinely like people, and do our best to be respectful, making sure that you understand what&rsquo;s wrong with your computer and what we&rsquo;re doing to fix it. You&rsquo;re always welcome to ask any questions you need to stay in the loop."
+            ]
+          }
+        ]
+      }
+    ],
+    "clients": "We&rsquo;re trusted for IT services by familiar faces across the state:",
+    "testimonials": [
+      "Graham",
+      "Kianie"
+    ],
+    "contactTitle": "Solve Your Computer Problem Today",
+    "faqIntro": "Everything you need to know about working with Tassie Tech",
+    "faqs": [
+      {
+        "q": "What does Tassie Tech actually help with?",
+        "a": "We handle a wide range of computer and IT issues including slow systems, startup problems, hardware faults, software issues, and general troubleshooting for both home and business users."
+      },
+      {
+        "q": "Do you only work with businesses or individuals too?",
+        "a": "We support both. Whether it&rsquo;s a personal laptop issue or ongoing business IT support, we apply the same level of expertise and care."
+      },
+      {
+        "q": "How experienced are your technicians?",
+        "a": "Our team has a strong track record across all major IT areas with a solve rate of over 98%. We deal with real-world issues daily, so most problems we see are familiar and fixable quickly."
+      },
+      {
+        "q": "Are you based in Tasmania?",
+        "a": "Yes. We&rsquo;re a local Tasmanian team, serving areas across the North West Coast including Burnie, Devonport, Latrobe, Ulverstone, and surrounding regions."
+      },
+      {
+        "q": "Why not just use a big national IT company?",
+        "a": "Many larger IT providers outsource work or rely on third-party technicians. We work directly with local techs, which keeps costs down and communication clear."
+      },
+      {
+        "q": "Will I understand what you&rsquo;re doing to my computer?",
+        "a": "Yes. We focus on clear, simple explanations so you always understand the issue and the solution without technical jargon."
+      },
+      {
+        "q": "How fast can you fix my issue?",
+        "a": "It depends on the problem, but our focus is always on fast turnaround times and getting you back up and running as quickly as possible."
+      },
+      {
+        "q": "Do I need to be technical to work with you?",
+        "a": "Not at all. We handle the technical side and guide you through everything in a straightforward way."
+      },
+      {
+        "q": "Do you work on laptops, Macs and Windows PCs?",
+        "a": "Yes. We support every kind of computer. See our <a href=\"{{root}}laptops/\">laptop repairs</a>, <a href=\"{{root}}pc/\">PC repairs</a>, <a href=\"{{root}}windows/\">Windows support</a> and <a href=\"{{root}}mac/\">Mac support</a> pages for details."
+      }
+    ],
+    "issueLabel": "What kind of problem are you having?"
+  },
+  {
+    "slug": "laptops",
+    "audience": "personal",
+    "seoTitle": "Laptop Repairs in Tasmania | Tassie Tech",
+    "seoDesc": "Local laptop repairs across Tasmania: batteries, screens, overheating, keyboards and spills. All major brands. Latrobe-based techs. Call 03 6449 4214.",
+    "heading": "Laptop Issues? Local Experts in Tasmania Can Help",
+    "intro": "Fast, reliable repairs from local technicians across Tasmania",
+    "button": "Fix My Laptop!",
+    "stepsTitle": "How We Get You Sorted",
+    "steps": [
+      {
+        "t": "Get In Touch",
+        "d": "Call or email us and tell us what&rsquo;s going on with your laptop."
+      },
+      {
+        "t": "We Find The Fault",
+        "d": "We work out what&rsquo;s causing the problem, then explain the fix, the cost and how long it&rsquo;ll take."
+      },
+      {
+        "t": "Back In Your Hands",
+        "d": "Your laptop comes back working properly, so you can get on with work, study or streaming."
+      }
+    ],
+    "sections": [
+      {
+        "title": "Laptop Problems We Fix",
+        "intro": "Part of our <a href=\"{{root}}computers/\">computer repairs</a> service. We repair Windows laptops from HP, Dell, Lenovo, Acer, ASUS, Microsoft Surface and more. Got a MacBook? See our <a href=\"{{root}}mac/\">Mac support</a> page.",
+        "why": false,
+        "closing": "",
+        "items": [
+          {
+            "t": "Battery &amp; Charging Problems",
+            "p": [
+              "Batteries that drain fast, won&rsquo;t charge or swell, plus loose or damaged charging ports and faulty chargers."
+            ]
+          },
+          {
+            "t": "Cracked or Faulty Screens",
+            "p": [
+              "Cracked, flickering, dim or blank screens. We source the right replacement screen for your model and quote before we start."
+            ]
+          },
+          {
+            "t": "Overheating &amp; Noisy Fans",
+            "p": [
+              "Laptops that run hot, shut down by themselves or sound like a jet engine. A clean-out and service usually brings them back to normal."
+            ]
+          },
+          {
+            "t": "Keyboards, Trackpads &amp; Hinges",
+            "p": [
+              "Sticky or missing keys, trackpads that won&rsquo;t respond and hinges that are loose or broken."
+            ]
+          },
+          {
+            "t": "Spills &amp; Drops",
+            "p": [
+              "Coffee on the keyboard or a fall off the desk? Turn the laptop off, don&rsquo;t charge it, and get in touch as soon as you can."
+            ]
+          },
+          {
+            "t": "Slow or Ageing Laptops",
+            "p": [
+              "A faster SSD and more memory can make an older laptop feel new again. For software problems, see <a href=\"{{root}}windows/\">Windows support</a>."
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Why Choose Tassie Tech?",
+        "intro": "",
+        "why": true,
+        "closing": "Give us a try. We think you&rsquo;ll be glad you did!",
+        "items": [
+          {
+            "t": "Experienced Repair Technicians",
+            "p": [
+              "With a solve rate above 98% across every area of IT, we&rsquo;ve seen just about every laptop fault there is, from flat batteries and overheating to cracked screens and broken hinges. Because we handle both home and <a href=\"{{root}}services/\">business IT support</a> every day, you get the benefit of that experience whatever&rsquo;s gone wrong."
+            ]
+          },
+          {
+            "t": "Tasmanian Local Experts",
+            "p": [
+              "We&rsquo;re a local team and we care about the people we work with. Expect friendly, prompt service and a quick turnaround on your laptop, wherever you are in Tasmania, from Burnie and Devonport to Latrobe, Ulverstone and beyond. <a href=\"{{root}}it-services-tasmania/\">See all the areas we serve</a>."
+            ]
+          },
+          {
+            "t": "Talk Directly to Your Technician",
+            "p": [
+              "Plenty of IT companies on the NW Coast are run from the mainland and send third-party techs to do the work. You deal directly with our local techs instead, with no sales team in the middle, which keeps your repair costs down."
+            ]
+          },
+          {
+            "t": "Repairs Made Simple",
+            "p": [
+              "We&rsquo;ll explain what&rsquo;s wrong with your laptop and what we&rsquo;re doing about it in plain English. No jargon, no judgement, and any question is a good question."
+            ]
+          }
+        ]
+      }
+    ],
+    "clients": "Here&rsquo;s what some of our clients say about working with us:",
+    "testimonials": [
+      "Brian",
+      "Mark",
+      "Christine"
+    ],
+    "contactTitle": "Book Your Repair Today",
+    "faqIntro": "Common questions about our laptop repairs",
+    "faqs": [
+      {
+        "q": "Can you replace my laptop battery?",
+        "a": "For most models, yes. We confirm the right part and cost with you before any work starts."
+      },
+      {
+        "q": "Can you fix a cracked laptop screen?",
+        "a": "In most cases. We check your exact model, source a matching screen and give you a quote first."
+      },
+      {
+        "q": "Why is my laptop overheating?",
+        "a": "Usually dust build-up inside or dried-out thermal paste. A clean and service normally fixes it and helps your laptop last longer."
+      },
+      {
+        "q": "I spilled something on my laptop. What should I do?",
+        "a": "Turn it off straight away, unplug it, and don&rsquo;t try to switch it back on. Then call us on 03 6449 4214. The sooner we see it, the better the chance of saving it."
+      },
+      {
+        "q": "Is my old laptop worth repairing?",
+        "a": "We&rsquo;ll tell you honestly. If a repair costs more than the laptop is worth, we&rsquo;ll say so and help you choose a replacement."
+      },
+      {
+        "q": "Do you repair MacBooks?",
+        "a": "Yes. See our <a href=\"{{root}}mac/\">Mac support</a> page."
+      },
+      {
+        "q": "How long do repairs take?",
+        "a": "It depends on the problem and parts, but we focus on fast turnaround and keep you updated the whole way."
+      }
+    ],
+    "issueLabel": "What kind of problem are you having?"
+  },
+  {
+    "slug": "pc",
+    "audience": "personal",
+    "seoTitle": "PC Repairs & Upgrades in Tasmania | Tassie Tech",
+    "seoDesc": "Desktop PC repairs and upgrades across Tasmania. PCs that won't start, overheating towers, SSD and RAM upgrades and buying advice. Call 03 6449 4214.",
+    "heading": "PC Won&rsquo;t Behave? Expert Repairs in Tasmania",
+    "intro": "Desktop computer repairs and upgrades from local technicians across Tasmania",
+    "button": "Fix My PC!",
+    "stepsTitle": "How We Get It Fixed",
+    "steps": [
+      {
+        "t": "Tell Us What&rsquo;s Wrong",
+        "d": "Call or email us and describe what your PC is doing, or not doing."
+      },
+      {
+        "t": "We Diagnose It",
+        "d": "We test your desktop to pinpoint the faulty part or problem, then talk you through the fix and the cost before we start."
+      },
+      {
+        "t": "Up And Running",
+        "d": "We repair or upgrade your PC and hand it back running the way it should."
+      }
+    ],
+    "sections": [
+      {
+        "title": "PC Problems We Fix",
+        "intro": "Part of our <a href=\"{{root}}computers/\">computer repairs</a> service. We repair and upgrade desktop towers and all-in-one PCs from every major brand. Laptop trouble? See <a href=\"{{root}}laptops/\">laptop repairs</a>.",
+        "why": false,
+        "closing": "",
+        "items": [
+          {
+            "t": "PCs That Won&rsquo;t Turn On",
+            "p": [
+              "No power, no display, beeping or a fan that spins with nothing on screen. We track down the faulty part, whether it&rsquo;s the power supply, memory or motherboard."
+            ]
+          },
+          {
+            "t": "Speed-Up Upgrades",
+            "p": [
+              "Swapping an old hard drive for an SSD and adding memory is often the cheapest way to make a slow desktop feel new again."
+            ]
+          },
+          {
+            "t": "Overheating &amp; Noisy Towers",
+            "p": [
+              "Dust-clogged fans and heatsinks cause loud fans, random shutdowns and crashes. A clean-out and service fixes most of them."
+            ]
+          },
+          {
+            "t": "Failing Hard Drives",
+            "p": [
+              "Clicking noises, files that won&rsquo;t open or a desktop stuck on start-up can mean a drive is failing. We back up what we can and replace the drive."
+            ]
+          },
+          {
+            "t": "New Desktop Advice &amp; Setup",
+            "p": [
+              "Not sure whether to repair or replace? We&rsquo;ll give you honest advice, help you choose a new PC and set it up with your files moved across. For software and update issues, see <a href=\"{{root}}windows/\">Windows support</a>."
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Why Choose Tassie Tech?",
+        "intro": "",
+        "why": true,
+        "closing": "We&rsquo;d love the chance to look after your desktop. Give us a call!",
+        "items": [
+          {
+            "t": "Years of Hands-On Experience",
+            "p": [
+              "Our techs solve more than 98% of the jobs they take on. Dead power supplies, failing drives, overheating towers and constant crashes: we see desktop problems every day across home and <a href=\"{{root}}services/\">business IT support</a>, so there&rsquo;s very little we haven&rsquo;t come across."
+            ]
+          },
+          {
+            "t": "Proudly Tasmanian",
+            "p": [
+              "We live and work in the community we serve. We&rsquo;re friendly, we turn up when we say we will, and we get your desktop fixed quickly for customers right across Tasmania, including Burnie, Devonport, Latrobe and Ulverstone. <a href=\"{{root}}it-services-tasmania/\">See all the areas we serve</a>."
+            ]
+          },
+          {
+            "t": "Local Techs, No Middlemen",
+            "p": [
+              "Many NW Coast IT providers are based interstate and subcontract local jobs to third-party techs. We don&rsquo;t. You speak to the people who actually fix your desktop, and the savings are passed on to you."
+            ]
+          },
+          {
+            "t": "Clear Answers, No Jargon",
+            "p": [
+              "You&rsquo;ll always know what&rsquo;s wrong with your PC and what we&rsquo;re doing to fix it. We explain things simply, and you&rsquo;re welcome to ask as many questions as you like."
+            ]
+          }
+        ]
+      }
+    ],
+    "clients": "Local businesses and families across Tasmania trust us with their computers:",
+    "testimonials": [
+      "Vicki",
+      "Eric"
+    ],
+    "contactTitle": "Get Your Computer Running Again",
+    "faqIntro": "Answers to common desktop repair questions",
+    "faqs": [
+      {
+        "q": "My PC won&rsquo;t turn on. Can you fix it?",
+        "a": "Usually, yes. Most of the time it&rsquo;s a single faulty part, like the power supply, and we&rsquo;ll quote before replacing anything."
+      },
+      {
+        "q": "Is it worth upgrading my old PC?",
+        "a": "Often. An SSD and more memory can make a big difference for much less than a new computer. We&rsquo;ll tell you honestly if it&rsquo;s not worth it."
+      },
+      {
+        "q": "Why is my desktop so loud?",
+        "a": "Dust build-up makes the fans work harder. A professional clean usually makes it quieter and cooler and helps it last longer."
+      },
+      {
+        "q": "Can you get my files off a PC that won&rsquo;t start?",
+        "a": "In many cases we can recover files from the drive of a computer that won&rsquo;t boot, and move them to your repaired or new PC."
+      },
+      {
+        "q": "Can you help me choose a new PC?",
+        "a": "Yes. We&rsquo;ll recommend a desktop that suits how you use it, then set it up and transfer your files."
+      },
+      {
+        "q": "Do you fix all-in-one PCs?",
+        "a": "Yes, along with standard desktop towers from all the major brands."
+      }
+    ],
+    "issueLabel": "What kind of problem are you having?"
+  },
+  {
+    "slug": "windows",
+    "audience": "personal",
+    "seoTitle": "Windows Support & Windows 11 Upgrades in Tasmania | Tassie Tech",
+    "seoDesc": "Windows 11 upgrades, failed updates, blue screens and slow PCs fixed by local Tasmanian techs in Latrobe. Call 03 6449 4214.",
+    "heading": "Windows Giving You Grief? Get Expert Help in Tasmania",
+    "intro": "Upgrades, updates and fixes from local technicians across Tasmania",
+    "button": "Fix My Windows Problem!",
+    "stepsTitle": "How We Sort It Out",
+    "steps": [
+      {
+        "t": "Reach Out",
+        "d": "Call or email us and let us know what Windows is doing on your computer."
+      },
+      {
+        "t": "We Work Out The Cause",
+        "d": "We track down what&rsquo;s behind the problem and explain how we&rsquo;ll fix it and how long it should take."
+      },
+      {
+        "t": "Windows Working Again",
+        "d": "We sort it out so Windows runs smoothly, stays updated and stops getting in your way."
+      }
+    ],
+    "sections": [
+      {
+        "title": "Windows Problems We Fix",
+        "intro": "Part of our <a href=\"{{root}}computers/\">computer repairs</a> service. We support Windows 10 and Windows 11 on desktops and laptops. For hardware faults, see <a href=\"{{root}}pc/\">PC repairs</a> or <a href=\"{{root}}laptops/\">laptop repairs</a>.",
+        "why": false,
+        "closing": "",
+        "items": [
+          {
+            "t": "Windows 11 Upgrades",
+            "p": [
+              "Microsoft has ended support for Windows 10. We check whether your computer meets the <a href=\"{{root}}minimum-hardware-requirements/\">minimum hardware requirements</a>, back up your files and upgrade you to Windows 11."
+            ]
+          },
+          {
+            "t": "Updates That Won&rsquo;t Install",
+            "p": [
+              "Updates stuck, failing or looping on restart. We get Windows up to date so you keep getting security fixes."
+            ]
+          },
+          {
+            "t": "Blue Screens &amp; Crashes",
+            "p": [
+              "Blue screen errors, freezing and random restarts are often caused by drivers, failed updates or software conflicts. We find the cause and fix it."
+            ]
+          },
+          {
+            "t": "Slow Start-Up &amp; Performance",
+            "p": [
+              "Too many start-up programs, bloatware and full drives slow Windows down. We clean it up so your computer runs smoothly again."
+            ]
+          },
+          {
+            "t": "Reset &amp; Reinstall",
+            "p": [
+              "When Windows is beyond repair, we reinstall it cleanly and put your files and programs back. If you suspect a virus, see <a href=\"{{root}}virus-and-malware/\">virus and malware removal</a>."
+            ]
+          },
+          {
+            "t": "Microsoft Account, OneDrive &amp; Office",
+            "p": [
+              "Sign-in problems, OneDrive sync issues and Microsoft 365 setup, including Outlook and <a href=\"{{root}}email/\">email</a>."
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Why Choose Tassie Tech?",
+        "intro": "",
+        "why": true,
+        "closing": "Let us take the frustration out of Windows. Get in touch today!",
+        "items": [
+          {
+            "t": "Experienced Support Technicians",
+            "p": [
+              "We fix more than 98% of the IT problems we take on, and Windows issues are a big part of our day. Stuck updates, blue screens and sluggish start-ups are familiar territory, for home users and <a href=\"{{root}}services/\">business IT support</a> clients alike."
+            ]
+          },
+          {
+            "t": "Based Right Here in Tasmania",
+            "p": [
+              "As a Tasmanian business, we care about doing right by our local customers. We&rsquo;re friendly and prompt, and we work with people across the state, from Burnie to Devonport, Latrobe, Ulverstone and further afield. <a href=\"{{root}}it-services-tasmania/\">See all the areas we serve</a>."
+            ]
+          },
+          {
+            "t": "Real Technicians, Not a Call Centre",
+            "p": [
+              "A lot of IT companies servicing the NW Coast operate from the mainland and pay third-party techs to handle local jobs. When you call us, you talk to a local technician who knows Windows inside out, with no sales team in between."
+            ]
+          },
+          {
+            "t": "Help in Plain English",
+            "p": [
+              "We&rsquo;ll tell you what&rsquo;s gone wrong with Windows and what we&rsquo;re doing to fix it, without the tech-speak. Ask us anything along the way."
+            ]
+          }
+        ]
+      }
+    ],
+    "clients": "Don&rsquo;t just take our word for it. Here&rsquo;s what our clients say:",
+    "testimonials": [
+      "Gordon",
+      "Adam"
+    ],
+    "contactTitle": "Get Back to Work Today",
+    "faqIntro": "Common Windows questions, answered",
+    "faqs": [
+      {
+        "q": "Is Windows 10 still supported?",
+        "a": "No. Microsoft ended support for Windows 10 in October 2025, so it no longer gets regular security updates. We recommend upgrading to Windows 11 or replacing the computer if it can&rsquo;t run it."
+      },
+      {
+        "q": "Can my computer run Windows 11?",
+        "a": "Check our <a href=\"{{root}}minimum-hardware-requirements/\">minimum hardware requirements</a>, or let us check it for you."
+      },
+      {
+        "q": "Will I lose my files if I upgrade to Windows 11?",
+        "a": "No. We back up your files before upgrading and check everything is where it should be afterwards."
+      },
+      {
+        "q": "Why do my Windows updates keep failing?",
+        "a": "Common causes are a full drive, corrupted update files or a driver conflict. We diagnose the cause and get updates installing again."
+      },
+      {
+        "q": "What does a blue screen error mean?",
+        "a": "It means Windows hit a problem it couldn&rsquo;t recover from, often a driver, update or hardware fault. If it keeps happening, get it checked."
+      },
+      {
+        "q": "Can you reinstall Windows for me?",
+        "a": "Yes. We reinstall Windows cleanly, then restore your files, programs and settings."
+      }
+    ],
+    "issueLabel": "What kind of problem are you having?"
+  },
+  {
+    "slug": "mac",
+    "audience": "personal",
+    "seoTitle": "Mac & MacBook Support in Tasmania | Tassie Tech",
+    "seoDesc": "Local Mac support across Tasmania for MacBook, iMac and Mac mini: macOS updates, iCloud, full storage, slow Macs and moving from a PC. Call 03 6449 4214.",
+    "heading": "Mac Not Working Right? Expert Help in Tasmania",
+    "intro": "Help for MacBook, iMac and Mac mini from local technicians across Tasmania",
+    "button": "Fix My Mac!",
+    "stepsTitle": "From First Call to Fixed",
+    "steps": [
+      {
+        "t": "Let Us Know",
+        "d": "Give us a call or send an email explaining what&rsquo;s going on with your Mac."
+      },
+      {
+        "t": "We Check It Over",
+        "d": "We look into the issue, explain what we&rsquo;ve found and let you know how long the fix will take."
+      },
+      {
+        "t": "Your Mac, Sorted",
+        "d": "We fix the problem so your Mac is fast, up to date and working the way it should."
+      }
+    ],
+    "sections": [
+      {
+        "title": "Mac Problems We Fix",
+        "intro": "Part of our <a href=\"{{root}}computers/\">computer repairs</a> service. We support MacBook Air, MacBook Pro, iMac and Mac mini.",
+        "why": false,
+        "closing": "",
+        "items": [
+          {
+            "t": "Slow Performance",
+            "p": [
+              "Spinning wheels, slow start-ups and apps that take forever to open. We find what&rsquo;s slowing your Mac down and fix it."
+            ]
+          },
+          {
+            "t": "macOS Updates",
+            "p": [
+              "Updates that won&rsquo;t install or a Mac stuck on an old version. We check what your Mac can run and update it safely."
+            ]
+          },
+          {
+            "t": "Storage Full",
+            "p": [
+              "&ldquo;Your startup disk is almost full&rdquo; messages. We clear out what you don&rsquo;t need and set up storage that works for you."
+            ]
+          },
+          {
+            "t": "Apple ID &amp; iCloud",
+            "p": [
+              "iCloud setup, syncing photos and files between your Mac and iPhone, and Mail, Contacts and Calendar setup."
+            ]
+          },
+          {
+            "t": "Moving From a PC to a Mac",
+            "p": [
+              "New to Mac? We move your files, photos and email across from your old Windows PC and show you around."
+            ]
+          },
+          {
+            "t": "MacBook Battery, Screen &amp; Keyboard Issues",
+            "p": [
+              "Battery draining fast, a damaged screen or keys that have stopped working? We&rsquo;ll diagnose the problem and talk you through your repair options."
+            ]
+          },
+          {
+            "t": "Backups, Pop-ups &amp; Scams",
+            "p": [
+              "Time Machine backups, plus help with suspicious pop-ups, adware and scams. If you&rsquo;ve been caught out, see <a href=\"{{root}}scam-recovery/\">scam recovery</a>."
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Why Choose Tassie Tech?",
+        "intro": "",
+        "why": true,
+        "closing": "Give us a try. Your Mac will thank you!",
+        "items": [
+          {
+            "t": "Experienced, Friendly Technicians",
+            "p": [
+              "We resolve over 98% of the IT issues we tackle, and that includes plenty of Macs. Slow MacBooks, full storage, update problems and iCloud headaches are everyday jobs for our techs, who also look after home users and <a href=\"{{root}}services/\">business IT support</a> clients."
+            ]
+          },
+          {
+            "t": "Part of the Local Community",
+            "p": [
+              "We&rsquo;re proud to be part of the local community. You&rsquo;ll get friendly, prompt help with your Mac wherever you are in Tasmania, whether that&rsquo;s Burnie, Devonport, Latrobe, Ulverstone or somewhere in between. <a href=\"{{root}}it-services-tasmania/\">See all the areas we serve</a>."
+            ]
+          },
+          {
+            "t": "Deal Directly With Local Techs",
+            "p": [
+              "Unlike many NW Coast IT providers that are based on the mainland and send out third-party techs, we work with you directly. That means no sales team, clearer communication and better value on your Mac support."
+            ]
+          },
+          {
+            "t": "No Jargon, Just Answers",
+            "p": [
+              "We&rsquo;ll explain what&rsquo;s happening with your Mac in simple terms and keep you in the loop. Questions are always welcome."
+            ]
+          }
+        ]
+      }
+    ],
+    "clients": "Kind words from some of the people we&rsquo;ve helped:",
+    "testimonials": [
+      "Andrew",
+      "Deborah"
+    ],
+    "contactTitle": "Get Expert Help Today",
+    "faqIntro": "Common questions about Mac support",
+    "faqs": [
+      {
+        "q": "Which Macs do you work on?",
+        "a": "MacBook Air, MacBook Pro, iMac and Mac mini."
+      },
+      {
+        "q": "My Mac says the startup disk is full. Can you help?",
+        "a": "Yes. We work out what&rsquo;s taking up the space, safely clear what you don&rsquo;t need and set up iCloud or external storage if it helps."
+      },
+      {
+        "q": "Can you help me move from a Windows PC to a Mac?",
+        "a": "Yes. We transfer your files, photos and email and help you get comfortable with your new Mac."
+      },
+      {
+        "q": "Can Macs get viruses?",
+        "a": "It&rsquo;s less common than on Windows, but Macs can pick up adware, scam pop-ups and malware. We can check and clean your Mac."
+      },
+      {
+        "q": "Can my Mac run the latest macOS?",
+        "a": "We check your model and let you know which version it can safely run."
+      },
+      {
+        "q": "Can you set up Time Machine backups?",
+        "a": "Yes. We set up automatic backups so your files are protected if anything goes wrong."
+      }
+    ],
+    "issueLabel": "What kind of problem are you having?"
+  },
+  {
+    "slug": "email",
+    "audience": "personal",
+    "seoTitle": "Email Setup & Support in Tasmania | Tassie Tech",
+    "seoDesc": "Email not sending, syncing or set up properly? We fix email for homes and businesses across Tasmania. Call 03 6449 4214.",
+    "heading": "Email Not Working? Get IT Help in Tasmania",
+    "intro": "Reliable email setup, troubleshooting, and support for individuals and businesses in Tasmania",
+    "button": "Get Email Help",
+    "stepsTitle": "How Email Support Works",
+    "steps": [
+      {
+        "t": "Talk To Our Team",
+        "d": "Tell us what&rsquo;s going wrong with your email or what you need help setting up or accessing."
+      },
+      {
+        "t": "We Get It Sorted",
+        "d": "We diagnose and resolve setup problems, syncing errors, login issues, or missing email functionality."
+      },
+      {
+        "t": "You&rsquo;re Good To Go",
+        "d": "Your email is fixed and working properly so you can communicate without ongoing issues."
+      }
+    ],
+    "sections": [
+      {
+        "title": "Why Choose Tassie Tech?",
+        "intro": "",
+        "why": true,
+        "closing": "We try hard to be the best IT company we can be. Give us a try; you won&rsquo;t regret it!",
+        "items": [
+          {
+            "t": "Experienced Email Support Experts",
+            "p": [
+              "Tassie Tech has a &gt;98% solve rate across all IT fields. Whether you need a new email set up, your accounts synced across devices, or you&rsquo;re stuck with emails that just won&rsquo;t send, our techs deal with email issues every day. we work across both individual and <a href=\"{{root}}services/\">business email systems</a>, giving us a wide breadth of knowledge that benefits you &ndash; no matter what provider you use."
+            ]
+          },
+          {
+            "t": "Tasmanian Local IT Experts",
+            "p": [
+              "We are part of the local community, and we care about our customers. We do our best to be friendly, prompt, and to get your email sorted quickly. We help individuals right across Tasmania &ndash; from Burnie to Devonport, Latrobe, Ulverstone, and beyond. <a href=\"{{root}}it-services-tasmania/\">See all the areas we serve</a>."
+            ]
+          },
+          {
+            "t": "Speak With Tech Experts &ndash; Not Sales People",
+            "p": [
+              "Most IT companies servicing the NW Coast are based on the mainland, and pay 3rd party techs to do jobs locally. We work directly with locals, saving you money on email support."
+            ]
+          },
+          {
+            "t": "We Simplify Tech for You",
+            "p": [
+              "We genuinely like people, and do our best to be respectful, making sure that you understand how your email is configured and how to use it with confidence going forward. You&rsquo;re always welcome to ask any questions you need to stay in the loop."
+            ]
+          }
+        ]
+      }
+    ],
+    "clients": "We&rsquo;re trusted for IT services by familiar faces across the state:",
+    "testimonials": [],
+    "contactTitle": "Get Email Support Today",
+    "faqIntro": "Everything you need to know about working with Tassie Tech",
+    "faqs": [
+      {
+        "q": "What does Tassie Tech actually help with?",
+        "a": "We handle a wide range of computer and IT issues including slow systems, startup problems, hardware faults, software issues, and general troubleshooting for both home and business users."
+      },
+      {
+        "q": "Do you only work with businesses or individuals too?",
+        "a": "We support both. Whether it&rsquo;s a personal laptop issue or ongoing business IT support, we apply the same level of expertise and care."
+      },
+      {
+        "q": "How experienced are your technicians?",
+        "a": "Our team has a strong track record across all major IT areas with a solve rate of over 98%. We deal with real-world issues daily, so most problems we see are familiar and fixable quickly."
+      },
+      {
+        "q": "Are you based in Tasmania?",
+        "a": "Yes. We&rsquo;re a local Tasmanian team, serving areas across the North West Coast including Burnie, Devonport, Latrobe, Ulverstone, and surrounding regions."
+      },
+      {
+        "q": "Why not just use a big national IT company?",
+        "a": "Many larger IT providers outsource work or rely on third-party technicians. We work directly with local techs, which keeps costs down and communication clear."
+      },
+      {
+        "q": "Will I understand what you&rsquo;re doing to my computer?",
+        "a": "Yes. We focus on clear, simple explanations so you always understand the issue and the solution without technical jargon."
+      },
+      {
+        "q": "How fast can you fix my issue?",
+        "a": "It depends on the problem, but our focus is always on fast turnaround times and getting you back up and running as quickly as possible."
+      },
+      {
+        "q": "Do I need to be technical to work with you?",
+        "a": "Not at all. We handle the technical side and guide you through everything in a straightforward way."
+      }
+    ],
+    "issueLabel": "What do you need from us?"
+  },
+  {
+    "slug": "virus-and-malware",
+    "audience": "personal",
+    "seoTitle": "Virus & Malware Removal in Tasmania | Tassie Tech",
+    "seoDesc": "Computer acting strange? Local techs find and remove viruses, malware and ransomware from PCs and Macs across Tasmania. Call 03 6449 4214.",
+    "heading": "Virus or Malware? Get a Security Scan in Tasmania",
+    "intro": "Professional virus removal and malware protection to keep Tasmanian computers safe and secure",
+    "button": "Scan For Viruses",
+    "stepsTitle": "How We Fix Your Computer",
+    "steps": [
+      {
+        "t": "Talk To Our Team",
+        "d": "Let us know what issues you&rsquo;re experiencing with your device."
+      },
+      {
+        "t": "We Scan And Clean",
+        "d": "We detect, remove, and resolve malware or virus infections."
+      },
+      {
+        "t": "Your Device Is Secure",
+        "d": "Your system is cleaned and protected for safer everyday use."
+      }
+    ],
+    "sections": [
+      {
+        "title": "Why Choose Tassie Tech For Virus &amp; Malware Removal?",
+        "intro": "",
+        "why": true,
+        "closing": "We try hard to be the best IT company we can be. Give us a try; you won&rsquo;t regret it!",
+        "items": [
+          {
+            "t": "Experienced Virus &amp; Malware Removal Experts",
+            "p": [
+              "Tassie Tech has a &gt;98% solve rate across all IT fields. Strange pop-ups, slow performance, programs you didn&rsquo;t install &ndash; our techs know where threats hide and how to remove them completely. We work across both individual and <a href=\"{{root}}services/\">business security environments</a>, giving us a wide breadth of knowledge that benefits you &ndash; from simple adware to serious ransomware."
+            ]
+          },
+          {
+            "t": "Tasmanian Local Virus and Malware Protection Experts",
+            "p": [
+              "We are part of the local community, and we care about our customers. We treat your devices and your data with the respect they deserve, and we do our best to be friendly, prompt, and thorough. We serve individuals right across Tasmania &ndash; from Burnie to Devonport, Latrobe, Ulverstone, and beyond. <a href=\"{{root}}it-services-tasmania/\">See all the areas we serve</a>."
+            ]
+          },
+          {
+            "t": "Speak With Tech Experts &ndash; Not Sales People",
+            "p": [
+              "Most IT companies servicing the NW Coast are based on the mainland, and pay 3rd party techs to do jobs locally. We get rid of the distant sales team, when you call you&rsquo;re speaking directly to the people who will solve your issue &ndash; saving you money on virus and malware removal."
+            ]
+          },
+          {
+            "t": "We Simplify Tech for You",
+            "p": [
+              "We genuinely like people, and do our best to be respectful, making sure that you understand what we found, how we cleaned it, and what you can do to stay safe going forward. We believe in empowering you, not confusing you."
+            ]
+          }
+        ]
+      }
+    ],
+    "clients": "We&rsquo;re trusted for IT services by familiar faces across the state:",
+    "testimonials": [],
+    "contactTitle": "Scan and Remove Viruses Today",
+    "faqIntro": "Everything you need to know about working with Tassie Tech",
+    "faqs": [
+      {
+        "q": "What does Tassie Tech actually help with?",
+        "a": "We handle a wide range of computer and IT issues including slow systems, startup problems, hardware faults, software issues, and general troubleshooting for both home and business users."
+      },
+      {
+        "q": "Do you only work with businesses or individuals too?",
+        "a": "We support both. Whether it&rsquo;s a personal laptop issue or ongoing business IT support, we apply the same level of expertise and care."
+      },
+      {
+        "q": "How experienced are your technicians?",
+        "a": "Our team has a strong track record across all major IT areas with a solve rate of over 98%. We deal with real-world issues daily, so most problems we see are familiar and fixable quickly."
+      },
+      {
+        "q": "Are you based in Tasmania?",
+        "a": "Yes. We&rsquo;re a local Tasmanian team, serving areas across the North West Coast including Burnie, Devonport, Latrobe, Ulverstone, and surrounding regions."
+      },
+      {
+        "q": "Why not just use a big national IT company?",
+        "a": "Many larger IT providers outsource work or rely on third-party technicians. We work directly with local techs, which keeps costs down and communication clear."
+      },
+      {
+        "q": "Will I understand what you&rsquo;re doing to my computer?",
+        "a": "Yes. We focus on clear, simple explanations so you always understand the issue and the solution without technical jargon."
+      },
+      {
+        "q": "How fast can you fix my issue?",
+        "a": "It depends on the problem, but our focus is always on fast turnaround times and getting you back up and running as quickly as possible."
+      },
+      {
+        "q": "Do I need to be technical to work with you?",
+        "a": "Not at all. We handle the technical side and guide you through everything in a straightforward way."
+      }
+    ],
+    "issueLabel": "What kind of problem are you having?"
+  },
+  {
+    "slug": "internet-or-router-problems",
+    "audience": "personal",
+    "seoTitle": "Internet & Router Help in Tasmania | Tassie Tech",
+    "seoDesc": "Dropouts, slow speeds or a new router to set up? Local techs fix home and business internet across Tasmania. Call 03 6449 4214.",
+    "heading": "Internet or Router Problems? Get Help in Tasmania",
+    "intro": "Fast internet troubleshooting and router setup for stable, reliable home and business connections in Tasmania",
+    "button": "Fix My Internet!",
+    "stepsTitle": "How Internet Support Works",
+    "steps": [
+      {
+        "t": "Talk To Our Team",
+        "d": "Explain your internet issues including dropouts, slow speeds, or connection problems."
+      },
+      {
+        "t": "We Find The Issue",
+        "d": "We check your router, settings, and connection to find exactly what&rsquo;s causing the issue."
+      },
+      {
+        "t": "You&rsquo;re Back Online",
+        "d": "We fix the issue and restore a stable connection so your internet runs smoothly again."
+      }
+    ],
+    "sections": [
+      {
+        "title": "Why Choose Tassie Tech?",
+        "intro": "",
+        "why": true,
+        "closing": "We try hard to be the best IT company we can be. Give us a try; you won&rsquo;t regret it!",
+        "items": [
+          {
+            "t": "Experienced Internet &amp; Network Experts",
+            "p": [
+              "Tassie Tech has a &gt;98% solve rate across all IT fields. Whether your <a href=\"{{root}}recent-projects/mill-park-wifi-network-setup-wesley-vale/\">Wi-Fi</a> keeps dropping out, you can&rsquo;t connect certain devices, or you need a new router set up, our techs have extensive experience with every kind of connectivity issue. We work across both individual and <a href=\"{{root}}services/\">business network setups</a>, giving us a wide breadth of knowledge that benefits you &ndash; no matter how simple or complex your situation is."
+            ]
+          },
+          {
+            "t": "Tasmanian Local Internet Experts!",
+            "p": [
+              "We are part of the local community, and we care about our customers. We understand the unique connectivity challenges that Tasmanians face &ndash; including NBN variability across different areas. We serve individuals right across Tasmania &ndash; from Burnie to Devonport, Latrobe, Ulverstone, and beyond. <a href=\"{{root}}it-services-tasmania/\">See all the areas we serve</a>."
+            ]
+          },
+          {
+            "t": "Speak With Tech Experts &ndash; Not Sales People",
+            "p": [
+              "Most IT companies servicing the NW Coast are based on the mainland, and pay 3rd party techs to do jobs locally. When you call us, you speak with the person who will actually help you, not a distant sales team."
+            ]
+          },
+          {
+            "t": "We Simplify Tech for You",
+            "p": [
+              "We genuinely like people, and do our best to be respectful, making sure that you understand what&rsquo;s going on with your connection and that your setup is working properly before we leave. Networking can be confusing &ndash; we make it simple."
+            ]
+          }
+        ]
+      }
+    ],
+    "clients": "We&rsquo;re trusted for IT services by familiar faces across the state:",
+    "testimonials": [
+      "Deborah"
+    ],
+    "contactTitle": "Get Your Internet Working Again",
+    "faqIntro": "Everything you need to know about working with Tassie Tech",
+    "faqs": [
+      {
+        "q": "What does Tassie Tech actually help with?",
+        "a": "We handle a wide range of computer and IT issues including slow systems, startup problems, hardware faults, software issues, and general troubleshooting for both home and business users."
+      },
+      {
+        "q": "Do you only work with businesses or individuals too?",
+        "a": "We support both. Whether it&rsquo;s a personal laptop issue or ongoing business IT support, we apply the same level of expertise and care."
+      },
+      {
+        "q": "How experienced are your technicians?",
+        "a": "Our team has a strong track record across all major IT areas with a solve rate of over 98%. We deal with real-world issues daily, so most problems we see are familiar and fixable quickly."
+      },
+      {
+        "q": "Are you based in Tasmania?",
+        "a": "Yes. We&rsquo;re a local Tasmanian team, serving areas across the North West Coast including Burnie, Devonport, Latrobe, Ulverstone, and surrounding regions."
+      },
+      {
+        "q": "Why not just use a big national IT company?",
+        "a": "Many larger IT providers outsource work or rely on third-party technicians. We work directly with local techs, which keeps costs down and communication clear."
+      },
+      {
+        "q": "Will I understand what you&rsquo;re doing to my computer?",
+        "a": "Yes. We focus on clear, simple explanations so you always understand the issue and the solution without technical jargon."
+      },
+      {
+        "q": "How fast can you fix my issue?",
+        "a": "It depends on the problem, but our focus is always on fast turnaround times and getting you back up and running as quickly as possible."
+      },
+      {
+        "q": "Do I need to be technical to work with you?",
+        "a": "Not at all. We handle the technical side and guide you through everything in a straightforward way."
+      }
+    ],
+    "issueLabel": "What do you need help with?"
+  },
+  {
+    "slug": "antivirus",
+    "audience": "personal",
+    "seoTitle": "Antivirus Setup & Protection in Tasmania | Tassie Tech",
+    "seoDesc": "Get the right antivirus for your devices, installed and set up properly by local technicians across Tasmania. Call 03 6449 4214.",
+    "heading": "Need Antivirus? Get the Right Protection in Tasmania",
+    "intro": "Advanced antivirus solutions and protection services to keep your devices secure across Tasmania",
+    "button": "Protect My Device",
+    "stepsTitle": "How Antivirus Setup Works",
+    "steps": [
+      {
+        "t": "Talk To Our Team",
+        "d": "Let us know what device you want protected and what concerns you&rsquo;re having."
+      },
+      {
+        "t": "We Install Protection",
+        "d": "We install and configure antivirus software suited to your system and usage needs."
+      },
+      {
+        "t": "You Stay Secure",
+        "d": "Your device stays protected from threats so you can use it with confidence."
+      }
+    ],
+    "sections": [
+      {
+        "title": "Why Choose Tassie Tech?",
+        "intro": "",
+        "why": true,
+        "closing": "We try hard to be the best IT company we can be. Give us a try; you won&rsquo;t regret it!",
+        "items": [
+          {
+            "t": "Experienced Security Experts",
+            "p": [
+              "Tassie Tech has a &gt;98% solve rate across all IT fields. There are dozens of antivirus products on the market, and not all of them are equal. Our techs know which products work best for different situations and will get the right protection installed, configured, and running properly. We work across both individual and <a href=\"{{root}}services/\">enterprise-grade business security</a>, giving us a wide breadth of knowledge that benefits you &ndash; whether you need basic protection or something more robust."
+            ]
+          },
+          {
+            "t": "Tasmanian Local Antivirus Experts",
+            "p": [
+              "We are part of the local community, and we care about keeping our neighbours safe online. Cyber threats don&rsquo;t just target businesses &ndash; individuals are increasingly targeted too. We serve people right across Tasmania &ndash; from Burnie to Devonport, Latrobe, Ulverstone, and beyond. <a href=\"{{root}}it-services-tasmania/\">See all the areas we serve</a>."
+            ]
+          },
+          {
+            "t": "Speak With Tech Experts &ndash; Not Sales People",
+            "p": [
+              "Most IT companies servicing the NW Coast are based on the mainland, and pay 3rd party techs to do jobs locally. We used to be one of those local techs. We would charge a reasonable fee, and then the mainland company would take the cut. We get rid of the middleman &ndash; and you&rsquo;ll get honest antivirus advice without commissions or upselling."
+            ]
+          },
+          {
+            "t": "We Simplify Tech for You",
+            "p": [
+              "We genuinely like people, and do our best to be respectful, making sure that you understand what your antivirus does, how it protects you, and what to look out for. You&rsquo;ll feel confident that your device is secure."
+            ]
+          }
+        ]
+      }
+    ],
+    "clients": "We&rsquo;re trusted for IT services by familiar faces across the state:",
+    "testimonials": [
+      "Shirley"
+    ],
+    "contactTitle": "Protect Your Device Today",
+    "faqIntro": "Everything you need to know about working with Tassie Tech",
+    "faqs": [
+      {
+        "q": "What does Tassie Tech actually help with?",
+        "a": "We handle a wide range of computer and IT issues including slow systems, startup problems, hardware faults, software issues, and general troubleshooting for both home and business users."
+      },
+      {
+        "q": "Do you only work with businesses or individuals too?",
+        "a": "We support both. Whether it&rsquo;s a personal laptop issue or ongoing business IT support, we apply the same level of expertise and care."
+      },
+      {
+        "q": "How experienced are your technicians?",
+        "a": "Our team has a strong track record across all major IT areas with a solve rate of over 98%. We deal with real-world issues daily, so most problems we see are familiar and fixable quickly."
+      },
+      {
+        "q": "Are you based in Tasmania?",
+        "a": "Yes. We&rsquo;re a local Tasmanian team, serving areas across the North West Coast including Burnie, Devonport, Latrobe, Ulverstone, and surrounding regions."
+      },
+      {
+        "q": "Why not just use a big national IT company?",
+        "a": "Many larger IT providers outsource work or rely on third-party technicians. We work directly with local techs, which keeps costs down and communication clear."
+      },
+      {
+        "q": "Will I understand what you&rsquo;re doing to my computer?",
+        "a": "Yes. We focus on clear, simple explanations so you always understand the issue and the solution without technical jargon."
+      },
+      {
+        "q": "How fast can you fix my issue?",
+        "a": "It depends on the problem, but our focus is always on fast turnaround times and getting you back up and running as quickly as possible."
+      },
+      {
+        "q": "Do I need to be technical to work with you?",
+        "a": "Not at all. We handle the technical side and guide you through everything in a straightforward way."
+      }
+    ],
+    "issueLabel": "What do you need help with?"
+  },
+  {
+    "slug": "business-security",
+    "audience": "business",
+    "seoTitle": "Business Cyber Security in Tasmania | Tassie Tech",
+    "seoDesc": "Protect your business from ransomware, viruses and data breaches with commercial-grade security from local Tasmanian experts. Call 03 6449 4214.",
+    "heading": "Business Online Security Services in Tasmania",
+    "intro": "Comprehensive cybersecurity and protection services for local Tasmanian businesses",
+    "button": "Secure My Business",
+    "stepsTitle": "How Business Security Services Work",
+    "steps": [
+      {
+        "t": "Talk To Our Team",
+        "d": "We assess your business setup and identify potential security risks or weaknesses."
+      },
+      {
+        "t": "We Strengthen Protection",
+        "d": "We implement security systems and safeguards tailored to your business environment."
+      },
+      {
+        "t": "Your Business Is Protected",
+        "d": "You get ongoing protection to reduce risk and keep your systems secure."
+      }
+    ],
+    "sections": [
+      {
+        "title": "Why Choose Tassie Tech for Business Security?",
+        "intro": "",
+        "why": true,
+        "closing": "We try hard to be the best IT company we can be. Give us a try; you won&rsquo;t regret it!",
+        "items": [
+          {
+            "t": "Commercial-Grade Protection, Local Service",
+            "p": [
+              "In today&rsquo;s digital landscape, cyber-security is an ever larger and more complex concern for businesses. Tassie Tech deploys enterprise-grade antivirus and antimalware, develops cyber-security policies, provides staff training, and hardens your systems against targeted intrusions, ransomware, and malicious insiders. We protect workstations, laptops, mobiles, servers, and networks &ndash; the same calibre of tools used by large enterprises, tailored and priced for Tasmanian businesses. We also provide <a href=\"{{root}}individuals/\">security support for individuals</a>, so our techs understand threats at every level."
+            ]
+          },
+          {
+            "t": "ASD Partner, Tasmanian Based",
+            "p": [
+              "Tassie Tech is an Australian Signals Directorate Business Partner, following ASD guidelines to manage secure networks and quickly combat threats. We&rsquo;re based right here in Tasmania and serve businesses across the state. <a href=\"{{root}}it-services-tasmania/\">See all the areas we serve</a>."
+            ]
+          },
+          {
+            "t": "Proactive, Not Reactive",
+            "p": [
+              "Our approach includes ongoing monitoring, regular system hardening, and staff training to reduce your attack surface before threats reach your door."
+            ]
+          },
+          {
+            "t": "Plain-Language Security Advice",
+            "p": [
+              "We genuinely like people, and do our best to make cyber-security approachable, not intimidating. We explain risks and recommendations clearly, so you can make informed decisions about protecting your business and your customers&rsquo; data."
+            ]
+          }
+        ]
+      }
+    ],
+    "clients": "We&rsquo;re trusted for IT services by familiar faces across the state:",
+    "testimonials": [],
+    "contactTitle": "Secure Your Business IT Today",
+    "faqIntro": "Everything you need to know about working with Tassie Tech",
+    "faqs": [
+      {
+        "q": "What does Tassie Tech actually help with?",
+        "a": "We handle a wide range of computer and IT issues including slow systems, startup problems, hardware faults, software issues, and general troubleshooting for both home and business users."
+      },
+      {
+        "q": "Do you only work with businesses or individuals too?",
+        "a": "We support both. Whether it&rsquo;s a personal laptop issue or ongoing business IT support, we apply the same level of expertise and care."
+      },
+      {
+        "q": "How experienced are your technicians?",
+        "a": "Our team has a strong track record across all major IT areas with a solve rate of over 98%. We deal with real-world issues daily, so most problems we see are familiar and fixable quickly."
+      },
+      {
+        "q": "Are you based in Tasmania?",
+        "a": "Yes. We&rsquo;re a local Tasmanian team, serving areas across the North West Coast including Burnie, Devonport, Latrobe, Ulverstone, and surrounding regions."
+      },
+      {
+        "q": "Why not just use a big national IT company?",
+        "a": "Many larger IT providers outsource work or rely on third-party technicians. We work directly with local techs, which keeps costs down and communication clear."
+      },
+      {
+        "q": "Will I understand what you&rsquo;re doing to my computer?",
+        "a": "Yes. We focus on clear, simple explanations so you always understand the issue and the solution without technical jargon."
+      },
+      {
+        "q": "How fast can you fix my issue?",
+        "a": "It depends on the problem, but our focus is always on fast turnaround times and getting you back up and running as quickly as possible."
+      },
+      {
+        "q": "Do I need to be technical to work with you?",
+        "a": "Not at all. We handle the technical side and guide you through everything in a straightforward way."
+      }
+    ],
+    "issueLabel": "What do you need help with?"
+  },
+  {
+    "slug": "scale-your-business",
+    "audience": "business",
+    "seoTitle": "IT to Scale Your Business in Tasmania | Tassie Tech",
+    "seoDesc": "Strategic IT planning that helps Tasmanian businesses streamline their systems and grow, with on-the-ground local consultants. Call 03 6449 4214.",
+    "heading": "IT Services to Scale Your Business in Tasmania",
+    "intro": "Strategic IT support designed to help Tasmanian businesses streamline systems and scale efficiently",
+    "button": "Scale My Systems",
+    "stepsTitle": "How Business Scaling IT Works",
+    "steps": [
+      {
+        "t": "Talk To Our Team",
+        "d": "We discuss your business goals, challenges, and current technology setup in detail."
+      },
+      {
+        "t": "We Build Your System",
+        "d": "We design and implement IT systems that support efficiency, growth, and scalability."
+      },
+      {
+        "t": "Growth Runs Smoothly",
+        "d": "Your technology supports expansion without slowing you down or creating bottlenecks."
+      }
+    ],
+    "sections": [
+      {
+        "title": "Why Choose Tassie Tech to Scale Your Business?",
+        "intro": "",
+        "why": true,
+        "closing": "We try hard to be the best IT company we can be. Give us a try; you won&rsquo;t regret it!",
+        "items": [
+          {
+            "t": "Strategic Planners With Local Knowledge",
+            "p": [
+              "Tech moves fast, and keeping up isn&rsquo;t easy. Tassie Tech provides practical IT planning, emerging tech advice, custom software, and scalable solutions that grow with your business. We&rsquo;re based in Tasmania and here for the long term, not fly-in consultants. We also support <a href=\"{{root}}individuals/\">individuals</a>, giving us broad, hands-on experience across all kinds of tech challenges."
+            ]
+          },
+          {
+            "t": "Custom Solutions Across Tasmania",
+            "p": [
+              "Every business is different. We take the time to understand your specific challenges and goals, then build solutions that actually fit &ndash; whether that&rsquo;s a custom application, a workflow overhaul, or a phased technology roadmap. We serve businesses right across Tasmania. <a href=\"{{root}}it-services-tasmania/\">See all the areas we serve</a>."
+            ]
+          },
+          {
+            "t": "Real Growth, No Middle-Man",
+            "p": [
+              "Most IT companies servicing the NW Coast are based on the mainland, and pay 3rd party techs to do jobs locally. We get rid of the middle-man &ndash; and we focus on helping you work smarter, not harder. From automating manual processes to integrating new tools, we help you free up time for the things that matter."
+            ]
+          },
+          {
+            "t": "Clear Communication, Real Results",
+            "p": [
+              "We genuinely like people, and do our best to skip the jargon and focus on outcomes. You&rsquo;ll understand exactly what we&rsquo;re recommending, why it matters, and how it will impact your bottom line."
+            ]
+          }
+        ]
+      }
+    ],
+    "clients": "We&rsquo;re trusted for IT services by familiar faces across the state:",
+    "testimonials": [],
+    "contactTitle": "We&rsquo;ll Help Scale Your IT System",
+    "faqIntro": "Everything you need to know about working with Tassie Tech",
+    "faqs": [
+      {
+        "q": "What does Tassie Tech actually help with?",
+        "a": "We handle a wide range of computer and IT issues including slow systems, startup problems, hardware faults, software issues, and general troubleshooting for both home and business users."
+      },
+      {
+        "q": "Do you only work with businesses or individuals too?",
+        "a": "We support both. Whether it&rsquo;s a personal laptop issue or ongoing business IT support, we apply the same level of expertise and care."
+      },
+      {
+        "q": "How experienced are your technicians?",
+        "a": "Our team has a strong track record across all major IT areas with a solve rate of over 98%. We deal with real-world issues daily, so most problems we see are familiar and fixable quickly."
+      },
+      {
+        "q": "Are you based in Tasmania?",
+        "a": "Yes. We&rsquo;re a local Tasmanian team, serving areas across the North West Coast including Burnie, Devonport, Latrobe, Ulverstone, and surrounding regions."
+      },
+      {
+        "q": "Why not just use a big national IT company?",
+        "a": "Many larger IT providers outsource work or rely on third-party technicians. We work directly with local techs, which keeps costs down and communication clear."
+      },
+      {
+        "q": "Will I understand what you&rsquo;re doing to my computer?",
+        "a": "Yes. We focus on clear, simple explanations so you always understand the issue and the solution without technical jargon."
+      },
+      {
+        "q": "How fast can you fix my issue?",
+        "a": "It depends on the problem, but our focus is always on fast turnaround times and getting you back up and running as quickly as possible."
+      },
+      {
+        "q": "Do I need to be technical to work with you?",
+        "a": "Not at all. We handle the technical side and guide you through everything in a straightforward way."
+      }
+    ],
+    "issueLabel": "What do you need help with?"
+  }
+]

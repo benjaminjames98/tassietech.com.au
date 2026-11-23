@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 const CONTACT_TO = 'help@tassietech.com.au';
 const CONTACT_FROM = 'no-reply@tassietech.com.au';
-const CONTACT_FROM_NAME = 'TassieTech Website';
+const CONTACT_FROM_NAME = 'Tassie Tech Website';
 
 function redirect_to(string $path): never
 {
@@ -13,7 +13,7 @@ function redirect_to(string $path): never
 
 function fail_submission(string $reason): never
 {
-    error_log('TassieTech contact form rejected: ' . $reason);
+    error_log('Tassie Tech contact form rejected: ' . $reason);
     redirect_to('/contact/?status=error');
 }
 

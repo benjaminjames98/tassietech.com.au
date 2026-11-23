@@ -2,7 +2,7 @@ $ErrorActionPreference = "Stop"
 
 $SiteUrl = "https://tassietech.com.au"
 $Phone = "03 6449 4214"
-$PhoneShort = "6449 4214"
+$PhoneShort = "03 6449 4214"
 $Email = "help@tassietech.com.au"
 $Address = "7 Hamilton St, Latrobe"
 
@@ -54,8 +54,6 @@ function Get-Canonical {
 function Get-CanonicalPath {
   param([string]$Path)
   switch ($Path.Trim("/")) {
-    "about-page" { return "about" }
-    "emergency" { return "emergency-response" }
     default { return $Path }
   }
 }
@@ -82,7 +80,7 @@ function Get-HeroImage {
     "areas-we-serve" { return "assets/img/heroes/burnie.webp" }
     "it-services-for-burnie" { return "assets/img/heroes/burnie.webp" }
     "it-services-for-deloraine" { return "assets/img/heroes/deloraine.jpg" }
-    "it-services-for-devonport" { return "assets/img/heroes/devonport.jpg" }
+    "expert-it-services-for-devonport-businesses" { return "assets/img/heroes/devonport.jpg" }
     "it-services-for-latrobe" { return "assets/img/heroes/latrobe.jpg" }
     "it-services-for-port-sorell" { return "assets/img/heroes/port-sorell.jpg" }
     "it-services-for-sheffield" { return "assets/img/heroes/home.jpeg" }
@@ -124,7 +122,7 @@ function Get-HeroPosition {
     "areas-we-serve" { return "50% 30%" }
     "it-services-for-burnie" { return "50% 30%" }
     "it-services-for-deloraine" { return "48% 29%" }
-    "it-services-for-devonport" { return "48% 49%" }
+    "expert-it-services-for-devonport-businesses" { return "48% 49%" }
     "it-services-for-latrobe" { return "51% 22%" }
     "it-services-for-port-sorell" { return "50% 46%" }
     "it-services-for-sheffield" { return "49% 0%" }
@@ -167,33 +165,27 @@ function ServiceCards {
 <section class="section">
   <div class="section-header center reveal">
     <span class="section-kicker">Manage. Secure. Grow.</span>
-    <h2>Technology that works quietly in the background.</h2>
-    <p>Practical support for the systems Tasmanian teams rely on every day.</p>
+    <h2>We Combine the Latest in Tech to Help Your Devonport Business Grow</h2>
+    <p>We offer a broad range of local IT support to suit your needs.</p>
   </div>
-  <div class="grid four">
+  <div class="grid three">
     <article class="card lift reveal">
       <span class="icon">$(Get-Icon manage)</span>
-      <h3>Managed IT Support</h3>
-      <p>Helpdesk, devices, accounts, procurement, networks, and everyday business support.</p>
-      <a class="text-link" href="{{root}}managed-it-support-tasmania/">Explore managed IT support</a>
-    </article>
-    <article class="card lift reveal">
-      <span class="icon">$(Get-Icon cloud)</span>
-      <h3>Microsoft 365 and Cloud</h3>
-      <p>Email, Teams, SharePoint, OneDrive, permissions, and cleaner cloud workflows.</p>
-      <a class="text-link" href="{{root}}microsoft-365-support-tasmania/">Explore Microsoft 365 support</a>
+      <h3>Manage</h3>
+      <p>Be confident that your IT equipment is monitored, and maintained 24/7/365.</p>
+      <a class="text-link" href="{{root}}services/#manage">Find out more</a>
     </article>
     <article class="card lift reveal">
       <span class="icon">$(Get-Icon secure)</span>
-      <h3>Cyber Security and Backups</h3>
-      <p>Stronger accounts, safer devices, backup confidence, and calm incident response.</p>
-      <a class="text-link" href="{{root}}cyber-security-tasmania/">Explore cyber security</a>
+      <h3>Secure</h3>
+      <p>Outsource protection of your Customer&rsquo;s Data with commercial-grade security, and none of the headache.</p>
+      <a class="text-link" href="{{root}}services/#secure">Find out more</a>
     </article>
     <article class="card lift reveal">
       <span class="icon">$(Get-Icon grow)</span>
-      <h3>Websites, Networks and Projects</h3>
-      <p>WordPress care, UniFi networks, migrations, cloud projects, and planned upgrades.</p>
-      <a class="text-link" href="{{root}}wordpress-care-tasmania/">Explore websites and care</a>
+      <h3>Grow</h3>
+      <p>Experience real growth as your IT makes your business easier, freeing up you and your team for more important things.</p>
+      <a class="text-link" href="{{root}}services/#grow">Find out more</a>
     </article>
   </div>
   <div class="service-audience-links reveal" aria-label="Choose a general support path">
@@ -209,7 +201,7 @@ function WhyTassieTech {
 <section class="feature-band">
   <div class="section media-split">
     <div class="photo-panel reveal">
-      <img src="{{root}}assets/img/community-900.jpg" alt="TassieTech supporting local Tasmanian business community" loading="lazy">
+      <img src="{{root}}assets/img/community-900.jpg" alt="Tassie Tech supporting local Tasmanian business community" loading="lazy">
     </div>
     <div class="reveal">
       <span class="section-kicker">Why local matters</span>
@@ -229,7 +221,7 @@ function WhyTassieTech {
 
 function GoogleMapSection {
   param(
-    [string]$Title = "Visit TassieTech by appointment.",
+    [string]$Title = "Visit Tassie Tech by appointment.",
     [string]$Text = "Our Latrobe base supports clients across North West Tasmania and remote support across the state."
   )
 @"
@@ -246,10 +238,10 @@ function GoogleMapSection {
         <li>Onsite visits where practical.</li>
         <li>Office visits by appointment.</li>
       </ul>
-      <div class="button-row"><a class="button primary" href="tel:0364494214">Call $PhoneShort</a><a class="button secondary" href="{{root}}contact/">Contact TassieTech</a></div>
+      <div class="button-row"><a class="button primary" href="tel:0364494214">Call $PhoneShort</a><a class="button secondary" href="{{root}}contact/">Contact Tassie Tech</a></div>
     </div>
     <div class="map-embed-panel reveal">
-      <iframe title="Map showing TassieTech in Latrobe, Tasmania" src="https://www.google.com/maps?q=7%20Hamilton%20St%2C%20Latrobe%20TAS%207306&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <iframe title="Map showing Tassie Tech in Latrobe, Tasmania" src="https://www.google.com/maps?q=7%20Hamilton%20St%2C%20Latrobe%20TAS%207306&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
   </div>
 </section>
@@ -260,7 +252,8 @@ function IntakeForm {
   param(
     [string]$Class = "",
     [string]$Intro = "Start with the path that best matches what is happening.",
-    [string]$Heading = "Speak with a Tasmanian IT Expert"
+    [string]$Heading = "Speak with a Tasmanian IT Expert",
+    [string]$IssueLabel = "Outline of the issue*"
   )
 @"
 <form class="form-card intake-form $Class reveal" data-contact-form data-step-form data-current-step="1" method="post" action="{{root}}contact-submit.php" accept-charset="UTF-8">
@@ -305,14 +298,14 @@ function IntakeForm {
   <section class="form-step" data-form-step="3" aria-labelledby="intake-step-3" hidden>
     <h3 id="intake-step-3">Tell us what is happening</h3>
     <div class="conditional-group" data-contact-section="individual" hidden>
-      <div class="field"><label for="individualIssue">Outline of the issue*</label><textarea id="individualIssue" name="individualIssue" placeholder="What is happening, when did it start, and what have you already tried?" data-conditional-required></textarea></div>
+      <div class="field"><label for="individualIssue">$IssueLabel</label><textarea id="individualIssue" name="individualIssue" placeholder="What is happening, when did it start, and what have you already tried?" data-conditional-required></textarea></div>
     </div>
     <div class="conditional-group" data-contact-section="business-project" hidden>
       <div class="field"><label for="budgetRange">Budget range*</label><select id="budgetRange" name="budgetRange" data-conditional-required><option value="">Select a range</option><option>Under &#36;2,500</option><option>&#36;2,500 - &#36;7,500</option><option>&#36;7,500 - &#36;15,000</option><option>&#36;15,000 - &#36;30,000</option><option>&#36;30,000+</option><option>Not sure yet</option></select></div>
       <div class="field"><label for="projectOverview">Project overview*</label><textarea id="projectOverview" name="projectOverview" placeholder="What are you trying to build, improve, migrate, or fix? Include timing if there is a deadline." data-conditional-required></textarea></div>
     </div>
     <div class="conditional-group" data-contact-section="business-support" hidden>
-      <div class="field"><label for="supportIssue">Outline of the issue*</label><textarea id="supportIssue" name="supportIssue" placeholder="What is affected, how many people are impacted, and when did it start?" data-conditional-required></textarea></div>
+      <div class="field"><label for="supportIssue">$IssueLabel</label><textarea id="supportIssue" name="supportIssue" placeholder="What is affected, how many people are impacted, and when did it start?" data-conditional-required></textarea></div>
       <fieldset class="field option-field urgency-field">
         <legend>Urgency*</legend>
         <div class="choice-grid urgency-grid">
@@ -339,18 +332,29 @@ function IntakeForm {
 }
 
 function CommunitySection {
+  param([switch]$We)
+  $intro = if ($We) { "We aim to be a vital part of our local business community." } else { "Tassie Tech aims to be a vital part of our local business community." }
+  $k = if ($We) { "We support the Kentish and Latrobe Independent Business Association with a Leading Business Membership, and supply a KaLIBA board member." } else { "Tassie Tech supports the Kentish and Latrobe Independent Business Association with a Leading Business Membership, and supplies a KaLIBA board member." }
+  $d = if ($We) { "We are a member of the Devonport Chamber of Commerce and Industry. We are regular attenders and occasional presenters at their business events." } else { "Tassie Tech is a member of the Devonport Chamber of Commerce and Industry. They are regular attenders and occasional presenters at their business events." }
+  $a = if ($We) { "We are an ASD Business Partner, following their advice to manage secure networks and quickly combat threats." } else { "Tassie Tech is an ASD Business Partner, following their advice to manage secure networks and quickly combat threats." }
+  $c = if ($We) { "We are a member of the ACS, supporting their aim to develop the continued effectiveness and ethics of Australian IT." } else { "Tassie Tech is a member of the ACS, supporting their aim to develop the continued effectiveness and ethics of Australian IT." }
+  $more = if ($We) { @("","","","") } else { @(
+    '<a class="text-link" href="https://www.kaliba.org.au/" target="_blank" rel="noopener">Find Out More</a>',
+    '<a class="text-link" href="https://dcci.org.au/" target="_blank" rel="noopener">Find Out More</a>',
+    '<a class="text-link" href="https://cyber.gov.au" target="_blank" rel="noopener">Find Out More</a>',
+    '<a class="text-link" href="https://www.acs.org.au/" target="_blank" rel="noopener">Find Out More</a>') }
 @"
 <section class="section">
   <div class="section-header center reveal">
     <span class="section-kicker">Community</span>
-    <h2>Active in the business community we support.</h2>
-    <p>Local relationships, professional standards, and practical security guidance shape the work.</p>
+    <h2>Our Community</h2>
+    <p>$intro</p>
   </div>
   <div class="logo-cloud reveal">
-    <article class="logo-pill"><img src="{{root}}assets/img/community/kaliba.png" alt="" width="197" height="197" loading="lazy" decoding="async"><strong>KaLIBA</strong><span>A Kentish and Latrobe business network that keeps us connected with local operators, events, and regional priorities.</span></article>
-    <article class="logo-pill"><img src="{{root}}assets/img/community/dcci.png" alt="" width="274" height="274" loading="lazy" decoding="async"><strong>DCCI</strong><span>The Devonport Chamber of Commerce and Industry, supporting business connection, advocacy, and growth across the Devonport area.</span></article>
-    <article class="logo-pill"><img src="{{root}}assets/img/community/asd.png" alt="" width="439" height="332" loading="lazy" decoding="async"><strong>ASD Partner</strong><span>Part of the Australian Signals Directorate cyber security partnership ecosystem, keeping our advice close to current ACSC guidance.</span></article>
-    <article class="logo-pill"><img src="{{root}}assets/img/community/acs.png" alt="" width="271" height="300" loading="lazy" decoding="async"><strong>Australian Computer Society</strong><span>Australia's professional association for technology workers, supporting ICT standards, ethics, and ongoing professional development.</span></article>
+    <article class="logo-pill"><img src="{{root}}assets/img/community/kaliba.png" alt="" width="197" height="197" loading="lazy" decoding="async"><strong>KaLIBA</strong><span>$k</span>$($more[0])</article>
+    <article class="logo-pill"><img src="{{root}}assets/img/community/dcci.png" alt="" width="274" height="274" loading="lazy" decoding="async"><strong>DCCI</strong><span>$d</span>$($more[1])</article>
+    <article class="logo-pill"><img src="{{root}}assets/img/community/asd.png" alt="" width="439" height="332" loading="lazy" decoding="async"><strong>Australian Signals Directorate</strong><span>$a</span>$($more[2])</article>
+    <article class="logo-pill"><img src="{{root}}assets/img/community/acs.png" alt="" width="271" height="300" loading="lazy" decoding="async"><strong>Australian Computer Society</strong><span>$c</span>$($more[3])</article>
   </div>
 </section>
 "@
@@ -384,10 +388,10 @@ function HomeTriageSection {
     <h2>What do you need help with?</h2>
     <p>Choose the path that best matches what is happening. We will collect the right details and point you to the next practical step.</p>
   </div>
-  <div class="intent-cta-grid home-triage-grid reveal" aria-label="Choose your TassieTech support path">
+  <div class="intent-cta-grid home-triage-grid reveal" aria-label="Choose your Tassie Tech support path">
     <a class="intent-cta" href="{{root}}contact/?intent=business-support"><strong>Business IT Support</strong><small>Managed IT, Microsoft 365, devices, accounts, networks, security, and staff support.</small></a>
     <a class="intent-cta" href="{{root}}contact/?intent=personal"><strong>Personal IT Help</strong><small>Computers, email, internet, scams, devices, passwords, and everyday technology issues.</small></a>
-    <a class="intent-cta urgent" href="{{root}}emergency-response/"><strong>Urgent IT Issue</strong><small>Outages, suspected compromise, business disruption, or time-sensitive technology problems.</small></a>
+    <a class="intent-cta urgent" href="{{root}}emergency/"><strong>Urgent IT Issue</strong><small>Outages, suspected compromise, business disruption, or time-sensitive technology problems.</small></a>
     <a class="intent-cta" href="{{root}}contact/?intent=project"><strong>Plan a Project</strong><small>Websites, migrations, cloud systems, backups, networks, security, and system improvements.</small></a>
   </div>
 </section>
@@ -437,7 +441,7 @@ function HomeRecommendationsSection {
     <article class="card lift reveal">
       <h3>Secure accounts and backups</h3>
       <p>Prioritise MFA, password management, endpoint protection, backup coverage, and restore confidence before something fails.</p>
-      <a class="text-link" href="{{root}}cyber-security-tasmania/">Review security support</a>
+      <a class="text-link" href="{{root}}business-security/">Review security support</a>
     </article>
     <article class="card lift reveal">
       <h3>Clean up Microsoft 365</h3>
@@ -455,12 +459,12 @@ function HomeRecommendationsSection {
 }
 
 function FaqSection {
-  param([object[]]$Faqs)
+  param([object[]]$Faqs, [string]$Title = "Useful answers before we talk.", [string]$Text = "", [switch]$Raw)
   if (-not $Faqs -or $Faqs.Count -eq 0) { return "" }
 
   $items = ($Faqs | ForEach-Object {
-    $question = Encode-Html $_.Q
-    $answer = Encode-Html $_.A
+    $question = if ($Raw) { $_.Q } else { Encode-Html $_.Q }
+    $answer = if ($Raw) { $_.A } else { Encode-Html $_.A }
 @"
     <details class="faq-item reveal">
       <summary>$question</summary>
@@ -473,7 +477,8 @@ function FaqSection {
 <section class="section faq-section">
   <div class="section-header center reveal">
     <span class="section-kicker">Questions</span>
-    <h2>Useful answers before we talk.</h2>
+    <h2>$Title</h2>
+    $(if ($Text) { "<p>$Text</p>" })
   </div>
   <div class="faq-list">
 $items
@@ -532,11 +537,13 @@ function Get-HighIntentServiceCards {
     <p>Choose the service page that matches the system or risk you want to improve.</p>
   </div>
   <div class="grid three service-link-grid">
-    <a class="card lift reveal" href="{{root}}managed-it-support-tasmania/"><h3>Managed IT Support</h3><p>Helpdesk, monitoring, device management, procurement, and practical support for daily work.</p></a>
+    <a class="card lift reveal" href="{{root}}best-managed-it-services-tasmania/"><h3>Managed IT Support</h3><p>Helpdesk, monitoring, device management, procurement, and practical support for daily work.</p></a>
     <a class="card lift reveal" href="{{root}}microsoft-365-support-tasmania/"><h3>Microsoft 365 Support</h3><p>Microsoft 365, Teams, SharePoint, OneDrive, security, and account governance.</p></a>
-    <a class="card lift reveal" href="{{root}}cyber-security-tasmania/"><h3>Cyber Security</h3><p>MFA, password management, endpoint protection, security reviews, and incident readiness.</p></a>
+    <a class="card lift reveal" href="{{root}}business-security/"><h3>Business Security</h3><p>MFA, password management, endpoint protection, security reviews, and incident readiness.</p></a>
     <a class="card lift reveal" href="{{root}}unifi-network-support-tasmania/"><h3>UniFi Network Support</h3><p>Business Wi-Fi, switching, firewall rules, VLANs, visibility, and practical network design.</p></a>
     <a class="card lift reveal" href="{{root}}wordpress-care-tasmania/"><h3>WordPress Care</h3><p>Website support, updates, hosting, backups, security, performance, and content changes.</p></a>
+    <a class="card lift reveal" href="{{root}}scale-your-business/"><h3>Scale Your Business</h3><p>Strategic planning, emerging technology advice, custom software, and scalable solutions.</p></a>
+    <a class="card lift reveal" href="{{root}}care-packages/"><h3>Care Packages</h3><p>Compare Good, Better and Best IT care packages for Tasmanian businesses.</p></a>
     <a class="card lift reveal" href="{{root}}backup-strategy-tasmania/"><h3>Backup Strategy</h3><p>Synology NAS, cloud backup, restore testing, retention, ransomware planning, and continuity.</p></a>
   </div>
 </section>
@@ -588,7 +595,7 @@ $(CtaPanel $Service.CtaTitle $Service.CtaText)
 }
 
 function StepsSection {
-  param([string]$Title, [string]$One, [string]$Two, [string]$Three)
+  param([string]$Title, [string]$One, [string]$Two, [string]$Three, [string]$T1 = "Talk to a local", [string]$T2 = "Get clear options", [string]$T3 = "Move forward")
 @"
 <section class="section">
   <div class="section-header center reveal">
@@ -596,9 +603,171 @@ function StepsSection {
     <h2>$Title</h2>
   </div>
   <div class="grid three steps">
-    <article class="card step reveal"><h3>Talk to a local</h3><p>$One</p></article>
-    <article class="card step reveal"><h3>Get clear options</h3><p>$Two</p></article>
-    <article class="card step reveal"><h3>Move forward</h3><p>$Three</p></article>
+    <article class="card step reveal"><h3>$T1</h3><p>$One</p></article>
+    <article class="card step reveal"><h3>$T2</h3><p>$Two</p></article>
+    <article class="card step reveal"><h3>$T3</h3><p>$Three</p></article>
+  </div>
+</section>
+"@
+}
+
+function ResponseTimesSection {
+@"
+<section class="section">
+  <div class="section-header center reveal">
+    <span class="section-kicker">Guaranteed Response Times</span>
+    <h2>Priority, examples, and guaranteed response times.</h2>
+  </div>
+  <div class="grid three">
+    <article class="card reveal"><h3>Critical</h3><p><strong>Guaranteed response: 1 Hour</strong></p><ul><li>Your primary server is down, stopping work</li><li>A VPN link between 2 offices is down and half of your company can&rsquo;t work</li><li>Your domain server is down, leaving your network unusable</li></ul></article>
+    <article class="card reveal"><h3>High</h3><p><strong>Guaranteed response: 4 Hours</strong></p><ul><li>CEO&rsquo;s computer not working</li><li>Your internet is down, but users can still work locally</li><li>Your accounting software is down, delaying pays</li></ul></article>
+    <article class="card reveal"><h3>Medium</h3><p><strong>Guaranteed response: 1 Business Day</strong></p><ul><li>Computer not turning on (stopping them from working)</li><li>User unable to connect to the network</li><li>Wi-Fi AP not broadcasting, but network available from other AP</li></ul></article>
+    <article class="card reveal"><h3>Low</h3><p><strong>Guaranteed response: 2 Business Days</strong></p><ul><li>Printer doesn&rsquo;t print from one computer, but does from other computers</li><li>A user needs a program installed on their PC</li><li>A new user needs to be added to the domain</li></ul></article>
+    <article class="card reveal"><h3>No Priority</h3><p><strong>Guaranteed response: N/A</strong></p><ul><li>Update info for Microsoft 365 Licence</li><li>New computer installation</li><li>Pro-active maintenance of systems</li></ul></article>
+  </div>
+</section>
+"@
+}
+
+$Testimonials = [ordered]@{
+  'Graham' = 'Tassie Tech have been servicing our computers now for several years, their service and advice has been well received around. They are local and provide a quality product.'
+  'Kianie' = 'Ben and the team are instrumental to helping us navigate and implement new systems and processes, as well as assisting our entire team with everyday IT issues at work. Absolute pleasure to work with, very friendly, fast, reliable and well priced. Highly recommend if you need any sort of computer, phone or IT help!'
+  'Brian' = 'I can not recommend Ben and the team highly enough.'
+  'Mark' = 'Ben and Jason have been such an asset to have on the external team of our business. They get the job done at a fair price and have the knowledge to provide the right advice. Can&rsquo;t recommend enough!'
+  'Christine' = 'The support that Tassie Tech has given over the last 8 years has just been outstanding. As a small business there help has been tremendous and I highly recommend to anyone who is thinking of using them for there own ventures.'
+  'Andrew' = 'Outstanding service from start to finish. The team was professional, knowledgeable, and incredibly responsive throughout the entire process. They took the time to understand our business needs and delivered reliable IT solutions that made a real difference to our operations. Their technical expertise, attention to detail, and ongoing support have been exceptional. It&rsquo;s refreshing to work with a company that genuinely cares about customer service and getting the job done right. I would highly recommend them to anyone looking for dependable and innovative IT support.'
+  'Deborah' = 'Came out and went beyond to help fix our problem. Highly recommend.'
+  'Gordon' = 'Ben and the Tassie Tech crew were our go to for our computing needs in our local business. we were so pleased with the level of attention to detail, and the pricing was very competitive. Key to our needs was someone that was willing to work with us and our unique needs. From hardware and software to follow up overall engagement and availability &ndash; they were fantastic! We could not recommend them highly enough.'
+  'Adam' = 'I can&rsquo;t recommend Tassie Tech guys highly enough! Their professional and thorough service has been a game-changer for our business. They consistently ensure that our IT systems run smoothly and efficiently, and their proactive approach to streamlining and improving our technology has made a significant difference. The team is always on top of the latest advancements and implements solutions that keep us ahead of the curve. If you&rsquo;re looking for IT support that&rsquo;s not only reliable but also dedicated to enhancing your technology experience, Tassie Tech Guys are the go-to experts. Thanks for all your hard work and exceptional service!'
+  'Adam Matthews' = 'They consistently ensure that our IT systems run smoothly and efficiently'
+  'Vicki' = 'Being a business, I was so pleased that they were willing to help me the same day I realised I had been hacked. They came that day and took the computer away and next morning bought it back all fixed and have had no problems since and because they were so prompt to help me out there was no disruption to the business.'
+  'Eric' = 'Tassie Tech computers provide exceptional service in all areas. They have provided me with service, setup and support since I established my business and they continue to be my go to for support and advice.'
+  'Matthew' = 'Ben and the team at Tassie Tech have been fantastic to work with. MCS Communications has partnered with the Tassie Tech team across a number of cloud phone system installations and NBN transfers throughout Tasmania. They&rsquo;ve always been easy to work with, reliable, and professional, making project delivery smooth for both our team and customers. Highly recommend Tassie Tech.'
+  'Shirley' = 'We would not hesitate to use this service in the future!'
+}
+
+function TestimonialsSection {
+  param([string[]]$Names, [string]$Title = "What Our Clients Say", [string]$Kicker = "Reviews")
+  $cards = ($Names | ForEach-Object {
+    $quote = $Testimonials[$_]
+    $name = Encode-Html $_
+    "    <figure class=""card testimonial reveal""><div class=""testimonial-stars"" aria-label=""5 out of 5 stars"">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote>&ldquo;$quote&rdquo;</blockquote><figcaption>&ndash; $name</figcaption></figure>"
+  }) -join "`n"
+@"
+<section class="section">
+  <div class="section-header center reveal">
+    <span class="section-kicker">$Kicker</span>
+    <h2>$Title</h2>
+  </div>
+  <div class="grid three testimonial-grid">
+$cards
+  </div>
+</section>
+"@
+}
+
+function NoFixNoFeeBand {
+@"
+<section class="section tight">
+  <div class="cta-panel reveal">
+    <div>
+      <span class="section-kicker">No Fix, No Fee</span>
+      <h2>Get in Touch Today!</h2>
+    </div>
+    <a class="button primary" href="tel:0364494214">Call $PhoneShort</a>
+  </div>
+</section>
+"@
+}
+
+function ContactBlock {
+  param([string]$Title, [string]$FormHeading = "Get IT Support", [string]$IssueLabel = "What do you need help with?")
+@"
+<section class="section" id="contact">
+  <div class="section-header center reveal">
+    <span class="section-kicker">Contact</span>
+    <h2>$Title</h2>
+  </div>
+  <div class="contact-grid">
+    <div class="reveal">
+      <h3 class="contact-details-label">Contact Details:</h3>
+      <div class="contact-method"><div><strong>Phone</strong><span>$Phone</span></div><a class="button secondary" href="tel:0364494214">Call</a></div>
+      <div class="contact-method"><div><strong>Email</strong><span>$Email</span></div><a class="button secondary" href="mailto:$Email">Email</a></div>
+      <div class="contact-method"><div><strong>Office</strong><span>$Address<br>(By Appointment Only)</span></div></div>
+      <div class="contact-method"><div><strong>Business Hours:</strong><span>Monday &ndash; Friday: 9am &ndash; 5pm<br>Saturday &ndash; Sunday: Closed</span></div></div>
+    </div>
+    $(IntakeForm "" "Or Send Us A Message Using this Form!" $FormHeading $IssueLabel)
+  </div>
+</section>
+"@
+}
+
+function Render-LiveServicePage {
+  param($P)
+  $steps = StepsSection $P.stepsTitle $P.steps[0].d $P.steps[1].d $P.steps[2].d $P.steps[0].t $P.steps[1].t $P.steps[2].t
+  $sections = ($P.sections | ForEach-Object {
+    $sec = $_
+    $cards = ($sec.items | ForEach-Object {
+      $paras = ($_.p | ForEach-Object { "<p>$_</p>" }) -join ""
+      "      <article class=""card reveal""><h3>$($_.t)</h3>$paras</article>"
+    }) -join "`n"
+    $intro = if ($sec.intro) { "<p>$($sec.intro)</p>" } else { "" }
+    $closing = if ($sec.closing) { "    <div class=""section-header center reveal""><p>$($sec.closing)</p></div>" } else { "" }
+    if ($sec.why) {
+@"
+<section class="feature-band alt">
+  <div class="section">
+    <div class="section-header center reveal">
+      <span class="section-kicker">Why us</span>
+      <h2>$($sec.title)</h2>
+      $intro
+    </div>
+    <div class="grid two">
+$cards
+    </div>
+$closing
+  </div>
+</section>
+"@
+    } else {
+@"
+<section class="section">
+  <div class="section-header center reveal">
+    <span class="section-kicker">What we fix</span>
+    <h2>$($sec.title)</h2>
+    $intro
+  </div>
+  <div class="grid three">
+$cards
+  </div>
+$closing
+</section>
+"@
+    }
+  }) -join "`n"
+  $reviews = if ($P.testimonials -and @($P.testimonials).Count -gt 0) { TestimonialsSection @($P.testimonials) } else { "" }
+  $faqs = @($P.faqs | ForEach-Object { @{ Q = $_.q; A = $_.a } })
+@"
+$steps
+$sections
+$(ClientProofSection "Serving Businesses and Individuals" $P.clients)
+$reviews
+$(ContactBlock $P.contactTitle $P.button $P.issueLabel)
+$(FaqSection $faqs "Frequently Asked Questions" $P.faqIntro -Raw)
+"@
+}
+
+function GetInTouchCards {
+  param([string]$Title = "Get In Touch", [string]$SolutionsText = "Proactive Support and Strategy to Keep Your Business Running")
+@"
+<section class="section">
+  <div class="section-header center reveal">
+    <h2>$Title</h2>
+  </div>
+  <div class="grid three">
+    <a class="card lift reveal" href="{{root}}services/"><h3>IT Solutions</h3><p>$SolutionsText</p><span class="text-link">Find Out More</span></a>
+    <a class="card lift reveal" href="{{root}}emergency/"><h3>Emergency</h3><p>Round-the-Clock Support When Every Minute Counts</p><span class="text-link">Get Help Fast</span></a>
+    <a class="card lift reveal" href="{{root}}contact/"><h3>Contact</h3><p>Connect With Our Team to Find the Right Solution for You</p><span class="text-link">Reach Out Now</span></a>
   </div>
 </section>
 "@
@@ -619,7 +788,7 @@ function AreasGrid {
     <a href="{{root}}it-services-for-penguin/">Penguin</a>
     <a href="{{root}}it-services-for-queenstown/">Queenstown</a>
     <a href="{{root}}it-services-for-zeehan/">Zeehan</a>
-    <a href="{{root}}it-services-for-devonport/">Devonport</a>
+    <a href="{{root}}expert-it-services-for-devonport-businesses/">Devonport</a>
     <a href="{{root}}it-services-for-latrobe/">Latrobe</a>
     <a href="{{root}}it-services-for-ulverstone/">Ulverstone</a>
     <a href="{{root}}it-services-for-port-sorell/">Port Sorell</a>
@@ -642,16 +811,20 @@ function AreasGrid {
 }
 
 function ClientProofSection {
+  param(
+    [string]$Title = "Managing IT for Businesses Across Tasmania",
+    [string]$Text = "Some of our local clients, as well as some bigger brands that you might recognise:"
+  )
 @"
 <section class="client-proof" id="tasmania-businesses" aria-labelledby="tasmania-proof-heading">
   <div class="section">
     <div class="section-header center reveal">
-      <span class="section-kicker">Client proof</span>
-      <h2 id="tasmania-proof-heading">Trusted by Tasmanian organisations and larger teams.</h2>
-      <p>Local clients, community organisations, retailers, and larger support environments rely on TassieTech for practical technology help.</p>
+      <span class="section-kicker">Our Clients</span>
+      <h2 id="tasmania-proof-heading">$Title</h2>
+      <p>$Text</p>
     </div>
     <div class="client-proof-stage reveal" aria-label="Local and larger client proof">
-      <div class="client-logo-grid local-clients" aria-label="Some local TassieTech clients">
+      <div class="client-logo-grid local-clients" aria-label="Some local Tassie Tech clients">
         <figure><img src="{{root}}assets/img/clients/bridgepro-engineering.png" alt="BridgePro Engineering website preview" loading="lazy" decoding="async"></figure>
         <figure><img src="{{root}}assets/img/clients/anvers-tasmania.png" alt="Anvers Tasmania website preview" loading="lazy" decoding="async"></figure>
         <figure><img src="{{root}}assets/img/clients/choice-support-plus.png" alt="Choice Support Plus website preview" loading="lazy" decoding="async"></figure>
@@ -666,7 +839,7 @@ function ClientProofSection {
         <figure><img src="{{root}}assets/img/clients/rhuby-delights.png" alt="Rhuby Delights logo" loading="lazy" decoding="async"></figure>
         <figure><img src="{{root}}assets/img/clients/elite-disability-care.png" alt="Elite Disability Care logo" loading="lazy" decoding="async"></figure>
       </div>
-      <div class="brand-logo-strip" aria-label="Some larger clients TassieTech services">
+      <div class="brand-logo-strip" aria-label="Some larger clients Tassie Tech services">
         <figure><img src="{{root}}assets/img/clients/coles.png" alt="Coles logo" loading="lazy" decoding="async"></figure>
         <figure><img src="{{root}}assets/img/clients/woolworths.png" alt="Woolworths logo" loading="lazy" decoding="async"></figure>
         <figure><img src="{{root}}assets/img/clients/bws.png" alt="BWS logo" loading="lazy" decoding="async"></figure>
@@ -677,7 +850,7 @@ function ClientProofSection {
         <figure><img src="{{root}}assets/img/clients/cba.png" alt="Commonwealth Bank logo" loading="lazy" decoding="async"></figure>
       </div>
       <div class="client-proof-actions">
-        <a class="button secondary" href="{{root}}areas-we-serve/">View service areas</a>
+        <a class="button secondary" href="{{root}}it-services-tasmania/">Areas We Serve</a>
         <a class="button primary" href="{{root}}contact/?intent=business-support">Get business support</a>
       </div>
     </div>
@@ -754,7 +927,7 @@ function Render-ArticleInternalLinks {
     Add-RelatedLink $links "microsoft-365-support-tasmania/" "Microsoft 365 support" "Teams, SharePoint, OneDrive, Outlook, permissions, and secure account management."
   }
   if ($haystack -match "security|cyber|ransomware|malware|password|phishing|encryption|threat|breach|mfa|scam") {
-    Add-RelatedLink $links "cyber-security-tasmania/" "Cyber security" "Practical account, device, password, backup, and incident-readiness support."
+    Add-RelatedLink $links "business-security/" "Business security" "Commercial-grade antivirus, security policies, staff training, and system hardening."
   }
   if ($haystack -match "backup|storage|nas|synology|restore|data loss|recovery") {
     Add-RelatedLink $links "backup-strategy-tasmania/" "Backup strategy" "Synology NAS, cloud backup, restore testing, retention, and continuity planning."
@@ -766,15 +939,15 @@ function Render-ArticleInternalLinks {
     Add-RelatedLink $links "wordpress-care-tasmania/" "WordPress care" "Website updates, hosting, backups, security, performance, and form delivery."
   }
   if ($haystack -match "device|laptop|desktop|hardware|procurement|productivity|support|office") {
-    Add-RelatedLink $links "managed-it-support-tasmania/" "Managed IT support" "Helpdesk, devices, accounts, monitoring, and practical support for everyday work."
+    Add-RelatedLink $links "best-managed-it-services-tasmania/" "Managed IT support" "Helpdesk, devices, accounts, monitoring, and practical support for everyday work."
   }
   if ($haystack -match "scam|fraud") {
     Add-RelatedLink $links "scam-recovery/" "Scam recovery" "Calm local help to secure accounts, devices, and personal information after a scam."
   }
 
-  Add-RelatedLink $links "business-it-support-tasmania/" "Business IT support" "A broader path for Tasmanian teams that need support, projects, and technology planning."
+  Add-RelatedLink $links "services/" "Business IT services" "Managed IT, business security, and IT to scale your business."
   Add-RelatedLink $links "recommended-technology-platform/" "Recommended technology platform" "The operating systems, productivity tools, security, cloud, and remote support stack we trust."
-  Add-RelatedLink $links "areas-we-serve/" "Areas we serve" "Service coverage across Tasmanian towns and city hubs."
+  Add-RelatedLink $links "it-services-tasmania/" "Areas we serve" "Service coverage across Tasmanian towns and city hubs."
 
   $selected = $links
   $items = ($selected | ForEach-Object {
@@ -846,12 +1019,12 @@ function Get-ArticleSchema {
     "articleSection" = $post.category
     "author" = [ordered]@{
       "@type" = "Organization"
-      "name" = "TassieTech"
+      "name" = "Tassie Tech"
       "url" = $SiteUrl
     }
     "publisher" = [ordered]@{
       "@type" = "Organization"
-      "name" = "TassieTech"
+      "name" = "Tassie Tech"
       "logo" = [ordered]@{
         "@type" = "ImageObject"
         "url" = "$SiteUrl/assets/img/tassietech-logo.jpg"
@@ -870,7 +1043,7 @@ function Get-HomeSchema {
     "@context" = "https://schema.org"
     "@type" = @("LocalBusiness", "ProfessionalService")
     "@id" = "$SiteUrl/#business"
-    "name" = "TassieTech"
+    "name" = "Tassie Tech"
     "url" = "$SiteUrl/"
     "logo" = "$SiteUrl/assets/img/tassietech-logo.jpg"
     "image" = "$SiteUrl/assets/img/heroes/home.jpeg"
@@ -950,7 +1123,7 @@ function Get-ServiceSchema {
     "provider" = [ordered]@{
       "@type" = @("LocalBusiness", "ProfessionalService")
       "@id" = "$SiteUrl/#business"
-      "name" = "TassieTech"
+      "name" = "Tassie Tech"
       "telephone" = $Phone
       "url" = "$SiteUrl/"
       "address" = [ordered]@{
@@ -1013,7 +1186,7 @@ function Get-PageTypeSchema {
   $pageType = switch ($Page.Path.Trim("/")) {
     "about" { "AboutPage" }
     "contact" { "ContactPage" }
-    "blog" { "CollectionPage" }
+    "posts" { "CollectionPage" }
     default { "WebPage" }
   }
 
@@ -1027,13 +1200,13 @@ function Get-PageTypeSchema {
     "isPartOf" = [ordered]@{
       "@type" = "WebSite"
       "@id" = "$SiteUrl/#website"
-      "name" = "TassieTech"
+      "name" = "Tassie Tech"
       "url" = "$SiteUrl/"
     }
     "publisher" = [ordered]@{
       "@type" = "Organization"
       "@id" = "$SiteUrl/#business"
-      "name" = "TassieTech"
+      "name" = "Tassie Tech"
     }
   }
 
@@ -1085,12 +1258,12 @@ $ServiceSchemaByPath = @{}
 
 $HighIntentServices = @(
   [pscustomobject]@{
-    Slug = "managed-it-support-tasmania"
-    Title = "Managed IT Support Tasmania | TassieTech"
-    Description = "Managed IT support for Tasmanian businesses, including helpdesk, monitoring, Microsoft 365, devices, networks, security, backups, and practical advice."
+    Slug = "best-managed-it-services-tasmania"
+    Title = "Best Managed IT Services Tasmania | Tassie Tech"
+    Description = "Best Managed IT services for Tasmanian businesses: helpdesk, 24/7 monitoring, networks, Microsoft 365 and Google management. Local Latrobe team. Call 03 6449 4214."
     Kicker = "Managed IT"
-    Heading = "Managed IT Support Tasmania"
-    Intro = "Local business IT support that keeps devices, accounts, cloud systems, networks, and backups moving without making technology harder than it needs to be."
+    Heading = "The Best Managed IT Services In Tasmania"
+    Intro = "Ongoing IT support for businesses needing reliable, proactive tech management"
     SectionHeading = "Support that removes repeat IT friction."
     Lead = "Managed IT support should do more than wait for something to break. We help Tasmanian teams reduce recurring issues, standardise devices, manage accounts properly, and keep the everyday technology stack stable enough that people can focus on work."
     Supporting = "That can include helpdesk, monitoring, procurement advice, Microsoft 365 administration, endpoint protection, Splashtop remote access, backup checks, network support, and sensible documentation so your business is not reliant on one person remembering how everything works."
@@ -1108,7 +1281,7 @@ $HighIntentServices = @(
   },
   [pscustomobject]@{
     Slug = "microsoft-365-support-tasmania"
-    Title = "Microsoft 365 Support Tasmania | TassieTech"
+    Title = "Microsoft 365 Support Tasmania | Tassie Tech"
     Description = "Microsoft 365 support in Tasmania for Teams, SharePoint, OneDrive, Outlook, email security, account management, MFA, permissions, and migrations."
     Kicker = "Microsoft 365"
     Heading = "Microsoft 365 Support Tasmania"
@@ -1126,28 +1299,6 @@ $HighIntentServices = @(
       @{ Q = "Can you help migrate files into SharePoint or OneDrive?"; A = "Yes. We can plan the structure, migrate data, clean up permissions, and help staff understand the new workflow." },
       @{ Q = "Can you fix messy Teams and SharePoint permissions?"; A = "Yes. We can review existing groups, sites, access levels, external sharing, and ownership so permissions are easier to manage." },
       @{ Q = "Do we still need backup if files are in Microsoft 365?"; A = "Often, yes. Sync and retention are not the same as a tested backup strategy. We can help choose a sensible backup approach for the risk." }
-    )
-  },
-  [pscustomobject]@{
-    Slug = "cyber-security-tasmania"
-    Title = "Cyber Security Tasmania | Practical Protection for Business"
-    Description = "Cyber security support for Tasmanian businesses, including MFA, password management, endpoint protection, backup readiness, phishing risk, and response."
-    Kicker = "Cyber security"
-    Heading = "Cyber Security Tasmania"
-    Intro = "Practical cyber security for Tasmanian businesses: stronger accounts, safer devices, clearer backups, and calm response when something looks wrong."
-    SectionHeading = "Security that fits the way people actually work."
-    Lead = "Cyber security does not need to be theatrical to be effective. The biggest gains often come from strengthening accounts, patching devices, using MFA, managing passwords properly, checking backups, and making sure staff know what to do when something feels wrong."
-    Supporting = "We help with security reviews, endpoint protection, Microsoft 365 security basics, 1Password rollout, phishing and scam guidance, backup and restore planning, incident triage, and practical policies that staff can follow."
-    StackIntro = "The goal is not to sell complexity. It is to make the everyday systems safer and easier to maintain."
-    Stack = @("1Password for unique passwords and shared vaults", "Microsoft 365 security controls and account governance", "Endpoint protection and device patching", "Synology NAS and cloud backup planning", "UniFi segmentation for guest, IoT, and business networks")
-    Outcomes = @("Accounts are harder to compromise.", "Backups are easier to trust during an incident.", "Staff know when to pause, report, and escalate.")
-    CtaTitle = "Want a practical security review?"
-    CtaText = "Tell us what systems your business relies on and we will help identify the highest-value security improvements first."
-    ServiceType = "Cyber security support"
-    Faqs = @(
-      @{ Q = "Do you provide cyber security for small businesses?"; A = "Yes. Most of our security work is practical small-business protection: accounts, devices, backups, Microsoft 365, passwords, staff habits, and response planning." },
-      @{ Q = "Can you help after a suspected compromise?"; A = "Yes. If operations have stopped, data may be at risk, or accounts may be compromised, call first so we can triage faster." },
-      @{ Q = "Do you recommend password managers?"; A = "Yes. 1Password is part of our supported stack because unique passwords and shared vaults are more reliable than reused passwords or spreadsheets." }
     )
   },
   [pscustomobject]@{
@@ -1174,7 +1325,7 @@ $HighIntentServices = @(
   },
   [pscustomobject]@{
     Slug = "wordpress-care-tasmania"
-    Title = "WordPress Care Tasmania | TassieTech"
+    Title = "WordPress Care Tasmania | Tassie Tech"
     Description = "WordPress care for Tasmanian businesses, including updates, hosting, backups, security, performance, content support, and practical website improvements."
     Kicker = "WordPress care"
     Heading = "WordPress Care Tasmania"
@@ -1215,39 +1366,11 @@ $HighIntentServices = @(
       @{ Q = "Do you support Synology NAS devices?"; A = "Yes. Synology NASs are part of our stack where they fit the business need, especially for local storage, backup workflows, and continuity planning." },
       @{ Q = "Can you test whether our backups work?"; A = "Yes. Restore testing is one of the most important parts of backup planning because an untested backup is only an assumption." }
     )
-  },
-  [pscustomobject]@{
-    Slug = "business-it-support-tasmania"
-    Title = "Business IT Support Tasmania | TassieTech"
-    Description = "Business IT support across Tasmania, including managed support, Microsoft 365, cyber security, backups, UniFi networks, WordPress care, and project help."
-    Kicker = "Business support"
-    Heading = "Business IT Support Tasmania"
-    Intro = "Business IT support across Tasmania for teams that need practical help with devices, accounts, cloud systems, security, networks, websites, and continuity."
-    SectionHeading = "One local team for the technology behind the work."
-    Lead = "Small and medium businesses rarely need one isolated IT service. They need support that understands the full picture: staff devices, accounts, files, networks, websites, backups, remote access, and the way customers are served."
-    Supporting = "TassieTech helps Tasmanian teams plan projects, solve support issues, improve security, and make day-to-day systems easier to run. We can work with businesses in our North West base and support teams remotely across Tasmania."
-    StackIntro = "We reinforce a practical, supportable stack rather than chasing novelty for its own sake."
-    Stack = @("Microsoft 365, Teams, SharePoint, and OneDrive", "1Password, Splashtop, Dropbox where suitable, and secure remote workflows", "Synology NAS, cloud backup, and recovery planning", "UniFi networking and business Wi-Fi support", "WordPress, hosting, and Synergy Web Servers where appropriate")
-    Outcomes = @("Support requests have a clear path.", "Projects are planned around business outcomes.", "Security and continuity are considered before something fails.")
-    CtaTitle = "Need business IT support in Tasmania?"
-    CtaText = "Tell us whether this is a support issue or a project. The form will guide you to the right details."
-    ServiceType = "Business IT support"
-    Faqs = @(
-      @{ Q = "Which parts of Tasmania do you support?"; A = "We are North West based and support Tasmanian businesses through remote support and planned onsite work where appropriate." },
-      @{ Q = "Can you help with both support and projects?"; A = "Yes. The contact form separates business support requests from planned projects so we can triage the enquiry properly." },
-      @{ Q = "Do you support businesses that already have some internal IT knowledge?"; A = "Yes. We can supplement internal capability with projects, specialist advice, documentation, or ongoing support." }
-    )
   }
 )
 
-$homeContent = @"
-$(ServiceCards)
-$(ClientProofSection)
-$(GoogleMapSection "Visit TassieTech's Latrobe base by appointment." "From our North West base, we support local onsite work where it makes sense and remote IT support across Tasmania.")
-$(WhyTassieTech)
-$(CommunitySection)
-$(CtaPanel "Speak with a Tasmanian IT Expert" "Choose the right support path or call the Latrobe-based team.")
-"@
+# Homepage content is kept exactly as committed (do not edit; owner request).
+$homeContent = (Get-Content -Raw -Path (Join-Path $PSScriptRoot "data/home-content.html")).TrimEnd()
 
 Add-Page "" "Computer Support and IT Services Tasmania | TassieTech" "Local Tasmanian IT support for managed IT, cyber security, Microsoft 365, backups, websites, networks, and practical technology advice." "Friendly. Professional. Reliable." "IT Support in Tasmania" "Local IT experts who make technology simple for Tasmanian businesses, community organisations, and individuals." $homeContent "home" ""
 
@@ -1255,145 +1378,345 @@ $aboutContent = @"
 <section class="section">
   <div class="grid two">
     <div class="rich-text reveal">
-      <span class="section-kicker">Our story</span>
-      <h2>Local heart, serious technical depth.</h2>
-      <p>TassieTech is built around a simple belief: technology should make work easier, safer, and more productive. We are not here to overwhelm clients with jargon. We are here to pair the right technology with the right practical support.</p>
-      <p>Our team brings experience across software development, websites, networks, cloud platforms, security, computer systems, and day-to-day support. That breadth matters because real IT problems rarely fit neatly inside one category.</p>
+      <span class="section-kicker">Where Local Heart Meets Global Expertise</span>
+      <h2>Your neighbours in Tasmanian IT.</h2>
+      <p>In the heart of Tasmania, Tassie Tech is not just another IT firm; we&rsquo;re your neighbours, dedicated to propelling your local business into the digital age with ease. Our deep-rooted care for Tasmanian enterprises drives us to demystify IT, ensuring solutions are simple, accessible, and effective. When you partner with Tassie Tech, you&rsquo;re greeted with genuine friendliness, unwavering reliability, and unparalleled professionalism. We&rsquo;re here to simplify your tech journey, with every step anchored in trust and expertise.</p>
     </div>
-    <div class="card reveal">
-      <h3>What clients should feel</h3>
-      <ul>
-        <li>Friendly help from people who respect your time.</li>
-        <li>Reliable follow-through and sensible advice.</li>
-        <li>Professional standards without confusing language.</li>
-        <li>Technology choices that fit local Tasmanian businesses.</li>
-      </ul>
+    <div class="rich-text reveal">
+      <p>Behind Tassie Tech&rsquo;s commitment lies a team of highly qualified professionals, each bringing a wealth of expertise and a passion for local enterprise. Proud members of the Australian Computer Society, we adhere to the highest standards of excellence and ethics in the IT domain. With extensive experience spanning software development, web technologies, enterprise networks, and a diverse array of computer systems and software, our team is uniquely positioned to deliver solutions that are both cutting-edge and perfectly attuned to your business needs. At Tassie Tech, it&rsquo;s not just about technology; it&rsquo;s about pairing the right technology with the right expertise.</p>
     </div>
   </div>
 </section>
 $(WhyTassieTech)
 $(CommunitySection)
-$(CtaPanel "Let's work together." "Tell us what you are trying to improve and we will help you find the right next step.")
+$(CtaPanel "Speak to a Local Expert" "Give us a Call Today!")
 "@
-Add-Page "about" "About TassieTech | Local IT Experts Tasmania" "Meet TassieTech, a Tasmanian technology partner combining local care with professional IT, cyber security, software, web, and network expertise." "About TassieTech" "Discover TassieTech" "Where local heart meets global technology expertise." $aboutContent "about"
+Add-Page "about" "Specialised Commercial & Residential IT Services in Tasmania. We're Tasmania's Best IT Experts for Homes and Businesses." "Helping businesses & individuals in Tasmania simplify their Tech & IT processes. Based in Latrobe & commonly servicing people all over the state. Offering technology maintenance, upgrades, installations, & repairs. Speak to your local expert today." "About Tassie Tech" "Local Tech &amp; IT Experts in Tasmania" "Where Local Heart Meets Global Expertise" $aboutContent "about"
 
 $individualContent = @"
 <section class="section">
   <div class="section-header center reveal">
-    <span class="section-kicker">General IT support</span>
-    <h2>Computer, email, internet, and security help.</h2>
-    <p>Talk to a local technician who can explain the fix clearly.</p>
+    <span class="section-kicker">What we fix</span>
+    <h2>IT &amp; Tech Problems We Solve</h2>
+    <p>We offer a broad range of local IT support to suit your needs.</p>
   </div>
   <div class="grid three">
-    <article class="card lift reveal"><span class="icon">$(Get-Icon help)</span><h3>Computers and laptops</h3><p>Slow devices, setup, repairs, data transfer, and troubleshooting.</p></article>
-    <article class="card lift reveal"><span class="icon">$(Get-Icon cloud)</span><h3>Email and accounts</h3><p>Email setup, password issues, phone sync, and account security.</p></article>
-    <article class="card lift reveal"><span class="icon">$(Get-Icon secure)</span><h3>Internet and security</h3><p>Router setup, Wi-Fi issues, malware checks, scams, and safer use.</p></article>
+    <a class="card lift reveal" href="{{root}}computers/"><span class="icon">$(Get-Icon help)</span><h3>Computers</h3></a>
+    <a class="card lift reveal" href="{{root}}laptops/"><span class="icon">$(Get-Icon help)</span><h3>Laptops</h3></a>
+    <a class="card lift reveal" href="{{root}}email/"><span class="icon">$(Get-Icon cloud)</span><h3>Email</h3></a>
+    <a class="card lift reveal" href="{{root}}virus-and-malware/"><span class="icon">$(Get-Icon secure)</span><h3>Virus and Malware Security Scans</h3></a>
+    <a class="card lift reveal" href="{{root}}internet-or-router-problems/"><span class="icon">$(Get-Icon manage)</span><h3>Internet and Routers</h3></a>
+    <a class="card lift reveal" href="{{root}}antivirus/"><span class="icon">$(Get-Icon secure)</span><h3>Antivirus</h3></a>
   </div>
 </section>
+$(NoFixNoFeeBand)
 <section class="feature-band alt">
   <div class="section">
-    <div class="grid two">
-      <div class="reveal"><span class="section-kicker">No fix, no fee</span><h2>Honest local IT help for individuals.</h2><p>Clear options, respectful support, and practical advice before you spend money.</p><div class="button-row"><a class="button primary" href="{{root}}contact/?intent=personal">Speak to a Local IT Expert</a></div></div>
-      <div class="card reveal"><h3>Why people choose TassieTech</h3><ul><li>98%+ solve rate across IT fields.</li><li>Friendly local technicians.</li><li>Plain-language advice.</li><li>Business-grade experience for everyday problems.</li></ul></div>
+    <div class="section-header center reveal">
+      <span class="section-kicker">Why us</span>
+      <h2>Why Choose Tassie Tech?</h2>
     </div>
+    <div class="grid two">
+      <article class="card reveal"><h3>Experienced IT Experts</h3><p>Tassie Tech has a &gt;98% solve rate for IT fields. Our techs work between business and individual calls, giving them a wide breadth of knowledge which benefits you, no matter what your problem is.</p></article>
+      <article class="card reveal"><h3>Tasmanian Locals</h3><p>We are part of the local community, and we care about our customers. We do our best to be friendly, prompt, and to get your problem solved. If we didn&rsquo;t, our reliance on our local community would mean that we wouldn&rsquo;t last long!</p></article>
+      <article class="card reveal"><h3>Speak With Tech Experts &ndash; Not Sales People</h3><p>Most IT companies servicing the NW Coast are based on the mainland, and pay 3rd party techs to do jobs locally. We used to be one of those local techs. We would charge a reasonable fee, and then the mainland company would take the cut. We get rid of the middle-man, saving you money.</p></article>
+      <article class="card reveal"><h3>We Simplify Tech for You</h3><p>We genuinely like people, and do our best to be respectful, making sure that you understand everything that is happening, and are comfortable to ask any questions you need to stay in the loop.</p></article>
+    </div>
+    <div class="section-header center reveal"><p>We try hard to be the best IT company we can be. Give us a try; you won&rsquo;t regret it!</p></div>
   </div>
 </section>
-$(Get-IndividualServiceCards)
-$(CtaPanel "Speak to a Local IT Expert" "Call TassieTech today or send a quick message and we will point you in the right direction.")
+$(NoFixNoFeeBand)
+$(ClientProofSection "Our Clients" "Tassie Tech has worked with a broad range of businesses, across every industry:")
+$(CommunitySection)
+$(NoFixNoFeeBand)
 "@
-Add-Page "individuals" "General IT Support Tasmania | TassieTech Individuals" "Computer repairs, laptop help, email setup, internet and router support, antivirus, malware scans, and friendly local IT support in Tasmania." "For individuals" "Honest local IT help for individuals." "Call TassieTech for friendly, local support with computers, laptops, email, internet, security, and everyday technology problems." $individualContent "individuals"
+Add-Page "individuals" "Skilled Computer & IT Support For Residents in Devonport & Surrounds. Personal Tech Help From Friendly Technicians." "Friendly tech help for Tasmanian homes: computers, email, internet, viruses and scam recovery from local technicians. Call 03 6449 4214." "For individuals" "Looking for IT &amp; Tech Experts in Tasmania?" "Call Tassie Tech Today!" $individualContent "individuals"
 
 $scamContent = @"
 <section class="section">
   <div class="grid two">
     <div class="rich-text reveal">
       <span class="section-kicker">Recovery support</span>
-      <h2>Rebuild confidence after a scam.</h2>
-      <p>If you have been targeted by a scam, it can be hard to know who to trust or what to do first. TassieTech helps you take practical steps to protect your accounts, report what happened, and reduce the chance of further harm.</p>
-      <ul><li>Listen to what happened without judgement.</li><li>Help you contact banks and relevant authorities.</li><li>Secure accounts, devices, and personal information.</li><li>Explain what is realistic and what is not.</li></ul>
+      <h2>Local Recovery Support: Rebuilding Your Confidence</h2>
+      <p>If you&rsquo;ve been targeted by a scam, it can be hard to know what to do or who to trust. You are not alone &ndash; many Tasmanians have faced similar situations. Tassie Tech is here to help you take steps to recover your funds and secure your accounts, with straightforward advice and friendly support.</p>
     </div>
     <div class="card reveal">
-      <h3>Our promise</h3>
-      <p>No unrealistic guarantees. No upfront pressure. Just honest, privacy-conscious advice from local people focused on your safety.</p>
-      <div class="button-row"><a class="button primary" href="tel:0364494214">Call $PhoneShort</a></div>
+      <h3>How Tassie Tech Can Help</h3>
+      <p>We understand how confusing and frustrating scams can be. Our team is here to provide clear, honest guidance so you can start moving forward quickly and safely. Here&rsquo;s what we&rsquo;ll do:</p>
+      <ul><li>Listen to your situation and work through your options.</li><li>Help you contact your bank and relevant authorities to report the scam and attempt to recover your funds.</li><li>Advise you on how to secure your accounts and protect your personal information.</li><li>Provide you with ongoing support if needed.</li></ul>
     </div>
   </div>
 </section>
-$(StepsSection "Simple, stress-free scam recovery in 3 steps." "Share what happened. You do not need technical language or perfect notes." "We outline immediate priorities and help you take action in the right order." "We help secure accounts, protect information, and reduce repeat risk.")
-$(CommunitySection)
-$(CtaPanel "Ready to speak to a local scam recovery team?" "Get calm, practical guidance from Tasmanian IT experts who respect your privacy.")
+$(StepsSection "Simple, Stress-Free IT Support from Tasmanians in 3 Steps" "Share what&rsquo;s happened &ndash; no technical knowledge required." "We&rsquo;ll outline the next steps and help you take action right away." "We help you protect your information and avoid future scams." "Speak With a Local Team Member" "Get Clear, Personalised Advice" "Secure Your Accounts and Move Forward")
+<section class="section tight">
+  <div class="section-header center reveal"><a class="button primary" href="tel:0364494214">Speak to a team member &ndash; $PhoneShort</a></div>
+</section>
+<section class="feature-band alt">
+  <div class="section">
+    <div class="rich-text reveal">
+      <span class="section-kicker">Why Choose Tassie Tech for Scam Recovery?</span>
+      <h2>Tasmanian Scam Recovery Experts Who Are Focused on Your Safety</h2>
+      <p>Tassie Tech is based right here in Tasmania. Our team has years of experience helping locals recover from scams and secure their accounts. We never ask for upfront payments or make unrealistic promises. Just honest, practical help from people you can trust. We explain everything clearly and always respect your privacy.</p>
+      <p>Don&rsquo;t let a scam define your future. Get the support you need to move forward quickly and confidently.</p>
+    </div>
+  </div>
+</section>
+$(CommunitySection -We)
+<section class="section tight">
+  <div class="cta-panel reveal">
+    <div>
+      <h2>Ready to Speak to Our Local Scam Recovery team?</h2>
+      <p>Let Tassie Tech guide you through scam recovery with care and expertise. Book a consultation call today and take the first step toward feeling secure again.</p>
+    </div>
+    <a class="button primary" href="tel:0364494214">Speak to a team member &ndash; Call $PhoneShort</a>
+  </div>
+</section>
 "@
-Add-Page "scam-recovery" "Scam Recovery Tasmania | Local Help From TassieTech" "Local Tasmanian scam recovery support. Practical help to secure accounts, contact banks and authorities, protect personal information, and move forward safely." "Scam recovery" "Tasmanian Scam Recovery Experts" "Local, honest help when a scam has put your money, accounts, or confidence at risk." $scamContent "individuals"
+Add-Page "scam-recovery" "Best Tasmanian Scam Recovery Team | No Unrealistic Promises, No Upfront Costs, Just Honest Practical Advice From Local Experts You Can Trust. We Respect your Privacy and Value Your Safety." "We're a local scam recovery team based near Devonport. We Don't make unrealistic promises or have upfront costs. We'll talk through your options, help you contact the relevant banks and authorities and attempt to recover your funds." "Scam recovery" "Tasmanian Scam Recovery Experts" "Your local scam recovery partner, helping you reclaim your peace of mind." $scamContent "individuals"
 Register-ServiceSchema "individuals" "General IT Support Tasmania" "Computer repairs, laptop help, email setup, internet and router support, antivirus, malware scans, and friendly local IT support in Tasmania." "General IT support" "Tasmania"
 Register-ServiceSchema "scam-recovery" "Scam Recovery Tasmania" "Local Tasmanian scam recovery support for securing accounts, devices, personal information, and confidence after a scam." "Scam recovery support" "Tasmania"
 
 $servicesContent = @"
-<section class="feature-band">
-  <div class="section">
-    <div class="section-header center reveal">
-      <span class="section-kicker">Business services</span>
-      <h2>Choose your business IT path.</h2>
-      <p>Start with the support area that best matches the job.</p>
-    </div>
-    <div class="service-path-grid reveal" aria-label="Business IT service paths">
-      <a href="{{root}}business-it-support-tasmania/">Business IT support</a>
-      <a href="{{root}}managed-it-support-tasmania/">Managed IT support</a>
-      <a href="{{root}}microsoft-365-support-tasmania/">Microsoft 365 support</a>
-      <a href="{{root}}cyber-security-tasmania/">Cyber security</a>
-      <a href="{{root}}unifi-network-support-tasmania/">UniFi networks</a>
-      <a href="{{root}}wordpress-care-tasmania/">WordPress care</a>
-      <a href="{{root}}backup-strategy-tasmania/">Backup strategy</a>
-      <a href="{{root}}emergency-response/">Emergency response</a>
-    </div>
-  </div>
-</section>
-$(ServiceCards)
 <section class="section tight">
-  <div class="grid two">
-    <div class="rich-text reveal">
-      <span class="section-kicker">Support model</span>
-      <h2>Get Tasmanian business IT under control.</h2>
-      <p>Choose focused help or a managed partnership. We can support your team, cloud systems, websites, phones, network, and security posture.</p>
-    </div>
-    <div class="card reveal">
-      <h3>Best first steps</h3>
-      <ul><li>Book a business IT health check.</li><li>Review Microsoft 365 and account security.</li><li>Confirm backups can actually restore.</li><li>Prioritise recurring support issues.</li></ul>
+  <div class="rich-text reveal">
+    <p>At Tassie Tech, we understand the transformative power of technology and its ability to shape the future of your business. Rooted in Tasmania, our comprehensive suite of services is tailored to the unique needs of local enterprises. From robust software support and insightful consultations to cutting-edge website development and seamless connectivity solutions, we&rsquo;ve got you covered. Dive in and discover how Tassie Tech can be the catalyst for your business&rsquo;s growth and success.</p>
+  </div>
+</section>
+<section class="feature-band" id="manage">
+  <div class="section">
+    <div class="grid two">
+      <div class="rich-text reveal">
+        <span class="section-kicker">Manage</span>
+        <h2><a href="{{root}}best-managed-it-services-tasmania/">Managed IT Support</a></h2>
+        <p><strong>Never feel like your IT is out of control with our managed services, helping you stay on top of your IT 24/7/365!</strong></p>
+        <p>Encounter an IT hiccup? We pride ourselves on delivering swift and effective support, ensuring your business continuity is never compromised. Local expertise, global standards &ndash; that&rsquo;s the Tassie Tech assurance.</p>
+      </div>
+      <div class="card reveal">
+        <ul><li>Dedicated Helpdesk</li><li>Full Network Set-up and Maintenance</li><li>Microsoft and Google Service Management</li><li>Strategic Advice and Procurement</li><li>Cloud and Website Hosting</li><li>Phone and VOIP Management</li></ul>
+        <div class="button-row"><a class="button primary" href="{{root}}contact/?intent=business-support">Contact Us Today!</a></div>
+      </div>
     </div>
   </div>
 </section>
+<section class="feature-band alt" id="secure">
+  <div class="section">
+    <div class="grid two">
+      <div class="rich-text reveal">
+        <span class="section-kicker">Secure</span>
+        <h2><a href="{{root}}business-security/">Local Business Security Services</a></h2>
+        <p><strong>Outsource protection of your Customer&rsquo;s Data with commercial-grade security, and none of the headache.</strong></p>
+        <p>In today&rsquo;s digital landscape, cyber-security is becoming an ever larger and more complex concern for businesses. We are your local partner, helping your business to implement simple, robust defenses against Targeted Cyber Intrusions, Viruses and Malware, Ransomware, Malicious Insiders, and more.</p>
+      </div>
+      <div class="card reveal">
+        <ul><li>Enterprise-grade Antivirus and Antimalware</li><li>Cyber-Security Policies</li><li>Staff Security Training</li><li>System Hardening and Testing</li><li>Defend Workstations, Laptops, Mobiles, Servers, Networks, and more!</li></ul>
+        <div class="button-row"><a class="button primary" href="{{root}}contact/?intent=business-support">Contact Us Today!</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="feature-band" id="grow">
+  <div class="section">
+    <div class="grid two">
+      <div class="rich-text reveal">
+        <span class="section-kicker">Grow</span>
+        <h2><a href="{{root}}scale-your-business/">IT to Scale Your Local Business</a></h2>
+        <p><strong>Experience real growth as your IT makes your business easier, freeing up you and your team for more important things.</strong></p>
+        <p>The technological horizon is always moving, and understanding the significance of emerging technologies for your business isn&rsquo;t easy. Tassie Tech are your IT Specialists, providing tailored consultations to help your business understand how you can integrate technology to boost your business&rsquo;s growth!</p>
+      </div>
+      <div class="card reveal">
+        <ul><li>Strategic Planning with Boots-On-The-Ground Consultants</li><li>Emerging Technologies Advice</li><li>Custom Software Development</li><li>Scalable Solutions</li></ul>
+        <div class="button-row"><a class="button primary" href="{{root}}contact/?intent=business-support">Contact Us Today!</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+$(TestimonialsSection @("Andrew","Mark","Matthew","Gordon","Christine","Vicki","Adam","Eric"))
 $(Get-HighIntentServiceCards)
 $(CtaPanel "Get Tasmanian business IT under control." "Tell us what is slowing your team down. We will help you choose the most practical path.")
 "@
-Add-Page "services" "Business IT Services Tasmania | TassieTech" "Managed IT, cyber security, cloud, websites, networks, VOIP, custom software, and practical consulting for Tasmanian businesses." "Businesses" "Computer &amp; IT Services For Businesses In Tassie" "Managed support, security, consulting, cloud, websites, networks, phones, and software from a Tasmanian team." $servicesContent "services"
+Add-Page "services" "Business IT Services & Support in Tasmania | Tassie Tech" "We offer many Tech & IT services for businesses to let you focus on what you're good at without worrying about your back end. Explore our managed IT & tech services, software development services and business security services on our website." "Business services" "Computer &amp; IT Services For Businesses In Tassie" "Your Local Tech &amp; IT Experts" $servicesContent "services"
 
+$managedFaqs = @(
+  @{ Q = "What is managed IT support?"; A = "Managed IT support means we look after your business technology on an ongoing basis. Instead of calling someone only when something breaks, we monitor, maintain and support your systems so problems are caught early and your team stays productive." },
+  @{ Q = "What's included in your managed IT services?"; A = "A dedicated helpdesk, full network setup and maintenance, Microsoft and Google service management, cloud hosting, phone and VoIP, and proactive 24/7/365 monitoring. We tailor the mix to what your business actually needs." },
+  @{ Q = "How is managed IT different from break-fix IT support?"; A = "With break-fix support you call a technician after something goes wrong and pay per job. Managed IT is proactive: we keep your systems maintained and monitored to prevent problems and reduce downtime." },
+  @{ Q = "Is managed IT support worth it for a small business?"; A = "For most small businesses, yes. You get the benefits of an IT department without the cost of hiring in-house staff, along with more stable systems and someone who already knows your setup when you need help." },
+  @{ Q = "How much does managed IT support cost?"; A = "It depends on the size of your team, your devices and the systems you use. We'll talk through your needs first, then give you a tailored quote." },
+  @{ Q = "Can you work with our existing systems?"; A = "Yes. We start by reviewing your current systems and how your business uses them, then recommend changes only where they'll make a real difference." },
+  @{ Q = "Do you offer on-site support for businesses?"; A = "Yes. When you need someone on-site, we can be there. We're based in Latrobe and support businesses across Tasmania." },
+  @{ Q = "Do you manage Microsoft 365 and Google Workspace?"; A = "Yes. We set up and manage Microsoft and Google services, including accounts, email, file sharing and security settings." }
+)
+$managedContent = @"
+$(StepsSection "How Managed IT Support Works" "We discuss your business, current systems, and the best type of ongoing IT support you need." "We monitor, maintain, and support your technology to keep everything running efficiently." "You get fast support and the best stable systems that help your business run smoothly." "Talk To Our Team" "We Manage Your Systems" "Your IT Handled")
+<section class="feature-band alt">
+  <div class="section">
+    <div class="section-header center reveal">
+      <span class="section-kicker">Why us</span>
+      <h2>Why is Tassie Tech the best for Managed IT?</h2>
+    </div>
+    <div class="grid two">
+      <article class="card reveal"><h3>Local Experts With Enterprise Knowledge</h3><p>We bring enterprise-level IT management to Tasmanian businesses &mdash; dedicated helpdesk, full network maintenance, Microsoft and Google service management, cloud hosting, phone and VOIP, and proactive 24/7/365 monitoring. Our team understands the unique challenges local businesses face and provides tailored support, not a one-size-fits-all package from the mainland. We also provide <a href="{{root}}individuals/">IT support for individuals</a>, so our techs have a wide breadth of knowledge across every type of problem.</p></article>
+      <article class="card reveal"><h3>Tasmanian Locals</h3><p>When you need someone on-site, we can be there. We&rsquo;re based in Tasmania and serve businesses across the state &ndash; from the North West Coast and beyond. <a href="{{root}}it-services-tasmania/">See all the areas we serve</a>.</p></article>
+      <article class="card reveal"><h3>Your IT Partner, Not Just a Vendor</h3><p>We take the time to understand your business goals and align your IT strategy accordingly. Think of us as your IT department, without the overhead of hiring in-house.</p></article>
+      <article class="card reveal"><h3>We Simplify Tech for You</h3><p>We genuinely like people, and do our best to communicate clearly. We explain our recommendations in plain language and focus on delivering real outcomes for your business. You&rsquo;ll always know what&rsquo;s happening with your IT and why.</p></article>
+    </div>
+    <div class="section-header center reveal"><p>We try hard to be the best IT company we can be. Give us a try; you won&rsquo;t regret it!</p></div>
+  </div>
+</section>
+$(ClientProofSection "Serving Businesses and Individuals" "We&rsquo;re trusted for Managed IT services by familiar faces across the state:")
+$(ContactBlock "Get Reliable IT Support Today" "Get IT Support")
+$(FaqSection $managedFaqs "Frequently Asked Questions" "Common questions about managed IT support for Tasmanian businesses")
+$(Get-HighIntentServiceCards)
+"@
 foreach ($service in $HighIntentServices) {
-  $serviceContent = Build-ServiceLandingContent $service
+  $serviceContent = if ($service.Slug -eq "best-managed-it-services-tasmania") { $managedContent } else { Build-ServiceLandingContent $service }
   Add-Page $service.Slug $service.Title $service.Description $service.Kicker $service.Heading $service.Intro $serviceContent "services"
-  Register-Faq $service.Slug $service.Faqs
+  Register-Faq $service.Slug $(if ($service.Slug -eq "best-managed-it-services-tasmania") { $managedFaqs } else { $service.Faqs })
   Register-ServiceSchema $service.Slug $service.Heading $service.Description $service.ServiceType "Tasmania"
 }
 
-$communityContent = @"
+$ServicePagesPath = Join-Path $PSScriptRoot "data/service-pages.json"
+$ServicePages = if (Test-Path $ServicePagesPath) { Get-Content -Path $ServicePagesPath -Raw | ConvertFrom-Json } else { @() }
+foreach ($sp in $ServicePages) {
+  $spContent = Render-LiveServicePage $sp
+  $spActive = if ($sp.audience -eq "business") { "services" } else { "individuals" }
+  Add-Page $sp.slug $sp.seoTitle $sp.seoDesc $(if ($sp.audience -eq "business") { "Business services" } else { "For individuals" }) $sp.heading $sp.intro $spContent $spActive
+  $plainFaqs = @($sp.faqs | ForEach-Object { @{ Q = (Get-PlainText $_.q); A = (Get-PlainText $_.a) } })
+  Register-Faq $sp.slug $plainFaqs
+  Register-ServiceSchema $sp.slug (Get-PlainText $sp.heading) $sp.seoDesc $(if ($sp.audience -eq "business") { "Business IT services" } else { "Computer and IT support" }) "Tasmania"
+}
+
+$careContent = @"
 <section class="section">
-  <div class="section-header center reveal">
-    <span class="section-kicker">Community services</span>
-    <h2>IT that lets your team focus on people.</h2>
-    <p>Community service organisations handle sensitive information, staff onboarding, documents, devices, and critical day-to-day communication. TassieTech keeps that technology simple, secure, and maintained.</p>
-  </div>
-  <div class="grid four">
-    <article class="card reveal"><h3>Microsoft 365</h3><p>Setup, management, secure collaboration, Teams, SharePoint, and account governance.</p></article>
-    <article class="card reveal"><h3>Onboarding</h3><p>Fast employee onboarding and offboarding so access is clean, safe, and documented.</p></article>
-    <article class="card reveal"><h3>Helpdesk</h3><p>Friendly remote and onsite support for staff who need clear answers.</p></article>
-    <article class="card reveal"><h3>Cyber security</h3><p>Protection for sensitive client data, devices, backups, and user accounts.</p></article>
+  <div class="table-wrap reveal">
+    <table class="plan-table">
+      <thead><tr><th scope="col">Plans</th><th scope="col">Good</th><th scope="col">Better</th><th scope="col">Best</th></tr></thead>
+      <tbody>
+        <tr class="group"><th colspan="4" scope="colgroup">Support</th></tr>
+        <tr><th scope="row">Guaranteed Response Times</th><td class="yes"><span aria-label="Included">&#10003;</span></td><td class="yes"><span aria-label="Included">&#10003;</span></td><td class="yes"><span aria-label="Included">&#10003;</span></td></tr>
+        <tr><th scope="row">Managed Antivirus</th><td class="yes"><span aria-label="Included">&#10003;</span></td><td class="yes"><span aria-label="Included">&#10003;</span></td><td class="yes"><span aria-label="Included">&#10003;</span></td></tr>
+        <tr><th scope="row">Dedicated Support Agent&rsquo;s Mobile</th><td class="yes"><span aria-label="Included">&#10003;</span></td><td class="yes"><span aria-label="Included">&#10003;</span></td><td class="yes"><span aria-label="Included">&#10003;</span></td></tr>
+        <tr><th scope="row">Unlimited Remote Support</th><td class="yes"><span aria-label="Included">&#10003;</span></td><td class="yes"><span aria-label="Included">&#10003;</span></td><td class="yes"><span aria-label="Included">&#10003;</span></td></tr>
+        <tr><th scope="row">Unlimited Onsite Support</th><td>TTS Care Rates</td><td class="yes"><span aria-label="Included">&#10003;</span></td><td class="yes"><span aria-label="Included">&#10003;</span></td></tr>
+        <tr><th scope="row">Unlimited After-Hours Support</th><td>TTS Care Rates</td><td>TTS Care Rates</td><td class="yes"><span aria-label="Included">&#10003;</span></td></tr>
+        <tr class="group"><th colspan="4" scope="colgroup">Security</th></tr>
+        <tr><th scope="row">Password Manager</th><td>Extra</td><td class="yes"><span aria-label="Included">&#10003;</span></td><td class="yes"><span aria-label="Included">&#10003;</span></td></tr>
+        <tr><th scope="row">MFA Security Audit</th><td class="yes"><span aria-label="Included">&#10003;</span></td><td class="yes"><span aria-label="Included">&#10003;</span></td><td class="yes"><span aria-label="Included">&#10003;</span></td></tr>
+        <tr><th scope="row">Managed M365 Macro Settings</th><td class="yes"><span aria-label="Included">&#10003;</span></td><td class="yes"><span aria-label="Included">&#10003;</span></td><td class="yes"><span aria-label="Included">&#10003;</span></td></tr>
+        <tr><th scope="row">User Application Hardening</th><td class="yes"><span aria-label="Included">&#10003;</span></td><td class="yes"><span aria-label="Included">&#10003;</span></td><td class="yes"><span aria-label="Included">&#10003;</span></td></tr>
+        <tr><th scope="row">Administrator Access Audit</th><td class="yes"><span aria-label="Included">&#10003;</span></td><td class="yes"><span aria-label="Included">&#10003;</span></td><td class="yes"><span aria-label="Included">&#10003;</span></td></tr>
+        <tr><th scope="row">Managed Application Patches</th><td class="yes"><span aria-label="Included">&#10003;</span></td><td class="yes"><span aria-label="Included">&#10003;</span></td><td class="yes"><span aria-label="Included">&#10003;</span></td></tr>
+        <tr><th scope="row">Managed Windows Updates</th><td class="yes"><span aria-label="Included">&#10003;</span></td><td class="yes"><span aria-label="Included">&#10003;</span></td><td class="yes"><span aria-label="Included">&#10003;</span></td></tr>
+        <tr><th scope="row">Managed Application Control</th><td class="yes"><span aria-label="Included">&#10003;</span></td><td class="yes"><span aria-label="Included">&#10003;</span></td><td class="yes"><span aria-label="Included">&#10003;</span></td></tr>
+        <tr><th scope="row">Regular Vulnerability Scanning</th><td>Extra</td><td>Extra</td><td class="yes"><span aria-label="Included">&#10003;</span></td></tr>
+        <tr><th scope="row">SSO Setup and Management</th><td>N/A</td><td>N/A</td><td class="yes"><span aria-label="Included">&#10003;</span></td></tr>
+        <tr class="group"><th colspan="4" scope="colgroup">Management</th></tr>
+        <tr><th scope="row">IT Documentation</th><td class="yes"><span aria-label="Included">&#10003;</span></td><td class="yes"><span aria-label="Included">&#10003;</span></td><td class="yes"><span aria-label="Included">&#10003;</span></td></tr>
+        <tr><th scope="row">Procurement Assistance</th><td class="yes"><span aria-label="Included">&#10003;</span></td><td class="yes"><span aria-label="Included">&#10003;</span></td><td class="yes"><span aria-label="Included">&#10003;</span></td></tr>
+        <tr><th scope="row">Monthly Executive Report</th><td>Extra</td><td class="yes"><span aria-label="Included">&#10003;</span></td><td class="yes"><span aria-label="Included">&#10003;</span></td></tr>
+        <tr><th scope="row">Cyber Emergence Response Plan</th><td>Extra</td><td class="yes"><span aria-label="Included">&#10003;</span></td><td class="yes"><span aria-label="Included">&#10003;</span></td></tr>
+        <tr><th scope="row">Hardware Upgrade Plan</th><td>Extra</td><td class="yes"><span aria-label="Included">&#10003;</span></td><td class="yes"><span aria-label="Included">&#10003;</span></td></tr>
+        <tr><th scope="row">Real-time System Monitoring</th><td>Extra</td><td>Extra</td><td class="yes"><span aria-label="Included">&#10003;</span></td></tr>
+        <tr><th scope="row">Technology Business Review</th><td>Bi-Annual</td><td>Quarterly</td><td>Monthly</td></tr>
+        <tr><th scope="row">Asset Management Report</th><td>Extra</td><td>Annually</td><td>Bi-Annually</td></tr>
+        <tr class="group"><th colspan="4" scope="colgroup">Training</th></tr>
+        <tr><th scope="row">Security Awareness Training</th><td class="yes"><span aria-label="Included">&#10003;</span></td><td class="yes"><span aria-label="Included">&#10003;</span></td><td class="yes"><span aria-label="Included">&#10003;</span></td></tr>
+        <tr><th scope="row">End User Training</th><td>TTS Care Rates</td><td class="yes"><span aria-label="Included">&#10003;</span></td><td class="yes"><span aria-label="Included">&#10003;</span></td></tr>
+        <tr class="group"><th colspan="4" scope="colgroup">Services</th></tr>
+        <tr><th scope="row">Microsoft 365 Licence</th><td>Standard</td><td>Standard</td><td>Premium</td></tr>
+        <tr><th scope="row">Microsoft 365 Backup</th><td class="yes"><span aria-label="Included">&#10003;</span></td><td class="yes"><span aria-label="Included">&#10003;</span></td><td class="yes"><span aria-label="Included">&#10003;</span></td></tr>
+        <tr><th scope="row">Local Workstation Backup</th><td>Extra</td><td class="yes"><span aria-label="Included">&#10003;</span></td><td class="yes"><span aria-label="Included">&#10003;</span></td></tr>
+        <tr><th scope="row">Backup Restoration Test</th><td>Bi-Annually</td><td>Quarterly</td><td>Monthly</td></tr>
+        <tr><th scope="row">Dropbox Business Licence</th><td>Extra</td><td>Extra</td><td>Business Plus</td></tr>
+      </tbody>
+    </table>
   </div>
 </section>
-$(StepsSection "Stress-free IT support in 3 steps." "Reach out for a quick chat about your organisation, team, and technology pain points." "We sort the best support options for your staff, systems, budget, and risk profile." "We manage and maintain the technology so your people can stay focused on the community.")
-$(WhyTassieTech)
-$(CtaPanel "Ready to simplify community services IT?" "Speak to a local team member or email community.services@tassietech.com.au.")
+$(CtaPanel "Find the right care package" "Talk to us about which plan suits your business." )
 "@
-Add-Page "community-services" "IT Support for Community Services Tasmania | TassieTech" "IT support for Tasmanian community service organisations, including Microsoft 365, secure documents, onboarding, helpdesk, backups, and cyber security." "Community services" "Hassle-Free IT for Community Services Organisations" "Let TassieTech handle your IT so you can focus on the people and communities you serve." $communityContent ""
+Add-Page "care-packages" "IT Care Packages for Businesses | Tassie Tech" "Compare Tassie Tech's Good, Better and Best IT care packages: support, security, backups, Microsoft 365 and monitoring for Tasmanian businesses." "Business services" "Tassie Tech Care Packages" "Support for every part of your business" $careContent "services"
+
+$projectContent = @"
+<section class="section article-section">
+  <article class="rich-text article-body reveal">
+    <div class="article-meta"><span class="tag">Recent project</span><span>September 2026</span></div>
+<p>In early September, we completed a network setup at Mill Park in Wesley Vale for a client moving into new premises.</p>
+<p>The client needed a WiFi network set up across the new building, but the construction made coverage difficult. The building is made from cinder-block and metal, so the signal wouldn&rsquo;t reach through it effectively. A single access point was never going to cover the whole place.</p>
+<p>To solve the problem, we set up a UniFi mesh so the coverage carries across the entire building. We also managed the NBN transition across to the new site, making sure the connection was live and ready for them when they moved in. All of their devices moved across seamlessly.</p>
+<p>The setup included UniFi access points in a mesh, PoE injectors, and conduit and cabling supplied by us. The NBN relocation was handled through 2tel.</p>
+<p>The network is also fully managed rather than simply installed and forgotten. We&rsquo;re notified if the network goes down, and we keep the system updated and patched.</p>
+<p>The final result was a fast move with solid WiFi coverage throughout the whole building. The client is also looking to continue developing the network from here to support security cameras.</p>
+<p>The walls were the main challenge on this job. Cinder-block and metal can stop WiFi signal dead, so this was never going to be a case of putting a router in a corner and hoping for the best. The mesh network is what made reliable coverage across the building possible.</p>
+  </article>
+</section>
+$(CtaPanel "Need a reliable network?" "Tell us about your building and what is unreliable, and we will help plan the right setup.")
+"@
+Add-Page "recent-projects/mill-park-wifi-network-setup-wesley-vale" "Mesh WiFi Network Setup - Wesley Vale - Tassie Tech" "A UniFi mesh WiFi network and NBN move for a client's new cinder-block and metal premises at Mill Park, Wesley Vale." "Recent project" "Mesh WiFi Network Setup &ndash; Wesley Vale" "A UniFi mesh network and NBN move for new premises at Mill Park." $projectContent "services" "compact" "assets/img/projects/mill-park-wesley-vale.jpg" "center 50%"
+
+$communityContent = @"
+<section class="section">
+  <div class="grid two">
+    <div class="rich-text reveal">
+      <span class="section-kicker">Community services</span>
+      <h2>IT support built for community services.</h2>
+      <p>Running a community services organisation is demanding enough without IT headaches. You&rsquo;re focused on helping people, not on tech issues like Microsoft 365 setup or employee onboarding.</p>
+      <div class="button-row"><a class="button primary" href="tel:0364494214">Speak to a team member &ndash; $PhoneShort</a><a class="button secondary" href="mailto:community.services@tassietech.com.au">Email &ndash; community.services@tassietech.com.au</a></div>
+    </div>
+    <figure class="card testimonial reveal"><div class="testimonial-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote>&ldquo;$($Testimonials["Adam Matthews"])&rdquo;</blockquote><figcaption>&ndash; Adam Matthews</figcaption></figure>
+  </div>
+</section>
+<section class="section">
+  <div class="section-header center reveal">
+    <span class="section-kicker">Our Services</span>
+    <h2>Our Services: Tailored Tech Support</h2>
+    <p>We provide practical IT solutions designed for community services businesses in Tasmania.</p>
+  </div>
+  <div class="grid four">
+    <article class="card reveal"><h3>Microsoft 365 Setup and Management</h3></article>
+    <article class="card reveal"><h3>Secure Document Sharing &amp; Collaboration</h3></article>
+    <article class="card reveal"><h3>Employee Onboarding &amp; Offboarding</h3></article>
+    <article class="card reveal"><h3>IT Helpdesk &amp; Remote Support</h3></article>
+    <article class="card reveal"><h3>Data Backup and Recovery</h3></article>
+    <article class="card reveal"><h3>Cybersecurity for Sensitive Client Data</h3></article>
+    <article class="card reveal"><h3>Hardware and Software Troubleshooting</h3></article>
+    <article class="card reveal"><h3>Ongoing IT Maintenance and Updates</h3></article>
+  </div>
+</section>
+$(StepsSection "Stress-Free IT Support for Community Services Businesses in Tasmania in 3 Steps" "Reach out to discuss your business&rsquo;s unique tech needs." "We&rsquo;ll sort out the best options tailored for your team." "Sit back as we manage and maintain your IT systems." "Call Us for a Quick Chat" "Sort Out Your Options" "Get Your Tech Handled")
+<section class="section tight">
+  <div class="section-header center reveal"><div class="button-row"><a class="button primary" href="tel:0364494214">Speak to a team member &ndash; $PhoneShort</a><a class="button secondary" href="mailto:community.services@tassietech.com.au">Email &ndash; community.services@tassietech.com.au</a></div></div>
+</section>
+<section class="feature-band alt">
+  <div class="section">
+    <div class="section-header center reveal">
+      <span class="section-kicker">Why us</span>
+      <h2>Why Choose Tassie Tech?</h2>
+    </div>
+    <div class="grid two">
+      <article class="card reveal"><h3>Experienced IT Experts</h3><p>Our tech team has a 98%+ IT issue resolution rate. We bring extensive knowledge from helping both businesses and individuals, which benefits you no matter what your problem is.</p></article>
+      <article class="card reveal"><h3>Tasmanian Locals</h3><p>We&rsquo;re 100% Tasmanian &ndash; we wouldn&rsquo;t be here without our local community! Our friendly, prompt service ensures your tech issues are resolved quickly and without hassle.</p></article>
+      <article class="card reveal"><h3>Speak With Tech Experts &ndash; Not Sales People</h3><p>Unlike mainland IT firms that inflate costs through third-party techs, we&rsquo;re local and cut out the middleman. This means affordable, high-quality service for your business.</p></article>
+      <article class="card reveal"><h3>We Simplify Tech for You</h3><p>At Tassie Tech, we genuinely like people. We know tech can feel overwhelming, so our team explains everything clearly, ensuring you&rsquo;re comfortable and informed every step of the way.</p></article>
+    </div>
+    <div class="section-header center reveal"><p>Let Tassie Tech take IT off your plate &ndash; so you can get back to what you do best.</p></div>
+  </div>
+</section>
+$(ClientProofSection "Our Clients" "Tassie Tech has worked with a broad range of businesses, across every industry:")
+$(CommunitySection -We)
+<section class="section tight">
+  <div class="cta-panel reveal">
+    <div>
+      <h2>Ready to Simplify Your Business IT?</h2>
+      <p>Let us handle your tech so you can focus on your community. Speak to a team member today to get IT support that&rsquo;s local, reliable, and built for you.</p>
+    </div>
+    <div class="button-row"><a class="button primary" href="tel:0364494214">Speak to a team member &ndash; $PhoneShort</a><a class="button secondary" href="mailto:community.services@tassietech.com.au">Email &ndash; community.services@tassietech.com.au</a></div>
+  </div>
+</section>
+"@
+Add-Page "community-services" "IT Support for Community Services Businesses in Tasmania. IT Helpdesk, Software & Tech Troubleshooting, Employee Onboarding, Cybersecurity, General IT Services & Maintenance Near Me." "Tassie Tech simplifies IT for your community services business. We serve all of Tasmania from our office near Devonport, allowing you to speak to a local IT expert near you. We offer Troubleshooting, Maintenance, & many other IT Services." "Community services" "Hassle-Free IT for Community Services Businesses in Tasmania" "Let Tassie Tech handle your IT, so you can focus on what matters most." $communityContent ""
 
 $emergencyContent = @"
+$(ResponseTimesSection)
 <section class="section">
   <div class="grid three">
     <article class="card reveal"><span class="icon">$(Get-Icon help)</span><h3>1. Triage</h3><p>We identify what is broken, what is at risk, and what needs immediate attention.</p></article>
@@ -1409,21 +1732,19 @@ $emergencyContent = @"
 </section>
 $(CtaPanel "Need urgent IT response?" "Call now, or send the fastest summary you can. We will help you prioritise the next action.")
 "@
-Add-Page "emergency-response" "Emergency IT Response Tasmania | TassieTech" "Urgent local IT help for business outages, suspected compromises, email failures, internet problems, device issues, and security incidents in Tasmania." "Emergency response" "Urgent IT help when business stops." "Fast triage, containment, and recovery support from a local Tasmanian technology team." $emergencyContent "services"
-Add-Page "emergency" "Emergency IT Response Tasmania | TassieTech" "Urgent local IT help for business outages, suspected compromises, email failures, internet problems, device issues, and security incidents in Tasmania." "Emergency response" "Urgent IT help when business stops." "Fast triage, containment, and recovery support from a local Tasmanian technology team." $emergencyContent "services" "compact" "" "" $true
+Add-Page "emergency" "24/7 Emergency IT Support for Individuals & Businesses. Call Our Local Tech Team to Solve Your Issue Urgently! Fastest IT Service Providers Devonport." "If you have an emergency and you need a critical IT issue solved FAST, call Tassie Tech, your Local experts. We have guaranteed response times for businesses in Tasmania needing urgent IT & tech assistance listed on this page." "Emergency response" "Emergency IT Support for Businesses in Tasmania" "Guaranteed Response Times" $emergencyContent "services"
 Register-ServiceSchema "services" "Business IT Services in Tasmania" "Managed support, security, consulting, cloud, websites, networks, phones, and software from a Tasmanian team." "Business IT services" "Tasmania"
 Register-ServiceSchema "community-services" "IT Support for Community Services Tasmania" "Managed IT, Microsoft 365, secure documents, onboarding, helpdesk, backup, and cyber security support for Tasmanian community services organisations." "Community services IT support" "Tasmania"
-Register-ServiceSchema "emergency-response" "Emergency IT Response Tasmania" "Urgent local IT help for business outages, suspected compromises, email failures, internet problems, device issues, and security incidents in Tasmania." "Emergency IT response" "Tasmania"
 Register-ServiceSchema "emergency" "Emergency IT Response Tasmania" "Urgent local IT help for business outages, suspected compromises, email failures, internet problems, device issues, and security incidents in Tasmania." "Emergency IT response" "Tasmania"
 
 $areaFaqs = @(
   @{ Q = "Do you provide onsite support everywhere in Tasmania?"; A = "We are North West based. Onsite support is strongest around our local region, while many business support tasks can be handled remotely across Tasmania and onsite work can be planned where it makes sense." },
-  @{ Q = "Can Hobart, Launceston, and East Coast businesses still work with TassieTech?"; A = "Yes. We support businesses through remote tools, Microsoft 365 administration, cloud systems, security work, website support, and planned project delivery across Tasmania." },
+  @{ Q = "Can Hobart, Launceston, and East Coast businesses still work with Tassie Tech?"; A = "Yes. We support businesses through remote tools, Microsoft 365 administration, cloud systems, security work, website support, and planned project delivery across Tasmania." },
   @{ Q = "Which towns do your service area pages cover?"; A = "The site includes public service-area pages for Burnie, Devonport, Launceston, Hobart, Wynyard, Smithton, Penguin, Queenstown, Zeehan, George Town, Perth, Campbell Town, St Helens, New Norfolk, Sorell, Kingston, Huonville, and other Tasmanian locations." }
 )
 $areasContent = @"
 <section class="section media-split">
-  <div class="area-map reveal" aria-label="Map of Tasmania showing TassieTech service areas">
+  <div class="area-map reveal" aria-label="Map of Tasmania showing Tassie Tech service areas">
     <svg class="tasmania-svg" viewBox="0 0 420 430" role="img" aria-labelledby="tas-title tas-desc">
       <title id="tas-title">Tasmania service map</title>
       <desc id="tas-desc">A recognisable Tasmania map showing town service nodes connected to their nearest city hub. The city backbone runs Burnie to Devonport to Launceston to Hobart.</desc>
@@ -1477,24 +1798,51 @@ $areasContent = @"
   <div class="reveal">
     <span class="section-kicker">Local coverage</span>
     <h2>Onsite and Remote IT Support for Tasmanians</h2>
+    <p>At Tassie Tech we serve all of Tasmania. We are based in the north west coast and primarily work in the following locations:</p>
     <ul class="coverage-bullet-list">
-      <li>Latrobe and North West based.</li>
-      <li>Remote IT support across Tasmania.</li>
-      <li>Planned onsite visits where practical.</li>
-      <li>Support for businesses and individuals.</li>
+      <li><a href="{{root}}it-services-for-burnie/">Burnie</a></li>
+      <li><a href="{{root}}it-services-for-deloraine/">Deloraine</a></li>
+      <li><a href="{{root}}expert-it-services-for-devonport-businesses/">Devonport</a></li>
+      <li><a href="{{root}}it-services-for-port-sorell/">Port Sorell</a></li>
+      <li><a href="{{root}}it-services-for-ulverstone/">Ulverstone</a></li>
+      <li><a href="{{root}}it-services-for-latrobe/">Latrobe</a></li>
+      <li><a href="{{root}}it-services-for-sheffield/">Sheffield</a></li>
     </ul>
     <div class="button-row"><a class="button primary" href="{{root}}contact/">Ask about your area</a><a class="button secondary" href="{{root}}contact/?intent=business-support">Get business support</a></div>
   </div>
 </section>
-$(GoogleMapSection "TassieTech's Tasmanian service base." "Our Latrobe location anchors local North West onsite support and statewide remote IT support for Tasmanian businesses and individuals.")
+$(GoogleMapSection "Tassie Tech's Tasmanian service base." "Our Latrobe location anchors local North West onsite support and statewide remote IT support for Tasmanian businesses and individuals.")
+<section class="section">
+  <div class="section-header center reveal">
+    <span class="section-kicker">Services</span>
+    <h2>Our Business IT Services</h2>
+    <p>From offering local IT support for an broad range of business software and hardware to crafting bespoke software solutions tailored to your needs, our suite of services is designed with one thing in mind: helping local businesses succeed!</p>
+  </div>
+  <div class="grid three">
+    <article class="card reveal"><h3>Complete Business IT Support</h3><p>Unlock Seamless Operations with Expert Assistance</p></article>
+    <article class="card reveal"><h3>Simplified IT Consultations</h3><p>Demystifying Digital Security and Tools for Your Business</p></article>
+    <article class="card reveal"><h3>Custom Software Development</h3><p>Tailor-made Tools for Efficient Workflows</p></article>
+    <article class="card reveal"><h3>Website Development &amp; Hosting</h3><p>Digital Experiences That Resonate</p></article>
+    <article class="card reveal"><h3>Emerging Technologies Advisory</h3><p>Stay Ahead with Future-Ready Insights</p></article>
+    <article class="card reveal"><h3>Phone &amp; Internet Network Support</h3><p>Seamless Connectivity, Zero Hassles</p></article>
+  </div>
+  <div class="section-header center reveal"><p>Join the many Tassie businesses that trust Tassie Tech for their IT needs. Let us be your partner in success, providing top-notch IT support and development services tailored to Tassie&rsquo;s dynamic business landscape.</p></div>
+</section>
 $(AreasGrid)
+$(GetInTouchCards)
 $(FaqSection $areaFaqs)
+<section class="section tight">
+  <div class="cta-panel reveal">
+    <div>
+      <h2>We Work With Businesses in Tasmania!</h2>
+      <p>Contact Tassie Tech today to discover how we can elevate your business through technology. Your success is our priority!</p>
+    </div>
+    <div class="button-row"><a class="button primary" href="{{root}}contact/?intent=business-support">Get in Touch</a><a class="button secondary" href="tel:0364494214">Give us a Call Today!</a></div>
+  </div>
+</section>
 "@
-Add-Page "areas-we-serve" "Areas We Serve | TassieTech Tasmania" "Find TassieTech service areas across Tasmania, including North West towns, Launceston, Hobart, the West Coast, East Coast, Midlands, and Huon Valley." "Areas we serve" "Areas We Serve" "Find local and remote technology support coverage across Tasmanian towns and city hubs." $areasContent "areas"
-Add-Page "it-services-tasmania" "IT Services Tasmania | TassieTech" "Tasmanian IT services for businesses and individuals, with North West support and remote help across Burnie, Devonport, Launceston, Hobart, and regional towns." "Tasmania" "IT Services Across Tasmania" "Local technology support for Tasmanian businesses, organisations, and individuals." $areasContent "areas"
-Register-Faq "areas-we-serve" $areaFaqs
+Add-Page "it-services-tasmania" "Devonport and Northern Tasmania's Favourite IT Company. We Deliver 5 Star Tech Expertise to All Suburbs Around Devonport & Northern Tasmania" "If you're a Tasmanian Local or business owner looking for Computer Support or IT services, Tassie Tech is the place to call! We offer tech advisory, simplified IT consulting and a whole range of Tech and IT services near you. Tasmanian IT Support." "Tasmania" "Computer Support &amp; IT Services For Tassie Businesses" "Tassie&rsquo;s Leading IT Support and Development Experts." $areasContent "areas"
 Register-Faq "it-services-tasmania" $areaFaqs
-Register-ServiceSchema "areas-we-serve" "TassieTech Service Areas" "Find TassieTech service areas across Tasmania, including North West towns, Launceston, Hobart, the West Coast, East Coast, Midlands, and Huon Valley." "Tasmanian IT service coverage" "Tasmania"
 Register-ServiceSchema "it-services-tasmania" "IT Services Across Tasmania" "Tasmanian IT services for businesses and individuals, with North West support and remote help across Burnie, Devonport, Launceston, Hobart, and regional towns." "Tasmanian IT services" "Tasmania"
 
 $towns = @(
@@ -1504,30 +1852,98 @@ $towns = @(
   @{Slug="it-services-for-penguin"; Name="Penguin"; Note="Penguin businesses can access practical North West support for devices, networks, cloud systems, websites, and security."},
   @{Slug="it-services-for-queenstown"; Name="Queenstown"; Note="Queenstown and West Coast teams can access remote-first technology support for business systems, websites, cloud tools, security, and continuity."},
   @{Slug="it-services-for-zeehan"; Name="Zeehan"; Note="Zeehan and West Coast teams can access remote-first technology support for business systems, websites, cloud tools, security, and continuity."},
-  @{Slug="it-services-for-devonport"; Name="Devonport"; Note="Devonport teams use TassieTech for support, cloud, security, websites, and network help."},
+  @{Slug="expert-it-services-for-devonport-businesses"; Name="Devonport"; Note="Devonport teams use Tassie Tech for support, cloud, security, websites, and network help."},
   @{Slug="it-services-for-latrobe"; Name="Latrobe"; Note="Close to our home base, Latrobe businesses can rely on practical local technology help."},
   @{Slug="it-services-for-ulverstone"; Name="Ulverstone"; Note="Ulverstone businesses can get managed support, security guidance, and project delivery."},
   @{Slug="it-services-for-port-sorell"; Name="Port Sorell"; Note="Port Sorell businesses can simplify operations with local support and modern systems."},
   @{Slug="it-services-for-sheffield"; Name="Sheffield"; Note="Sheffield organisations can access friendly technology support without confusing language."},
-  @{Slug="it-services-for-launceston"; Name="Launceston"; Note="Launceston organisations can work with TassieTech for remote support, Microsoft 365, security guidance, websites, and practical technology projects."},
+  @{Slug="it-services-for-launceston"; Name="Launceston"; Note="Launceston organisations can work with Tassie Tech for remote support, Microsoft 365, security guidance, websites, and practical technology projects."},
   @{Slug="it-services-for-deloraine"; Name="Deloraine"; Note="Regional businesses in Deloraine deserve clear advice and dependable technology support."},
-  @{Slug="it-services-for-george-town"; Name="George Town"; Note="George Town and Tamar Valley businesses can connect into TassieTech's Launceston-linked support network for devices, cloud services, websites, and security."},
-  @{Slug="it-services-for-perth"; Name="Perth"; Note="Perth businesses can work with TassieTech for Launceston-linked remote support, Microsoft 365, security guidance, websites, and practical projects."},
+  @{Slug="it-services-for-george-town"; Name="George Town"; Note="George Town and Tamar Valley businesses can connect into Tassie Tech's Launceston-linked support network for devices, cloud services, websites, and security."},
+  @{Slug="it-services-for-perth"; Name="Perth"; Note="Perth businesses can work with Tassie Tech for Launceston-linked remote support, Microsoft 365, security guidance, websites, and practical projects."},
   @{Slug="it-services-for-campbell-town"; Name="Campbell Town"; Note="Campbell Town and Midlands teams can access practical remote support for business systems, security, cloud tools, and websites."},
-  @{Slug="it-services-for-st-helens"; Name="St Helens"; Note="St Helens and East Coast teams can use TassieTech for remote support, cloud systems, security advice, and practical project delivery."},
-  @{Slug="it-services-for-hobart"; Name="Hobart"; Note="Hobart teams can use TassieTech for remote support, security advice, cloud systems, and project delivery across southern Tasmania."},
-  @{Slug="it-services-for-new-norfolk"; Name="New Norfolk"; Note="New Norfolk and Derwent Valley teams can use TassieTech for remote support, cloud systems, security advice, and practical project delivery."},
-  @{Slug="it-services-for-sorell"; Name="Sorell"; Note="Sorell and south-east Tasmanian teams can use TassieTech for remote support, security advice, cloud systems, and project delivery."},
-  @{Slug="it-services-for-kingston"; Name="Kingston"; Note="Kingston businesses can work with TassieTech for Hobart-linked remote support, Microsoft 365, cyber security, websites, and practical projects."},
+  @{Slug="it-services-for-st-helens"; Name="St Helens"; Note="St Helens and East Coast teams can use Tassie Tech for remote support, cloud systems, security advice, and practical project delivery."},
+  @{Slug="it-services-for-hobart"; Name="Hobart"; Note="Hobart teams can use Tassie Tech for remote support, security advice, cloud systems, and project delivery across southern Tasmania."},
+  @{Slug="it-services-for-new-norfolk"; Name="New Norfolk"; Note="New Norfolk and Derwent Valley teams can use Tassie Tech for remote support, cloud systems, security advice, and practical project delivery."},
+  @{Slug="it-services-for-sorell"; Name="Sorell"; Note="Sorell and south-east Tasmanian teams can use Tassie Tech for remote support, security advice, cloud systems, and project delivery."},
+  @{Slug="it-services-for-kingston"; Name="Kingston"; Note="Kingston businesses can work with Tassie Tech for Hobart-linked remote support, Microsoft 365, cyber security, websites, and practical projects."},
   @{Slug="it-services-for-huonville"; Name="Huonville"; Note="Huonville and Huon Valley teams can access remote support for business systems, security, cloud tools, websites, and continuity."}
 )
 
+$LiveTowns = @{
+  'it-services-for-burnie' = @{ Title = 'Best Computer Support & IT Services For Businesses in Burnie | Phone & Internet Support, Website Development, Business IT Helpdesk, Software Installation & Development, Local Tech Advisor Near Me.'; Description = 'If you''re a Burnie Local or business owner looking for Computer Support or IT services, Tassie Tech is the place to call! We offer tech advisory, simplified IT consulting and a whole range of Tech and IT services near you. Burnie IT Support.'; Heading = 'Computer Support &amp; IT Services For Burnie Businesses'; ServicesHeading = 'Our Business IT Services in Burnie'; TouchHeading = 'Get In Touch' }
+  'it-services-for-latrobe' = @{ Title = 'Best Computer Support & IT Services For Businesses in Latrobe | Phone & Internet Support, Website Development, Business IT Helpdesk, Software Installation & Development, Local Tech Advisor Near Me.'; Description = 'If you''re a Latrobe Local or business owner looking for Computer Support or IT services, Tassie Tech is the place to call! We offer tech advisory, simplified IT consulting and a whole range of Tech and IT services near you. Latrobe IT Support.'; Heading = 'Computer Support &amp; IT Services For Latrobe Businesses'; ServicesHeading = 'Our Business IT Services in Latrobe'; TouchHeading = 'Get In Touch' }
+  'it-services-for-ulverstone' = @{ Title = 'Best Computer Support & IT Services For Businesses in Ulverstone | Phone & Internet Support, Website Development, Business IT Helpdesk, Software Installation & Development, Local Tech Advisor Near Me.'; Description = 'If you''re an Ulverstone Local or business owner looking for Computer Support or IT services, Tassie Tech is the place to call! We offer tech advisory, simplified IT consulting and a whole range of Tech and IT services near you. Ulverstone IT Support.'; Heading = 'Computer Support &amp; IT Services For Ulverstone Businesses'; ServicesHeading = 'Our Business IT Services in Ulverstone'; TouchHeading = 'Get In Touch' }
+  'it-services-for-port-sorell' = @{ Title = 'Best Computer Support & IT Services For Businesses in Port Sorell | Phone & Internet Support, Website Development, Business IT Helpdesk, Software Installation & Development, Local Tech Advisor Near Me.'; Description = 'If you''re a Port Sorell Local or business owner looking for Computer Support or IT services, Tassie Tech is the place to call! We offer tech advisory, simplified IT consulting and a whole range of Tech and IT services near you. Port Sorell IT support.'; Heading = 'Computer Support &amp; IT Services For Port Sorell Businesses'; ServicesHeading = 'Our Business IT Services in Port Sorell'; TouchHeading = 'Get In Touch' }
+  'it-services-for-sheffield' = @{ Title = 'Best Computer Support & IT Services For Businesses in Sheffield | Phone & Internet Support, Website Development, Business IT Helpdesk, Software Installation & Development, Local Tech Advisor Near Me.'; Description = 'If you''re a Sheffield Local or business owner looking for Computer Support or IT services, Tassie Tech is the place to call! We offer tech advisory, simplified IT consulting and a whole range of Tech and IT services near you. Sheffield IT Support.'; Heading = 'Computer Support &amp; IT Services For Sheffield Businesses'; ServicesHeading = 'Our Business IT Services in Sheffield'; TouchHeading = 'Get In Touch' }
+  'it-services-for-deloraine' = @{ Title = 'Best Computer Support & IT Services Deloraine | Phone & Internet Support, Website Development, Business IT Helpdesk, Software Installation & Development, Tech Advisor. Local IT & Tech Expert Near Me.'; Description = 'If you''re a Deloraine Local or business owner looking for Computer Support or IT services, Tassie Tech is the place to call! We offer tech advisory, simplified IT consulting and a whole range of Tech and IT services near you.'; Heading = 'Computer Support &amp; IT Services For Deloraine Businesses'; ServicesHeading = 'Our Business IT Services in Deloraine'; TouchHeading = 'Get In Touch' }
+  'expert-it-services-for-devonport-businesses' = @{ Title = 'Expert IT Services For Devonport Businesses'; Description = 'If you own a business in Devonport and are having IT troubles, call our expert IT Services providers - We''re based right next door in Latrobe'; Heading = 'Expert IT Services For Devonport Businesses'; ServicesHeading = 'Our Expert IT Services in Devonport'; TouchHeading = 'Why We&rsquo;re The Best IT Service Provider In Devonport' }
+}
 foreach ($town in $towns) {
+  $live = $LiveTowns[$town.Slug]
   $townFaqs = @(
-    @{ Q = "Can TassieTech provide business IT support in $($town.Name)?"; A = "Yes. $($town.Name) businesses can contact TassieTech for remote-first support, project work, and planned onsite help where proximity and scheduling make sense." },
+    @{ Q = "Can Tassie Tech provide business IT support in $($town.Name)?"; A = "Yes. $($town.Name) businesses can contact Tassie Tech for remote-first support, project work, and planned onsite help where proximity and scheduling make sense." },
     @{ Q = "What business systems can you support for $($town.Name) teams?"; A = "We can help with Microsoft 365, SharePoint, devices, accounts, 1Password, UniFi networks, WordPress, backups, Synology NASs, remote support, cyber security, and practical technology projects." },
-    @{ Q = "Should urgent issues be submitted through the form?"; A = "If operations have stopped, data may be at risk, or there is a suspected compromise, call TassieTech first. The form is useful for context, but critical incidents need faster triage." }
+    @{ Q = "Should urgent issues be submitted through the form?"; A = "If operations have stopped, data may be at risk, or there is a suspected compromise, call Tassie Tech first. The form is useful for context, but critical incidents need faster triage." }
   )
+  if ($live) {
+    $n = $town.Name
+    $townContent = @"
+<section class="section">
+  <div class="grid two">
+    <div class="rich-text reveal">
+      <span class="section-kicker">$n IT support</span>
+      <h2>Join the many $n businesses that trust Tassie Tech for their IT needs.</h2>
+      <p>At Tassie Tech, we understand the unique needs of $n&rsquo;s thriving business community. Our mission is to help your business thrive by providing comprehensive IT solutions that are designed to simplify your operations, enhance security, and boost productivity.</p>
+      <p>Let us be your partner in success, providing top-notch IT support and development services tailored to $n&rsquo;s dynamic business landscape.</p>
+      <div class="button-row"><a class="button primary" href="{{root}}contact/?intent=business-support">Get in Touch!</a><a class="button secondary" href="tel:0364494214">Give us a Call ($PhoneShort)!</a></div>
+    </div>
+    <div class="card reveal">
+      <h2>$($live.ServicesHeading)</h2>
+      <p>From offering local IT support for an broad range of business software and hardware to crafting bespoke software solutions tailored to your needs, our suite of services is designed with one thing in mind: helping local businesses succeed!</p>
+    </div>
+  </div>
+</section>
+<section class="section tight">
+  <div class="grid three">
+    <article class="card reveal"><h3>Complete Business IT Support</h3><p>Unlock Seamless Operations with Expert Assistance</p></article>
+    <article class="card reveal"><h3>Simplified IT Consultations</h3><p>Demystifying Digital Security and Tools for Your Business</p></article>
+    <article class="card reveal"><h3>Custom Software Development</h3><p>Tailor-made Tools for Efficient Workflows</p></article>
+    <article class="card reveal"><h3>Website Development &amp; Hosting</h3><p>Digital Experiences That Resonate</p></article>
+    <article class="card reveal"><h3>Emerging Technologies Advisory</h3><p>Stay Ahead with Future-Ready Insights</p></article>
+    <article class="card reveal"><h3>Phone &amp; Internet Network Support</h3><p>Seamless Connectivity, Zero Hassles</p></article>
+  </div>
+  <div class="section-header center reveal"><p>Join the many $n businesses that trust Tassie Tech for their IT needs. Let us be your partner in success, providing top-notch IT support and development services tailored to $n&rsquo;s dynamic business landscape.</p></div>
+</section>
+<section class="section tight">
+  <div class="service-path-grid reveal" aria-label="Related $n IT services">
+    <a href="{{root}}best-managed-it-services-tasmania/">Managed IT support</a>
+    <a href="{{root}}microsoft-365-support-tasmania/">Microsoft 365 support</a>
+    <a href="{{root}}business-security/">Business security</a>
+    <a href="{{root}}unifi-network-support-tasmania/">UniFi network support</a>
+    <a href="{{root}}wordpress-care-tasmania/">WordPress care</a>
+    <a href="{{root}}backup-strategy-tasmania/">Backup strategy</a>
+    <a href="{{root}}individuals/">Individual IT help</a>
+    <a href="{{root}}scam-recovery/">Scam recovery</a>
+  </div>
+</section>
+$(GetInTouchCards $live.TouchHeading $(if ($town.Slug -eq 'expert-it-services-for-devonport-businesses') { 'Proactive Support and Expert Strategy to Keep Your Business Running' } else { 'Proactive Support and Strategy to Keep Your Business Running' }))
+$(FaqSection $townFaqs)
+<section class="section tight">
+  <div class="cta-panel reveal">
+    <div>
+      <h2>We Work With $n Businesses!</h2>
+      <p>Contact Tassie Tech today to discover how we can elevate your business through technology. Your success is our priority!</p>
+    </div>
+    <div class="button-row"><a class="button primary" href="{{root}}contact/?intent=business-support">Get in Touch</a><a class="button secondary" href="tel:0364494214">Give us a Call Today!</a></div>
+  </div>
+</section>
+"@
+    Add-Page $town.Slug $live.Title $live.Description "$n IT services" $live.Heading "$n&rsquo;s Leading IT Support and Development Experts$(if ($n -in 'Burnie','Deloraine') { '.' })" $townContent "areas"
+    Register-Faq $town.Slug $townFaqs
+    Register-ServiceSchema $town.Slug "Business IT Support for $n" $live.Description "Business IT support" $n
+    continue
+  }
   $townContent = @"
 <section class="section">
   <div class="grid two">
@@ -1544,9 +1960,9 @@ foreach ($town in $towns) {
 </section>
 <section class="section tight">
   <div class="service-path-grid reveal" aria-label="Related $($town.Name) IT services">
-    <a href="{{root}}managed-it-support-tasmania/">Managed IT support</a>
+    <a href="{{root}}best-managed-it-services-tasmania/">Managed IT support</a>
     <a href="{{root}}microsoft-365-support-tasmania/">Microsoft 365 support</a>
-    <a href="{{root}}cyber-security-tasmania/">Cyber security</a>
+    <a href="{{root}}business-security/">Business security</a>
     <a href="{{root}}unifi-network-support-tasmania/">UniFi network support</a>
     <a href="{{root}}wordpress-care-tasmania/">WordPress care</a>
     <a href="{{root}}backup-strategy-tasmania/">Backup strategy</a>
@@ -1555,9 +1971,9 @@ foreach ($town in $towns) {
   </div>
 </section>
 $(FaqSection $townFaqs)
-$(CtaPanel "We would love to work with your $($town.Name) team." "Contact TassieTech to discover how local technology support can make work easier, safer, and more reliable.")
+$(CtaPanel "We would love to work with your $($town.Name) team." "Contact Tassie Tech to discover how local technology support can make work easier, safer, and more reliable.")
 "@
-  Add-Page $town.Slug "Business IT Support $($town.Name) | TassieTech Tasmania" "Local business IT support for $($town.Name), including managed support, cyber security, Microsoft 365, websites, software, phones, internet, and networks." "$($town.Name) IT services" "Business IT Support For $($town.Name)" "$($town.Name)'s Local IT Support and Development Experts for Businesses and Individuals" $townContent "areas"
+  Add-Page $town.Slug "Business IT Support $($town.Name) | Tassie Tech Tasmania" "Local business IT support for $($town.Name), including managed support, cyber security, Microsoft 365, websites, software, phones, internet, and networks." "$($town.Name) IT services" "Business IT Support For $($town.Name)" "$($town.Name)'s Local IT Support and Development Experts for Businesses and Individuals" $townContent "areas"
   Register-Faq $town.Slug $townFaqs
   Register-ServiceSchema $town.Slug "Business IT Support for $($town.Name)" "Local business IT support for $($town.Name), including managed support, cyber security, Microsoft 365, websites, software, phones, internet, and networks." "Business IT support" $town.Name
 }
@@ -1576,27 +1992,21 @@ $blogCards
 </section>
 $(CtaPanel "Have a technology question?" "Send us the context and we will give you practical next steps.")
 "@
-Add-Page "blog" "TassieTech Blog | Practical IT Advice Tasmania" "Practical IT advice from TassieTech on secure technology, business support, scam recovery, devices, and technology decisions for Tasmanian teams." "Blog" "Technology advice without the noise." "Plain-language IT guidance for Tasmanian businesses, community organisations, and individuals." $blogContent "blog"
+Add-Page "posts" "Best Computer Support and IT Services Blogs Tasmania | Individuals & Businesses Looking for IT Help in Tasmania? Computer repair, Email Setup, Internet and Router installation, Malware Scans Near Me." "Tassie Tech posts comprehensive blogs to keep you informed, we cover topics such as buying used technology, device upgrading advice, IT security tips, storage guides, malware information, ai productivity hacks and more." "Blog" "Technology advice without the noise." "Plain-language IT guidance for Tasmanian businesses, community organisations, and individuals." $blogContent "blog"
 
 foreach ($post in $BlogPosts) {
   $articleContent = Render-BlogArticle $post
-  $postPageTitle = "$($post.title) | TassieTech"
-  if ($postPageTitle.Length -gt 60) { $postPageTitle = $post.title }
+  $postPageTitle = if ($post.seoTitle) { $post.seoTitle } else { $post.title }
   Add-Page $post.slug $postPageTitle $post.description $post.category $post.title $post.excerpt $articleContent "blog" "compact" $post.image "center 50%"
 }
 
 $contactContent = @"
-<section class="section">
-  <div class="contact-grid">
-    <div class="reveal">
-      <div class="contact-method"><div><strong>Phone</strong><span>$Phone</span></div><a class="button secondary" href="tel:0364494214">Call</a></div>
-      <div class="contact-method"><div><strong>Email</strong><span>$Email</span></div><a class="button secondary" href="mailto:$Email">Email</a></div>
-      <div class="contact-method"><div><strong>Office</strong><span>$Address<br>By appointment only</span></div></div>
-      <div class="contact-method"><div><strong>Hours</strong><span>Monday to Friday, 9am to 5pm<br>Saturday and Sunday closed</span></div></div>
-    </div>
-    $(IntakeForm "" "Tell us what you need and the form will collect the right details.")
+<section class="section tight">
+  <div class="rich-text reveal">
+    <p>In the ever-evolving realm of IT, personal touch and understanding make all the difference. At Tassie Tech, we believe that every business, big or small, deserves individual attention. That&rsquo;s why we&rsquo;ve chosen a direct communication approach over traditional ticketing systems. When you reach out, you&rsquo;re instantly connected with our dedicated team, ensuring you receive timely and personal responses.</p>
   </div>
 </section>
+$(ContactBlock "Contact Tassie Tech" "Speak with a Tasmanian IT Expert" "Message*")
 <section class="section tight">
   <div class="next-steps-panel reveal">
     <div>
@@ -1611,108 +2021,96 @@ $contactContent = @"
   </div>
 </section>
 "@
-Add-Page "contact" "Contact TassieTech | Local IT Support Tasmania" "Contact TassieTech for local Tasmanian IT support, business technology help, scam recovery, managed services, and practical advice." "Contact" "Connect With TassieTech" "When you reach out, you are more than a ticket number. Speak directly with a local technology team." $contactContent "contact"
+Add-Page "contact" "Contact A Local IT Expert For A Free Quote on Residential & Commercial IT Services In Devonport & The Surrounding Areas. Available on Call 24/7 For Emergencies." "Speak directly to the tech & IT experts who will solve your issue - not sales people. We're based in Latrobe and service North West Tasmania, & statewide upon request. Serving Each Individual & Business With Care" "Contact" "Contact Your Local IT &amp; Tech Experts" "Serving Each Individual &amp; Business With Care" $contactContent "contact"
 
 $thankYouContent = @"
 <section class="section tight">
   <div class="cta-panel reveal">
     <div>
       <span class="section-kicker">Message received</span>
-      <h2>Thanks for contacting TassieTech.</h2>
+      <h2>Thanks for contacting Tassie Tech.</h2>
       <p>We have received your enquiry and will review the details. If this is urgent, call $Phone so we can triage it faster.</p>
     </div>
     <a class="button primary" href="{{root}}contact/">Back to contact</a>
   </div>
 </section>
 "@
-Add-Page "thank-you" "Thank You for Contacting TassieTech" "Thank you for contacting TassieTech. If the issue is urgent, call the Latrobe-based team so we can triage it faster." "Thank you" "Thanks for contacting TassieTech." "We have received your enquiry." $thankYouContent "contact" "compact" "" "" $true
+Add-Page "thank-you" "Thank You for Contacting Tassie Tech" "Thank you for contacting Tassie Tech. If the issue is urgent, call the Latrobe-based team so we can triage it faster." "Thank you" "Thanks for contacting Tassie Tech." "We have received your enquiry." $thankYouContent "contact" "compact" "" "" $true
 
 $careersContent = @"
 <section class="section">
   <div class="grid two">
     <div class="rich-text reveal">
-      <span class="section-kicker">Careers</span>
-      <h2>Join a team where technical skill and care both matter.</h2>
-      <p>At TassieTech, every day brings different challenges across support, security, cloud, websites, networks, and software. We value people who like solving problems and explaining technology clearly.</p>
-      <p>If our work and culture resonate with you, send your resume and a short note to info@tassietech.com.au. We keep expressions of interest on file for future opportunities.</p>
+      <span class="section-kicker">We Serve Local Communities and Businesses.</span>
+      <h2>Join Us Today.</h2>
+      <p>Step into a world where being part of a team means more than just collaboration&mdash;it means belonging. At Tassie Tech, we pride ourselves not just on our technical acumen but on creating a community where everyone feels welcomed and valued. Rooted in Tasmania&rsquo;s serene landscapes, our ethos is built on the camaraderie of a friendly team, and the steadfast reliability we offer to each other and our clients.</p>
     </div>
-    <div class="grid">
-      <article class="card reveal"><h3>Dynamic challenges</h3><p>No two days are the same. Learn, adapt, and improve real systems for local clients.</p></article>
-      <article class="card reveal"><h3>Commitment to growth</h3><p>We want team members to keep developing their skills and confidence.</p></article>
-      <article class="card reveal"><h3>Create lasting change</h3><p>Help Tasmanian businesses and community organisations work safer and smarter.</p></article>
+    <div class="grid two">
+      <article class="card reveal"><h3>Dynamic Challenges</h3><p>At Tassie Tech, no two days are the same, offering you the platform to constantly innovate, adapt, and grow.</p></article>
+      <article class="card reveal"><h3>Commitment to Growth</h3><p>Your professional journey matters to us. We are committed to equip you with the tools and knowledge to excel.</p></article>
+      <article class="card reveal"><h3>Empower Your Workspace</h3><p>Our environment fosters creativity. Take the lead, drive initiatives, and carve your unique path.</p></article>
+      <article class="card reveal"><h3>Create Lasting Change</h3><p>We want to make a mark. Be a part of something bigger, and craft solutions that leave a meaningful imprint.</p></article>
     </div>
   </div>
 </section>
-$(CtaPanel "Want to join the TassieTech team?" "Send your resume and a short note about why our team resonates with you.")
+<section class="section tight">
+  <div class="cta-panel reveal">
+    <div>
+      <h2>Want to Join Our Team?</h2>
+      <p>Feel a connection with Tassie Tech? Send us your resume along with a note about why our team resonates with you to <a href="mailto:info@tassietech.com.au">info@tassietech.com.au</a>. We value every expression of interest and will keep your information on file for when the right opportunity arises.</p>
+    </div>
+    <a class="button primary" href="mailto:info@tassietech.com.au">Email your resume</a>
+  </div>
+</section>
 "@
-Add-Page "careers" "Careers at TassieTech | Technology Jobs Tasmania" "Join the TassieTech team. Work on meaningful technology challenges for Tasmanian businesses and communities in a friendly, reliable, professional environment." "Careers" "Join the TassieTech Team" "Partnership, reliability, friendliness, and practical technical work for Tasmanian clients." $careersContent "about"
+Add-Page "careers" "Start Your Career In Devonport As An IT Technician With Our 5 Star IT Team. We Have An Easy Application Process For Beginner & Experienced Technicians to Join Our Team." "Join Tassie Tech's friendly local IT team. We welcome both beginner and experienced technicians. Find out more and apply today." "Careers" "Join the Tassie Tech Team" "Partnership, Reliability, Friendliness" $careersContent "about"
 
 $legalContent = @"
 <section class="section">
   <div class="rich-text reveal">
-    <span class="section-kicker">Managed service agreements</span>
-    <h2>Terms and client resource documents.</h2>
-    <p>These documents are general to TassieTech Managed Service Agreements. They may be updated as needed, with current versions made available here. If you would like update notices, contact office@tassietech.com.au.</p>
+    <span class="section-kicker">*For Tassie Tech Managed Service Agreements</span>
+    <h2>Terms and Conditions*</h2>
+    <p>These documents are general to all of our Managed Service Agreements. They will be updated as needed, and the most updated versions will be available here. By default, we will not post notice of these updates. If you would like updates, please contact us at <a href="mailto:office@tassietech.com.au">office@tassietech.com.au</a>.</p>
   </div>
   <div class="grid two">
-    <a class="card lift reveal" href="{{root}}general-terms-and-conditions/"><h3>General Terms and Conditions</h3><p>General agreement information for managed service clients.</p></a>
+    <a class="card lift reveal" href="{{root}}assets/docs/20250401-TTS-General-Terms-and-Conditions.pdf"><h3>General Terms and Conditions</h3><p>General agreement information for managed service clients (PDF).</p></a>
     <a class="card lift reveal" href="{{root}}guaranteed-response-times/"><h3>Guaranteed Response Times</h3><p>How response priorities are understood for managed service support.</p></a>
     <a class="card lift reveal" href="{{root}}minimum-hardware-requirements/"><h3>Minimum Hardware Requirements</h3><p>Baseline expectations for supported computers, servers, networks, and software.</p></a>
-    <a class="card lift reveal" href="{{root}}recommended-technology-platform/"><h3>Recommended Technology Platform</h3><p>Common tools and platforms TassieTech trusts and supports.</p></a>
+    <a class="card lift reveal" href="{{root}}recommended-technology-platform/"><h3>Recommended Technology Platform</h3><p>Common tools and platforms Tassie Tech trusts and supports.</p></a>
   </div>
 </section>
 "@
-Add-Page "legal" "Legal and Managed Service Terms | TassieTech" "TassieTech managed service agreement documents, general terms, response times, minimum hardware requirements, and recommended technology platform." "Legal" "Terms and Conditions" "General documents for TassieTech Managed Service Agreements." $legalContent "legal"
+Add-Page "legal" "Terms & Conditions | Tassie Tech" "Terms and conditions for Tassie Tech Managed Service Agreements." "Legal" "Terms and Conditions" "General documents for Tassie Tech Managed Service Agreements." $legalContent "legal"
 
 $hardwareContent = @"
 <section class="section">
   <div class="rich-text reveal">
-    <h2>Minimum Hardware Requirements</h2>
-    <p>For TassieTech Managed Service Agreements, supported devices should be fit for purpose, owned by the company, and capable of running current secure software.</p>
-    <h3>Computers</h3><ul><li>Less than 5 years old.</li><li>Windows 10 or newer, genuine licence.</li><li>macOS 13 Ventura or newer.</li><li>2.4 GHz processor or better.</li><li>Minimum 4GB RAM, 8GB recommended.</li><li>256GB SSD or faster storage.</li></ul>
-    <h3>Servers</h3><ul><li>Windows Server 2012 or newer.</li><li>Ubuntu 20.04 or newer.</li><li>Display support for 1280 x 1024 or higher.</li></ul>
-    <h3>Network and software</h3><ul><li>Networking equipment less than 5 years old.</li><li>Microsoft 365 licences or Microsoft Office 2022 or newer.</li><li>All devices must be appropriate for business use.</li></ul>
+    <h3>Computers</h3><ul><li>Less than 5 years old.</li><li>Windows 10+. All editions, including 64-bit. Must be genuine.</li><li>macOS 13+ (Ventura) or higher</li><li>Processor 2.4 GHz.</li><li>Minimum RAM 4GB &ndash; 8GB Recommended.</li><li>256 GB Drive. SSD or faster.</li></ul>
+    <h3>Servers</h3><ul><li>Windows Server 2012, Standard and Essentials or newer</li><li>Ubuntu 20.04 or newer</li><li>Display optimised for 1280 x 1024 screen resolution or higher</li></ul>
+    <h3>Networking Equipment</h3><ul><li>Less than 5 years old.</li></ul>
+    <h3>Microsoft Software</h3><ul><li>M365 Licences, or Microsoft Office 2022 or newer.</li></ul>
+    <h3>All Devices</h3><ul><li>Must be owned by the company.</li><li>Must be fit for purpose (i.e. A residential router in a large office is not fit for purpose. In a small office it may be fine.).</li></ul>
   </div>
 </section>
 "@
-Add-Page "minimum-hardware-requirements" "Minimum Hardware Requirements | TassieTech" "Minimum hardware requirements for TassieTech managed service agreements, including computers, servers, networking equipment, software, and supported devices." "Client resources" "Minimum Hardware Requirements" "Baseline expectations for managed service devices and systems." $hardwareContent "legal"
+Add-Page "minimum-hardware-requirements" "Minimum Hardware Requirements | Tassie Tech" "Minimum hardware requirements for computers covered by Tassie Tech Managed Service Agreements." "Client resources" "Minimum Hardware Requirements*" "*For Tassie Tech Managed Service Agreements" $hardwareContent "legal"
 
 $platformContent = @"
 <section class="section">
   <div class="rich-text reveal">
-    <h2>Recommended Technology Platform</h2>
-    <p>The following tools represent a practical, supportable baseline for managed devices and common business workflows.</p>
-    <ul><li>Windows 10 or newer, Windows Server 2012 or newer, Ubuntu 20.04 or newer, macOS 13 Ventura or newer.</li><li>Microsoft Office, LibreOffice, Outlook, Thunderbird, Microsoft Edge, Google Chrome, and Mozilla Firefox.</li><li>1Password, Dropbox, Google Drive, OneDrive, Zoom, Slack, Microsoft Teams, Google Meet.</li><li>VirtualBox, OpenVPN, 7-Zip, Splashtop Streamer, and Splashtop Anti-Virus where appropriate.</li></ul>
+    <p>The following are a great set of tools which we trust and support, giving our clients the ability to provide the minimum of what we expect our managed devices to include.</p>
+    <ul><li>Windows 10+</li><li>Windows Server 2012+</li><li>Ubuntu 20.04+</li><li>macOS 13+ (Ventura)</li><li>Microsoft Office Suite</li><li>LibreOffice</li><li>Microsoft Edge</li><li>Google Chrome</li><li>Mozilla Firefox</li><li>Microsoft Outlook</li><li>Mozilla Thunderbird</li><li>Adobe Applications &ndash; Reader, Air, Shockwave</li><li>1Password</li><li>Dropbox</li><li>Google Drive</li><li>OneDrive</li><li>Zoom</li><li>Slack</li><li>Microsoft Teams</li><li>Google Meet</li><li>Virtual Box</li><li>OpenVPN</li><li>7 Zip</li><li>Splashtop Streamer, Splashtop Anti-Virus</li></ul>
   </div>
 </section>
 "@
-Add-Page "recommended-technology-platform" "Recommended Technology Platform | TassieTech" "Recommended technology platform for TassieTech clients, covering operating systems, productivity tools, browsers, security, cloud, and remote access." "Client resources" "Recommended Technology Platform" "A practical baseline of tools TassieTech trusts and supports." $platformContent "legal"
+Add-Page "recommended-technology-platform" "Recommended Technology Platform | Tassie Tech" "The tools and platforms Tassie Tech trusts and supports for clients on our Managed Service Agreements." "Client resources" "Recommended Technology Platform*" "*For Tassie Tech Managed Service Agreements" $platformContent "legal"
 
 $responseContent = @"
-<section class="section">
-  <div class="rich-text reveal">
-    <h2>Guaranteed Response Times</h2>
-    <p>Managed service response priorities should be clear before something goes wrong. This page explains the intent: urgent business disruption receives priority, while lower-impact requests are scheduled sensibly.</p>
-    <h3>Priority guide</h3>
-    <ul><li><strong>Critical:</strong> business-wide outage, suspected compromise, or major operational disruption.</li><li><strong>High:</strong> important staff or systems blocked with no practical workaround.</li><li><strong>Normal:</strong> individual support requests, minor issues, changes, and improvements.</li><li><strong>Planned:</strong> projects, procurement, migrations, and scheduled maintenance.</li></ul>
-    <p>For exact response commitments, refer to your current managed service agreement or contact TassieTech.</p>
-  </div>
-</section>
+$(ResponseTimesSection)
 "@
-Add-Page "guaranteed-response-times" "Guaranteed Response Times | TassieTech" "Response priority guide for TassieTech managed service support, covering critical, high, normal, and planned IT requests." "Client resources" "Guaranteed Response Times" "How TassieTech prioritises managed service support requests." $responseContent "legal"
+Add-Page "guaranteed-response-times" "Guaranteed Response Times | Tassie Tech" "Response priority guide for Tassie Tech managed service support, covering critical, high, normal, and planned IT requests." "Client resources" "Guaranteed Response Times" "How Tassie Tech prioritises managed service support requests." $responseContent "legal"
 
-$termsContent = @"
-<section class="section">
-  <div class="rich-text reveal">
-    <h2>General Terms and Conditions</h2>
-    <p>This page is the public location for general terms connected with TassieTech Managed Service Agreements. Agreement-specific inclusions, exclusions, response commitments, fees, and responsibilities should be read together with the signed service agreement.</p>
-    <p>For the current agreement pack or update notices, contact office@tassietech.com.au.</p>
-  </div>
-</section>
-"@
-Add-Page "general-terms-and-conditions" "General Terms and Conditions | TassieTech" "General terms and conditions for TassieTech managed service agreements, including agreement scope, client responsibilities, updates, and support documents." "Client resources" "General Terms and Conditions" "Managed service agreement information for TassieTech clients." $termsContent "legal"
 
-Add-Page "about-page" "About TassieTech | Local IT Experts Tasmania" "Meet TassieTech, a Tasmanian technology partner combining local care with professional IT, cyber security, software, web, and network expertise." "About TassieTech" "Discover TassieTech" "Where local heart meets global technology expertise." $aboutContent "about" "compact" "" "" $true
 
 function Render-Layout {
   param($Page)
@@ -1736,12 +2134,13 @@ function Render-Layout {
   $heroActions = Get-HeroActions $Page $prefix
   $heroPanel = (IntakeForm "hero-intake-panel" "" "What do you need help with?").Replace("{{root}}", $prefix)
 
+  $homeHref = if ($prefix -eq "") { "./" } else { $prefix }
   $navItems = @(
     @{Label="Businesses"; Href="services/"; Key="services"},
     @{Label="Individuals"; Href="individuals/"; Key="individuals"},
-    @{Label="Areas"; Href="areas-we-serve/"; Key="areas"},
+    @{Label="Areas"; Href="it-services-tasmania/"; Key="areas"},
     @{Label="About"; Href="about/"; Key="about"},
-    @{Label="Blog"; Href="blog/"; Key="blog"}
+    @{Label="Blog"; Href="posts/"; Key="blog"}
   )
 
   $mobileFunnelHtml = @"
@@ -1749,7 +2148,7 @@ function Render-Layout {
 <li class="mobile-funnel-title"><a class="mobile-funnel-main" href="${prefix}contact/">Get IT Help</a></li>
 <li class="mobile-funnel-item"><a href="${prefix}contact/?intent=business-support">Business IT Support</a></li>
 <li class="mobile-funnel-item"><a href="${prefix}contact/?intent=personal">Personal IT Help</a></li>
-<li class="mobile-funnel-item"><a href="${prefix}emergency-response/">Urgent IT Issue</a></li>
+<li class="mobile-funnel-item"><a href="${prefix}emergency/">Urgent IT Issue</a></li>
 <li class="mobile-funnel-item"><a href="${prefix}contact/?intent=project">Plan a Project</a></li>
 "@
 
@@ -1783,13 +2182,13 @@ function Render-Layout {
     (function(){var t=localStorage.getItem('tt-theme');document.documentElement.dataset.theme=(t==='light'||t==='dark')?t:'light';})();
   </script>
 </head>
-<body>
+<body class="$(if ($Page.Path -eq "") { 'home' } else { 'page-' + ($Page.Path -replace '/', '-') })">
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header">
     <div class="nav-shell">
-      <a class="brand-link" href="$brandHref" aria-label="TassieTech home">
+      <a class="brand-link" href="$brandHref" aria-label="Tassie Tech home">
         <img src="${prefix}assets/img/tassietech-logo.jpg" alt="" width="68" height="43">
-        <span>TassieTech</span>
+        <span>Tassie Tech</span>
       </a>
       <nav class="primary-nav" data-primary-nav aria-label="Primary navigation">
         <ul>
@@ -1803,7 +2202,7 @@ function Render-Layout {
           <div class="help-menu-panel" aria-label="Choose a support path">
             <a href="${prefix}contact/?intent=business-support"><strong>Business IT Support</strong><span>Managed IT, Microsoft 365, networks, security, devices, and staff support.</span></a>
             <a href="${prefix}contact/?intent=personal"><strong>Personal IT Help</strong><span>Computers, email, internet, scams, devices, and account issues.</span></a>
-            <a class="urgent" href="${prefix}emergency-response/"><strong>Urgent IT Issue</strong><span>Outages, suspected compromise, disruption, or time-sensitive problems.</span></a>
+            <a class="urgent" href="${prefix}emergency/"><strong>Urgent IT Issue</strong><span>Outages, suspected compromise, disruption, or time-sensitive problems.</span></a>
             <a href="${prefix}contact/?intent=project"><strong>Plan a Project</strong><span>Websites, migrations, cloud, backup, security, and system improvements.</span></a>
           </div>
         </details>
@@ -1822,7 +2221,7 @@ function Render-Layout {
           <div class="hero-actions">
             $heroActions
           </div>
-          <div class="hero-proof" aria-label="TassieTech strengths">
+          <div class="hero-proof" aria-label="Tassie Tech strengths">
             <span>North West based</span>
             <span>Statewide remote support</span>
             <span>Security-led advice</span>
@@ -1838,18 +2237,18 @@ function Render-Layout {
       <div class="footer-brand">
         <img src="${prefix}assets/img/tassietech-logo.jpg" alt="" width="84" height="54" loading="lazy">
         <div>
-          <h2>TassieTech</h2>
-          <p>Proudly serving the North West, West Coast, East Coast, Midlands, greater Hobart, Launceston, and connected Tasmanian towns.</p>
+          <h2>Tassie Tech</h2>
+          <p>Navigating the digital landscape can be complex, but with our expert support, it becomes a seamless journey. Proudly serving Devonport, Latrobe, Port Sorell, Sheffield, Forth, Ulverstone, Deloraine, Burnie, and everywhere in between, our local B2B IT Support and Development company in Tasmania is your trusted partner for dependable, personable, and top-notch IT solutions. Whether you&rsquo;re new to our services or a long-standing client, we sincerely appreciate your continued support in shaping our success story.</p>
         </div>
         <p><strong>$Phone</strong><br><a href="mailto:$Email">$Email</a><br>$Address</p>
       </div>
       <div class="footer-links">
-        <div><h3>Site</h3><ul><li><a href="${prefix}about/">About</a></li><li><a href="${prefix}services/">Businesses</a></li><li><a href="${prefix}individuals/">Individuals</a></li><li><a href="${prefix}community-services/">Community Services</a></li><li><a href="${prefix}areas-we-serve/">Areas</a></li><li><a href="${prefix}blog/">Blog</a></li><li><a href="${prefix}contact/">Contact</a></li><li><a href="${prefix}legal/">Legal</a></li><li><a href="${prefix}careers/">Careers</a></li></ul></div>
-        <div><h3>Business IT</h3><ul><li><a href="${prefix}business-it-support-tasmania/">Business IT Support</a></li><li><a href="${prefix}managed-it-support-tasmania/">Managed IT</a></li><li><a href="${prefix}microsoft-365-support-tasmania/">Microsoft 365</a></li><li><a href="${prefix}cyber-security-tasmania/">Cyber Security</a></li><li><a href="${prefix}backup-strategy-tasmania/">Backup Strategy</a></li><li><a href="${prefix}unifi-network-support-tasmania/">UniFi Networks</a></li></ul></div>
-        <div><h3>Web and Projects</h3><ul><li><a href="${prefix}wordpress-care-tasmania/">WordPress Care</a></li><li><a href="${prefix}emergency-response/">Emergency Response</a></li><li><a href="${prefix}contact/?intent=project">Plan a Project</a></li></ul></div>
-        <div><h3>Areas</h3><ul><li><a href="${prefix}areas-we-serve/">Areas We Serve</a></li><li><a href="${prefix}it-services-tasmania/">Tasmania IT Services</a></li><li><a href="${prefix}it-services-for-devonport/">Devonport</a></li><li><a href="${prefix}it-services-for-burnie/">Burnie</a></li><li><a href="${prefix}it-services-for-launceston/">Launceston</a></li><li><a href="${prefix}it-services-for-hobart/">Hobart</a></li></ul></div>
-        <div><h3>Resources</h3><ul><li><a href="${prefix}legal/">Legal</a></li><li><a href="${prefix}general-terms-and-conditions/">Terms and Conditions</a></li><li><a href="${prefix}guaranteed-response-times/">Response Times</a></li><li><a href="${prefix}minimum-hardware-requirements/">Hardware Requirements</a></li><li><a href="${prefix}recommended-technology-platform/">Recommended Platform</a></li></ul></div>
-        <div><h3>Contact</h3><ul><li><a href="tel:0364494214">Call $PhoneShort</a></li><li><a href="mailto:$Email">Email help desk</a></li><li><a href="${prefix}contact/">Send a message</a></li><li><a href="${prefix}scam-recovery/">Scam Recovery</a></li></ul></div>
+        <div><h3>Site</h3><ul><li><a href="${homeHref}">Home</a></li><li><a href="${prefix}about/">About</a></li><li><a href="${prefix}community-services/">Community Services</a></li><li><a href="${prefix}emergency/">Emergency Response</a></li><li><a href="${prefix}it-services-tasmania/">Areas We Serve</a></li><li><a href="${prefix}posts/">Blog</a></li><li><a href="${prefix}contact/">Contact</a></li><li><a href="${prefix}careers/">Careers</a></li></ul></div>
+        <div><h3>Individuals</h3><ul><li><a href="${prefix}individuals/">IT Help for Individuals</a></li><li><a href="${prefix}scam-recovery/">Scam Recovery</a></li><li><a href="${prefix}computers/">Computers</a></li><li><a href="${prefix}laptops/">Laptops</a></li><li><a href="${prefix}pc/">PC</a></li><li><a href="${prefix}windows/">Windows</a></li><li><a href="${prefix}mac/">Mac</a></li><li><a href="${prefix}email/">Email</a></li><li><a href="${prefix}virus-and-malware/">Virus and Malware</a></li><li><a href="${prefix}internet-or-router-problems/">Internet or Router Problems</a></li><li><a href="${prefix}antivirus/">Antivirus</a></li></ul></div>
+        <div><h3>Businesses</h3><ul><li><a href="${prefix}services/">Business IT Support</a></li><li><a href="${prefix}best-managed-it-services-tasmania/">Managed IT</a></li><li><a href="${prefix}business-security/">Business Security</a></li><li><a href="${prefix}scale-your-business/">Scale Your Business</a></li><li><a href="${prefix}care-packages/">Care Packages</a></li><li><a href="${prefix}microsoft-365-support-tasmania/">Microsoft 365</a></li><li><a href="${prefix}backup-strategy-tasmania/">Backup Strategy</a></li><li><a href="${prefix}unifi-network-support-tasmania/">UniFi Networks</a></li><li><a href="${prefix}wordpress-care-tasmania/">WordPress Care</a></li></ul></div>
+        <div><h3>Areas</h3><ul><li><a href="${prefix}it-services-tasmania/">Tasmania</a></li><li><a href="${prefix}it-services-for-burnie/">Burnie</a></li><li><a href="${prefix}it-services-for-latrobe/">Latrobe</a></li><li><a href="${prefix}it-services-for-deloraine/">Deloraine</a></li><li><a href="${prefix}expert-it-services-for-devonport-businesses/">Devonport</a></li><li><a href="${prefix}it-services-for-port-sorell/">Port Sorell</a></li><li><a href="${prefix}it-services-for-ulverstone/">Ulverstone</a></li><li><a href="${prefix}it-services-for-sheffield/">Sheffield</a></li></ul></div>
+        <div><h3>Resources</h3><ul><li><a href="${prefix}legal/">Legal</a></li><li><a href="${prefix}assets/docs/20250401-TTS-General-Terms-and-Conditions.pdf">Terms and Conditions (PDF)</a></li><li><a href="${prefix}guaranteed-response-times/">Response Times</a></li><li><a href="${prefix}minimum-hardware-requirements/">Hardware Requirements</a></li><li><a href="${prefix}recommended-technology-platform/">Recommended Platform</a></li></ul></div>
+        <div><h3>Contact</h3><ul><li><a href="tel:0364494214">Call $PhoneShort</a></li><li><a href="mailto:$Email">Email help desk</a></li><li><a href="${prefix}contact/">Send a message</a></li></ul></div>
       </div>
     </div>
     <div class="footer-bottom">Tassie Tech / Tasmanian Technology Systems - Copyright <span data-year>2026</span></div>
@@ -1866,26 +2265,42 @@ foreach ($page in $Pages) {
   Render-Layout $page | Set-Content -Path (Join-Path $outDir "index.html") -Encoding UTF8
 }
 
-New-Item -ItemType Directory -Force -Path "posts" | Out-Null
+$Redirects = [ordered]@{
+  "blog" = "posts/"
+  "managed-it-support-tasmania" = "best-managed-it-services-tasmania/"
+  "managed-it-support" = "best-managed-it-services-tasmania/"
+  "it-services-for-devonport" = "expert-it-services-for-devonport-businesses/"
+  "it-services-in-devonport" = "expert-it-services-for-devonport-businesses/"
+  "emergency-response" = "emergency/"
+  "areas-we-serve" = "it-services-tasmania/"
+  "about-page" = "about/"
+  "cyber-security-tasmania" = "business-security/"
+  "business-it-support-tasmania" = "services/"
+  "general-terms-and-conditions" = "assets/docs/20250401-TTS-General-Terms-and-Conditions.pdf"
+}
+$htaccessLines = @("# Generated by build.ps1 - permanent redirects for old URLs", "<IfModule mod_alias.c>")
+foreach ($from in $Redirects.Keys) {
+  $to = $Redirects[$from]
+  if (-not $to) { continue }
+  $htaccessLines += "  RedirectMatch 301 ^/$([regex]::Escape($from))/?`$ /$to"
+  New-Item -ItemType Directory -Force -Path $from | Out-Null
 @"
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Redirect page for the TassieTech blog archive. The current blog is available at /blog/.">
   <meta name="robots" content="noindex, follow">
-  <meta http-equiv="refresh" content="0; url=../blog/">
-  <link rel="canonical" href="$SiteUrl/blog/">
-  <link rel="icon" type="image/png" sizes="32x32" href="../assets/img/favicon-32.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="../assets/img/favicon-192.png">
-  <link rel="icon" type="image/png" sizes="512x512" href="../assets/img/favicon.png">
-  <link rel="apple-touch-icon" sizes="192x192" href="../assets/img/apple-touch-icon.png">
-  <title>TassieTech Blog Redirect</title>
+  <meta http-equiv="refresh" content="0; url=../$to">
+  <link rel="canonical" href="$SiteUrl/$to">
+  <title>Page moved | Tassie Tech</title>
 </head>
-<body><h1>TassieTech Blog moved</h1><p>Redirecting to <a href="../blog/">TassieTech Blog</a>.</p></body>
+<body><p>This page has moved to <a href="../$to">$SiteUrl/$to</a>.</p></body>
 </html>
-"@ | Set-Content -Path (Join-Path "posts" "index.html") -Encoding UTF8
+"@ | Set-Content -Path (Join-Path $from "index.html") -Encoding UTF8
+}
+$htaccessLines += "</IfModule>"
+$htaccessLines -join "`n" | Set-Content -Path ".htaccess" -Encoding UTF8
 
 $sitemapUrls = $Pages | Where-Object { -not $_.NoIndex } | ForEach-Object {
   "  <url><loc>$(Get-PageCanonical $_)</loc></url>"
@@ -1906,8 +2321,8 @@ Sitemap: $SiteUrl/sitemap.xml
 @"
 <!doctype html>
 <html lang="en">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta http-equiv="refresh" content="0; url=./"><link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png"><link rel="icon" type="image/png" sizes="192x192" href="assets/img/favicon-192.png"><link rel="icon" type="image/png" sizes="512x512" href="assets/img/favicon.png"><link rel="apple-touch-icon" sizes="192x192" href="assets/img/apple-touch-icon.png"><title>Page not found | TassieTech</title></head>
-<body><h1>Page not found</h1><p>Page not found. <a href="./">Go to TassieTech home</a>.</p></body>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta http-equiv="refresh" content="0; url=./"><link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png"><link rel="icon" type="image/png" sizes="192x192" href="assets/img/favicon-192.png"><link rel="icon" type="image/png" sizes="512x512" href="assets/img/favicon.png"><link rel="apple-touch-icon" sizes="192x192" href="assets/img/apple-touch-icon.png"><title>Page not found | Tassie Tech</title></head>
+<body><h1>Page not found</h1><p>Page not found. <a href="./">Go to Tassie Tech home</a>.</p></body>
 </html>
 "@ | Set-Content -Path "404.html" -Encoding UTF8
 
