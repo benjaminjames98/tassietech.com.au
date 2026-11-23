@@ -2112,6 +2112,8 @@ Add-Page "guaranteed-response-times" "Guaranteed Response Times | Tassie Tech" "
 
 
 
+$AssetVersion = (Get-FileHash -Algorithm MD5 -Path (Join-Path $PSScriptRoot "assets/css/styles.css")).Hash.Substring(0, 8).ToLower()
+
 function Render-Layout {
   param($Page)
 
@@ -2176,7 +2178,7 @@ function Render-Layout {
   <link rel="icon" type="image/png" sizes="512x512" href="${prefix}assets/img/favicon.png">
   <link rel="apple-touch-icon" sizes="192x192" href="${prefix}assets/img/apple-touch-icon.png">
   <link rel="preload" as="image" href="${prefix}$heroImage">
-  <link rel="stylesheet" href="${prefix}assets/css/styles.css">
+  <link rel="stylesheet" href="${prefix}assets/css/styles.css?v=$AssetVersion">
   $structuredData
   <script>
     (function(){var t=localStorage.getItem('tt-theme');document.documentElement.dataset.theme=(t==='light'||t==='dark')?t:'light';})();
@@ -2253,7 +2255,7 @@ function Render-Layout {
     </div>
     <div class="footer-bottom">Tassie Tech / Tasmanian Technology Systems - Copyright <span data-year>2026</span></div>
   </footer>
-  <script src="${prefix}assets/js/main.js" defer></script>
+  <script src="${prefix}assets/js/main.js?v=$AssetVersion" defer></script>
 </body>
 </html>
 "@
